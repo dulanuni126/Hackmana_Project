@@ -1,0 +1,77 @@
+.mainVbox{
+    -fx-background-color: linear-gradient(to top, rgba(25, 4, 130, 0.87) -4.51%, rgba(23, 16, 136, 0.89) 7.73%, rgba(10, 83, 174, 0.85) 72.78%, #0183C9 119.01%);
+    -fx-background-radius: 0px 16px 16px 0px;
+}
+.hakmanaLabel{
+    -fx-font-family: Iskoola Pota;
+    -fx-font-size: 20px;
+    -fx-font-weight: 400;
+    -fx-line-height: 27px;
+    -fx-letter-spacing: 0em;
+    -fx-text-align: left;
+
+}
+.topvbox{
+
+}
+
+.topvbox .button{
+    -fx-pref-width:239;
+    -fx-pref-height:42;
+    -fx-effect:dropshadow( gaussian,rgba(0, 0, 0, 0.13),4,1,4,4);
+    -fx-background-color:#4067EC;
+    -fx-background-radius:8px;
+    -fx-text-fill:#FFFFFF;
+    -fx-font-size:16;
+    -fx-font-weight:500;
+    -fx-font-family:"Zen Kaku Gothic Antique";
+}
+
+.middle_vbox{
+
+}
+
+
+.middle_vbox .button{
+    -fx-pref-width:239;
+    -fx-pref-height:72;
+    -fx-effect:dropshadow( gaussian,rgba(0, 0, 0, 0.13),4,1,4,4);
+    -fx-background-color:#4067EC;
+    -fx-background-radius:8px;
+    -fx-font-family: Zen Kaku Gothic Antique;
+    -fx-font-size: 15px;
+    -fx-font-weight: 500;
+    -fx-line-height: 23px;
+    -fx-letter-spacing: 0px;
+    -fx-text-align: center;
+    -fx-text-fill:#FFFFFF;
+
+}
+
+.footer_vbox{
+
+}
+
+.usermanagement{
+    -fx-pref-width:217;
+    -fx-pref-height:40;
+    -fx-effect:dropshadow( gaussian,rgba(0, 0, 0, 0.13),4,1,4,4);
+    -fx-background-color:#4067EC;
+    -fx-background-radius:8px;
+    -fx-text-fill:#FFFFFF;
+    -fx-font-size:14;
+    -fx-font-weight:400;
+    -fx-font-family:"Zen Kaku Gothic Antique";
+}
+
+.logout{
+    -fx-pref-width:143;
+    -fx-pref-height:31;
+    -fx-effect:dropshadow( gaussian,rgba(0, 0, 0, 0.13),4,1,4,4);
+    -fx-background-color:#4067EC;
+    -fx-background-radius:8px;
+    -fx-text-fill:#FFFFFF;
+    -fx-font-size:14;
+    -fx-font-weight:400;
+    -fx-font-family:"Zen Kaku Gothic Antique";
+}

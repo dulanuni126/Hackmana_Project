@@ -1,0 +1,99 @@
+.toppane{
+        -fx-pref-width: 695px;
+        -fx-pref-height: 75px;
+        -fx-background-radius: 8px;
+         -fx-background-color:white;
+         -fx-effect:dropshadow(box-shadow,4px 4px 4px 1px #00000021);
+
+
+}
+.middlepane{
+         -fx-pref-width: 696px;
+         -fx-pref-height: 453px;
+          -fx-background-color:#00000021;
+}
+
+.Mpane1{
+        -fx-pref-width: 696px;
+        -fx-pref-height: 217px;
+        -fx-background-radius: 8px, 0px, 0px, 8px;
+        -fx-background-color:#FFFFFF;
+
+
+}
+
+.Mpane2{
+        -fx-pref-width: 278px;
+        -fx-pref-height: 223px;
+        -fx-pref-left: 7px;
+        -fx-background-radius: 8px;
+        -fx-background-color:#FFFFFF;
+
+}
+
+
+.Mpane3{
+        -fx-pref-width: 278px;
+        -fx-pref-height: 223px;
+        -fx-pref-left: 7px;
+        -fx-background-radius: 8px;
+        -fx-background-color:#FFFFFF;
+
+}
+
+.scroll{
+       -fx-background: 10px solid #9E9E9E;
+
+}
+.scroll .SCROLL_BAR{
+      -fx-color:white;
+}
+
+.quickaccessLabel{
+        -fx-pref-width: 223px;
+        -fx-pref-height: 30px;
+        -fx-padding: 3px, 44px, 3px, 48px;
+        -fx-background-radius: 0px, 0px, 8px, 8px;
+        -fx-background-color: #B3B3B399;
+        -fx-effect:dropshadow(box-shadow,0px 4px 4px 0px #00000040);
+        -fx-font-family: Lucida Bright;
+        -fx-font-size: 20px;
+        -fx-font-weight: 600px;
+        -fx-line-height: 24px;
+        -fx-letter-spacing: 0em;
+        -fx-text-align: center;
+        -fx-text-fill: #4067EC;
+
+
+
+}
+
+.m3paneVbox{
+        -fx-pref-width: 278px;
+         -fx-pref-height: 171px;
+
+}
+
+.m3paneVbox .button2{
+        -fx-pref-width: 178px;
+        -fx-pref-height: 48px;
+        -fx-font-family: Inter;
+        -fx-font-size: 13px;
+        -fx-font-weight: 400;
+        -fx-line-height: 24px;
+        -fx-letter-spacing: 0em;
+        -fx-text-align: left;
+
+}
+
+.m3paneVbox .button1{
+        -fx-pref-width: 178px;
+        -fx-pref-height: 30px;
+        -fx-font-family: Inter;
+        -fx-font-size: 13px;
+        -fx-font-weight: 400;
+        -fx-line-height: 24px;
+        -fx-letter-spacing: 0em;
+        -fx-text-align: left;
+
+}
