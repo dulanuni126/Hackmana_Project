@@ -1,5 +1,0 @@
-.btm_border{
-    -fx-border-bottom-color: black; /* Border color */
-    -fx-border-bottom-width: 2px;   /* Border width */
-    -fx-border-bottom-style: solid; /* Border style (e.g., solid, dashed, dotted) */
-}

@@ -16,7 +16,7 @@ public class FooterController extends HBox implements Initializable {
 
     public FooterController() {
         super();
-        FXMLLoader fxmlFooterLoader = new FXMLLoader(getClass().getResource("Footer.fxml"));
+        FXMLLoader fxmlFooterLoader = new FXMLLoader(getClass().getResource("Component/Footer.fxml"));
         fxmlFooterLoader.setController(this);
         fxmlFooterLoader.setRoot(this);
 

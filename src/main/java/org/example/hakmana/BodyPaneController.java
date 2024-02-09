@@ -16,7 +16,7 @@ public class BodyPaneController extends AnchorPane implements Initializable {
 
     public BodyPaneController() {
         super();
-        FXMLLoader fxmlBodyPaneLoader = new FXMLLoader(getClass().getResource("BodyPane.fxml"));
+        FXMLLoader fxmlBodyPaneLoader = new FXMLLoader(getClass().getResource("Component/BodyPane.fxml"));
         fxmlBodyPaneLoader.setController(this);
         fxmlBodyPaneLoader.setRoot(this);
 

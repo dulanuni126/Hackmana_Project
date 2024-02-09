@@ -17,7 +17,7 @@ public class PathFinderController extends VBox implements Initializable {
 
     public PathFinderController() {
         super();
-        FXMLLoader fxmlPathLoader = new FXMLLoader(getClass().getResource("PathFinder.fxml"));
+        FXMLLoader fxmlPathLoader = new FXMLLoader(getClass().getResource("Component/PathFinder.fxml"));
         fxmlPathLoader.setController(this);
         fxmlPathLoader.setRoot(this);
 

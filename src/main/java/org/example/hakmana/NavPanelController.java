@@ -17,7 +17,7 @@ public class NavPanelController extends VBox implements Initializable {
 
     public NavPanelController() {
         super();
-        FXMLLoader fxmlNavPanelController=new FXMLLoader(getClass().getResource("Nav_panel.fxml"));
+        FXMLLoader fxmlNavPanelController=new FXMLLoader(getClass().getResource("Component/Nav_panel.fxml"));
         fxmlNavPanelController.setController(this);
         fxmlNavPanelController.setRoot(this);
 
