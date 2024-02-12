@@ -5,115 +5,202 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
 
-
-<fx:root prefHeight="641.0" prefWidth="276.0" styleClass="mainVbox" stylesheets="@CSS/Nav_panel.css" type="VBox" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+<fx:root fx:id="sidebar" prefHeight="641.0" prefWidth="272.0" type="AnchorPane" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <VBox prefHeight="144.0" prefWidth="261.0" styleClass="topvbox">
-         <VBox.margin>
-            <Insets left="15.0" top="10.0" />
-         </VBox.margin>
+      <VBox  prefHeight="641.0" prefWidth="276.0" styleClass="mainVbox" stylesheets="@CSS/Nav_panel.css">
          <children>
-            <Label graphicTextGap="8.0" styleClass="hakmanaLabel" text="හක්මණ ප්‍රාදේශීය &#10;සභාව">
-               <graphic>
-                  <ImageView fitHeight="71.9" fitWidth="51.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@images/pngwing%201.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-            </Label>
-            <Button alignment="BASELINE_LEFT" graphicTextGap="10.0" mnemonicParsing="false" text="Dashboard">
-               <graphic>
-                  <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../Scene/Images/icon-home.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-            </Button>
+            <VBox fx:id="vbox1" prefHeight="144.0" prefWidth="261.0" styleClass="topvbox">
+               <VBox.margin>
+                  <Insets left="15.0" top="10.0" />
+               </VBox.margin>
+               <children>
+                  <HBox alignment="CENTER" prefHeight="85.0" prefWidth="261.0">
+                     <children>
+                        <Label fx:id="navPanelTitle" graphicTextGap="8.0" prefHeight="71.0" prefWidth="247.0" styleClass="hakmanaLabel" text="හක්මණ ප්‍රාදේශීය &#10;සභාව" HBox.hgrow="ALWAYS">
+                           <graphic>
+                              <ImageView fitHeight="71.9" fitWidth="51.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@Images/govLogo.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                           <font>
+                              <Font size="11.0" />
+                           </font>
+                        </Label>
+                        <Button fx:id="toggleButton" maxHeight="24.0" maxWidth="24.0" mnemonicParsing="false" onAction="#ToggleButton" prefHeight="24.0" prefWidth="24.0" />
+                     </children>
+                  </HBox>
+                  <Button fx:id="dashboardBtn" alignment="BASELINE_LEFT" graphicTextGap="10.0" mnemonicParsing="false" text="Dashboard">
+                     <graphic>
+                        <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../Scene/Images/icon-home.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+               </children>
+            </VBox>
+            <VBox fx:id="vbox2" prefHeight="243.0" prefWidth="261.0" styleClass="middle_vbox">
+               <VBox.margin>
+                  <Insets left="15.0" />
+               </VBox.margin>
+               <children>
+                  <Button alignment="BASELINE_LEFT" graphicTextGap="10.0" mnemonicParsing="false" text="Device&#10;Management">
+                     <graphic>
+                        <ImageView fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../Scene/Images/icon-monitor.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <VBox.margin>
+                        <Insets bottom="24.0" />
+                     </VBox.margin>
+                  </Button>
+                  <Button alignment="BASELINE_LEFT" graphicTextGap="10.0" mnemonicParsing="false" text="Report&#10;Handling">
+                     <graphic>
+                        <ImageView fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../Scene/Images/icon-file-plus.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <VBox.margin>
+                        <Insets bottom="24.0" />
+                     </VBox.margin>
+                  </Button>
+                  <Button alignment="BASELINE_LEFT" graphicTextGap="10.0" mnemonicParsing="false" text="Overview&#10;History">
+                     <graphic>
+                        <ImageView fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../Scene/Images/icon-file.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <VBox.margin>
+                        <Insets bottom="24.0" />
+                     </VBox.margin>
+                  </Button>
+                  <Line endX="139.492919921875" startX="-100.0">
+                     <VBox.margin>
+                        <Insets />
+                     </VBox.margin>
+                  </Line>
+               </children>
+            </VBox>
+            <VBox fx:id="vbox3" prefHeight="147.0" prefWidth="250.0" styleClass="footer_vbox">
+               <VBox.margin>
+                  <Insets left="26.0" />
+               </VBox.margin>
+               <children>
+                  <Button alignment="BASELINE_LEFT" graphicTextGap="10.0" mnemonicParsing="false" styleClass="usermanagement" text="User Management">
+                     <graphic>
+                        <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@images/Shape%20(4).png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <VBox.margin>
+                        <Insets top="31.0" />
+                     </VBox.margin>
+                  </Button>
+                  <Button alignment="BASELINE_LEFT" contentDisplay="RIGHT" graphicTextGap="20.0" mnemonicParsing="false" prefHeight="29.0" prefWidth="139.0" styleClass="logout" text="Log out">
+                     <graphic>
+                        <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@images/Shape%20(5).png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <VBox.margin>
+                        <Insets top="24.0" />
+                     </VBox.margin>
+                  </Button>
+               </children>
+            </VBox>
          </children>
       </VBox>
-      <VBox prefHeight="243.0" prefWidth="261.0" styleClass="middle_vbox">
-         <VBox.margin>
-            <Insets left="15.0" />
-         </VBox.margin>
+      <VBox fx:id="collapsedNavBar" alignment="TOP_RIGHT" layoutX="233.0" prefHeight="641.0" prefWidth="41.0" spacing="32.0" visible="false">
          <children>
-            <Button alignment="BASELINE_LEFT" graphicTextGap="10.0" mnemonicParsing="false" text="Device&#10;Management">
-               <graphic>
-                  <ImageView fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../Scene/Images/icon-monitor.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-               <VBox.margin>
-                  <Insets bottom="24.0" />
-               </VBox.margin>
-            </Button>
-            <Button alignment="BASELINE_LEFT" graphicTextGap="10.0" mnemonicParsing="false" text="Report&#10;Handling">
-               <graphic>
-                  <ImageView fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../Scene/Images/icon-file-plus.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-               <VBox.margin>
-                  <Insets bottom="24.0" />
-               </VBox.margin>
-            </Button>
-            <Button alignment="BASELINE_LEFT" graphicTextGap="10.0" mnemonicParsing="false" text="Overview&#10;History">
-               <graphic>
-                  <ImageView fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../Scene/Images/icon-file.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-               <VBox.margin>
-                  <Insets bottom="24.0" />
-               </VBox.margin>
-            </Button>
-            <Line endX="139.492919921875" startX="-100.0">
-               <VBox.margin>
-                  <Insets />
-               </VBox.margin>
-            </Line>
-         </children>
-      </VBox>
-      <VBox prefHeight="147.0" prefWidth="250.0" styleClass="footer_vbox">
-         <VBox.margin>
-            <Insets left="26.0" />
-         </VBox.margin>
-         <children>
-            <Button alignment="BASELINE_LEFT" graphicTextGap="10.0" mnemonicParsing="false" styleClass="usermanagement" text="User Management">
+            <Button maxHeight="24.0" maxWidth="24.0" mnemonicParsing="false" onAction="#ToggleButton" prefHeight="24.0" prefWidth="24.0">
                <graphic>
                   <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@images/Shape%20(4).png" />
+                        <Image url="@Images/Shape%20(1).png" />
                      </image>
                   </ImageView>
                </graphic>
                <VBox.margin>
-                  <Insets top="31.0" />
+                  <Insets top="12.0" />
                </VBox.margin>
             </Button>
-            <Button alignment="BASELINE_LEFT" contentDisplay="RIGHT" graphicTextGap="20.0" mnemonicParsing="false" prefHeight="29.0" prefWidth="139.0" styleClass="logout" text="Log out">
+            <Button maxHeight="24.0" maxWidth="24.0" mnemonicParsing="false" prefHeight="24.0" prefWidth="24.0">
                <graphic>
                   <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@images/Shape%20(5).png" />
+                        <Image url="@Images/Shape%20(1).png" />
                      </image>
                   </ImageView>
                </graphic>
-               <VBox.margin>
-                  <Insets top="24.0" />
-               </VBox.margin>
+            </Button>
+            <Button maxHeight="24.0" maxWidth="24.0" mnemonicParsing="false" prefHeight="24.0" prefWidth="24.0">
+               <graphic>
+                  <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@Images/Shape%20(3).png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Button maxHeight="24.0" maxWidth="24.0" mnemonicParsing="false" prefHeight="24.0" prefWidth="24.0">
+               <graphic>
+                  <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@Images/Shape%20(2).png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Button maxHeight="24.0" maxWidth="24.0" mnemonicParsing="false" prefHeight="24.0" prefWidth="24.0">
+               <graphic>
+                  <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@Images/Shape%20(3).png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Button maxHeight="24.0" maxWidth="24.0" mnemonicParsing="false" prefHeight="24.0" prefWidth="24.0">
+               <graphic>
+                  <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@Images/Shape%20(4).png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Button maxHeight="24.0" maxWidth="24.0" mnemonicParsing="false" prefHeight="24.0" prefWidth="24.0">
+               <graphic>
+                  <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@Images/Shape%20(5).png" />
+                     </image>
+                  </ImageView>
+               </graphic>
             </Button>
          </children>
+         <padding>
+            <Insets right="2.0" />
+         </padding>
       </VBox>
    </children>
 </fx:root>

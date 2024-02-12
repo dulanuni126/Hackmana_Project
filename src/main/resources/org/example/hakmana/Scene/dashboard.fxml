@@ -13,7 +13,7 @@
       <NavPanelController />
 
       <!--Header Component-->
-      <HeaderController message="Welcome" layoutX="304.0" layoutY="14.0" prefWidth="709.0" />
+      <HeaderController layoutX="304.0" layoutY="14.0" titleMsg="Welocme" usernameMsg="R.Gunathilaka" designationMsg="Product owner" prefWidth="759.0" />
 
       <!--Path Component-->
       <PathFinderController layoutX="304.0" layoutY="104.0" />

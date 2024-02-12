@@ -1,11 +1,11 @@
 .CustomHbox{
     -fx-alignment: center;
-    -fx-pref-width: 0px;
+    -fx-pref-width: 695px;
     -fx-pref-height: 75px;
     -fx-background-radius: 8px;
     -fx-background-color:white;
     -fx-effect:dropshadow( gaussian,rgba(0, 0, 0, 0.13),4,1,4,4);
-    /*justify-content: space-evenly;*/
+
 }
 .welcome{
     -fx-font-family: Zen Kaku Gothic Antique;

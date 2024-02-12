@@ -3,17 +3,24 @@ package org.example.hakmana;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class HeaderController extends HBox implements Initializable {
+public class HeaderController extends VBox implements Initializable {
     @FXML
     private Text headerTitle;
-    private String message;
+    @FXML
+    private Text userName;
+    @FXML
+    private Text designation;
+
+    private String titleMsg;
+    private String usernameMsg;
+    private String designationMsg;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -34,12 +41,30 @@ public class HeaderController extends HBox implements Initializable {
         }
     }
 
-    public String getMessage() {
-        return message;
+    public String getTitleMsg() {
+        return titleMsg;
     }
 
-    public void setMessage(String message) {
-        this.message = message;
-        headerTitle.setText(this.message);
+    public void setTitleMsg(String titleMsg) {
+        this.titleMsg = titleMsg;
+        headerTitle.setText(this.titleMsg);
+    }
+
+    public String getUsernameMsg() {
+        return usernameMsg;
+    }
+
+    public void setUsernameMsg(String usernameMsg) {
+        this.usernameMsg = usernameMsg;
+        userName.setText(this.usernameMsg);
+    }
+
+    public String getDesignationMsg() {
+        return designationMsg;
+    }
+
+    public void setDesignationMsg(String designationMsg) {
+        this.designationMsg = designationMsg;
+        designation.setText(this.designationMsg);
     }
 }
