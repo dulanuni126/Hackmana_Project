@@ -11,9 +11,6 @@
     -fx-text-align: left;
 
 }
-.topvbox{
-
-}
 
 .topvbox .button{
     -fx-pref-width:239;
@@ -26,7 +23,12 @@
     -fx-font-weight:500;
     -fx-font-family:"Zen Kaku Gothic Antique";
 }
-
+.topvbox #toggleButton{
+    -fx-effect: none;
+    -fx-background-color: none;
+    -fx-pref-width: 32;
+    -fx-pref-height: 32;
+}
 .middle_vbox{
 
 }
@@ -74,4 +76,10 @@
     -fx-font-size:14;
     -fx-font-weight:400;
     -fx-font-family:"Zen Kaku Gothic Antique";
+}
+
+.collapsedVbox .button{
+    -fx-pref-width:32;
+    -fx-effect: none;
+    -fx-background-color: none;
 }

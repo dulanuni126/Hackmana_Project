@@ -1,30 +1,39 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.ScrollBar?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
 <?import org.example.hakmana.FooterController?>
 <?import org.example.hakmana.HeaderController?>
 <?import org.example.hakmana.NavPanelController?>
 <?import org.example.hakmana.PathFinderController?>
 
-<AnchorPane prefHeight="634.0" prefWidth="1034.0" style="-fx-background-color: #00000021;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane fx:id="parentAnchor" prefHeight="640.0" prefWidth="1024.0" style="-fx-background-color: #00000021;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.hakmana.DashboardController">
    <children>
-      <!-- Navigation panel Component-->
-      <NavPanelController />
-
-      <!--Header Component-->
-      <HeaderController layoutX="304.0" layoutY="14.0" titleMsg="Welocme" usernameMsg="R.Gunathilaka" designationMsg="Product owner" prefWidth="759.0" />
-
-      <!--Path Component-->
-      <PathFinderController layoutX="304.0" layoutY="104.0" />
-
-      <!--Body-->
-
-
-      <ScrollBar layoutX="1006.0" layoutY="197.0" orientation="VERTICAL" prefHeight="457.0" prefWidth="18.0" styleClass="scroll" stylesheets="@CSS/dashboard.css" AnchorPane.leftAnchor="1002.0" AnchorPane.topAnchor="119.0" />
-
-      <!--Footer Component-->
-      <FooterController layoutX="295.0" layoutY="600.0" />
+      <VBox prefHeight="640.0" prefWidth="1024.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <HBox prefHeight="640.0" prefWidth="1024.0" VBox.vgrow="ALWAYS">
+               <children>
+                  <!-- Navigation panel Component-->
+                  <NavPanelController fx:id="navPanelController" HBox.hgrow="NEVER" />
+                  <VBox fx:id="bodyComponet" prefHeight="640.0" prefWidth="748.0" style="0: 0;" HBox.hgrow="ALWAYS">
+                     <children>
+                  
+                        <!--Header Component-->
+                        <HeaderController designationMsg="Product owner" prefHeight="109.0" prefWidth="770.0" titleMsg="Welocme" usernameMsg="R.Gunathilaka" VBox.vgrow="NEVER" />
+                  
+                        <!--Path Component-->
+                        <PathFinderController prefWidth="770.0" />
+                        <AnchorPane prefHeight="430.0" prefWidth="758.0" VBox.vgrow="ALWAYS" />
+                  
+                        <!--Footer Component-->
+                        <FooterController prefHeight="39.0" prefWidth="770.0" />
+                     </children>
+                  </VBox>
+               </children>
+            </HBox>
+         </children>
+      </VBox>
 
    </children>
 </AnchorPane>
