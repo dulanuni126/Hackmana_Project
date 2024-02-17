@@ -1,5 +1,12 @@
-.btm_border{
-    -fx-border-bottom-color: black; /* Border color */
-    -fx-border-bottom-width: 2px;   /* Border width */
-    -fx-border-bottom-style: solid; /* Border style (e.g., solid, dashed, dotted) */
+.btm_border .label{
+    -fx-border-width:0 0 2 0 ;
+}
+.goBackBtn{
+    -fx-font-family: Zen Kaku Gothic Antique;
+    -fx-font-weight: 500;
+    -fx-line-height: 22.53px;
+    -fx-background-color:linear-gradient(rgba(255, 184, 184, 0.55) 0%, rgba(248, 186, 144, 0.43) 75%);
+    -fx-background-radius: 18px;
+    -fx-max-width: 100px;
+    -fx-max-height: 18px;
 }

@@ -7,9 +7,11 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 import javafx.util.Duration;
 import java.net.URL;
+import java.security.PrivilegedAction;
 import java.util.ResourceBundle;
 
-public class DashboardController implements Initializable {
+public class ReportHndlingController implements Initializable {
+
     @FXML
     private NavPanelController navPanelController;//NavPanel custom component injector
     @FXML
@@ -51,6 +53,6 @@ public class DashboardController implements Initializable {
     }
 
 
-
 }
+
 

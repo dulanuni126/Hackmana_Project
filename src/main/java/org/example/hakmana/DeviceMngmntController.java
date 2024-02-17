@@ -7,9 +7,11 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 import javafx.util.Duration;
 import java.net.URL;
+import java.security.PrivilegedAction;
 import java.util.ResourceBundle;
 
-public class DashboardController implements Initializable {
+public class DeviceMngmntController implements Initializable {
+
     @FXML
     private NavPanelController navPanelController;//NavPanel custom component injector
     @FXML
@@ -49,7 +51,6 @@ public class DashboardController implements Initializable {
         bodyComponet.setMinWidth(bodyComponet.getWidth()-244);
         bodyComponet.setMinWidth(748);
     }
-
 
 
 }
