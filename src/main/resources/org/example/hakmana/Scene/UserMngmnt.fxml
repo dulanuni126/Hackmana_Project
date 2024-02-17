@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import org.example.hakmana.FooterController?>
+<?import org.example.hakmana.HeaderController?>
+<?import org.example.hakmana.NavPanelController?>
+<?import org.example.hakmana.PathFinderController?>
+
+<AnchorPane fx:id="parentAnchor" prefHeight="640.0" prefWidth="1024.0" style="-fx-background-color: #00000021;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.hakmana.DashboardController">
+    <children>
+        <VBox prefHeight="640.0" prefWidth="1024.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <children>
+                <HBox prefHeight="640.0" prefWidth="1024.0" VBox.vgrow="ALWAYS">
+                    <children>
+                        <!-- Navigation panel Component-->
+                        <NavPanelController fx:id="navPanelController" HBox.hgrow="NEVER" />
+                        <VBox fx:id="bodyComponet" prefHeight="640.0" prefWidth="748.0" style="0: 0;" HBox.hgrow="ALWAYS">
+                            <children>
+
+                                <!--Header Component-->
+                                <HeaderController designationMsg="Product owner" prefHeight="109.0" prefWidth="770.0" titleMsg="User Mangement" usernameMsg="R.Gunathilaka" VBox.vgrow="NEVER" />
+
+                                <!--Path Component-->
+                                <PathFinderController prefWidth="770.0" />
+                                <AnchorPane prefHeight="430.0" prefWidth="758.0" VBox.vgrow="ALWAYS" />
+
+                                <!--Footer Component-->
+                                <FooterController prefHeight="39.0" prefWidth="770.0" />
+                            </children>
+                        </VBox>
+                    </children>
+                </HBox>
+            </children>
+        </VBox>
+
+    </children>
+</AnchorPane>
+

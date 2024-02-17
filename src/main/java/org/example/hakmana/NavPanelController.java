@@ -7,11 +7,15 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ToggleButton;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
 import javafx.util.Duration;
 import java.io.IOException;
 import java.net.URL;
@@ -19,6 +23,9 @@ import java.util.ResourceBundle;
 
 
 public class NavPanelController extends AnchorPane implements Initializable {
+    private Stage stage;
+    private Scene scene;
+    private Parent root;
 
     /*-------variables for collapse the navigation panel----------*/
     @FXML
@@ -106,6 +113,41 @@ public class NavPanelController extends AnchorPane implements Initializable {
             test.set(false);
         }
         isCollapsed = !isCollapsed;
+    }
+    public void deviceMnagmnt(ActionEvent event) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("Scene/DeviceMngmnt.fxml"));
+        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+    }
+    public void overviewScene(ActionEvent event) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("Scene/Overview.fxml"));
+        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+    }
+    public void userMngmntScene(ActionEvent event) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("Scene/UserMngmnt.fxml"));
+        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+    }
+    public void reportHndlingScene(ActionEvent event) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("Scene/ReportHndling.fxml"));
+        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+    }
+    public void dashboardScene(ActionEvent event) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("Scene/dashboard.fxml"));
+        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
     }
 
 }
