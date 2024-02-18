@@ -11,6 +11,7 @@ import java.security.PrivilegedAction;
 import java.util.ResourceBundle;
 
 public class ReportHndlingController implements Initializable {
+
     @FXML
     private HeaderController headerController;
     @FXML
@@ -23,6 +24,7 @@ public class ReportHndlingController implements Initializable {
     @FXML
     private AnchorPane parentAnchor;
     public void initialize(URL location, ResourceBundle resources) {
+
         headerController.setFontSize("2.5em");
         headerController.setTitleMsg("Report Handling");
         navPanelController.setReportHndlingdBorder();

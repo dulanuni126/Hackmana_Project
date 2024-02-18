@@ -15,8 +15,10 @@ public class DeviceMngmntController implements Initializable {
     @FXML
     private NavPanelController navPanelController;//NavPanel custom component injector
     @FXML
+
     private HeaderController headerController;
     @FXML
+
     private  VBox bodyComponet;//injector for VBox to expand
 
     private  TranslateTransition bodyExpand;//Animation object refernce
@@ -24,6 +26,7 @@ public class DeviceMngmntController implements Initializable {
     @FXML
     private AnchorPane parentAnchor;
     public void initialize(URL location, ResourceBundle resources) {
+
         headerController.setFontSize("2.5em");
         headerController.setTitleMsg("Device Management");
         navPanelController.setDeviceMngmntdBorder();

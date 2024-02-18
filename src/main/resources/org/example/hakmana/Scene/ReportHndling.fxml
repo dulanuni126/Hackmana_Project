@@ -20,7 +20,9 @@
                             <children>
 
                                 <!--Header Component-->
+
                                 <HeaderController fx:id="headerController" designationMsg="Product owner" prefHeight="109.0" prefWidth="770.0" usernameMsg="R.Gunathilaka" VBox.vgrow="NEVER" />
+
 
                                 <!--Path Component-->
                                 <PathFinderController prefWidth="770.0" />
