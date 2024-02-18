@@ -1,7 +1,6 @@
 .dashboardCard{
   -fx-pref-width: 185.53px;
-      -fx-pref-height: 89.35px;
-      -fx-background: linear-gradient(rgba(89, 5, 123, 0.84) 14.01%, rgba(159, 36, 132, 0.79) 62.28%, #DC408B 104.59%);
+      -fx-pref-height: 95px;
       -fx-background-radius: 4px;
       -fx-effect:dropshadow(gaussian, rgba(0,0,0,0.36),0,4,4,0 );
       -fx-opacity: 0.84;
@@ -18,5 +17,18 @@
             -fx-translate-x: -0.43px;
              -fx-background-color: rgba(255, 255, 255, 0.4);
              -fx-effect:dropshadow(gaussian,rgba(0, 0, 0, 0.4),0,4,4,0 );
+}
+
+.buttons{
+            -fx-pref-width: 86px;
+            -fx-pref-height: 19px;
+            -fx-font-family: 'Inter';
+            -fx-font-size: 16px;
+            -fx-font-weight: 400;
+            -fx-line-height: 19px;
+            -fx-letter-spacing: 0em;
+            -fx-text-alignment: center;
+            -fx-text-fill:#000000;
+
 }
 
