@@ -8,7 +8,7 @@
 <?import org.example.hakmana.NavPanelController?>
 <?import org.example.hakmana.PathFinderController?>
 
-<AnchorPane fx:id="parentAnchor" prefHeight="640.0" prefWidth="1024.0" style="-fx-background-color: #00000021;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.hakmana.DashboardController">
+<AnchorPane fx:id="parentAnchor" prefHeight="640.0" prefWidth="1024.0" style="-fx-background-color: #00000021;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.hakmana.UserMngmntController">
     <children>
         <VBox prefHeight="640.0" prefWidth="1024.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
             <children>
@@ -20,7 +20,7 @@
                             <children>
 
                                 <!--Header Component-->
-                                <HeaderController designationMsg="Product owner" prefHeight="109.0" prefWidth="770.0" titleMsg="User Mangement" usernameMsg="R.Gunathilaka" VBox.vgrow="NEVER" />
+                                <HeaderController fx:id="headerController" designationMsg="Product owner" prefHeight="109.0" prefWidth="770.0" usernameMsg="R.Gunathilaka" VBox.vgrow="NEVER" />
 
                                 <!--Path Component-->
                                 <PathFinderController prefWidth="770.0" />

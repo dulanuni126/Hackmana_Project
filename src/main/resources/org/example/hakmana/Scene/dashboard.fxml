@@ -26,7 +26,7 @@
                      <children>
                   
                         <!--Header Component-->
-                        <HeaderController designationMsg="Product owner" prefHeight="109.0" prefWidth="770.0" titleMsg="Welocme" usernameMsg="R.Gunathilaka" VBox.vgrow="NEVER" />
+                        <HeaderController fx:id="headerController" designationMsg="Product owner" prefHeight="109.0" prefWidth="770.0" usernameMsg="R.Gunathilaka" VBox.vgrow="NEVER" />
                   
                         <!--Path Component-->
                         <PathFinderController prefWidth="770.0" />

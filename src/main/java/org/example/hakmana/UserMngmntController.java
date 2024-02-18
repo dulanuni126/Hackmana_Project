@@ -11,7 +11,8 @@ import java.security.PrivilegedAction;
 import java.util.ResourceBundle;
 
 public class UserMngmntController implements Initializable {
-
+    @FXML
+    private HeaderController headerController;
     @FXML
     private NavPanelController navPanelController;//NavPanel custom component injector
     @FXML
@@ -22,8 +23,11 @@ public class UserMngmntController implements Initializable {
     @FXML
     private AnchorPane parentAnchor;
     public void initialize(URL location, ResourceBundle resources) {
+        headerController.setFontSize("2.5em");
+        headerController.setTitleMsg("User management");
+        navPanelController.setUserMngmntBorder();
         //create the event listener to the navigation panel ToggleButton() method
-        navPanelController.testProperty().addListener((observable, oldValue, newValue) ->{
+        navPanelController.collapseStateProperty().addListener((observable, oldValue, newValue) ->{
             if(newValue){
                 expand();
             }else{
