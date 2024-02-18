@@ -41,6 +41,35 @@
 
 }
 
+.Mpane3 .Button{
+    -fx-pref-width: 175px;
+    -fx-pref-height: 39px;
+    -fx-padding: 0px 4px;
+    -fx-hgap: 18px;
+    -fx-on-click: open-overlay("Add_device_popup"), animate("Instant", 0ms);
+    -fx-font-family: "Inter";
+    -fx-font-size: 13px;
+    -fx-font-weight: 500;
+
+    -fx-letter-spacing: 0em;
+    -fx-alignment: center;
+
+
+}
+
+.Mpane3 .largebutt{
+        -fx-pref-width: 175px;
+            -fx-pref-height: 39px;
+            -fx-on-click: open-overlay("Add_device_popup"), animate("Instant", 0ms);
+            -fx-font-family: "Inter";
+            -fx-font-size: 13px;
+            -fx-font-weight: 500;
+
+            -fx-letter-spacing: 0em;
+            -fx-alignment: center;
+
+}
+
 .scroll{
        -fx-background: 10px solid #9E9E9E;
 
@@ -63,6 +92,9 @@
         -fx-letter-spacing: 0em;
         -fx-text-align: center;
         -fx-text-fill: #4067EC;
+        -fx-border-width: 0 0 3px 0;
+        -fx-border-color: #4067EC;
+
 
 
 
