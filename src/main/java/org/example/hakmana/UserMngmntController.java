@@ -30,7 +30,7 @@ public class UserMngmntController implements Initializable {
         headerController.setTitleMsg("User management");
         navPanelController.setUserMngmntBorder();
         //create the event listener to the navigation panel ToggleButton() method
-        navPanelController.collapseStateProperty().addListener((observable, oldValue, newValue) ->
+        navPanelController.collapseStateProperty().addListener((observable, oldValue, newValue) ->{
             if(newValue){
                 expand();
             }else{
