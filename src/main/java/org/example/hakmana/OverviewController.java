@@ -11,6 +11,10 @@ import java.util.ResourceBundle;
 
 public class OverviewController implements Initializable{
         @FXML
+        private HeaderController headerController;
+        @FXML
+
+
         private NavPanelController navPanelController;//NavPanel custom component injector
         @FXML
         private VBox bodyComponet;//injector for VBox to expand
@@ -20,8 +24,11 @@ public class OverviewController implements Initializable{
         @FXML
         private AnchorPane parentAnchor;
         public void initialize(URL location, ResourceBundle resources) {
+            headerController.setFontSize("2.5em");
+            headerController.setTitleMsg("Overview History");
+            navPanelController.setOverviewHistryBorder();
             //create the event listener to the navigation panel ToggleButton() method
-            navPanelController.testProperty().addListener((observable, oldValue, newValue) ->{
+            navPanelController.collapseStateProperty().addListener((observable, oldValue, newValue) ->{
                 if(newValue){
                     expand();
                 }else{

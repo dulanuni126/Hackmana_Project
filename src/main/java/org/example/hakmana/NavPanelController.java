@@ -12,6 +12,11 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ToggleButton;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.*;
+import javafx.scene.paint.Color;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.VBox;
@@ -45,24 +50,49 @@ public class NavPanelController extends AnchorPane implements Initializable {
     private VBox vbox2;
     @FXML
     private VBox vbox3;
+    @FXML
+    private Button dashboardBtn;
+    @FXML
+    private Button deviceMngmntBtn;
+    @FXML
+    private Button reportHndlingBtn;
+    @FXML
+    private Button overviewHistryBtn;
+    @FXML
+    private Button userMngmntBtn;
+
 
 
     /*-------variable set the navigation panel collapse state ------*/
-    private final BooleanProperty test=new SimpleBooleanProperty(false);
-
+    private final BooleanProperty collapseState=new SimpleBooleanProperty(false);
 
     /*---------Override the initialize method in Initializable interface--------*/
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+
         sidebarWidth = sidebar.getPrefWidth()-32;
+    }
+
+    private Border border=new Border(new BorderStroke(Color.web("#FFB8B8"),BorderStrokeStyle.SOLID,new CornerRadii(8),new BorderWidths(2)));
+    public void setDashboardBorder(){
+        dashboardBtn.setBorder(border);
+    }
+    public void setDeviceMngmntdBorder(){
+        deviceMngmntBtn.setBorder(border);
+    }public void setReportHndlingdBorder(){
+        reportHndlingBtn.setBorder(border);
+    }public void setOverviewHistryBorder(){
+        overviewHistryBtn.setBorder(border);
+    }public void setUserMngmntBorder(){
+        userMngmntBtn.setBorder(border);
     }
 
     /*--------------Getters---------------*/
     public boolean isTest() {
-        return test.get();
+        return collapseState.get();
     }
-    public BooleanProperty testProperty() {
-        return test;
+    public BooleanProperty collapseStateProperty() {
+        return collapseState;
     }
     public Button getToggleButton() {
         return toggleButton;
@@ -101,7 +131,7 @@ public class NavPanelController extends AnchorPane implements Initializable {
             vbox2.setVisible(false);
             vbox3.setVisible(false);
             collapsedNavBar.setVisible(true);
-            test.set(true);
+            collapseState.set(true);
 
         }
         else{
@@ -110,7 +140,7 @@ public class NavPanelController extends AnchorPane implements Initializable {
             vbox1.setVisible(true);
             vbox2.setVisible(true);
             vbox3.setVisible(true);
-            test.set(false);
+            collapseState.set(false);
         }
         isCollapsed = !isCollapsed;
     }

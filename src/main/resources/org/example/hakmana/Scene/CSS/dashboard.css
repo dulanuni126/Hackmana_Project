@@ -23,7 +23,7 @@
 }
 
 .Mpane2{
-        -fx-pref-width: 278px;
+        -fx-pref-width: 414px;
         -fx-pref-height: 223px;
         -fx-pref-left: 7px;
         -fx-background-radius: 8px;
@@ -33,11 +33,40 @@
 
 
 .Mpane3{
-        -fx-pref-width: 278px;
+        -fx-pref-width: 257px;
         -fx-pref-height: 223px;
         -fx-pref-left: 7px;
         -fx-background-radius: 8px;
         -fx-background-color:#FFFFFF;
+
+}
+
+.Mpane3 .Button{
+    -fx-pref-width: 175px;
+    -fx-pref-height: 39px;
+    -fx-padding: 0px 4px;
+    -fx-hgap: 18px;
+    -fx-on-click: open-overlay("Add_device_popup"), animate("Instant", 0ms);
+    -fx-font-family: "Inter";
+    -fx-font-size: 13px;
+    -fx-font-weight: 500;
+
+    -fx-letter-spacing: 0em;
+    -fx-alignment: center;
+
+
+}
+
+.Mpane3 .largebutt{
+        -fx-pref-width: 175px;
+            -fx-pref-height: 39px;
+            -fx-on-click: open-overlay("Add_device_popup"), animate("Instant", 0ms);
+            -fx-font-family: "Inter";
+            -fx-font-size: 13px;
+            -fx-font-weight: 500;
+
+            -fx-letter-spacing: 0em;
+            -fx-alignment: center;
 
 }
 
@@ -63,8 +92,28 @@
         -fx-letter-spacing: 0em;
         -fx-text-align: center;
         -fx-text-fill: #4067EC;
+        -fx-border-width: 0 0 3px 0;
+        -fx-border-color: #4067EC;
 
 
+
+
+}
+.noteLabel{
+  -fx-pref-width: 367px;
+  -fx-pref-height: 30px;
+  -fx-background-radius: 0px 0px 8px 8px;
+  -fx-border-width: 0px 0px 3px 0px;
+  -fx-border-color: transparent transparent #1270B0 transparent;
+  -fx-background-color: linear-gradient( #1270B0, #1270B0), linear-gradient(rgba(179, 179, 179, 1), rgba(179, 179, 179, 1));
+  -fx-font-family: "Lucida Bright";
+  -fx-font-size: 20px;
+  -fx-font-weight: 600;
+  -fx-line-spacing: 24px;
+  -fx-letter-spacing: 0em;
+  -fx-text-alignment: center;
+  -fx-effect: dropshadow( gaussian , rgba(0,0,0,0.25) , 0, 4, 4, 0 );
+  -fx-text-fill:#4067EC;
 
 }
 
@@ -97,3 +146,4 @@
         -fx-text-align: left;
 
 }
+

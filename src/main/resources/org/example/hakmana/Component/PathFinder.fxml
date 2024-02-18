@@ -46,7 +46,7 @@
                <children>
                   <ImageView fitHeight="18.0" fitWidth="18.0" pickOnBounds="true" preserveRatio="true" HBox.hgrow="ALWAYS">
                      <image>
-                        <Image url="@Images/Icon%20Left.png" />
+                        <Image url="@Images/Icon_Left.png" />
                      </image>
                      <HBox.margin>
                         <Insets right="12.0" />
