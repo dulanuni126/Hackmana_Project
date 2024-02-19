@@ -8,6 +8,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.VBox;
 
 import java.io.IOException;
 import java.net.URL;
@@ -15,22 +16,11 @@ import java.util.ResourceBundle;
 
 public class DashboardCardController extends ScrollPane implements Initializable {
 
-    private String text;
-    private String text1;
-    private String text2;
-    private String text3;
-    private String text4;
-    private String text5;
+
 
     @FXML
     private Label topLabel;
-
-
-
-
-
-    private Label labels;
-
+    private String text;
 
     public DashboardCardController() {
         super();
@@ -38,6 +28,8 @@ public class DashboardCardController extends ScrollPane implements Initializable
 
         fxmlDashboardCardLoader.setController(this);
         fxmlDashboardCardLoader.setRoot(this);
+
+
         try {
             fxmlDashboardCardLoader.load();
 
@@ -53,11 +45,9 @@ public class DashboardCardController extends ScrollPane implements Initializable
         this.text = text;
         topLabel.setText(this.text);
     }
-
-    public Label getLabels() {
-        return labels;
+    public String getText() {
+        return topLabel.getText();
     }
-
 
 
     @Override
