@@ -28,13 +28,13 @@
                      <children>
                   
                         <!--Header Component-->
-                        <HeaderController designationMsg="Product owner" prefHeight="109.0" prefWidth="770.0" titleMsg="Welocme" usernameMsg="R.Gunathilaka" VBox.vgrow="NEVER" />
+                        <HeaderController fx:id="headerController" designationMsg="Product owner" prefHeight="109.0" prefWidth="770.0" usernameMsg="R.Gunathilaka" VBox.vgrow="NEVER" />
                   
                         <!--Path Component-->
                         <PathFinderController prefWidth="770.0" />
                         <AnchorPane style="-fx-background-color: yelllow;" VBox.vgrow="ALWAYS">
                            <children>
-                              <ScrollPane fitToWidth="true" layoutY="0.8000030517578125" style="-fx-background-color: black;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="27.0" AnchorPane.topAnchor="0.0">
+                              <ScrollPane fitToWidth="true" layoutY="0.8000030517578125"  AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="27.0" AnchorPane.topAnchor="0.0">
                                  <content>
                                     <VBox prefHeight="567.0" prefWidth="696.0" stylesheets="@CSS/dashboard.css">
                                        <children>
@@ -182,6 +182,12 @@
                                                    </children>
                                                 </VBox>
                                              </children>
+                                             <opaqueInsets>
+                                                <Insets />
+                                             </opaqueInsets>
+                                             <VBox.margin>
+                                                <Insets top="15.0" />
+                                             </VBox.margin>
                                           </HBox>
                                        </children>
                                     </VBox>
@@ -192,9 +198,13 @@
                               <Insets left="27.0" />
                            </VBox.margin>
                         </AnchorPane>
-                  
-                        <!--Footer Component-->
-                        <FooterController prefHeight="39.0" prefWidth="770.0" />
+                        <AnchorPane maxHeight="64.0" prefHeight="64.0" prefWidth="746.0" VBox.vgrow="NEVER">
+                           <children>
+                        
+                              <!--Footer Component-->
+                              <FooterController fx:id="footerController" layoutX="26.0" prefHeight="64.0" prefWidth="694.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="26.0" AnchorPane.rightAnchor="27.0" AnchorPane.topAnchor="0.0" />
+                           </children>
+                        </AnchorPane>
                      </children>
                   </VBox>
                </children>

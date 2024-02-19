@@ -8,9 +8,12 @@ import javafx.scene.text.Text;
 
 import java.io.IOException;
 import java.net.URL;
+import java.security.PublicKey;
 import java.util.ResourceBundle;
 
 public class HeaderController extends VBox implements Initializable {
+
+    /*Injectors for Labels in fxml file*/
     @FXML
     private Text headerTitle;
     @FXML
@@ -18,13 +21,14 @@ public class HeaderController extends VBox implements Initializable {
     @FXML
     private Text designation;
 
+    /*Variables for change the labels*/
     private String titleMsg;
+    private String fontSize;
     private String usernameMsg;
     private String designationMsg;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-
     }
 
     public HeaderController() {
@@ -46,6 +50,8 @@ public class HeaderController extends VBox implements Initializable {
     }
 
     public void setTitleMsg(String titleMsg) {
+        String fontStyle = "-fx-font-size:"+fontSize+";";
+        headerTitle.setStyle(fontStyle);
         this.titleMsg = titleMsg;
         headerTitle.setText(this.titleMsg);
     }
@@ -66,5 +72,13 @@ public class HeaderController extends VBox implements Initializable {
     public void setDesignationMsg(String designationMsg) {
         this.designationMsg = designationMsg;
         designation.setText(this.designationMsg);
+    }
+
+    public String getFontSize() {
+        return fontSize;
+    }
+
+    public void setFontSize(String fontSize) {
+        this.fontSize = fontSize;
     }
 }

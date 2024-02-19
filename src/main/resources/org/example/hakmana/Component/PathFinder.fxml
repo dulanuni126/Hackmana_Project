@@ -3,22 +3,37 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
 <fx:root prefHeight="56.0" prefWidth="695.0" type="VBox" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <HBox prefHeight="56.0" prefWidth="329.0">
+      <HBox prefHeight="56.0" prefWidth="329.0" styleClass="btm_border" stylesheets="@CSS/PathFinder.css">
          <children>
-            <VBox prefHeight="56.0" prefWidth="366.0" style="-fx-background-color: green;" HBox.hgrow="ALWAYS">
+            <VBox prefHeight="53.0" HBox.hgrow="ALWAYS">
                <children>
-                  <Button mnemonicParsing="false" text="Button" />
-                  <Label prefHeight="26.0" prefWidth="366.0" text="Dashboard">
+                  <Button fx:id="backBttn" mnemonicParsing="false" onAction="#goBack" prefWidth="100.0" styleClass="goBackBtn" stylesheets="@CSS/PathFinder.css" text="Go Back" textAlignment="RIGHT" VBox.vgrow="ALWAYS">
+                     <font>
+                        <Font name="System Bold" size="15.0" />
+                     </font>
                      <graphic>
-                        <ImageView fitHeight="16.0" fitWidth="16.0" layoutX="11.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fitHeight="18.0" fitWidth="18.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@Images/icon-chevrons-left.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <VBox.margin>
+                        <Insets />
+                     </VBox.margin>
+                  </Button>
+                  <Label fx:id="pathTxt" prefHeight="22.0" prefWidth="303.0" style="-fx-border-color: black;" styleClass=".btm_border" stylesheets="@CSS/PathFinder.css" text="Dashboard" VBox.vgrow="ALWAYS">
+                     <graphic>
+                        <ImageView fitHeight="18.0" fitWidth="18.0" layoutX="11.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../Scene/Images/icon-home.png" />
                            </image>
@@ -27,7 +42,19 @@
                   </Label>
                </children>
             </VBox>
-            <AnchorPane prefHeight="56.0" prefWidth="329.0" style="-fx-background-color: black;" HBox.hgrow="ALWAYS" />
+            <HBox alignment="CENTER" prefHeight="53.0" prefWidth="357.0" HBox.hgrow="ALWAYS">
+               <children>
+                  <ImageView fitHeight="18.0" fitWidth="18.0" pickOnBounds="true" preserveRatio="true" HBox.hgrow="ALWAYS">
+                     <image>
+                        <Image url="@Images/Icon_Left.png" />
+                     </image>
+                     <HBox.margin>
+                        <Insets right="12.0" />
+                     </HBox.margin>
+                  </ImageView>
+                  <TextField prefHeight="25.0" prefWidth="270.0" HBox.hgrow="ALWAYS" />
+               </children>
+            </HBox>
          </children>
          <VBox.margin>
             <Insets left="27.0" right="26.0" />

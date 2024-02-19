@@ -35,7 +35,7 @@
                               <Font size="11.0" />
                            </font>
                         </Label>
-                        <Button fx:id="toggleButton" maxHeight="24.0" maxWidth="24.0" mnemonicParsing="false" onAction="#ToggleButton" prefHeight="24.0" prefWidth="24.0">
+                        <Button fx:id="toggleButton" maxHeight="24.0" maxWidth="24.0" mnemonicParsing="false" onAction="#ToggleButton" prefHeight="24.0" prefWidth="24.0" styleClass="buttonWorkStyle">
                            <graphic>
                               <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true" rotate="-90.0">
                                  <image>
@@ -45,7 +45,7 @@
                            </graphic></Button>
                      </children>
                   </HBox>
-                  <Button fx:id="dashboardBtn" alignment="BASELINE_LEFT" graphicTextGap="10.0" mnemonicParsing="false" text="Dashboard">
+                  <Button fx:id="dashboardBtn" alignment="BASELINE_LEFT" graphicTextGap="10.0" mnemonicParsing="false" onAction="#dashboardScene" prefHeight="50" prefWidth="50" styleClass="buttonWorkStyle" text="Dashboard">
                      <graphic>
                         <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -53,6 +53,9 @@
                            </image>
                         </ImageView>
                      </graphic>
+                     <padding>
+                        <Insets bottom="4.0" left="4.0" right="4.0" top="4.0" />
+                     </padding>
                   </Button>
                </children>
             </VBox>
@@ -61,9 +64,9 @@
                   <Insets left="15.0" />
                </VBox.margin>
                <children>
-                  <Button alignment="BASELINE_LEFT" graphicTextGap="10.0" mnemonicParsing="false" text="Device&#10;Management">
+                  <Button fx:id="deviceMngmntBtn" alignment="BASELINE_LEFT" graphicTextGap="10.0" mnemonicParsing="false" onAction="#deviceMnagmnt" styleClass="buttonWorkStyle" text="Device Management">
                      <graphic>
-                        <ImageView fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../Scene/Images/icon-monitor.png" />
                            </image>
@@ -72,10 +75,13 @@
                      <VBox.margin>
                         <Insets bottom="24.0" />
                      </VBox.margin>
+                     <padding>
+                        <Insets bottom="4.0" left="4.0" right="4.0" top="4.0" />
+                     </padding>
                   </Button>
-                  <Button alignment="BASELINE_LEFT" graphicTextGap="10.0" mnemonicParsing="false" text="Report&#10;Handling">
+                  <Button fx:id="reportHndlingBtn" alignment="BASELINE_LEFT" graphicTextGap="10.0" mnemonicParsing="false" onAction="#reportHndlingScene" styleClass="buttonWorkStyle" text="Report Handling">
                      <graphic>
-                        <ImageView fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../Scene/Images/icon-file-plus.png" />
                            </image>
@@ -84,10 +90,13 @@
                      <VBox.margin>
                         <Insets bottom="24.0" />
                      </VBox.margin>
+                     <padding>
+                        <Insets bottom="4.0" left="4.0" right="4.0" top="4.0" />
+                     </padding>
                   </Button>
-                  <Button alignment="BASELINE_LEFT" graphicTextGap="10.0" mnemonicParsing="false" text="Overview&#10;History">
+                  <Button fx:id="overviewHistryBtn" alignment="BASELINE_LEFT" graphicTextGap="10.0" mnemonicParsing="false" onAction="#overviewScene" styleClass="buttonWorkStyle" text="Overview History">
                      <graphic>
-                        <ImageView fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../Scene/Images/icon-file.png" />
                            </image>
@@ -96,6 +105,9 @@
                      <VBox.margin>
                         <Insets bottom="24.0" />
                      </VBox.margin>
+                     <padding>
+                        <Insets bottom="4.0" left="4.0" right="4.0" top="4.0" />
+                     </padding>
                   </Button>
                   <Line endX="139.492919921875" startX="-100.0">
                      <VBox.margin>
@@ -109,7 +121,7 @@
                   <Insets left="26.0" />
                </VBox.margin>
                <children>
-                  <Button alignment="BASELINE_LEFT" graphicTextGap="10.0" mnemonicParsing="false" styleClass="usermanagement" text="User Management">
+                  <Button fx:id="userMngmntBtn" alignment="BASELINE_LEFT" graphicTextGap="10.0" mnemonicParsing="false" onAction="#userMngmntScene" text="User Management">
                      <graphic>
                         <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -120,8 +132,15 @@
                      <VBox.margin>
                         <Insets top="31.0" />
                      </VBox.margin>
+                     <styleClass>
+                        <String fx:value="usermanagement" />
+                        <String fx:value="buttonWorkStyle" />
+                     </styleClass>
+                     <padding>
+                        <Insets bottom="4.0" left="4.0" right="4.0" top="4.0" />
+                     </padding>
                   </Button>
-                  <Button alignment="BASELINE_LEFT" contentDisplay="RIGHT" graphicTextGap="20.0" mnemonicParsing="false" prefHeight="29.0" prefWidth="139.0" styleClass="logout" text="Log out">
+                  <Button fx:id="logout" alignment="BASELINE_LEFT" contentDisplay="RIGHT" graphicTextGap="20.0" mnemonicParsing="false" onAction="#logOut" prefHeight="29.0" prefWidth="139.0" text="Log out">
                      <graphic>
                         <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -132,14 +151,18 @@
                      <VBox.margin>
                         <Insets top="24.0" />
                      </VBox.margin>
+                     <styleClass>
+                        <String fx:value="logout" />
+                        <String fx:value="buttonWorkStyle" />
+                     </styleClass>
                   </Button>
                </children>
             </VBox>
          </children>
       </VBox>
-      <VBox fx:id="collapsedNavBar" alignment="TOP_RIGHT" layoutX="233.0" prefHeight="641.0" prefWidth="32.0" spacing="32.0" stylesheets="@CSS/Nav_panel.css" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <VBox fx:id="collapsedNavBar" alignment="TOP_CENTER" layoutX="233.0" prefHeight="641.0" prefWidth="32.0" spacing="36.0" stylesheets="@CSS/Nav_panel.css" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <Button maxHeight="24.0" maxWidth="24.0" mnemonicParsing="false" onAction="#ToggleButton" prefHeight="24.0" prefWidth="24.0">
+            <Button maxHeight="32.0" maxWidth="32.0" mnemonicParsing="false" onAction="#ToggleButton" prefHeight="24.0" prefWidth="24.0" VBox.vgrow="NEVER">
                <graphic>
                   <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -151,7 +174,7 @@
                   <Insets top="39.0" />
                </VBox.margin>
             </Button>
-            <Button maxHeight="24.0" maxWidth="24.0" mnemonicParsing="false" prefHeight="24.0" prefWidth="24.0">
+            <Button maxHeight="32.0" maxWidth="32.0" mnemonicParsing="false" onAction="#deviceMnagmnt" prefHeight="24.0" prefWidth="24.0" VBox.vgrow="NEVER">
                <graphic>
                   <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -159,8 +182,11 @@
                      </image>
                   </ImageView>
                </graphic>
+               <VBox.margin>
+                  <Insets top="18.0" />
+               </VBox.margin>
             </Button>
-            <Button maxHeight="24.0" maxWidth="24.0" mnemonicParsing="false" prefHeight="24.0" prefWidth="24.0">
+            <Button maxHeight="32.0" maxWidth="32.0" mnemonicParsing="false" onAction="#reportHndlingScene" prefHeight="24.0" prefWidth="24.0" VBox.vgrow="NEVER">
                <graphic>
                   <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -169,7 +195,7 @@
                   </ImageView>
                </graphic>
             </Button>
-            <Button maxHeight="24.0" maxWidth="24.0" mnemonicParsing="false" prefHeight="24.0" prefWidth="24.0">
+            <Button maxHeight="32.0" maxWidth="32.0" mnemonicParsing="false" onAction="#overviewScene" prefHeight="24.0" prefWidth="24.0" VBox.vgrow="NEVER">
                <graphic>
                   <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -178,7 +204,7 @@
                   </ImageView>
                </graphic>
             </Button>
-            <Button maxHeight="24.0" maxWidth="24.0" mnemonicParsing="false" prefHeight="24.0" prefWidth="24.0">
+            <Button maxHeight="32.0" maxWidth="32.0" mnemonicParsing="false" onAction="#userMngmntScene" prefHeight="24.0" prefWidth="24.0" VBox.vgrow="NEVER">
                <graphic>
                   <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -187,10 +213,10 @@
                   </ImageView>
                </graphic>
                <VBox.margin>
-                  <Insets top="129.0" />
+                  <Insets top="84.0" />
                </VBox.margin>
             </Button>
-            <Button maxHeight="24.0" maxWidth="24.0" mnemonicParsing="false" prefHeight="24.0" prefWidth="24.0">
+            <Button maxHeight="32.0" maxWidth="32.0" mnemonicParsing="false" onAction="#logOut" prefHeight="24.0" prefWidth="24.0" VBox.vgrow="NEVER">
                <graphic>
                   <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
                      <image>

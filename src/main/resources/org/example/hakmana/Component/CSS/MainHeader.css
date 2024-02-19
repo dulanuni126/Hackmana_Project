@@ -9,7 +9,7 @@
 }
 .welcome{
     -fx-font-family: Zen Kaku Gothic Antique;
-    -fx-font-size: 40px;
+    -fx-font-size: 2em;
     -fx-font-weight: 700;
     -fx-line-height: 23px;
     -fx-letter-spacing: 0px;
