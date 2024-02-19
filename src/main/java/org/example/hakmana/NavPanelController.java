@@ -149,7 +149,7 @@ public class NavPanelController extends AnchorPane implements Initializable {
         isCollapsed = !isCollapsed;
     }
     public void deviceMnagmnt(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("Scene/DeviceMngmnt.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("Scene/DeviceMngmntDevCard.fxml"));
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setScene(scene);
