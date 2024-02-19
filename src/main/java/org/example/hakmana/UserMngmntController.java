@@ -1,13 +1,13 @@
 package org.example.hakmana;
 
-import javafx.animation.*;
+import javafx.animation.TranslateTransition;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 import javafx.util.Duration;
+
 import java.net.URL;
-import java.security.PrivilegedAction;
 import java.util.ResourceBundle;
 
 public class UserMngmntController implements Initializable {
