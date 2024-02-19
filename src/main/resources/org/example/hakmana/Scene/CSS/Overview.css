@@ -1,0 +1,87 @@
+/* Main body styling */
+.body-component {
+    -fx-background-color: #fff;
+    -fx-padding: 20px;
+}
+
+/* Title styling */
+.title-label {
+    -fx-font-size: 24px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #333;
+    -fx-padding: 0 0 10px 0;
+}
+
+/* Subtitle styling */
+.subtitle-label {
+    -fx-font-size: 16px;
+    -fx-text-fill: #666;
+    -fx-padding: 0 0 20px 0;
+}
+
+/* Filter section styling */
+.filter-section {
+    -fx-padding: 10px;
+    -fx-spacing: 10px;
+    -fx-alignment: center-left;
+}
+
+/* Checkbox styling */
+.check-box {
+    -fx-font-size: 14px;
+    -fx-padding: 5px;
+}
+
+/* Table view styling */
+.history-table {
+    -fx-padding: 10px;
+}
+
+.table-view {
+    -fx-base: #ecf0f1;
+}
+
+.table-view .column-header-background {
+    -fx-background-color: #e4e4e4;
+}
+
+.table-view .column-header {
+    -fx-text-fill: #2c3e50;
+    -fx-font-weight: bold;
+    -fx-font-size: 14px;
+}
+
+.table-view .table-row-cell {
+    -fx-background-color: white;
+    -fx-table-cell-border-color: #dcdcdc;
+}
+
+.table-view .table-row-cell:filled:selected {
+    -fx-background-color: #3498db;
+    -fx-text-fill: white;
+}
+
+.table-view .table-cell {
+    -fx-padding: 5px;
+    -fx-border-color: transparent transparent #dcdcdc transparent;
+}
+
+/* Footer styling */
+.footer {
+    -fx-background-color: #ecf0f1;
+    -fx-padding: 10px;
+    -fx-alignment: center;
+}
+
+/* Style for the navigation panel if needed */
+.nav-panel {
+    -fx-background-color: #34495e;
+    -fx-padding: 10px;
+}
+
+/* Style for buttons if needed */
+.button {
+    -fx-background-color: #3498db;
+    -fx-text-fill: white;
+    -fx-padding: 10px 20px;
+}

@@ -1,0 +1,54 @@
+.root {
+    -fx-font-family: 'Segoe UI', Helvetica, Arial, sans-serif;
+}
+
+.title-label {
+    -fx-font-size: 24px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #2c3e50;
+}
+
+.description-label {
+    -fx-font-size: 14px;
+    -fx-text-fill: #34495e;
+}
+
+.button {
+    -fx-background-color: #3498db;
+    -fx-text-fill: white;
+    -fx-font-size: 14px;
+    -fx-padding: 10px 20px;
+    -fx-border-radius: 5px;
+    -fx-background-radius: 5px;
+}
+
+.report-table {
+    -fx-base: #ecf0f1;
+}
+
+.report-table .column-header-background {
+    -fx-background-color: #bdc3c7;
+}
+
+.report-table .column-header {
+    -fx-text-fill: #34495e;
+    -fx-font-weight: bold;
+    -fx-font-size: 14px;
+}
+
+.report-table .table-row-cell {
+    -fx-background-color: white;
+    -fx-table-cell-border-color: #ecf0f1;
+}
+
+.report-table .table-row-cell:filled:selected {
+    -fx-background-color: #3498db;
+    -fx-text-fill: white;
+}
+
+.report-table .table-cell {
+    -fx-padding: 5px;
+    -fx-border-color: transparent transparent #ecf0f1 transparent;
+}
+
+/* You may need to add more styles for the header, footer, navigation panel, etc., to match your application's theme. */
