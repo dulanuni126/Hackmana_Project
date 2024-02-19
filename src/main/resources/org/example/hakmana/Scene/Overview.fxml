@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
@@ -8,35 +12,48 @@
 <?import org.example.hakmana.NavPanelController?>
 <?import org.example.hakmana.PathFinderController?>
 
-
-<AnchorPane fx:id="parentAnchor" prefHeight="640.0" prefWidth="1024.0" style="-fx-background-color: #00000021;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.hakmana.OverviewController">
+<AnchorPane fx:id="parentAnchor" prefHeight="640.0" prefWidth="1024.0" style="-fx-background-color: #00000021;" stylesheets="@../CSS/Overview.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.hakmana.OverviewController">
     <children>
-        <VBox prefHeight="640.0" prefWidth="1024.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <!-- Header Component -->
+        <HeaderController fx:id="headerController" prefHeight="109.0" prefWidth="1024.0" AnchorPane.leftAnchor="0" AnchorPane.rightAnchor="0" AnchorPane.topAnchor="0" />
+
+        <!-- Navigation Panel Component -->
+        <NavPanelController fx:id="navPanelController" prefWidth="256.0" AnchorPane.leftAnchor="0" AnchorPane.topAnchor="109.0" />
+
+        <!-- PathFinder Component -->
+        <PathFinderController prefWidth="768.0" AnchorPane.leftAnchor="256.0" AnchorPane.topAnchor="109.0" />
+
+        <!-- Main Content Area for Overview -->
+        <VBox fx:id="bodyComponent" prefWidth="768.0" AnchorPane.bottomAnchor="39.0" AnchorPane.leftAnchor="256.0" AnchorPane.topAnchor="159.0">
             <children>
-                <HBox prefHeight="640.0" prefWidth="1024.0" VBox.vgrow="ALWAYS">
-                    <children>
-                        <!-- Navigation panel Component-->
-                        <NavPanelController fx:id="navPanelController" HBox.hgrow="NEVER" />
+                <!-- Overview History Content -->
+                <Label fx:id="overviewTitle" styleClass="title-label" text="Overview History" />
+                <Label fx:id="overviewSubtitle" styleClass="subtitle-label" text="Filter the results to get specific information" />
 
-                        <VBox fx:id="bodyComponet" prefHeight="640.0" prefWidth="748.0"  HBox.hgrow="ALWAYS">
-                            <children>
-
-                                <!--Header Component-->
-                                <HeaderController fx:id="headerController" designationMsg="Product owner" prefHeight="109.0" prefWidth="770.0" usernameMsg="R.Gunathilaka" VBox.vgrow="NEVER" />
-
-
-                                <!--Path Component-->
-                                <PathFinderController prefWidth="770.0" />
-                                <AnchorPane prefHeight="430.0" prefWidth="758.0" VBox.vgrow="ALWAYS" />
-
-                                <!--Footer Component-->
-                                <FooterController prefHeight="39.0" prefWidth="770.0" />
-                            </children>
-                        </VBox>
-                    </children>
+                <!-- Filter Section -->
+                <HBox spacing="10" styleClass="filter-section">
+                    <CheckBox fx:id="filterUserCheckbox" text="User" />
+                    <CheckBox fx:id="filterDateCheckbox" text="Date" />
+                    <CheckBox fx:id="filterDeviceCheckbox" text="Device ID" />
+                    <!-- More filters as needed -->
                 </HBox>
+
+                <!-- Table for the History Overview -->
+                <TableView fx:id="historyTable" prefHeight="483.0" prefWidth="722.0" stylesheets="@CSS/Overview.css" VBox.vgrow="ALWAYS">
+                    <columns>
+                        <TableColumn fx:id="dateColumn" text="Date/Time" />
+                        <TableColumn fx:id="processColumn" text="Process" />
+                        <TableColumn fx:id="detailsColumn" text="Details" />
+                        <!-- More columns as needed -->
+                    </columns>
+               <columnResizePolicy>
+                  <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+               </columnResizePolicy>
+                </TableView>
             </children>
         </VBox>
 
+        <!-- Footer Component -->
+        <FooterController fx:id="footerController" prefHeight="39.0" prefWidth="1024.0" AnchorPane.bottomAnchor="0" AnchorPane.leftAnchor="0" AnchorPane.rightAnchor="0" />
     </children>
 </AnchorPane>
