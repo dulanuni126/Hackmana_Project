@@ -71,11 +71,22 @@
 
 /*Decorations for collapse navbar buttons*/
 .collapsedVbox .button{
+    -fx-border-color: black;
+    -fx-border-width: 0 0 0 0;
+    -fx-padding: 0;
     -fx-pref-width:24;
     -fx-effect: none;
     -fx-background-color: none;
 }
-
+.collapsedVbox .button:hover{
+    -fx-padding: 0 0 2 0;
+    -fx-border-color: #FFB8B8;
+    -fx-min-width: 32;
+    -fx-min-height: 32;
+    -fx-transition: color 0.8s ease-in-out;
+    -fx-cursor: hand; /* Change cursor to pointer */
+    -fx-border-width: 0 0 2 0;
+}
 /*Adding hover effect for button*/
 .middle_vbox .buttonWorkStyle:hover,.topvbox .buttonWorkStyle:hover,.footer_vbox .buttonWorkStyle:hover,.topvbox #toggleButton:hover{
     -fx-transition: color 0.8s ease-in-out;

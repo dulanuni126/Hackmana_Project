@@ -28,6 +28,7 @@ import java.util.ResourceBundle;
 
 
 public class NavPanelController extends AnchorPane implements Initializable {
+    private FooterController footerController=new FooterController();//for cancel the clock thread
     private Stage stage;
     private Scene scene;
     private Parent root;
@@ -60,7 +61,8 @@ public class NavPanelController extends AnchorPane implements Initializable {
     private Button overviewHistryBtn;
     @FXML
     private Button userMngmntBtn;
-
+    @FXML
+    private Button logout;
 
 
     /*-------variable set the navigation panel collapse state ------*/
@@ -69,7 +71,6 @@ public class NavPanelController extends AnchorPane implements Initializable {
     /*---------Override the initialize method in Initializable interface--------*/
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-
         sidebarWidth = sidebar.getPrefWidth()-32;
     }
 
@@ -79,11 +80,14 @@ public class NavPanelController extends AnchorPane implements Initializable {
     }
     public void setDeviceMngmntdBorder(){
         deviceMngmntBtn.setBorder(border);
-    }public void setReportHndlingdBorder(){
+    }
+    public void setReportHndlingdBorder(){
         reportHndlingBtn.setBorder(border);
-    }public void setOverviewHistryBorder(){
+    }
+    public void setOverviewHistryBorder(){
         overviewHistryBtn.setBorder(border);
-    }public void setUserMngmntBorder(){
+    }
+    public void setUserMngmntBorder(){
         userMngmntBtn.setBorder(border);
     }
 
@@ -179,5 +183,8 @@ public class NavPanelController extends AnchorPane implements Initializable {
         stage.setScene(scene);
         stage.show();
     }
-
+    public void logOut(ActionEvent event) throws IOException {
+        footerController.clockStoper();
+        System.out.println("logout");
+    }
 }

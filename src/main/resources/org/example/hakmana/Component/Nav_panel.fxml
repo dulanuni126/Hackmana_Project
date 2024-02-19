@@ -140,7 +140,7 @@
                         <Insets bottom="4.0" left="4.0" right="4.0" top="4.0" />
                      </padding>
                   </Button>
-                  <Button alignment="BASELINE_LEFT" contentDisplay="RIGHT" graphicTextGap="20.0" mnemonicParsing="false" prefHeight="29.0" prefWidth="139.0" text="Log out">
+                  <Button fx:id="logout" alignment="BASELINE_LEFT" contentDisplay="RIGHT" graphicTextGap="20.0" mnemonicParsing="false" onAction="#logOut" prefHeight="29.0" prefWidth="139.0" text="Log out">
                      <graphic>
                         <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -160,9 +160,9 @@
             </VBox>
          </children>
       </VBox>
-      <VBox fx:id="collapsedNavBar" alignment="TOP_RIGHT" layoutX="233.0" prefHeight="641.0" prefWidth="32.0" spacing="32.0" stylesheets="@CSS/Nav_panel.css" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <VBox fx:id="collapsedNavBar" alignment="TOP_CENTER" layoutX="233.0" prefHeight="641.0" prefWidth="32.0" spacing="36.0" stylesheets="@CSS/Nav_panel.css" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <Button maxHeight="24.0" maxWidth="24.0" mnemonicParsing="false" onAction="#ToggleButton" prefHeight="24.0" prefWidth="24.0">
+            <Button maxHeight="32.0" maxWidth="32.0" mnemonicParsing="false" onAction="#ToggleButton" prefHeight="24.0" prefWidth="24.0" VBox.vgrow="NEVER">
                <graphic>
                   <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -174,7 +174,7 @@
                   <Insets top="39.0" />
                </VBox.margin>
             </Button>
-            <Button maxHeight="24.0" maxWidth="24.0" mnemonicParsing="false" prefHeight="24.0" prefWidth="24.0">
+            <Button maxHeight="32.0" maxWidth="32.0" mnemonicParsing="false" onAction="#deviceMnagmnt" prefHeight="24.0" prefWidth="24.0" VBox.vgrow="NEVER">
                <graphic>
                   <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -182,8 +182,11 @@
                      </image>
                   </ImageView>
                </graphic>
+               <VBox.margin>
+                  <Insets top="18.0" />
+               </VBox.margin>
             </Button>
-            <Button maxHeight="24.0" maxWidth="24.0" mnemonicParsing="false" prefHeight="24.0" prefWidth="24.0">
+            <Button maxHeight="32.0" maxWidth="32.0" mnemonicParsing="false" onAction="#reportHndlingScene" prefHeight="24.0" prefWidth="24.0" VBox.vgrow="NEVER">
                <graphic>
                   <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -192,7 +195,7 @@
                   </ImageView>
                </graphic>
             </Button>
-            <Button maxHeight="24.0" maxWidth="24.0" mnemonicParsing="false" prefHeight="24.0" prefWidth="24.0">
+            <Button maxHeight="32.0" maxWidth="32.0" mnemonicParsing="false" onAction="#overviewScene" prefHeight="24.0" prefWidth="24.0" VBox.vgrow="NEVER">
                <graphic>
                   <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -201,7 +204,7 @@
                   </ImageView>
                </graphic>
             </Button>
-            <Button maxHeight="24.0" maxWidth="24.0" mnemonicParsing="false" prefHeight="24.0" prefWidth="24.0">
+            <Button maxHeight="32.0" maxWidth="32.0" mnemonicParsing="false" onAction="#userMngmntScene" prefHeight="24.0" prefWidth="24.0" VBox.vgrow="NEVER">
                <graphic>
                   <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -210,10 +213,10 @@
                   </ImageView>
                </graphic>
                <VBox.margin>
-                  <Insets top="129.0" />
+                  <Insets top="84.0" />
                </VBox.margin>
             </Button>
-            <Button maxHeight="24.0" maxWidth="24.0" mnemonicParsing="false" prefHeight="24.0" prefWidth="24.0">
+            <Button maxHeight="32.0" maxWidth="32.0" mnemonicParsing="false" onAction="#logOut" prefHeight="24.0" prefWidth="24.0" VBox.vgrow="NEVER">
                <graphic>
                   <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
                      <image>
