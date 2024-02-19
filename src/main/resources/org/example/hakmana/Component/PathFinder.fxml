@@ -31,7 +31,7 @@
                         <Insets />
                      </VBox.margin>
                   </Button>
-                  <Label prefHeight="22.0" prefWidth="303.0" style="-fx-border-color: black;" styleClass=".btm_border" stylesheets="@CSS/PathFinder.css" text="Dashboard" VBox.vgrow="ALWAYS">
+                  <Label fx:id="pathTxt" prefHeight="22.0" prefWidth="303.0" style="-fx-border-color: black;" styleClass=".btm_border" stylesheets="@CSS/PathFinder.css" text="Dashboard" VBox.vgrow="ALWAYS">
                      <graphic>
                         <ImageView fitHeight="18.0" fitWidth="18.0" layoutX="11.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true">
                            <image>
