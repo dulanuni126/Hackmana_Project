@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.String?>
 <?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
@@ -24,22 +25,14 @@
         <PathFinderController prefWidth="768.0" AnchorPane.leftAnchor="256.0" AnchorPane.topAnchor="109.0" />
 
         <!-- Main Content Area for Overview -->
-        <VBox fx:id="bodyComponent" prefWidth="768.0" AnchorPane.bottomAnchor="39.0" AnchorPane.leftAnchor="256.0" AnchorPane.topAnchor="159.0">
+        <VBox fx:id="bodyComponent" layoutX="447.0" layoutY="242.0" prefHeight="424.0" prefWidth="554.0" AnchorPane.bottomAnchor="84.0" AnchorPane.leftAnchor="447.0" AnchorPane.topAnchor="242.0">
             <children>
-                <!-- Overview History Content -->
-                <Label fx:id="overviewTitle" styleClass="title-label" text="Overview History" />
-                <Label fx:id="overviewSubtitle" styleClass="subtitle-label" text="Filter the results to get specific information" />
 
                 <!-- Filter Section -->
-                <HBox spacing="10" styleClass="filter-section">
-                    <CheckBox fx:id="filterUserCheckbox" text="User" />
-                    <CheckBox fx:id="filterDateCheckbox" text="Date" />
-                    <CheckBox fx:id="filterDeviceCheckbox" text="Device ID" />
-                    <!-- More filters as needed -->
-                </HBox>
+                <HBox spacing="10" styleClass="filter-section" />
 
                 <!-- Table for the History Overview -->
-                <TableView fx:id="historyTable" prefHeight="483.0" prefWidth="722.0" stylesheets="@CSS/Overview.css" VBox.vgrow="ALWAYS">
+                <TableView fx:id="historyTable" prefHeight="425.0" prefWidth="554.0" style="-fx-border-radius: 10;" stylesheets="@CSS/Overview.css" VBox.vgrow="ALWAYS">
                     <columns>
                         <TableColumn fx:id="dateColumn" text="Date/Time" />
                         <TableColumn fx:id="processColumn" text="Process" />
@@ -54,6 +47,20 @@
         </VBox>
 
         <!-- Footer Component -->
-        <FooterController fx:id="footerController" prefHeight="39.0" prefWidth="1024.0" AnchorPane.bottomAnchor="0" AnchorPane.leftAnchor="0" AnchorPane.rightAnchor="0" />
+        <FooterController fx:id="footerController" layoutX="289.0" prefHeight="62.0" prefWidth="711.0" AnchorPane.bottomAnchor="0" AnchorPane.leftAnchor="289.0" AnchorPane.rightAnchor="24.0" />
+      <VBox layoutX="291.0" layoutY="242.0" prefHeight="422.0" prefWidth="147.0" spacing="10.0" style="-fx-padding: 5; -fx-border-color: #800080; -fx-border-radius: 10; -fx-background-color: #E6E6FA;" stylesheets="@CSS/Overview.css">
+         <children>
+            <Label stylesheets="@CSS/Overview.css" text="Filter the result">
+               <styleClass>
+                  <String fx:value="check-box" />
+                  <String fx:value="title-label" />
+               </styleClass></Label>
+                 <CheckBox fx:id="filterUserCheckbox" stylesheets="@CSS/Overview.css" text="User" />
+                 <CheckBox fx:id="filterDateCheckbox" stylesheets="@CSS/Overview.css" text="Date" />
+                 <CheckBox fx:id="filterDeviceCheckbox" stylesheets="@CSS/Overview.css" text="Device ID" />
+         </children>
+      </VBox>
+      <Label layoutX="290.0" layoutY="179.0" text="You can get the overview and log about all the activities that have been done" />
+      <Label layoutX="291.0" layoutY="206.0" text="Filter your result to get information" />
     </children>
 </AnchorPane>
