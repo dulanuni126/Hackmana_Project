@@ -24,6 +24,7 @@
 
 .report-table {
     -fx-base: #ecf0f1;
+    -fx-border-radius: 10;
 }
 
 .report-table .column-header-background {

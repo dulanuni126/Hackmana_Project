@@ -85,3 +85,7 @@
     -fx-text-fill: white;
     -fx-padding: 10px 20px;
 }
+
+.vbox {
+    -fx-background-color: linear-gradient (from top to bottom, #8b8b8d, #7270aa;
+}
