@@ -4,22 +4,26 @@ import javafx.animation.*;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
 import javafx.util.Duration;
 import java.net.URL;
 import java.security.PrivilegedAction;
 import java.util.ResourceBundle;
-
-public class DeviceMngmntController implements Initializable {
+public class DeviceMngmntDevCardController implements Initializable{
 
     @FXML
     private NavPanelController navPanelController;//NavPanel custom component injector
     @FXML
-
     private HeaderController headerController;
     @FXML
-
     private  VBox bodyComponet;//injector for VBox to expand
+    @FXML
+    private GridPane grid;
+    @FXML
+    private PathFinderController pathCmp;
+    private int rowCount = 1;
+    private int colCount = 0;
 
     private  TranslateTransition bodyExpand;//Animation object refernce
 
@@ -38,6 +42,67 @@ public class DeviceMngmntController implements Initializable {
                 collapse();
             }
         });
+        pathCmp.setPathTxt("Device Management > Desktop Computers");
+
+        addComponent();
+        addComponent();
+        addComponent();
+        addComponent();
+        addComponent();
+        addComponent();
+        addComponent();
+        addComponent();
+        addComponent();
+        addComponent();
+        addComponent();
+        addComponent();
+        addComponent();
+        addComponent();
+        addComponent();
+        addComponent();
+        addComponent();
+        addComponent();
+        addLastComponent();
+    }
+    @FXML
+    private void addComponent() {
+        // Create a new label
+        DeviceInfoCardController card=new DeviceInfoCardController();
+        card.setNote("Error");
+        card.setUser("Nimal");
+        card.setBrand("hP");
+        card.setDevId("Hak/01");
+
+
+        // Add the label to the grid
+        grid.add(card, colCount, rowCount);
+
+        // Increment the row count for the next component
+        colCount++;
+
+        // If the row count is a multiple of 3, increment the column count
+        if (colCount % 4 == 0) {
+            rowCount++;
+            colCount = 0;
+        }
+
+    }
+    private void addLastComponent() {
+        AddDevButtonController addDevButtonController=new AddDevButtonController();
+
+
+        // Add the label to the grid
+        grid.add(addDevButtonController, colCount, rowCount);
+
+        // Increment the row count for the next component
+        colCount++;
+
+        // If the row count is a multiple of 3, increment the column count
+        if (colCount % 4 == 0) {
+            rowCount++;
+            colCount = 0;
+        }
+
     }
 
     private void Animation(double animStartPos,double animEndPos){
@@ -59,6 +124,4 @@ public class DeviceMngmntController implements Initializable {
         bodyComponet.setMinWidth(bodyComponet.getWidth()-244);
         bodyComponet.setMinWidth(748);
     }
-
-
 }
