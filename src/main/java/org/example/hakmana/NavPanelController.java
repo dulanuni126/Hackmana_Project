@@ -20,6 +20,7 @@ import javafx.scene.paint.Color;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.VBox;
+import javafx.stage.Screen;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 import java.io.IOException;
@@ -186,6 +187,20 @@ public class NavPanelController extends AnchorPane implements Initializable {
     public void logOut(ActionEvent event) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("Scene/login.fxml"));
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        stage.setWidth(845.0);
+        stage.setHeight(565.0);
+
+
+        //for load the login page in the center of the screen
+        Screen screen = Screen.getPrimary();
+        double screenWidth = screen.getBounds().getWidth();
+        double screenHeight = screen.getBounds().getHeight();
+
+        double stageCenterX = (screenWidth - stage.getWidth()) / 2;
+        double stageCenterY = (screenHeight - stage.getHeight()) / 2;
+        stage.setX(stageCenterX);
+        stage.setY(stageCenterY);
+
         scene = new Scene(root);
         stage.setScene(scene);
         stage.show();

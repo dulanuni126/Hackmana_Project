@@ -34,6 +34,7 @@ public class DashboardController implements Initializable {
         headerController.setFontSize("3em");
         headerController.setTitleMsg("Welcome");
         navPanelController.setDashboardBorder();
+
         //create the event listener to the navigation panel ToggleButton() method
         navPanelController.collapseStateProperty().addListener((observable, oldValue, newValue) ->{
             if(newValue){
@@ -53,18 +54,17 @@ public class DashboardController implements Initializable {
 
     }
     public  void expand() {
+        ///String cssRule = "-fx-min-width: 992px;";
+        Double W1=bodyComponet.getWidth()+244;
         Animation(0, -244);
-        bodyComponet.setMinWidth(992);
-        bodyComponet.setMinWidth(bodyComponet.getWidth()+244);
-        //System.out.println(bodyComponet.getWidth()+244);
+        bodyComponet.setMinWidth(W1);
+        //bodyComponet.getStyleClass().add(cssRule);
+
     }
     public  void collapse() {
+        Double W1=bodyComponet.getWidth()-244;
         Animation(-244, 0);
-        bodyComponet.setMinWidth(bodyComponet.getWidth()-244);
-        bodyComponet.setMinWidth(748);
+        bodyComponet.setMinWidth(W1);
     }
-
-
-
 }
 
