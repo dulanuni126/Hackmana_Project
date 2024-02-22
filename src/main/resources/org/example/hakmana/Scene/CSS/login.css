@@ -1,0 +1,7 @@
+.vbox_background_left{
+    /*-fx-background-image: url('Images\right-bg.png');*/
+}
+
+.vbox_dropshadow_effect{
+    -fx-effect: dropshadow 10px 10px 5px ;
+}
