@@ -7,6 +7,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.stage.Screen;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -24,6 +25,22 @@ public class LoginPageController {
         Parent root = FXMLLoader.load(getClass().getResource("Scene/dashboard.fxml"));
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         scene = new Scene(root);
+
+        //System.out.println(stage.getHeight());
+        //System.out.println(stage.getHeight());
+        // Get primary screen dimensions
+        Screen screen = Screen.getPrimary();
+        double width = screen.getBounds().getWidth();
+        double height = screen.getBounds().getHeight();
+
+        // Set stage size to match screen dimensions
+        stage.setWidth(width);
+        stage.setHeight(height);
+        //stage.setResizable(true);
+        //stage.setMaximized(true);
+
+        stage.setX(0.0);
+        stage.setY(0.0);
         stage.setScene(scene);
         stage.show();
     }
