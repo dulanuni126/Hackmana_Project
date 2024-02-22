@@ -10,7 +10,7 @@ import java.net.URL;
 import java.security.PrivilegedAction;
 import java.util.ResourceBundle;
 
-public class DeviceMngmntController implements Initializable {
+public class DevDetailedViewController implements Initializable {
 
     @FXML
     private NavPanelController navPanelController;//NavPanel custom component injector

@@ -24,8 +24,8 @@ public class FooterController extends VBox implements Initializable {
     @FXML
     private Label timeLabel;
     private boolean test=true;
-
     private static Task<Void> updateTimeTask;
+    private Thread clockThread;
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         // Task for updating date and time
@@ -43,18 +43,16 @@ public class FooterController extends VBox implements Initializable {
                         dateLabel.setText(currentDate);
                         timeLabel.setText(currentTime);
                     });
-                    //System.out.println("thread1,I am runnin");
                     Thread.sleep(1000); // Update every second
                 }
                 return null;
             }
         };
-        new Thread(updateTimeTask).start();
+        clockThread=new Thread(updateTimeTask);
+        clockThread.setDaemon(true);
+        clockThread.start();
     }
-    public void clockStoper(){
-        test=false;
-        updateTimeTask.cancel();
-    }
+
     public FooterController() {
         super();
         FXMLLoader fxmlFooterLoader = new FXMLLoader(getClass().getResource("Component/Footer.fxml"));
