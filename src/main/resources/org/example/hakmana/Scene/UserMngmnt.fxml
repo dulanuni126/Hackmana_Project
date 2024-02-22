@@ -61,7 +61,7 @@
                                 </AnchorPane>
 
                                 <!-- Footer Component -->
-                                <FooterController prefHeight="62.0" prefWidth="720.0" VBox.vgrow="NEVER" />
+                                <FooterController fx:id="footerController" prefHeight="62.0" prefWidth="720.0" VBox.vgrow="NEVER" />
                             </children>
                         </VBox>
                     </children>

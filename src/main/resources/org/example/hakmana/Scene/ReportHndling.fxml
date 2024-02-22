@@ -40,7 +40,7 @@
                                     </children>
                                 </AnchorPane>
                                 <!-- Footer Component -->
-                                <FooterController prefHeight="39.0" prefWidth="770.0" VBox.vgrow="NEVER" />
+                                <FooterController fx:id="footerController" prefHeight="39.0" prefWidth="770.0" VBox.vgrow="NEVER" />
                             </children>
                         </VBox>
                     </children>

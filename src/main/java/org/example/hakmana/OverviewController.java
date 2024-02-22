@@ -13,8 +13,6 @@ public class OverviewController implements Initializable{
         @FXML
         private HeaderController headerController;
         @FXML
-
-
         private NavPanelController navPanelController;//NavPanel custom component injector
         @FXML
         private VBox bodyComponet;//injector for VBox to expand
