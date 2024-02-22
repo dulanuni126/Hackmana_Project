@@ -2,23 +2,26 @@ package org.example.hakmana;
 
 import javafx.application.Platform;
 import javafx.concurrent.Task;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Label;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.*;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
 import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.ResourceBundle;
-import java.util.Timer;
-import java.util.TimerTask;
+import java.util.*;
 
 
 public class FooterController extends VBox implements Initializable {
+    @FXML
+    private Button ContactusBtn;
     @FXML
     private Label dateLabel;
     @FXML
@@ -65,5 +68,17 @@ public class FooterController extends VBox implements Initializable {
         catch (IOException Footerexception){
             throw new RuntimeException(Footerexception);
         }
+    }
+    public void ContactusBtnDialogOpen(ActionEvent event) throws IOException{
+        FXMLLoader contactUsfxmlLoad = new FXMLLoader();
+        contactUsfxmlLoad.setLocation(getClass().getResource("Component/ContactUsDialogPane.fxml"));
+        DialogPane conactUsDialogPane=contactUsfxmlLoad.load();
+
+        Dialog<ButtonType> dialog=new Dialog<>();
+        dialog.setDialogPane(conactUsDialogPane);
+        dialog.setTitle("Contact Us");
+
+        Optional<ButtonType> clickedButton=dialog.showAndWait();
+
     }
 }

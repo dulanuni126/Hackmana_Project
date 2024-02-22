@@ -28,7 +28,7 @@
                                 <HeaderController fx:id="headerController" designationMsg="Product owner" prefHeight="109.0" prefWidth="770.0" usernameMsg="R.Gunathilaka" VBox.vgrow="NEVER" />
 
                                 <!-- Path Component -->
-                                <PathFinderController prefHeight="78.0" prefWidth="748.0" VBox.vgrow="NEVER" />
+                                <PathFinderController fx:id="pathFinderController" prefHeight="78.0" prefWidth="748.0" VBox.vgrow="NEVER" />
 
                                 <!-- Body content for User Management -->
                                 <AnchorPane prefHeight="430.0" prefWidth="758.0" VBox.vgrow="ALWAYS">

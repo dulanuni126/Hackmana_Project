@@ -19,7 +19,8 @@ public class UserMngmntController implements Initializable {
     private NavPanelController navPanelController;//NavPanel custom component injector
     @FXML
     private  VBox bodyComponet;//injector for VBox to expand
-
+    @FXML
+    private PathFinderController pathFinderController;
     private  TranslateTransition bodyExpand;//Animation object refernce
 
     @FXML
@@ -29,6 +30,7 @@ public class UserMngmntController implements Initializable {
         headerController.setFontSize("2.5em");
         headerController.setTitleMsg("User management");
         navPanelController.setUserMngmntBorder();
+        pathFinderController.setSearchBarVisible(false);
         //create the event listener to the navigation panel ToggleButton() method
         navPanelController.collapseStateProperty().addListener((observable, oldValue, newValue) ->{
             if(newValue){

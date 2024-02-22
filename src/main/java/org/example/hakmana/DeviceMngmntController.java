@@ -18,6 +18,8 @@ public class DeviceMngmntController implements Initializable {
     private HeaderController headerController;
     @FXML
     private  VBox bodyComponet;//injector for VBox to expand
+    @FXML
+    private PathFinderController pathFinderController;
 
     private  TranslateTransition bodyExpand;//Animation object refernce
     @FXML
@@ -27,6 +29,7 @@ public class DeviceMngmntController implements Initializable {
         headerController.setFontSize("2.5em");
         headerController.setTitleMsg("Device Management");
         navPanelController.setDeviceMngmntdBorder();
+        pathFinderController.setSearchBarVisible(false);
         //create the event listener to the navigation panel ToggleButton() method
         navPanelController.collapseStateProperty().addListener((observable, oldValue, newValue) ->{
             if(newValue){
