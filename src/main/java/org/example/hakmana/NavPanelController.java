@@ -20,6 +20,7 @@ import javafx.scene.paint.Color;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.VBox;
+import javafx.stage.Screen;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 import java.io.IOException;
@@ -28,7 +29,7 @@ import java.util.ResourceBundle;
 
 
 public class NavPanelController extends AnchorPane implements Initializable {
-    private FooterController footerController=new FooterController();//for cancel the clock thread
+
     private Stage stage;
     private Scene scene;
     private Parent root;
@@ -149,7 +150,7 @@ public class NavPanelController extends AnchorPane implements Initializable {
         isCollapsed = !isCollapsed;
     }
     public void deviceMnagmnt(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("Scene/DeviceMngmntDevCard.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("Scene/DeviceMngmnt.fxml"));
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setScene(scene);
@@ -184,7 +185,25 @@ public class NavPanelController extends AnchorPane implements Initializable {
         stage.show();
     }
     public void logOut(ActionEvent event) throws IOException {
-        footerController.clockStoper();
+        Parent root = FXMLLoader.load(getClass().getResource("Scene/login.fxml"));
+        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        stage.setWidth(845.0);
+        stage.setHeight(565.0);
+
+
+        //for load the login page in the center of the screen
+        Screen screen = Screen.getPrimary();
+        double screenWidth = screen.getBounds().getWidth();
+        double screenHeight = screen.getBounds().getHeight();
+
+        double stageCenterX = (screenWidth - stage.getWidth()) / 2;
+        double stageCenterY = (screenHeight - stage.getHeight()) / 2;
+        stage.setX(stageCenterX);
+        stage.setY(stageCenterY);
+
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
         System.out.println("logout");
     }
 }

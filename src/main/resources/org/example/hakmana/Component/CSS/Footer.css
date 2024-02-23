@@ -10,6 +10,14 @@
     -fx-background-color: none;
     -fx-font-family: Zen Kaku Gothic Antique;
 }
+.contactUs:hover{
+    -fx-transition: color 0.8s ease-in-out;
+    -fx-background-radius: 15;
+    -fx-padding: 2 0 2 0;
+    -fx-background-color:grey;
+    -fx-cursor: hand; /* Change cursor to pointer */
+    -fx-font-weight:800;
+}
 
 .title{
     -fx-pref-width: 382px;
@@ -22,8 +30,8 @@
     -fx-background-radius: 4px;
     -fx-font-weight: 700;
 }
-.Leftborder{
-    -fx-border-width: 0 2 0 0;
+.border{
+    -fx-border-width: 0 2 0 2;
 }
 .footerContainer {
     -fx-pref-width: 695px;

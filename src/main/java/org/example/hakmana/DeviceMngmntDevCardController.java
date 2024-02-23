@@ -10,6 +10,7 @@ import javafx.util.Duration;
 import java.net.URL;
 import java.security.PrivilegedAction;
 import java.util.ResourceBundle;
+import org.example.hakmana.DeviceInfoCardController;
 public class DeviceMngmntDevCardController implements Initializable{
 
     @FXML

@@ -1,0 +1,22 @@
+.vbox_background_left{
+    -fx-background-image: url('../Images/right-bg.png');
+    -fx-background-size: cover;
+}
+
+.vbox_dropshadow_effect{
+    -fx-effect: dropshadow 10px 10px 5px ;
+}
+.loginBtnHvrStyle{
+    -fx-background-radius: 15;
+    -fx-background-color:  #4067EC;
+    -fx-border-radius:15;
+    -fx-border-width: 0.1;
+    -fx-effect:dropshadow( gaussian,rgba(0, 0, 0, 0.13),10,0,0,10);
+}
+
+.loginBtnHvrStyle:hover {
+    -fx-transition: color 0.8s ease-in-out;
+    -fx-background-color:black; /* Lighter background on hover */
+    -fx-cursor: hand; /* Change cursor to pointer */
+    -fx-font-weight:800;
+}
