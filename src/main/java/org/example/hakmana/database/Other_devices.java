@@ -1,4 +1,4 @@
-package org.example.hakmana;
+package org.example.hakmana.database;
 
 public class Other_devices {
     private String reg_no;

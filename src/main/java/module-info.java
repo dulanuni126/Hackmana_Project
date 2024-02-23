@@ -7,7 +7,8 @@ module org.example.hakmana {
 
     opens org.example.hakmana to javafx.fxml;
     exports org.example.hakmana;
-
+    exports org.example.hakmana.database;
+    opens org.example.hakmana.database to javafx.fxml;
 
 
 }

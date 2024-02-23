@@ -4,7 +4,7 @@
 .goBackBtn{
     -fx-font-family: Zen Kaku Gothic Antique;
     -fx-font-weight: 500;
-    -fx-line-height: 22.53px;
+    -fx-line-height: 22.53;
     -fx-background-color:linear-gradient(rgba(255, 184, 184, 0.55) 0%, rgba(248, 186, 144, 0.43) 75%);
     -fx-background-radius: 18px;
     -fx-max-width: 100px;

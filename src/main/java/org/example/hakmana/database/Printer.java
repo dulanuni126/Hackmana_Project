@@ -1,4 +1,4 @@
-package org.example.hakmana;
+package org.example.hakmana.database;
 
 public class Printer {
     private String reg_no;

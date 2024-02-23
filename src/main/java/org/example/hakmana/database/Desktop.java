@@ -1,4 +1,4 @@
-package org.example.hakmana;
+package org.example.hakmana.database;
 
 public class Desktop {
     private String reg_no;

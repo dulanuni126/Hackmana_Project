@@ -1,4 +1,4 @@
-package org.example.hakmana;
+package org.example.hakmana.database;
 
 import javafx.animation.TranslateTransition;
 import javafx.fxml.FXML;
@@ -6,6 +6,9 @@ import javafx.fxml.Initializable;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 import javafx.util.Duration;
+import org.example.hakmana.HeaderController;
+import org.example.hakmana.NavPanelController;
+import org.example.hakmana.PathFinderController;
 
 import java.net.URL;
 import java.util.ResourceBundle;
