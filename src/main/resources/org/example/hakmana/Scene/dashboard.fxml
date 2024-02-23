@@ -3,7 +3,9 @@
 <?import com.jfoenix.controls.JFXButton?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
@@ -11,6 +13,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Text?>
 <?import org.example.hakmana.FooterController?>
 <?import org.example.hakmana.HeaderController?>
 <?import org.example.hakmana.NavPanelController?>
@@ -103,14 +106,14 @@
                                                       <Insets />
                                                    </HBox.margin>
                                                    <children>
-                                                      <GridPane alignment="CENTER" cacheShape="false" prefHeight="218.0" prefWidth="280.0" styleClass="Mpane1" VBox.vgrow="NEVER">
+                                                      <GridPane alignment="CENTER" cacheShape="false" prefHeight="358.0" prefWidth="389.0" styleClass="Mpane1" VBox.vgrow="NEVER">
                                                         <columnConstraints>
                                                           <ColumnConstraints hgrow="SOMETIMES" maxWidth="388.4" minWidth="0.0" prefWidth="138.3999755859375" />
                                                         </columnConstraints>
                                                         <rowConstraints>
-                                                          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                                          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                                          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                          <RowConstraints maxHeight="75.59994735717774" minHeight="10.0" prefHeight="75.59994735717774" vgrow="SOMETIMES" />
+                                                          <RowConstraints maxHeight="118.80002059936524" minHeight="10.0" prefHeight="41.6000244140625" vgrow="SOMETIMES" />
+                                                          <RowConstraints maxHeight="127.4" minHeight="10.0" prefHeight="101.5999755859375" vgrow="SOMETIMES" />
                                                         </rowConstraints>
                                                          <children>
                                                             <Label alignment="CENTER" contentDisplay="CENTER" styleClass="noteLabel" text="Note" GridPane.hgrow="ALWAYS">
@@ -118,6 +121,27 @@
                                                                   <Insets left="8.0" />
                                                                </GridPane.margin>
                                                             </Label>
+                                                            <Label styleClass="filter" GridPane.rowIndex="1" />
+                                                            <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text" text="Filter:" GridPane.rowIndex="1">
+                                                               <GridPane.margin>
+                                                                  <Insets left="8.0" />
+                                                               </GridPane.margin>
+                                                            </Text>
+                                                            <RadioButton mnemonicParsing="false" text="Device iD" GridPane.rowIndex="1">
+                                                               <GridPane.margin>
+                                                                  <Insets left="67.33" />
+                                                               </GridPane.margin>
+                                                            </RadioButton>
+                                                            <RadioButton mnemonicParsing="false" text="User name" GridPane.rowIndex="1">
+                                                               <GridPane.margin>
+                                                                  <Insets left="178.67" />
+                                                               </GridPane.margin>
+                                                            </RadioButton>
+                                                            <RadioButton mnemonicParsing="false" text="Date" GridPane.rowIndex="1">
+                                                               <GridPane.margin>
+                                                                  <Insets left="311.0" />
+                                                               </GridPane.margin>
+                                                            </RadioButton>
                                                          </children>
                                                       </GridPane>
                                                    </children>
@@ -145,34 +169,46 @@
                                                                <children>
                                                                   <JFXButton styleClass="Button" text="Add a device">
                                                                      <graphic>
-                                                                        <ImageView fitHeight="39.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true" />
+                                                                        <ImageView fitHeight="39.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
+                                                                           <image>
+                                                                              <Image url="@Images/icon-plus-circle.png" />
+                                                                           </image></ImageView>
                                                                      </graphic>
                                                                      <VBox.margin>
-                                                                        <Insets left="24.0" top="80.0" />
+                                                                        <Insets left="5.0" top="80.0" />
                                                                      </VBox.margin>
                                                                   </JFXButton>
-                                                                  <JFXButton prefHeight="49.0" prefWidth="214.0" styleClass="largebutt" text="Change the device &#10;status">
+                                                                  <JFXButton prefHeight="43.0" prefWidth="260.0" styleClass="largebutt" text="Change the device &#10;status">
                                                                      <graphic>
-                                                                        <ImageView fitHeight="39.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true" />
+                                                                        <ImageView fitHeight="39.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
+                                                                           <image>
+                                                                              <Image url="@Images/icon-check-circle.png" />
+                                                                           </image></ImageView>
                                                                      </graphic>
                                                                      <VBox.margin>
-                                                                        <Insets left="24.0" top="10.0" />
+                                                                        <Insets left="6.0" top="10.0" />
                                                                      </VBox.margin>
                                                                   </JFXButton>
                                                                   <JFXButton styleClass="Button" text="View inventory">
                                                                      <graphic>
-                                                                        <ImageView fitHeight="39.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true" />
+                                                                        <ImageView fitHeight="39.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
+                                                                           <image>
+                                                                              <Image url="@Images/icon-package.png" />
+                                                                           </image></ImageView>
                                                                      </graphic>
                                                                      <VBox.margin>
-                                                                        <Insets left="24.0" top="10.0" />
+                                                                        <Insets left="13.0" top="10.0" />
                                                                      </VBox.margin>
                                                                   </JFXButton>
                                                                   <JFXButton styleClass="Button" text="Daily Report">
                                                                      <graphic>
-                                                                        <ImageView fitHeight="39.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true" />
+                                                                        <ImageView fitHeight="39.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
+                                                                           <image>
+                                                                              <Image url="@Images/icon-file.png" />
+                                                                           </image></ImageView>
                                                                      </graphic>
                                                                      <VBox.margin>
-                                                                        <Insets left="24.0" top="10.0" />
+                                                                        <Insets left="8.0" top="10.0" />
                                                                      </VBox.margin>
                                                                   </JFXButton>
                                                                </children>
