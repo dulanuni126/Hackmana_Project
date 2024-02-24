@@ -26,6 +26,8 @@ public class PathFinderController extends VBox implements Initializable {
     private Parent root;
     private static List<String> sceneList = new ArrayList<>();
     private String bckBtnScene;
+    private static byte sceneListCounter=-1;
+    private static boolean continuousPressed=false;
     @FXML
     public HBox searchBar;
 
@@ -54,8 +56,6 @@ public class PathFinderController extends VBox implements Initializable {
         FXMLLoader fxmlPathLoader = new FXMLLoader(getClass().getResource("Component/PathFinder.fxml"));
         fxmlPathLoader.setController(this);
         fxmlPathLoader.setRoot(this);
-
-
         try{
             fxmlPathLoader.load();
         }
@@ -79,23 +79,37 @@ public class PathFinderController extends VBox implements Initializable {
     public void setBckBtnScene(String bckBtnScene) {
         this.bckBtnScene = bckBtnScene;
         sceneList.add(this.bckBtnScene);
+        sceneListCounter++;
+        continuousPressed=false;
     }
-    public void goBack(ActionEvent event) throws IOException{
-        System.out.println("Go back button pressed");
-        //System.out.println(sceneList);
+    public void goBack(ActionEvent event) throws IOException {
+//       System.out.println("Go back button pressed");
+//        System.out.println(sceneList);
+//        System.out.println(sceneListCounter);
 
-        String listScenename = sceneList.getFirst();
-        sceneList.removeFirst();
 
-        //System.out.println(listScenename);
-        //if(listScenename==null) {
-        // listScenename
-        //}
+        if(!sceneList.isEmpty()) {
+            //To remove current scene from the list.
+            //Because current scene is also added to the list
+            if (continuousPressed == false) {
+                sceneList.removeLast();
+                continuousPressed = true;
+            }
 
-        Parent root = FXMLLoader.load(getClass().getResource(listScenename));
-        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-        scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
+            String listScenename = sceneList.getLast();
+            Parent root = FXMLLoader.load(getClass().getResource(listScenename));
+            sceneList.removeLast();
+            sceneListCounter--;
+
+//        System.out.println(sceneListCounter);
+//        System.out.println(sceneList);
+
+            stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            scene = new Scene(root);
+            stage.setScene(scene);
+            stage.show();
+        }else{
+            System.out.println("list is empty");
+        }
     }
 }

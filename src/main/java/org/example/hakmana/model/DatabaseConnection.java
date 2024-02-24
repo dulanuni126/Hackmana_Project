@@ -1,4 +1,4 @@
-package org.example.hakmana;
+package org.example.hakmana.model;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
@@ -10,7 +10,7 @@ public class DatabaseConnection {
     private DatabaseConnection() {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
-            connection = (Connection)DriverManager.getConnection("jdbc:mysql://localhost:3306/hakmana_project", "root", "");
+            connection = (Connection)DriverManager.getConnection("jdbc:mysql://localhost:3306/hakmanaEdm", "root", "root1234");
             System.out.println("Connection Successfully");
 
         } catch (ClassNotFoundException | SQLException e) {

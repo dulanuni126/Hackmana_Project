@@ -18,7 +18,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class DeviceCardController1 extends AnchorPane implements Initializable {
+public class DeviceCategoryCardController extends AnchorPane implements Initializable {
     private Stage stage;
     private Scene scene;
     private Parent root;
@@ -28,9 +28,9 @@ public class DeviceCardController1 extends AnchorPane implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
     }
-    public DeviceCardController1() {
+    public DeviceCategoryCardController() {
         super();
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("Component/DeviceCard1.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("Component/DeviceCategoryCard.fxml"));
         fxmlLoader.setRoot(this);
         fxmlLoader.setController(this);
 
@@ -66,7 +66,7 @@ public class DeviceCardController1 extends AnchorPane implements Initializable {
         DevText.setText(this.devName);
     }
 
-    public void testCall(ActionEvent event) throws IOException {
+    public void DeiveInfoCall(ActionEvent event) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("Scene/DeviceMngmntDevCard.fxml"));
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         scene = new Scene(root);

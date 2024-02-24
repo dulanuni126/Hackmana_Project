@@ -1,4 +1,4 @@
-package org.example.hakmana;
+package org.example.hakmana.model;
 
 public class Desktop {
     private String regNum;
@@ -16,10 +16,54 @@ public class Desktop {
     private String speakerRegNum="NO";
     private String mouseRegNum="NO";
     private String keyboardRegNum="NO";
+    private String soundCard="NO";
+    private String tvCard="NO";
+    private String networkCard="NO";
     private String micRegNum="NO";
     private String userNIC="No User";
+    private String floppyDisk="NO";
+    private String scannerRegNum="NO";
 
-    public Desktop(String regNum, String serialNum, String model, String purchasedFrom, String ram, String processor, String warranty, String hardDisk, String os, String status, String monitorRegNum, String projectorRegNum, String speakerRegNum, String mouseRegNum, String keyboardRegNum, String micRegNum, String scannerRegNum,String userNIC) {
+
+    public String getFloppyDisk() {
+        return floppyDisk;
+    }
+
+    public void setFloppyDisk(String floppyDisk) {
+        this.floppyDisk = floppyDisk;
+    }
+
+    public String getSoundCard() {
+        return soundCard;
+    }
+
+    public void setSoundCard(String soundCard) {
+        this.soundCard = soundCard;
+    }
+
+    public String getTvCard() {
+        return tvCard;
+    }
+
+    public void setTvCard(String tvCard) {
+        this.tvCard = tvCard;
+    }
+
+    public String getNetworkCard() {
+        return networkCard;
+    }
+
+    public void setNetworkCard(String networkCard) {
+        this.networkCard = networkCard;
+    }
+
+
+
+    public Desktop(String regNum, String serialNum, String model, String purchasedFrom, String ram, String processor, String warranty, String hardDisk, String os, String status,String floppyDisk,String soundCard,String tvCard,String networkCard, String monitorRegNum, String projectorRegNum, String speakerRegNum, String mouseRegNum, String keyboardRegNum, String micRegNum, String scannerRegNum,String userNIC) {
+        this.floppyDisk=floppyDisk;
+        this.soundCard=soundCard;
+        this.tvCard=tvCard;
+        this.networkCard=networkCard;
         this.regNum = regNum;
         this.serialNum = serialNum;
         this.model = model;
@@ -39,8 +83,6 @@ public class Desktop {
         this.scannerRegNum = scannerRegNum;
         this.userNIC=userNIC;
     }
-
-    private String scannerRegNum;
 
 
     public String getRegNum() {
