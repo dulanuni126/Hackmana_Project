@@ -15,7 +15,7 @@
 <?import org.example.hakmana.NavPanelController?>
 <?import org.example.hakmana.PathFinderController?>
 
-<AnchorPane fx:id="parentAnchor" prefHeight="640.0" prefWidth="1024.0" style="-fx-background-color: #00000021;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.hakmana.DashboardController">
+<AnchorPane fx:id="parentAnchor" prefHeight="640.0" prefWidth="1024.0" style="-fx-background-color: #00000021;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.hakmana.OverviewController">
     <children>
         <VBox prefHeight="640.0" prefWidth="1024.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
             <children>
@@ -23,7 +23,7 @@
                     <children>
                         <!-- Navigation panel Component-->
                         <NavPanelController fx:id="navPanelController" HBox.hgrow="NEVER" />
-                        <VBox fx:id="bodyComponet" prefHeight="217.0" prefWidth="748.0" style="0: 0;" HBox.hgrow="ALWAYS">
+                        <VBox fx:id="bodyComponet" prefHeight="217.0" prefWidth="748.0"  HBox.hgrow="ALWAYS">
                             <children>
 
                                 <!--Header Component-->
@@ -35,7 +35,7 @@
                                     <children>
                                         <ScrollPane fitToWidth="true" layoutY="0.8000030517578125" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="27.0" AnchorPane.topAnchor="0.0">
                                             <content>
-                                                <VBox prefHeight="567.0" prefWidth="696.0" stylesheets="@CSS/dashboard.css">
+                                                <VBox prefHeight="567.0" prefWidth="696.0" stylesheets="@CSS/Overview.css">
                                        <children>
                                           <Label text="You can get the overview and log about all the activities that have been done" VBox.vgrow="ALWAYS" />
                                           <Label text="Filter your result to get information" VBox.vgrow="ALWAYS" />

@@ -47,8 +47,7 @@
                 <Label text="Paper Input" GridPane.rowIndex="2" />
                 <Label text="Paper Output" GridPane.rowIndex="3" />
                 <Label text="Warrenty" GridPane.rowIndex="4" />
-                <Label text="Brand" GridPane.rowIndex="5" />
-                <Label text="Model" GridPane.rowIndex="6" />
+                <Label text="Model" GridPane.rowIndex="5" />
                 <Label text="Status" GridPane.rowIndex="9" />
                 <Label GridPane.rowIndex="12" />
                 <Label text="Register Number" />
@@ -58,7 +57,6 @@
                 <TextField GridPane.columnIndex="1" GridPane.rowIndex="3" />
                 <TextField GridPane.columnIndex="1" GridPane.rowIndex="4" />
                 <TextField GridPane.columnIndex="1" GridPane.rowIndex="5" />
-                <TextField GridPane.columnIndex="1" GridPane.rowIndex="6" />
                 <Button mnemonicParsing="false" onAction="#addUser" prefHeight="26.0" prefWidth="83.0" text="ADD USER" GridPane.columnIndex="1" GridPane.hgrow="ALWAYS" GridPane.rowIndex="13">
                     <GridPane.margin>
                         <Insets left="940.0" />

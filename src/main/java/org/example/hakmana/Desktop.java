@@ -1,112 +1,191 @@
 package org.example.hakmana;
 
 public class Desktop {
-    private String reg_no;
-    private String serial_no;
-    private String model;
-    private String status;
-    private String brand;
-    private String processor;
-    private String ram;
-    private String harddisk;
-    private String CD_rom;
-    private String Sound_card;
-    private int warrenty;
-    private int time;
+    private String regNum;
+    private String serialNum="NO";
+    private String model="NO";
+    private String purchasedFrom="NO";
+    private String ram="NO";
+    private String processor="NO";
+    private String warranty="NO";
+    private String hardDisk="NO";
+    private String os="NO";
+    private String status="NO";
+    private String monitorRegNum="NO";
+    private String projectorRegNum="NO";
+    private String speakerRegNum="NO";
+    private String mouseRegNum="NO";
+    private String keyboardRegNum="NO";
+    private String micRegNum="NO";
+    private String userNIC="No User";
 
-    public String getReg_no() {
-        return reg_no;
+    public Desktop(String regNum, String serialNum, String model, String purchasedFrom, String ram, String processor, String warranty, String hardDisk, String os, String status, String monitorRegNum, String projectorRegNum, String speakerRegNum, String mouseRegNum, String keyboardRegNum, String micRegNum, String scannerRegNum,String userNIC) {
+        this.regNum = regNum;
+        this.serialNum = serialNum;
+        this.model = model;
+        this.purchasedFrom = purchasedFrom;
+        this.ram = ram;
+        this.processor = processor;
+        this.warranty = warranty;
+        this.hardDisk = hardDisk;
+        this.os = os;
+        this.status = status;
+        this.monitorRegNum = monitorRegNum;
+        this.projectorRegNum = projectorRegNum;
+        this.speakerRegNum = speakerRegNum;
+        this.mouseRegNum = mouseRegNum;
+        this.keyboardRegNum = keyboardRegNum;
+        this.micRegNum = micRegNum;
+        this.scannerRegNum = scannerRegNum;
+        this.userNIC=userNIC;
     }
 
-    public String getSerial_no() {
-        return serial_no;
+    private String scannerRegNum;
+
+
+    public String getRegNum() {
+        return regNum;
+    }
+
+    public void setRegNum(String regNum) {
+        this.regNum = regNum;
+    }
+
+    public String getSerialNum() {
+        return serialNum;
+    }
+
+    public void setSerialNum(String serialNum) {
+        this.serialNum = serialNum;
     }
 
     public String getModel() {
         return model;
     }
 
-    public String getStatus() {
-        return status;
+    public void setModel(String model) {
+        this.model = model;
     }
 
-    public String getBrand() {
-        return brand;
+    public String getPurchasedFrom() {
+        return purchasedFrom;
     }
 
-    public String getProcessor() {
-        return processor;
+    public void setPurchasedFrom(String purchasedFrom) {
+        this.purchasedFrom = purchasedFrom;
     }
 
     public String getRam() {
         return ram;
     }
 
-    public String getHarddisk() {
-        return harddisk;
+    public void setRam(String ram) {
+        this.ram = ram;
     }
 
-    public String getCD_rom() {
-        return CD_rom;
-    }
-
-    public String getSound_card() {
-        return Sound_card;
-    }
-
-    public int getWarrenty() {
-        return warrenty;
-    }
-
-    public int getTime() {
-        return time;
-    }
-
-    public void setReg_no(String reg_no) {
-        this.reg_no = reg_no;
-    }
-
-    public void setSerial_no(String serial_no) {
-        this.serial_no = serial_no;
-    }
-
-    public void setModel(String model) {
-        this.model = model;
-    }
-
-    public void setStatus(String status) {
-        this.status = status;
-    }
-
-    public void setBrand(String brand) {
-        this.brand = brand;
+    public String getProcessor() {
+        return processor;
     }
 
     public void setProcessor(String processor) {
         this.processor = processor;
     }
 
-    public void setRam(String ram) {
-        this.ram = ram;
+    public String getWarranty() {
+        return warranty;
     }
 
-    public void setHarddisk(String harddisk) {
-        this.harddisk = harddisk;
+    public void setWarranty(String warranty) {
+        this.warranty = warranty;
     }
 
-    public void setCD_rom(String CD_rom) {
-        this.CD_rom = CD_rom;
+    public String getHardDisk() {
+        return hardDisk;
     }
 
-    public void setSound_card(String Sound_card) {
-        this.Sound_card = Sound_card;
+    public void setHardDisk(String hardDisk) {
+        this.hardDisk = hardDisk;
     }
 
-    public void setWarrenty(int warrenty) {
-        this.warrenty = warrenty;
+    public String getOs() {
+        return os;
     }
 
-    public void setTime(int time) {
-        this.time = time;
+    public void setOs(String os) {
+        this.os = os;
     }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    public String getMonitorRegNum() {
+        return monitorRegNum;
+    }
+
+    public void setMonitorRegNum(String monitorRegNum) {
+        this.monitorRegNum = monitorRegNum;
+    }
+
+    public String getProjectorRegNum() {
+        return projectorRegNum;
+    }
+
+    public void setProjectorRegNum(String projectorRegNum) {
+        this.projectorRegNum = projectorRegNum;
+    }
+
+    public String getSpeakerRegNum() {
+        return speakerRegNum;
+    }
+
+    public void setSpeakerRegNum(String speakerRegNum) {
+        this.speakerRegNum = speakerRegNum;
+    }
+
+    public String getMouseRegNum() {
+        return mouseRegNum;
+    }
+
+    public void setMouseRegNum(String mouseRegNum) {
+        this.mouseRegNum = mouseRegNum;
+    }
+
+    public String getKeyboardRegNum() {
+        return keyboardRegNum;
+    }
+
+    public void setKeyboardRegNum(String keyboardRegNum) {
+        this.keyboardRegNum = keyboardRegNum;
+    }
+
+    public String getMicRegNum() {
+        return micRegNum;
+    }
+
+    public void setMicRegNum(String micRegNum) {
+        this.micRegNum = micRegNum;
+    }
+
+    public String getScannerRegNum() {
+        return scannerRegNum;
+    }
+
+    public void setScannerRegNum(String scannerRegNum) {
+        this.scannerRegNum = scannerRegNum;
+    }
+    public String getUserNIC() {
+        return userNIC;
+    }
+
+    public void setUserNIC(String userNIC) {
+        this.userNIC = userNIC;
+    }
+
+
+
 }

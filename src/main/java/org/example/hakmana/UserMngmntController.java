@@ -6,6 +6,9 @@ import javafx.fxml.Initializable;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 import javafx.util.Duration;
+import org.example.hakmana.HeaderController;
+import org.example.hakmana.NavPanelController;
+import org.example.hakmana.PathFinderController;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -31,6 +34,7 @@ public class UserMngmntController implements Initializable {
         headerController.setTitleMsg("User management");
         navPanelController.setUserMngmntBorder();
         pathFinderController.setSearchBarVisible(false);
+        pathFinderController.setPathTxt("User Management");
         //create the event listener to the navigation panel ToggleButton() method
         navPanelController.collapseStateProperty().addListener((observable, oldValue, newValue) ->{
             if(newValue){

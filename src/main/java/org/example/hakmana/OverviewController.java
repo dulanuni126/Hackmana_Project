@@ -28,6 +28,7 @@ public class OverviewController implements Initializable{
             headerController.setTitleMsg("Overview History");
             navPanelController.setOverviewHistryBorder();
             pathFinderController.setSearchBarVisible(false);
+            pathFinderController.setPathTxt("Overview History");
             //create the event listener to the navigation panel ToggleButton() method
             navPanelController.collapseStateProperty().addListener((observable, oldValue, newValue) ->{
                 if(newValue){

@@ -9,5 +9,4 @@ module org.example.hakmana {
     exports org.example.hakmana;
 
 
-
 }

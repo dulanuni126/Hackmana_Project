@@ -14,6 +14,8 @@ import org.example.hakmana.DeviceInfoCardController;
 public class DeviceMngmntDevCardController implements Initializable{
 
     @FXML
+    private PathFinderController pathFinderController;
+    @FXML
     private NavPanelController navPanelController;//NavPanel custom component injector
     @FXML
     private HeaderController headerController;
@@ -21,8 +23,6 @@ public class DeviceMngmntDevCardController implements Initializable{
     private  VBox bodyComponet;//injector for VBox to expand
     @FXML
     private GridPane grid;
-    @FXML
-    private PathFinderController pathCmp;
     private int rowCount = 1;
     private int colCount = 0;
 
@@ -35,6 +35,9 @@ public class DeviceMngmntDevCardController implements Initializable{
         headerController.setFontSize("2.5em");
         headerController.setTitleMsg("Device Management");
         navPanelController.setDeviceMngmntdBorder();
+        pathFinderController.setPathTxt("Device Management>Desktop");
+        pathFinderController.setBckBtnScene("Scene/DeviceMngmntDevCard.fxml");
+
         //create the event listener to the navigation panel ToggleButton() method
         navPanelController.collapseStateProperty().addListener((observable, oldValue, newValue) ->{
             if(newValue){
@@ -43,8 +46,6 @@ public class DeviceMngmntDevCardController implements Initializable{
                 collapse();
             }
         });
-        pathCmp.setPathTxt("Device Management > Desktop Computers");
-
         addComponent();
         addComponent();
         addComponent();
