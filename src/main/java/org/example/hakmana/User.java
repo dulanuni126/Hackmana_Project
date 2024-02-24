@@ -1,4 +1,4 @@
-package org.example.hakmana.database;
+package org.example.hakmana;
 
 public class User {
     private String ID;
