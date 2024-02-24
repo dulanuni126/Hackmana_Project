@@ -1,4 +1,4 @@
-package org.example.hakmana.database;
+package org.example.hakmana;
 
 import javafx.animation.TranslateTransition;
 import javafx.fxml.FXML;
@@ -34,6 +34,7 @@ public class UserMngmntController implements Initializable {
         headerController.setTitleMsg("User management");
         navPanelController.setUserMngmntBorder();
         pathFinderController.setSearchBarVisible(false);
+        pathFinderController.setPathTxt("User Management");
         //create the event listener to the navigation panel ToggleButton() method
         navPanelController.collapseStateProperty().addListener((observable, oldValue, newValue) ->{
             if(newValue){

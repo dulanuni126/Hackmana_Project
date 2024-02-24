@@ -37,6 +37,7 @@ public class DashboardController implements Initializable {
         headerController.setTitleMsg("Welcome");
         navPanelController.setDashboardBorder();
         pathFinderController.setSearchBarVisible(false);
+
         //create the event listener to the navigation panel ToggleButton() method
         navPanelController.collapseStateProperty().addListener((observable, oldValue, newValue) ->{
             if(newValue){

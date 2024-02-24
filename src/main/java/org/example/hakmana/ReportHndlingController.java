@@ -31,6 +31,7 @@ public class ReportHndlingController implements Initializable {
         headerController.setTitleMsg("Report Handling");
         navPanelController.setReportHndlingdBorder();
         pathFinderController.setSearchBarVisible(false);
+        pathFinderController.setPathTxt("Report handling");
         //create the event listener to the navigation panel ToggleButton() method
         navPanelController.collapseStateProperty().addListener((observable, oldValue, newValue) ->{
             if(newValue){

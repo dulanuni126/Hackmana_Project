@@ -30,6 +30,7 @@ public class DevDetailedViewController implements Initializable {
         headerController.setTitleMsg("Device Management");
         navPanelController.setDeviceMngmntdBorder();
         pathFinderController.setSearchBarVisible(false);
+        pathFinderController.setBckBtnScene("Scene/DevDetailedView.fxml");
         //create the event listener to the navigation panel ToggleButton() method
         navPanelController.collapseStateProperty().addListener((observable, oldValue, newValue) ->{
             if(newValue){
