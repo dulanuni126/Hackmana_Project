@@ -1,96 +1,87 @@
 package org.example.hakmana;
 
 public class Printer {
-    private String reg_no;
-    private String Serial_no;
+    private String regNum;
+    private String serialNum;
+    private String paperInput;
+    private String paperOutput;
+    private String warranty;
     private String model;
-    private String brand;
-    private String toner_catridge;
-    private int warrenty;
-    private int paper_input;
-    private int paper_output;
-    private int paper_size;
     private String status;
+    private String userNIC;
 
-    public String getReg_no() {
-        return reg_no;
+    public Printer(String regNum, String serialNum, String paperInput, String paperOutput, String warranty, String model, String status, String userNIC) {
+        this.regNum = regNum;
+        this.serialNum = serialNum;
+        this.paperInput = paperInput;
+        this.paperOutput = paperOutput;
+        this.warranty = warranty;
+        this.model = model;
+        this.status = status;
+        this.userNIC = userNIC;
     }
 
-    public String getSerial_no() {
-        return Serial_no;
+    public String getRegNum() {
+        return regNum;
+    }
+
+    public void setRegNum(String regNum) {
+        this.regNum = regNum;
+    }
+
+    public String getSerialNum() {
+        return serialNum;
+    }
+
+    public void setSerialNum(String serialNum) {
+        this.serialNum = serialNum;
+    }
+
+    public String getPaperInput() {
+        return paperInput;
+    }
+
+    public void setPaperInput(String paperInput) {
+        this.paperInput = paperInput;
+    }
+
+    public String getPaperOutput() {
+        return paperOutput;
+    }
+
+    public void setPaperOutput(String paperOutput) {
+        this.paperOutput = paperOutput;
+    }
+
+    public String getWarranty() {
+        return warranty;
+    }
+
+    public void setWarranty(String warranty) {
+        this.warranty = warranty;
     }
 
     public String getModel() {
         return model;
     }
 
-    public String getBrand() {
-        return brand;
-    }
-
-    public String getToner_catridge() {
-        return toner_catridge;
-    }
-
-    public int getWarrenty() {
-        return warrenty;
-    }
-
-    public int getPaper_input() {
-        return paper_input;
-    }
-
-    public int getPaper_output() {
-        return paper_output;
-    }
-
-    public int getPaper_size() {
-        return paper_size;
+    public void setModel(String model) {
+        this.model = model;
     }
 
     public String getStatus() {
         return status;
     }
 
-    public void setReg_no(String reg_no) {
-        this.reg_no = reg_no;
-    }
-
-    public void setSerial_no(String Serial_no) {
-        this.Serial_no = Serial_no;
-    }
-
-    public void setModel(String model) {
-        this.model = model;
-    }
-
-    public void setBrand(String brand) {
-        this.brand = brand;
-    }
-
-    public void setToner_catridge(String toner_catridge) {
-        this.toner_catridge = toner_catridge;
-    }
-
-    public void setWarrenty(int warrenty) {
-        this.warrenty = warrenty;
-    }
-
-    public void setPaper_input(int paper_input) {
-        this.paper_input = paper_input;
-    }
-
-    public void setPaper_output(int paper_output) {
-        this.paper_output = paper_output;
-    }
-
-    public void setPaper_size(int paper_size) {
-        this.paper_size = paper_size;
-    }
-
     public void setStatus(String status) {
         this.status = status;
     }
 
+    public String getUserNIC() {
+        return userNIC;
+    }
 
+    public void setUserNIC(String userNIC) {
+        this.userNIC = userNIC;
+    }
 }
