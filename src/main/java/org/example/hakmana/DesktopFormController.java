@@ -7,7 +7,10 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.DialogPane;
+import javafx.scene.control.TextField;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
@@ -26,6 +29,9 @@ public class DesktopFormController implements Initializable {
     private ChoiceBox<String> NetworkCardChoiseBox;
 
     @FXML
+    private ChoiceBox<String> OSChoiseBox;
+
+    @FXML
     private ChoiceBox<String> SoundCardChoiseBox;
 
     @FXML
@@ -33,8 +39,53 @@ public class DesktopFormController implements Initializable {
 
     @FXML
     private ChoiceBox<String> TVCardChoiseBox;
+
     @FXML
-    private ChoiceBox<String> OSChoiseBox;
+    private TextField hardDiskTextField;
+
+    @FXML
+    private TextField keyboardRegNumTextField;
+
+    @FXML
+    private TextField micRegNumTextField;
+
+    @FXML
+    private TextField modelTextField;
+
+    @FXML
+    private TextField monitorRegNumTextField;
+
+    @FXML
+    private TextField mouseRegNumTextField;
+
+    @FXML
+    private TextField processorTextField;
+
+    @FXML
+    private TextField projectorRegNumTextField;
+
+    @FXML
+    private TextField purchasedFromTextField;
+
+    @FXML
+    private TextField ramTextField;
+
+    @FXML
+    private TextField regNumTextField;
+
+    @FXML
+    private TextField scannerRegNumTextField;
+
+    @FXML
+    private TextField serialNumTextField;
+
+    @FXML
+    private TextField speakerRegNumTextField;
+
+    @FXML
+    private TextField warrantyTextField;
+    @FXML
+    private ButtonType submitButtonType;
     private String[] deviceStatus={"Active","Repairing","Inactive"};
     private String[] YN={"Yes","No"};
     private String[] WinLin={"Windows","Linux"};
@@ -47,6 +98,7 @@ public class DesktopFormController implements Initializable {
         stage.show();
 
     }
+
 
 
     public void desktop(ActionEvent event) throws IOException {
@@ -67,6 +119,11 @@ public class DesktopFormController implements Initializable {
         SoundCardChoiseBox.getItems().addAll(OnboardDecicated);
         TVCardChoiseBox.getItems().addAll(OnboardDecicated);
         OSChoiseBox.getItems().addAll(WinLin);
+
+        DialogPane dialogPane = new DialogPane();
+        ButtonType customButtonType = new ButtonType("Submit");
+        dialogPane.getButtonTypes().addAll(customButtonType, ButtonType.CANCEL);
+
     }
 
 
