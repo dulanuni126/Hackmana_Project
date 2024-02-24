@@ -3,7 +3,7 @@
         -fx-pref-height: 75px;
         -fx-background-radius: 8px;
          -fx-background-color:white;
-         -fx-effect:dropshadow(box-shadow,4px 4px 4px 1px #00000021);
+        -fx-effect:dropshadow( gaussian,rgba(0, 0, 0, 0.13),4,1,4,4);
 
 
 }
@@ -19,7 +19,9 @@
         -fx-pref-height: 217px;
         -fx-background-radius: 8px, 0px, 0px, 8px;
         -fx-background-color:#FFFFFF;
-
+        -fx-effect:dropshadow( gaussian,rgba(0, 0, 0, 0.13),1,1,2,2);
+        -fx-border-color: black;
+        -fx-border-width: 0 0 2 0;
 
 }
 
@@ -93,7 +95,7 @@
         -fx-padding: 3px, 44px, 3px, 48px;
         -fx-background-radius: 0px, 0px, 8px, 8px;
         -fx-background-color: #B3B3B399;
-        -fx-effect:dropshadow(box-shadow,0px 4px 4px 0px #00000040);
+    -fx-effect:dropshadow( gaussian,rgba(0, 0, 0, 0.13),4,1,4,4);
         -fx-font-family: Lucida Bright;
         -fx-font-size: 20px;
         -fx-font-weight: 600px;

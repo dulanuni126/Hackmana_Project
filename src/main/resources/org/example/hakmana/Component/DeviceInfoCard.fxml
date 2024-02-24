@@ -45,7 +45,7 @@
                                     <Font size="17.0" />
                                  </font>
                               </Label>
-                              <Button fx:id="DetailedViewBtn" mnemonicParsing="false" onAction="#DetailedViewSceneLoad" prefHeight="25.0" prefWidth="124.0" text="View more" />
+                              <Button fx:id="DetailedViewBtn" mnemonicParsing="false" onAction="#DetailedViewSceneLoad" prefHeight="25.0" prefWidth="124.0" styleClass="moreInfoBtn" stylesheets="@CSS/DeviceInfoCard.css" text="more Info" />
                            </children></Pane>
                         <TextField fx:id="devIdTxt" editable="false" layoutX="77.0" layoutY="114.0" prefHeight="26.0" prefWidth="139.0" />
                         <TextField fx:id="userTxt" editable="false" layoutX="77.0" layoutY="159.0" prefHeight="26.0" prefWidth="139.0" />
@@ -76,7 +76,7 @@
                         </Pane>
                         <ImageView fitHeight="71.0" fitWidth="124.0" layoutX="53.0" layoutY="14.0" opacity="0.2" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../Scene/Images/devicePhoto.jpg" />
+                              <Image url="@Images/devicePhoto.jpg" />
                            </image>
                         </ImageView>
                      </children>

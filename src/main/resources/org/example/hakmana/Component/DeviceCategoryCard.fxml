@@ -4,7 +4,6 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Text?>
 
@@ -16,10 +15,8 @@
             </image>
         </ImageView>
         <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-border-radius: 10; -fx-background-radius: 10;">
-            <Pane layoutX="29.0" layoutY="21.0" prefHeight="25.0" prefWidth="115.0" style="-fx-background-color: F179BB; -fx-background-radius: 50;" AnchorPane.bottomAnchor="21.0" AnchorPane.leftAnchor="26.0" AnchorPane.rightAnchor="26.0" AnchorPane.topAnchor="21.0">
-                <Text fx:id="DevText" fill="WHITE" layoutX="32.0" layoutY="18.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Desktop" />
-            <Button fx:id="desktopBtn" mnemonicParsing="false" onAction="#testCall" prefHeight="25.0" prefWidth="117.0" text="Desktop" />
-            </Pane>
+             <Text fx:id="DevText" fill="WHITE" layoutX="58.0" layoutY="39.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Desktop" />
+         <Button fx:id="desktopBtn" layoutX="26.0" layoutY="21.0" mnemonicParsing="false" onAction="#DeiveInfoCall" prefHeight="25.0" prefWidth="117.0" stylesheets="@CSS/DeviceCategoryCard.css" text="Desktop" />
         </AnchorPane>
     </VBox>
 </fx:root>
