@@ -1,4 +1,4 @@
-package org.example.hakmana;
+package org.example.hakmana.model;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
