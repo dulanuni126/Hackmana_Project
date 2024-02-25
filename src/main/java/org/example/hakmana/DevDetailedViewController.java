@@ -5,8 +5,10 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.util.Duration;
 
@@ -25,9 +27,8 @@ public class DevDetailedViewController implements Initializable {
     private  VBox bodyComponet;//injector for VBox to expand
     @FXML
     private PathFinderController pathFinderController;
-
     @FXML
-    private GridPane grid;
+    private ScrollPane formPane;
 
     private  TranslateTransition bodyExpand;//Animation object refernce
     @FXML
@@ -73,7 +74,8 @@ public class DevDetailedViewController implements Initializable {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlFile));
             Parent root = loader.load();
-            grid.getChildren().add(root);
+            formPane.setContent(root);
+
         } catch (IOException e) {
             e.printStackTrace();
         }
