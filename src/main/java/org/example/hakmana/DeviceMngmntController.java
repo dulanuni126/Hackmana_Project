@@ -48,10 +48,10 @@ public class DeviceMngmntController implements Initializable {
             }
         });
 
-        for(int i=0;i<5;i++){
+        for(int i=0;i<6;i++){
             addComponent();
         }
-        addLastComponent();
+
 
 
     }
@@ -63,23 +63,6 @@ public class DeviceMngmntController implements Initializable {
         // Add the label to the grid
         grid.add(card, colCount, rowCount);
 
-
-        // Increment the row count for the next component
-        colCount++;
-
-        // If the row count is a multiple of 3, increment the column count
-        if (colCount % 4 == 0) {
-            rowCount++;
-            colCount = 0;
-        }
-
-    }
-    private void addLastComponent() {
-        AddDevButtonController addDevButtonController=new AddDevButtonController();
-
-
-        // Add the label to the grid
-        grid.add(addDevButtonController, colCount, rowCount);
 
         // Increment the row count for the next component
         colCount++;
