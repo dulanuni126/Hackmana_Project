@@ -32,6 +32,8 @@ public class UserMngmntController implements Initializable {
 
         headerController.setFontSize("2.5em");
         headerController.setTitleMsg("User management");
+        headerController.setUsernameMsg("Mr.Udara Mahanama");
+        headerController.setDesignationMsg("Development Officer");
         navPanelController.setUserMngmntBorder();
         pathFinderController.setSearchBarVisible(false);
         pathFinderController.setPathTxt("User Management");

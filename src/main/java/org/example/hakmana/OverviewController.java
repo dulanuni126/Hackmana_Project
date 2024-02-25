@@ -26,6 +26,8 @@ public class OverviewController implements Initializable{
         public void initialize(URL location, ResourceBundle resources) {
             headerController.setFontSize("2.5em");
             headerController.setTitleMsg("Overview History");
+            headerController.setUsernameMsg("Mr.Udara Mahanama");
+            headerController.setDesignationMsg("Development Officer");
             navPanelController.setOverviewHistryBorder();
             pathFinderController.setSearchBarVisible(false);
             pathFinderController.setPathTxt("Overview History");

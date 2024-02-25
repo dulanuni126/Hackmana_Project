@@ -43,7 +43,7 @@
             </HBox>
             <HBox alignment="BOTTOM_CENTER" prefHeight="25.0" prefWidth="221.0">
                <children>
-                  <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="අපේ දැ ක්ම" textAlignment="CENTER" wrappingWidth="195.61602783203125">
+                  <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="අපේ දැක්ම" textAlignment="CENTER" wrappingWidth="195.61602783203125">
                      <font>
                         <Font size="16.0" />
                      </font>
@@ -52,7 +52,7 @@
             </HBox>
             <HBox alignment="CENTER" prefHeight="70.0" prefWidth="221.0">
                <children>
-                  <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="ආර්ථික, සමා ජීය, සංස්කෘ ත ධනා ත්මක සහජීවනය තුළින් ජීවයෙන් පිරි ප්‍රදේශයක්." textAlignment="CENTER" wrappingWidth="217.61602783203125">
+                  <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="ආර්ථික, සමාජීය, සංස්කෘත ධනාත්මක සහජීවනය තුළින් ජීවයෙන් පිරි ප්‍රදේශයක්." textAlignment="CENTER" wrappingWidth="217.61602783203125">
                      <font>
                         <Font size="16.0" />
                      </font>
@@ -88,7 +88,7 @@
                   <Font size="16.0" />
                </font>
             </Text>
-            <TextField layoutX="132.0" layoutY="144.0" prefHeight="25.0" prefWidth="247.0" promptText="Username" />
+            <TextField fx:id="usrNameFeild" layoutX="132.0" layoutY="144.0" prefHeight="25.0" prefWidth="247.0" promptText="Username" />
             <CheckBox layoutX="137.0" layoutY="248.0" mnemonicParsing="false" text="Remember" textFill="#616161">
                <font>
                   <Font size="14.0" />
@@ -100,10 +100,10 @@
                </font>
             </Text>
             <Button fx:id="login" layoutX="132.0" layoutY="290.0" mnemonicParsing="false" onAction="#DashboardSceneLoad" prefHeight="33.0" prefWidth="247.0" styleClass="loginBtnHvrStyle" stylesheets="@CSS/login.css" text="LOG IN" textFill="WHITE" />
-            <PasswordField layoutX="131.0" layoutY="189.0" prefHeight="26.0" prefWidth="247.0" promptText="Password" />
+            <PasswordField fx:id="psswrdFeild" layoutX="131.0" layoutY="189.0" prefHeight="26.0" prefWidth="247.0" promptText="Password" />
          </children>
       </Pane>
-      <Text layoutX="376.0" layoutY="49.0" strokeType="OUTSIDE" strokeWidth="0.0" text="හක්මණ ප්‍රා දේශීය සභා ව" wrappingWidth="307.61602783203125">
+      <Text layoutX="376.0" layoutY="49.0" strokeType="OUTSIDE" strokeWidth="0.0" text="හක්මණ ප්‍රාදේශීය සභාව" wrappingWidth="307.61602783203125">
          <font>
             <Font size="19.0" />
          </font>
@@ -113,7 +113,7 @@
             <Font size="15.0" />
          </font>
       </Text>
-      <Text layoutX="420.0" layoutY="507.0" opacity="0.5" strokeType="OUTSIDE" strokeWidth="0.0" text="හක්මණ ප්‍රා දේශීය සභා ව" wrappingWidth="307.61602783203125">
+      <Text layoutX="420.0" layoutY="507.0" opacity="0.5" strokeType="OUTSIDE" strokeWidth="0.0" text="හක්මණ ප්‍රාදේශීය සභාව" wrappingWidth="307.61602783203125">
          <font>
             <Font size="15.0" />
          </font>

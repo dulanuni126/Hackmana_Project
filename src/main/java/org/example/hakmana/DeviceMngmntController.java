@@ -36,6 +36,8 @@ public class DeviceMngmntController implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
         headerController.setFontSize("2.5em");
         headerController.setTitleMsg("Device Management");
+        headerController.setUsernameMsg("Mr.Udara Mahanama");
+        headerController.setDesignationMsg("Development Officer");
         navPanelController.setDeviceMngmntdBorder();
         pathFinderController.setSearchBarVisible(false);
         pathFinderController.setPathTxt("Device Management");
