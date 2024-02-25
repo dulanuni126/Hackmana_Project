@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Text?>
 
-<fx:root prefHeight="187.0" prefWidth="170.0" style="-fx-border-color: BD00FF;  -fx-border-radius: 10; -fx-background-radius: 10; -fx-border-width: 2;" type="AnchorPane" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+<fx:root fx:id="root" prefHeight="187.0" onMouseEntered="#onMouseEntered" onMouseExited="#onMouseExited" prefWidth="170.0" style="-fx-border-color: BD00FF;  -fx-border-radius: 10; -fx-background-radius: 10; -fx-border-width: 2;" type="AnchorPane" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
     <VBox layoutX="5.0" layoutY="6.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="185.0" prefWidth="169.0" style="-fx-border-radius: 10; -fx-background-radius: 10;">
         <ImageView fx:id="devImage" fitHeight="117.0" fitWidth="173.0" pickOnBounds="true" preserveRatio="true">
             <image>

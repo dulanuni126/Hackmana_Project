@@ -21,9 +21,11 @@ import java.util.ResourceBundle;
 public class DeviceCategoryCardController extends AnchorPane implements Initializable {
     private Stage stage;
     private Scene scene;
-    private Parent root;
+    private Parent sceneRoot;
     @FXML
     private Button desktopBtn;
+    @FXML
+    private AnchorPane root;
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
@@ -39,6 +41,17 @@ public class DeviceCategoryCardController extends AnchorPane implements Initiali
         } catch (IOException exception) {
             throw new RuntimeException(exception);
         }
+    }
+    @FXML
+    private void onMouseEntered() {
+        root.setScaleX(1.1);
+        root.setScaleY(1.1);
+    }
+
+    @FXML
+    private void onMouseExited() {
+        root.setScaleX(1.0);
+        root.setScaleY(1.0);
     }
     @FXML
     private Text DevText;
@@ -67,9 +80,9 @@ public class DeviceCategoryCardController extends AnchorPane implements Initiali
     }
 
     public void DeiveInfoCall(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("Scene/DeviceMngmntDevCard.fxml"));
+        Parent sceneRoot = FXMLLoader.load(getClass().getResource("Scene/DeviceMngmntDevCard.fxml"));
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-        scene = new Scene(root);
+        scene = new Scene(sceneRoot);
         stage.setScene(scene);
         stage.show();
     }
