@@ -11,6 +11,9 @@ import java.net.URL;
 import java.security.PrivilegedAction;
 import java.util.ResourceBundle;
 import org.example.hakmana.DeviceInfoCardController;
+import org.example.hakmana.model.DatabaseConnection;
+import org.example.hakmana.model.Desktop;
+
 public class DeviceMngmntDevCardController implements Initializable{
 
     @FXML
@@ -47,45 +50,31 @@ public class DeviceMngmntDevCardController implements Initializable{
             }
         });
         addComponent();
-        addComponent();
-        addComponent();
-        addComponent();
-        addComponent();
-        addComponent();
-        addComponent();
-        addComponent();
-        addComponent();
-        addComponent();
-        addComponent();
-        addComponent();
-        addComponent();
-        addComponent();
-        addComponent();
-        addComponent();
-        addComponent();
-        addComponent();
         addLastComponent();
     }
     @FXML
     private void addComponent() {
-        // Create a new label
-        DeviceInfoCardController card=new DeviceInfoCardController();
-        card.setNote("Error");
-        card.setUser("Nimal");
-        card.setBrand("hP");
-        card.setDevId("Hak/01");
+        DatabaseConnection databaseConnection=DatabaseConnection.getInstance();
+        Desktop[] desktops =databaseConnection.getDesktops();
 
+        DeviceInfoCardController card;
+        for (Desktop desktop : desktops) {
+            card=new DeviceInfoCardController();
+            card.setUser(desktop.getUserName());
+            card.setBrand(desktop.getModel());
+            card.setDevId(desktop.getRegNum());
 
-        // Add the label to the grid
-        grid.add(card, colCount, rowCount);
+            // Add the label to the grid
+            grid.add(card, colCount, rowCount);
 
-        // Increment the row count for the next component
-        colCount++;
+            // Increment the row count for the next component
+            colCount++;
 
-        // If the row count is a multiple of 3, increment the column count
-        if (colCount % 3 == 0) {
-            rowCount++;
-            colCount = 0;
+            // If the row count is a multiple of 3, increment the column count
+            if (colCount % 3 == 0) {
+                rowCount++;
+                colCount = 0;
+            }
         }
 
     }

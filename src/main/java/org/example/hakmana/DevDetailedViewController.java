@@ -47,7 +47,7 @@ public class DevDetailedViewController implements Initializable {
                 collapse();
             }
         });
-        loadForm("Scene/DesktopForm.fxml");
+        loadForm("Scene/DesktopDetails.fxml");
     }
 
     private void Animation(double animStartPos,double animEndPos){
