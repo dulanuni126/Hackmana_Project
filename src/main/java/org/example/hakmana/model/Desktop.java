@@ -83,6 +83,9 @@ public class Desktop {
         this.scannerRegNum = scannerRegNum;
         this.userNIC=userNIC;
     }
+    public Desktop(){
+
+    }
 
 
     public String getRegNum() {
