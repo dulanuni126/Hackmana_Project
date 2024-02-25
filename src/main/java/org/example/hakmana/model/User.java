@@ -37,7 +37,8 @@ public class User {
     public void setGmail(String gmail) {
         this.gmail = gmail;
     }
-
+    public User() {
+    }
     public User(String nic, String name, String title, String gmail) {
         this.nic = nic;
         this.name = name;

@@ -2,10 +2,15 @@ package org.example.hakmana;
 
 import javafx.animation.*;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
 import javafx.util.Duration;
+
+import java.io.IOException;
 import java.net.URL;
 import java.security.PrivilegedAction;
 import java.util.ResourceBundle;
@@ -20,6 +25,9 @@ public class DevDetailedViewController implements Initializable {
     private  VBox bodyComponet;//injector for VBox to expand
     @FXML
     private PathFinderController pathFinderController;
+
+    @FXML
+    private GridPane grid;
 
     private  TranslateTransition bodyExpand;//Animation object refernce
     @FXML
@@ -39,6 +47,7 @@ public class DevDetailedViewController implements Initializable {
                 collapse();
             }
         });
+        loadForm("Scene/DesktopForm.fxml");
     }
 
     private void Animation(double animStartPos,double animEndPos){
@@ -59,6 +68,15 @@ public class DevDetailedViewController implements Initializable {
         Animation(-244, 0);
         bodyComponet.setMinWidth(bodyComponet.getWidth()-244);
         bodyComponet.setMinWidth(748);
+    }
+    private void loadForm(String fxmlFile) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlFile));
+            Parent root = loader.load();
+            grid.getChildren().add(root);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
 

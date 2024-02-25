@@ -1,0 +1,11 @@
+.addBtn{
+    -fx-background-color: #F179BB;
+    -fx-background-radius: 50;
+}
+.addBtn:hover{
+    -fx-transition: color 0.8s ease-in-out;
+    -fx-background-color:black;
+    -fx-text-fill: white;
+    -fx-cursor: hand; /* Change cursor to pointer */
+    -fx-font-weight:800;
+}

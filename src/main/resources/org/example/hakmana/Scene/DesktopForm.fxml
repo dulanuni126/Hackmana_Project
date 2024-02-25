@@ -71,7 +71,7 @@
             <TextField fx:id="monitorRegNumTextField" GridPane.columnIndex="1" GridPane.rowIndex="11" />
             <TextField fx:id="projectorRegNumTextField" GridPane.columnIndex="1" GridPane.rowIndex="12" />
             <TextField fx:id="speakerRegNumTextField" GridPane.columnIndex="1" GridPane.rowIndex="13" />
-            <Button maxHeight="26.0" maxWidth="90.0" minHeight="26.0" minWidth="90.0" mnemonicParsing="false" onAction="#addUser" prefHeight="26.0" prefWidth="90.0" text="ADD USER" GridPane.columnIndex="1" GridPane.hgrow="ALWAYS" GridPane.rowIndex="15">
+            <Button fx:id="addUserButton" maxHeight="26.0" maxWidth="90.0" minHeight="26.0" minWidth="90.0" mnemonicParsing="false" onAction="#addUser" prefHeight="26.0" prefWidth="90.0" text="ADD USER" GridPane.columnIndex="1" GridPane.hgrow="ALWAYS" GridPane.rowIndex="15">
                <GridPane.margin>
                   <Insets left="50.0" />
                </GridPane.margin>
@@ -116,11 +116,11 @@
             <ChoiceBox fx:id="SoundCardChoiseBox" layoutX="873.0" layoutY="320.0" prefWidth="150.0" GridPane.columnIndex="3" GridPane.rowIndex="6" />
             <ChoiceBox fx:id="FloppyDiskChoiseBox" layoutX="873.0" layoutY="283.0" prefWidth="150.0" GridPane.columnIndex="3" GridPane.rowIndex="5" />
             <ChoiceBox fx:id="OSChoiseBox" layoutX="200.0" layoutY="357.0" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="8" />
-             <Button fx:id="submitButton" text="Submit" GridPane.columnIndex="1" GridPane.rowIndex="16">
+             <Button fx:id="submitButton" onAction="#submitButtonOnAction" text="Submit" GridPane.columnIndex="1" GridPane.rowIndex="16">
                <GridPane.margin>
                   <Insets left="300.0" />
                </GridPane.margin></Button>
-             <Button fx:id="cancelButton" text="Cancel" GridPane.columnIndex="2" GridPane.rowIndex="16" />
+             <Button fx:id="cancelButton" onAction="#cancelButtonOnAction" text="Cancel" GridPane.columnIndex="2" GridPane.rowIndex="16" />
          </children>
          <padding>
             <Insets left="10.0" right="50.0" top="20.0" />

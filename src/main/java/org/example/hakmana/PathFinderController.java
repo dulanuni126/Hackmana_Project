@@ -83,11 +83,7 @@ public class PathFinderController extends VBox implements Initializable {
         continuousPressed=false;
     }
     public void goBack(ActionEvent event) throws IOException {
-//       System.out.println("Go back button pressed");
-//        System.out.println(sceneList);
-//        System.out.println(sceneListCounter);
-
-
+        String listScenename = "Scene/dashboard.fxml";
         if(!sceneList.isEmpty()) {
             //To remove current scene from the list.
             //Because current scene is also added to the list
@@ -95,21 +91,19 @@ public class PathFinderController extends VBox implements Initializable {
                 sceneList.removeLast();
                 continuousPressed = true;
             }
-
-            String listScenename = sceneList.getLast();
-            Parent root = FXMLLoader.load(getClass().getResource(listScenename));
+            listScenename = sceneList.getLast();
             sceneList.removeLast();
             sceneListCounter--;
 
-//        System.out.println(sceneListCounter);
-//        System.out.println(sceneList);
-
-            stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-            scene = new Scene(root);
-            stage.setScene(scene);
-            stage.show();
         }else{
             System.out.println("list is empty");
         }
+
+        Parent root = FXMLLoader.load(getClass().getResource(listScenename));
+        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+
     }
 }

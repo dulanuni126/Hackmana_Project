@@ -83,7 +83,7 @@ public class DeviceMngmntDevCardController implements Initializable{
         colCount++;
 
         // If the row count is a multiple of 3, increment the column count
-        if (colCount % 4 == 0) {
+        if (colCount % 3 == 0) {
             rowCount++;
             colCount = 0;
         }
@@ -100,7 +100,7 @@ public class DeviceMngmntDevCardController implements Initializable{
         colCount++;
 
         // If the row count is a multiple of 3, increment the column count
-        if (colCount % 4 == 0) {
+        if (colCount % 3 == 0) {
             rowCount++;
             colCount = 0;
         }
