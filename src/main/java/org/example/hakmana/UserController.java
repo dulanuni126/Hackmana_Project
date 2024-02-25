@@ -2,10 +2,16 @@ package org.example.hakmana;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import org.example.hakmana.model.User;
 
-public class UserController {
+import java.net.URL;
+import java.util.ResourceBundle;
+
+public class UserController implements Initializable {
     @FXML
     private TextField gmailTextField;
 
@@ -17,18 +23,13 @@ public class UserController {
 
     @FXML
     private TextField titleTextField;
+    @FXML
+    private Button assignUserButton;
     private User user;
 
+    public static boolean isAssignUserButtonClicked = false;
 
 
-    // Method to pass data to DesktopFormController
-    public void passDataToDesktopFormController() {
-        // Get data from user form
-        String data = "Data from user form";
-
-        // Call method in DesktopFormController to pass data
-       // desktopFormController.receiveDataFromUserForm(data);
-    }
 
     public void assignUserButtonOnAction(ActionEvent event) {
         user=new User();
@@ -39,5 +40,19 @@ public class UserController {
 
         DesktopFormController.user=user;
 
+        ((Node) event.getSource()).setDisable(true);
+        isAssignUserButtonClicked = true;
+
+    }
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        nicTextField.textProperty().addListener((observable, oldValue, newValue) -> {
+            // Enable the submitButton only if regNumTextField is not empty
+            assignUserButton.setDisable(newValue.isEmpty());
+        });
+
+        // Disable the submitButton initially if regNumTextField is empty
+        assignUserButton.setDisable(nicTextField.getText().isEmpty());
     }
 }
