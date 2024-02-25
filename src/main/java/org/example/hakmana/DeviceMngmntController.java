@@ -3,6 +3,7 @@ package org.example.hakmana;
 import javafx.animation.*;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
@@ -48,21 +49,28 @@ public class DeviceMngmntController implements Initializable {
             }
         });
 
-        for(int i=0;i<6;i++){
-            addComponent();
-        }
 
+        addComponent("Desktop", new Image(getClass().getResourceAsStream("Scene/Images/Desktop.png")),"Scene/DeviceMngmntDevCard.fxml",false);
+        addComponent("Photocopy Machines",new Image(getClass().getResourceAsStream("Scene/Images/photoCopy.png")),"Scene/DeviceMngmntDevCard.fxml",true);
+        addComponent("Monitors",new Image(getClass().getResourceAsStream("Scene/Images/monitor.png")),"Scene/DeviceMngmntDevCard.fxml",true);
+        addComponent("Projectors",new Image(getClass().getResourceAsStream("Scene/Images/projector.png")),"Scene/DeviceMngmntDevCard.fxml",true);
+        addComponent("Laptops",new Image(getClass().getResourceAsStream("Scene/Images/laptopcat.png")),"Scene/DeviceMngmntDevCard.fxml",true);
+        addComponent("Other Devices",new Image(getClass().getResourceAsStream("Scene/Images/other.png")),"Scene/DeviceMngmntDevCard.fxml",true);
 
 
     }
+
     @FXML
-    private void addComponent() {
+    private void addComponent(String catTitle, Image catImage,String scnelink,boolean stateVal) {
         // Create a new label
         DeviceCategoryCardController card=new DeviceCategoryCardController();
+        card.setDevName(catTitle);
+        card.setDeviceImage(catImage);
+        card.setDevCatSceneName(scnelink);
+        card.disableBtn(stateVal);
 
         // Add the label to the grid
         grid.add(card, colCount, rowCount);
-
 
         // Increment the row count for the next component
         colCount++;
