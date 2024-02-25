@@ -146,6 +146,8 @@ public class DesktopFormController implements Initializable {
         submitButton.setDisable(regNumTextField.getText().isEmpty());
         addUserButton.setDisable(regNumTextField.getText().isEmpty());
 
+        
+
     }
 
 
