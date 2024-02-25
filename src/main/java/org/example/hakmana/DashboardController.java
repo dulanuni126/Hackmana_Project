@@ -45,6 +45,8 @@ public class DashboardController implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
         headerController.setFontSize("3em");
         headerController.setTitleMsg("Welcome");
+        headerController.setUsernameMsg("Mr.Udara Mahanama");
+        headerController.setDesignationMsg("Development Officer");
         navPanelController.setDashboardBorder();
         pathFinderController.setSearchBarVisible(false);
 

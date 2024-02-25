@@ -37,6 +37,8 @@ public class DeviceMngmntDevCardController implements Initializable{
 
         headerController.setFontSize("2.5em");
         headerController.setTitleMsg("Device Management");
+        headerController.setUsernameMsg("Mr.Udara Mahanama");
+        headerController.setDesignationMsg("Development Officer");
         navPanelController.setDeviceMngmntdBorder();
         pathFinderController.setPathTxt("Device Management>Desktop");
         pathFinderController.setBckBtnScene("Scene/DeviceMngmntDevCard.fxml");
