@@ -7,10 +7,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.ButtonType;
-import javafx.scene.control.ChoiceBox;
-import javafx.scene.control.DialogPane;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import org.example.hakmana.model.DatabaseConnection;
@@ -34,6 +31,8 @@ public class DesktopFormController implements Initializable {
 
     @FXML
     private ChoiceBox<String> OSChoiseBox;
+    @FXML
+    private Button submitButton;
 
     @FXML
     private ChoiceBox<String> SoundCardChoiseBox;
@@ -88,6 +87,8 @@ public class DesktopFormController implements Initializable {
 
     @FXML
     private TextField warrantyTextField;
+    @FXML
+    private Button addUserButton;
 
     private String[] deviceStatus={"Active","Repairing","Inactive"};
     private String[] YN={"Yes","No"};
@@ -96,16 +97,16 @@ public class DesktopFormController implements Initializable {
 
     public static User user;
     public void addUser(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("Scene/user.fxml"));
-        Stage stage=new Stage();
-        stage.initModality(Modality.APPLICATION_MODAL);
-        stage.setScene(new Scene(root));
-        stage.show();
+        ((Node) event.getSource()).setDisable(UserController.isAssignUserButtonClicked);
 
-    }
+        if(!UserController.isAssignUserButtonClicked){
+            Parent root = FXMLLoader.load(getClass().getResource("Scene/user.fxml"));
+            Stage stage=new Stage();
+            stage.initModality(Modality.APPLICATION_MODAL);
+            stage.setScene(new Scene(root));
+            stage.show();
+        }
 
-    public static void setUserFromUserController(User user1) {
-        user = user1;
     }
 
 
@@ -134,6 +135,16 @@ public class DesktopFormController implements Initializable {
         DialogPane dialogPane = new DialogPane();
         ButtonType customButtonType = new ButtonType("Submit");
         dialogPane.getButtonTypes().addAll(customButtonType, ButtonType.CANCEL);
+
+        regNumTextField.textProperty().addListener((observable, oldValue, newValue) -> {
+            // Enable the submitButton only if regNumTextField is not empty
+            submitButton.setDisable(newValue.isEmpty());
+            addUserButton.setDisable(newValue.isEmpty() );
+        });
+
+        // Disable the submitButton initially if regNumTextField is empty
+        submitButton.setDisable(regNumTextField.getText().isEmpty());
+        addUserButton.setDisable(regNumTextField.getText().isEmpty());
 
     }
 
@@ -171,9 +182,37 @@ public class DesktopFormController implements Initializable {
         }
         System.out.println("Done");
 
+
+
+        // Reset the form
+        regNumTextField.clear();
+        serialNumTextField.clear();
+        modelTextField.clear();
+        purchasedFromTextField.clear();
+        ramTextField.clear();
+        processorTextField.clear();
+        warrantyTextField.clear();
+        hardDiskTextField.clear();
+        OSChoiseBox.getSelectionModel().clearSelection();
+        StatusChoiseBox.getSelectionModel().clearSelection();
+        monitorRegNumTextField.clear();
+        projectorRegNumTextField.clear();
+        speakerRegNumTextField.clear();
+        mouseRegNumTextField.clear();
+        keyboardRegNumTextField.clear();
+        SoundCardChoiseBox.getSelectionModel().clearSelection();
+        TVCardChoiseBox.getSelectionModel().clearSelection();
+        NetworkCardChoiseBox.getSelectionModel().clearSelection();
+        micRegNumTextField.clear();
+
+        UserController.isAssignUserButtonClicked=false;
+        addUserButton.setDisable(false);
+
+
     }
  public void cancelButtonOnAction(ActionEvent event) {
-     System.out.println("Done");
+     Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+     stage.close();
 
  }
 
