@@ -6,6 +6,8 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import org.example.hakmana.model.DatabaseConnection;
+import org.example.hakmana.model.Desktop;
 import org.example.hakmana.model.User;
 
 import java.net.URL;
@@ -44,12 +46,36 @@ public class UserController implements Initializable {
         isAssignUserButtonClicked = true;
 
     }
+    private User isNicAvailable(String nic) {
+        DatabaseConnection databaseConnection = DatabaseConnection.getInstance();
+        User[] users = databaseConnection.getUsers();
+
+        for (User user : users) {
+            if (user.getNic().equalsIgnoreCase(nic)) {
+                return user;
+            }
+        }
+        return null;
+    }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         nicTextField.textProperty().addListener((observable, oldValue, newValue) -> {
             // Enable the submitButton only if regNumTextField is not empty
             assignUserButton.setDisable(newValue.isEmpty());
+        });
+        nicTextField.textProperty().addListener((observable, oldValue, newValue) -> {
+            // Enable the submitButton only if regNumTextField is not empty
+            assignUserButton.setDisable(newValue.isEmpty());
+
+            // Check if the newValue is available in the users array
+            User user = isNicAvailable(newValue);
+            if (user != null) {
+                // Auto-fill the other text fields
+                gmailTextField.setText(user.getGmail());
+                nameTextField.setText(user.getName());
+                titleTextField.setText(user.getTitle());
+            }
         });
 
         // Disable the submitButton initially if regNumTextField is empty
