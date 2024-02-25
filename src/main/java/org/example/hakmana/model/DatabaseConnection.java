@@ -125,4 +125,31 @@ public class DatabaseConnection {
         return desktops.toArray(new Desktop[0]);
     }
 
+    public User[] getUsers() {
+        List<User> users = new ArrayList<>();
+        try {
+            String sql = "SELECT * FROM user";
+            PreparedStatement preparedStatement = connection.prepareStatement(sql);
+
+            // Execute the SQL query and get the result set
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            // Iterate through the result set and create Desktop and User objects
+            while (resultSet.next()) {
+                User  user = new User();
+                user.setNic(resultSet.getString("nic"));
+                user.setName(resultSet.getString("name"));
+                user.setTitle(resultSet.getString("title"));
+                user.setGmail(resultSet.getString("gmail"));
+
+
+                users.add(user);
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
+        return users.toArray(new User[0]);
+    }
+
 }
