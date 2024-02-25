@@ -16,7 +16,7 @@
                   <Image url="@../Scene/Images/addButton.png" />
                </image>
             </ImageView>
-            <Button mnemonicParsing="false" styleClass="addBtn" text="Add new Device">
+            <Button fx:id="addDeviceBtn" mnemonicParsing="false" onAction="#addDeviceBtnDialogOpen" styleClass="addBtn" text="Add new Device">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font>

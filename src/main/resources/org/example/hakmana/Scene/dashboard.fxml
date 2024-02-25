@@ -290,7 +290,7 @@
                                                             </Label>
                                                             <VBox prefHeight="200.0" prefWidth="100.0" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" GridPane.vgrow="ALWAYS">
                                                                <children>
-                                                                  <JFXButton styleClass="Button" text="Add a device">
+                                                                  <JFXButton fx:id="addDeviceBtn" onAction="#addDeviceBtnDialogOpen" styleClass="Button" text="Add a device">
                                                                      <graphic>
                                                                         <ImageView fitHeight="39.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
                                                                            <image>

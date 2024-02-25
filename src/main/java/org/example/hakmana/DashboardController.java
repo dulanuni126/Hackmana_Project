@@ -2,15 +2,24 @@ package org.example.hakmana;
 
 import javafx.animation.*;
 import javafx.application.Platform;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
+import javafx.scene.control.Dialog;
+import javafx.scene.control.DialogPane;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import javafx.util.Duration;
+
+import java.io.IOException;
 import java.net.URL;
+import java.util.Optional;
 import java.util.ResourceBundle;
 
 public class DashboardController implements Initializable {
@@ -26,7 +35,8 @@ public class DashboardController implements Initializable {
     private  VBox bodyComponet;//injector for VBox to expand
     @FXML
     private Stage stage;
-
+    @FXML
+    private Button addDeviceBtn;
     private  TranslateTransition bodyExpand;//Animation object refernce
 
     @FXML
@@ -68,6 +78,18 @@ public class DashboardController implements Initializable {
         Double W1=bodyComponet.getWidth()-244;
         Animation(-244, 0);
         bodyComponet.setMinWidth(W1);
+    }
+    public void addDeviceBtnDialogOpen(ActionEvent event) throws IOException {
+        FXMLLoader addDevicefxmlLoad = new FXMLLoader();
+        addDevicefxmlLoad.setLocation(getClass().getResource("Scene/DesktopForm.fxml"));
+        DialogPane addDeviceDialogPane=addDevicefxmlLoad.load();
+
+        Dialog<ButtonType> dialog=new Dialog<>();
+        dialog.setDialogPane(addDeviceDialogPane);
+        dialog.setTitle("Contact Us");
+
+        Optional<ButtonType> clickedButton=dialog.showAndWait();
+
     }
 }
 

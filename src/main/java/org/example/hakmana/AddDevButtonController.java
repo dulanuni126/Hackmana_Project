@@ -1,15 +1,24 @@
 package org.example.hakmana;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
+import javafx.scene.control.Dialog;
+import javafx.scene.control.DialogPane;
 import javafx.scene.layout.AnchorPane;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.Optional;
 import java.util.ResourceBundle;
 
 public class AddDevButtonController extends AnchorPane implements Initializable {
+
+    @FXML
+    private Button addDeviceBtn;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -42,5 +51,17 @@ public class AddDevButtonController extends AnchorPane implements Initializable 
     private void onMouseExited() {
         root.setScaleX(1.0);
         root.setScaleY(1.0);
+    }
+    public void addDeviceBtnDialogOpen(ActionEvent event) throws IOException {
+        FXMLLoader addDevicefxmlLoad = new FXMLLoader();
+        addDevicefxmlLoad.setLocation(getClass().getResource("Scene/DesktopForm.fxml"));
+        DialogPane addDeviceDialogPane=addDevicefxmlLoad.load();
+
+        Dialog<ButtonType> dialog=new Dialog<>();
+        dialog.setDialogPane(addDeviceDialogPane);
+        dialog.setTitle("Contact Us");
+
+        Optional<ButtonType> clickedButton=dialog.showAndWait();
+
     }
 }
