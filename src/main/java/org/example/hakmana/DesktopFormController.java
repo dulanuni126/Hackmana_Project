@@ -13,9 +13,13 @@ import javafx.scene.control.DialogPane;
 import javafx.scene.control.TextField;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import org.example.hakmana.model.DatabaseConnection;
+import org.example.hakmana.model.Desktop;
+import org.example.hakmana.model.User;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.SQLOutput;
 import java.util.ResourceBundle;
 
 public class DesktopFormController implements Initializable {
@@ -84,12 +88,13 @@ public class DesktopFormController implements Initializable {
 
     @FXML
     private TextField warrantyTextField;
-    @FXML
-    private ButtonType submitButtonType;
+
     private String[] deviceStatus={"Active","Repairing","Inactive"};
     private String[] YN={"Yes","No"};
     private String[] WinLin={"Windows","Linux"};
     private String[] OnboardDecicated={"On Board","Dedicated"};
+
+    public static User user;
     public void addUser(ActionEvent event) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("Scene/user.fxml"));
         Stage stage=new Stage();
@@ -97,6 +102,10 @@ public class DesktopFormController implements Initializable {
         stage.setScene(new Scene(root));
         stage.show();
 
+    }
+
+    public static void setUserFromUserController(User user1) {
+        user = user1;
     }
 
 
@@ -119,12 +128,54 @@ public class DesktopFormController implements Initializable {
         SoundCardChoiseBox.getItems().addAll(OnboardDecicated);
         TVCardChoiseBox.getItems().addAll(OnboardDecicated);
         OSChoiseBox.getItems().addAll(WinLin);
+        user=new User();
+        user.setNic("No User");
 
         DialogPane dialogPane = new DialogPane();
         ButtonType customButtonType = new ButtonType("Submit");
         dialogPane.getButtonTypes().addAll(customButtonType, ButtonType.CANCEL);
 
     }
+
+
+    public void submitButtonOnAction(ActionEvent event) {
+
+        Desktop desktop=new Desktop();
+        desktop.setRegNum(regNumTextField.getText());
+        desktop.setSerialNum(serialNumTextField.getText());
+        desktop.setModel(modelTextField.getText());
+        desktop.setPurchasedFrom(purchasedFromTextField.getText());
+        desktop.setRam(ramTextField.getText());
+        desktop.setProcessor(processorTextField.getText());
+        desktop.setWarranty(warrantyTextField.getText());
+        desktop.setHardDisk(hardDiskTextField.getText());
+        desktop.setOs(OSChoiseBox.getValue());
+        desktop.setStatus(StatusChoiseBox.getValue());
+        desktop.setMonitorRegNum(monitorRegNumTextField.getText());
+        desktop.setProjectorRegNum(projectorRegNumTextField.getText());
+        desktop.setSpeakerRegNum(speakerRegNumTextField.getText());
+        desktop.setMouseRegNum(mouseRegNumTextField.getText());
+        desktop.setKeyboardRegNum(keyboardRegNumTextField.getText());
+        desktop.setSoundCard(SoundCardChoiseBox.getValue());
+        desktop.setTvCard(TVCardChoiseBox.getValue());
+        desktop.setNetworkCard(NetworkCardChoiseBox.getValue());
+        desktop.setMicRegNum(micRegNumTextField.getText());
+
+        desktop.setUserNIC(user.getNic());
+
+        DatabaseConnection databaseConnection = DatabaseConnection.getInstance();
+
+        databaseConnection.insertDesktop(desktop);
+        if(!user.getNic().equalsIgnoreCase("No User")){
+            databaseConnection.insertUser(user);
+        }
+        System.out.println("Done");
+
+    }
+ public void cancelButtonOnAction(ActionEvent event) {
+     System.out.println("Done");
+
+ }
 
 
 }
