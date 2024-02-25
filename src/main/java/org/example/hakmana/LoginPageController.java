@@ -19,8 +19,8 @@ public class LoginPageController {
     private Scene scene;
     private Parent root;
 
-    private String username="a";
-    private String psswrd="1234";
+    private String username="udaya";
+    private String psswrd="udaya1234";
 
 
     @FXML
@@ -72,7 +72,7 @@ public class LoginPageController {
                 stage.show();
                 System.out.println("Login successfull");
             }else{
-                String text="You have entered Incorrect passowrd for"+tempUserName;
+                String text="You have entered Incorrect passowrd for "+tempUserName;
                 alertBox(event,"Password Incorrect",text);
                 System.out.println("Password error");
             }
