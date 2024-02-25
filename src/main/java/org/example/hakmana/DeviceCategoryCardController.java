@@ -19,17 +19,32 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 public class DeviceCategoryCardController extends AnchorPane implements Initializable {
+
+    //For change the scene when press the button
     private Stage stage;
     private Scene scene;
     private Parent sceneRoot;
-    @FXML
-    private Button desktopBtn;
+
+    //Injector for anchorpane For animation
     @FXML
     private AnchorPane root;
+
+    //Injectors for button and the image
+    @FXML
+    private Button devInfoBtn;
+    @FXML
+    private ImageView devImage;
+
+    //private variable to set iamge and the device naem
+    private Image deviceImage;
+    private String devName;
+    private String devCatSceneName;
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
     }
+
     public DeviceCategoryCardController() {
         super();
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("Component/DeviceCategoryCard.fxml"));
@@ -42,45 +57,46 @@ public class DeviceCategoryCardController extends AnchorPane implements Initiali
             throw new RuntimeException(exception);
         }
     }
+
+//    For animation of the cards
     @FXML
     private void onMouseEntered() {
         root.setScaleX(1.1);
         root.setScaleY(1.1);
     }
-
     @FXML
     private void onMouseExited() {
         root.setScaleX(1.0);
         root.setScaleY(1.0);
     }
-    @FXML
-    private Text DevText;
-    @FXML
-    private ImageView devImage;
-    private Image deviceImage;
+
 
     public Image getDeviceImage() {
         return deviceImage;
     }
-
     public void setDeviceImage(Image deviceImage) {
         this.deviceImage = deviceImage;
         devImage.setImage(deviceImage);
     }
-
-    private String devName;
-
     public String getDevName() {
         return devName;
     }
-
     public void setDevName(String devName) {
         this.devName = devName;
-        DevText.setText(this.devName);
+        devInfoBtn.setText(this.devName);
+    }
+    public String getDevCatSceneName() {
+        return devCatSceneName;
+    }
+    public void setDevCatSceneName(String devCatSceneName) {
+        this.devCatSceneName = devCatSceneName;
+    }
+    public void disableBtn(boolean stateVal){
+        devInfoBtn.setDisable(stateVal);
     }
 
-    public void DeiveInfoCall(ActionEvent event) throws IOException {
-        Parent sceneRoot = FXMLLoader.load(getClass().getResource("Scene/DeviceMngmntDevCard.fxml"));
+    public void DevInfoCall(ActionEvent event) throws IOException {
+        Parent sceneRoot = FXMLLoader.load(getClass().getResource(devCatSceneName));
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         scene = new Scene(sceneRoot);
         stage.setScene(scene);

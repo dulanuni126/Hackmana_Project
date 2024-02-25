@@ -13,7 +13,7 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<DialogPane maxHeight="650.0" maxWidth="1254.0" minHeight="650.0" minWidth="1152.0" prefHeight="650.0" prefWidth="1251.0" style="-fx-background-color: #FAFAFA;" styleClass="dialogbox" stylesheets="@dialog.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.hakmana.DesktopFormController">
+<DialogPane maxHeight="650.0" maxWidth="1254.0" minHeight="650.0" minWidth="1152.0" prefHeight="650.0" prefWidth="1212.0" style="-fx-background-color: #FAFAFA;" styleClass="dialogbox" stylesheets="@dialog.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.hakmana.DesktopFormController">
     <expandableContent>
       <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="200.0" prefWidth="320.0" />
     </expandableContent>
@@ -83,17 +83,17 @@
                   <Font size="16.0" />
                </font>
             </Label>
-            <Line endX="100.0" startX="375.865478515625" startY="-0.020178496837615967" GridPane.columnIndex="1" GridPane.rowIndex="10">
+            <Line endX="100.0" startX="322.0299072265625" startY="0.02018815279006958" GridPane.columnIndex="1" GridPane.rowIndex="10">
                <GridPane.margin>
                   <Insets left="100.0" />
                </GridPane.margin>
             </Line>
-            <Line endX="539.2736206054688" layoutX="184.0" layoutY="437.0" startX="329.28765869140625" startY="-0.20713728666305542" GridPane.columnIndex="3" GridPane.rowIndex="10">
+            <Line endX="539.2736206054688" layoutX="184.0" layoutY="437.0" startX="329.28765869140625" startY="-0.37858349084854126" GridPane.columnIndex="3" GridPane.rowIndex="10">
                <GridPane.margin>
                   <Insets left="140.0" />
                </GridPane.margin>
             </Line>
-            <Line endX="100.0" layoutX="827.0" layoutY="437.0" startX="350.28558349609375" startY="-0.49763572216033936" GridPane.columnIndex="2" GridPane.rowIndex="10" />
+            <Line endX="541.4157104492188" endY="-0.9998172521591187" layoutX="827.0" layoutY="437.0" startX="350.28558349609375" startY="-0.49763572216033936" GridPane.columnIndex="2" GridPane.rowIndex="10" />
             <Label layoutX="183.0" layoutY="427.0" prefHeight="20.0" prefWidth="111.0" text="Output Devices" GridPane.columnIndex="3" GridPane.rowIndex="10">
                <font>
                   <Font size="16.0" />

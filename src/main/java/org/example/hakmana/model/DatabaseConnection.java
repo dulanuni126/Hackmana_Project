@@ -1,8 +1,7 @@
 package org.example.hakmana.model;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
+import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 
 
 public class DatabaseConnection {
@@ -11,7 +10,7 @@ public class DatabaseConnection {
     private DatabaseConnection() {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
-            connection = (Connection)DriverManager.getConnection("jdbc:mysql://localhost:3306/hakmanaEdm", "root", "");
+            connection = (Connection)DriverManager.getConnection("jdbc:mysql://localhost:3306/hakmanaEdm", "root", "root1234");
             System.out.println("Connection Successfully");
 
         } catch (ClassNotFoundException | SQLException e) {
@@ -81,4 +80,49 @@ public class DatabaseConnection {
             e.printStackTrace();
         }
     }
+    public Desktop[] getDesktops() {
+        List<Desktop> desktops = new ArrayList<>();
+        try {
+            String sql = "SELECT desktop.*, user.name FROM desktop LEFT JOIN user ON desktop.userNIC = user.nic";
+            PreparedStatement preparedStatement = connection.prepareStatement(sql);
+
+            // Execute the SQL query and get the result set
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            // Iterate through the result set and create Desktop and User objects
+            while (resultSet.next()) {
+                Desktop desktop = new Desktop();
+                desktop.setRegNum(resultSet.getString("regNum"));
+                desktop.setSerialNum(resultSet.getString("serialNum"));
+                desktop.setModel(resultSet.getString("model"));
+                desktop.setPurchasedFrom(resultSet.getString("purchasedFrom"));
+                desktop.setRam(resultSet.getString("ram"));
+                desktop.setProcessor(resultSet.getString("processor"));
+                desktop.setWarranty(resultSet.getString("warranty"));
+                desktop.setHardDisk(resultSet.getString("hardDisk"));
+                desktop.setOs(resultSet.getString("os"));
+                desktop.setStatus(resultSet.getString("status"));
+                desktop.setMonitorRegNum(resultSet.getString("monitorRegNum"));
+                desktop.setProjectorRegNum(resultSet.getString("projectorRegNum"));
+                desktop.setSpeakerRegNum(resultSet.getString("speakerRegNum"));
+                desktop.setMouseRegNum(resultSet.getString("mouseRegNum"));
+                desktop.setKeyboardRegNum(resultSet.getString("keyboardRegNum"));
+                desktop.setMicRegNum(resultSet.getString("micRegNum"));
+                desktop.setScannerRegNum(resultSet.getString("scannerRegNum"));
+                desktop.setUserNIC(resultSet.getString("userNIC"));
+                desktop.setFloppyDisk(resultSet.getString("floppyDisk"));
+                desktop.setSoundCard(resultSet.getString("soundCard"));
+                desktop.setTvCard(resultSet.getString("tvCard"));
+                desktop.setNetworkCard(resultSet.getString("networkCard"));
+                desktop.setUserName(resultSet.getString("name"));
+
+                desktops.add(desktop);
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
+        return desktops.toArray(new Desktop[0]);
+    }
+
 }
