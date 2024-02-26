@@ -47,7 +47,10 @@
                            </VBox.margin></AnchorPane>
 
                                 <!--Footer Component-->
-                                <FooterController prefHeight="39.0" prefWidth="770.0" />
+                                <FooterController prefHeight="39.0" prefWidth="770.0">
+                           <VBox.margin>
+                              <Insets left="27.0" right="27.0" />
+                           </VBox.margin></FooterController>
                             </children>
                         </VBox>
                     </children>

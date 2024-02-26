@@ -19,8 +19,8 @@ public class LoginPageController {
     private Scene scene;
     private Parent root;
 
-    private String username="udaya";
-    private String psswrd="udaya1234";
+    private String username="udara";
+    private String psswrd="0916";
 
 
     @FXML
