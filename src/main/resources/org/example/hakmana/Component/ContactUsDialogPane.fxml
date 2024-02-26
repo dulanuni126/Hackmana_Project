@@ -11,10 +11,9 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-
-<DialogPane prefHeight="175.0" prefWidth="545.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+<DialogPane prefHeight="175.0" prefWidth="582.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
    <content>
-      <AnchorPane prefHeight="127.0" prefWidth="552.0">
+      <AnchorPane prefHeight="130.0" prefWidth="570.0">
          <children>
             <VBox AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <children>
@@ -64,12 +63,12 @@
                                     <Insets bottom="10.0" left="10.0" />
                                  </VBox.margin>
                               </Label>
-                              <Button mnemonicParsing="false" style="-fx-padding: 0; -fx-background-color: none;" text="BCS@gmail.com" VBox.vgrow="NEVER">
+                              <Button mnemonicParsing="false" style="-fx-padding: 0; -fx-background-color: none;" text="codedrinkers@gmail.com" VBox.vgrow="NEVER">
                                  <font>
                                     <Font size="16.0" />
                                  </font>
                               </Button>
-                              <Button mnemonicParsing="false" style="-fx-padding: 0; -fx-background-color: none;" text="070 6 900 6900" VBox.vgrow="NEVER">
+                              <Button mnemonicParsing="false" style="-fx-padding: 0; -fx-background-color: none;" text="075 580 1447" VBox.vgrow="NEVER">
                                  <font>
                                     <Font size="16.0" />
                                  </font>
