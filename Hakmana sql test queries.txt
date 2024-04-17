@@ -1,0 +1,71 @@
+
+INSERT INTO desktop (regNum, serialNum, model, purchasedFrom, ram, processor, warranty, hardDisk, os, status, floppyDisk, soundCard, tvCard, networkCard, monitorRegNum, projectorRegNum, speakerRegNum, mouseRegNum, keyboardRegNum, micRegNum, scannerRegNum, userNIC) 
+VALUES 
+('REG001', 'SN001', 'Desktop Model 1', 'Store A', '8GB', 'Intel i5', '1 Year', '1TB', 'Windows 10', 'Active', 'Yes', 'Sound Blaster', 'N/A', 'Realtek', 'MON001', 'PROJ001', 'SPEAK001', 'MOU001', 'KEYB001', 'MIC001', 'SCAN001', 'NIC001'),
+('REG002', 'SN002', 'Desktop Model 2', 'Store B', '16GB', 'AMD Ryzen 7', '2 Years', '2TB', 'Ubuntu 20.04', 'Active', 'No', 'Integrated', 'N/A', 'Intel', 'MON002', 'PROJ002', 'SPEAK002', 'MOU002', 'KEYB002', 'MIC002', 'SCAN002', 'NIC002'),
+('REG003', 'SN003', 'Desktop Model 3', 'Store C', '4GB', 'Intel Pentium', '1 Year', '500GB', 'Windows 7', 'Inactive', 'No', 'N/A', 'N/A', 'TP-Link', 'MON003', 'PROJ003', 'SPEAK003', 'MOU003', 'KEYB003', 'MIC003', 'SCAN003', 'NIC003'),
+('REG004', 'SN004', 'Desktop Model 4', 'Store A', '32GB', 'Intel i9', '3 Years', '4TB', 'Windows 11', 'Active', 'Yes', 'Creative', 'N/A', 'Realtek', 'MON004', 'PROJ004', 'SPEAK004', 'MOU004', 'KEYB004', 'MIC004', 'SCAN004', 'NIC004'),
+('REG005', 'SN005', 'Desktop Model 5', 'Store B', '8GB', 'AMD Ryzen 5', '2 Years', '1TB', 'Windows 10', 'Active', 'No', 'Integrated', 'N/A', 'Intel', 'MON005', 'PROJ005', 'SPEAK005', 'MOU005', 'KEYB005', 'MIC005', 'SCAN005', 'NIC005'),
+('REG006', 'SN006', 'Desktop Model 6', 'Store C', '16GB', 'Intel i7', '3 Years', '2TB', 'Ubuntu 22.04', 'Active', 'Yes', 'N/A', 'N/A', 'TP-Link', 'MON006', 'PROJ006', 'SPEAK006', 'MOU006', 'KEYB006', 'MIC006', 'SCAN006', 'NIC006'),
+('REG007', 'SN007', 'Desktop Model 7', 'Store A', '8GB', 'AMD Ryzen 3', '1 Year', '500GB', 'Windows 10', 'Active', 'Yes', 'N/A', 'N/A', 'Realtek', 'MON007', 'PROJ007', 'SPEAK007', 'MOU007', 'KEYB007', 'MIC007', 'SCAN007', 'NIC007'),
+('REG008', 'SN008', 'Desktop Model 8', 'Store B', '4GB', 'Intel Celeron', '1 Year', '250GB', 'Windows 8', 'Inactive', 'No', 'N/A', 'N/A', 'Intel', 'MON008', 'PROJ008', 'SPEAK008', 'MOU008', 'KEYB008', 'MIC008', 'SCAN008', 'NIC008'),
+('REG009', 'SN009', 'Desktop Model 9', 'Store C', '16GB', 'AMD Ryzen 9', '3 Years', '4TB', 'Windows 11', 'Active', 'Yes', 'Sound Blaster', 'N/A', 'TP-Link', 'MON009', 'PROJ009', 'SPEAK009', 'MOU009', 'KEYB009', 'MIC009', 'SCAN009', 'NIC009'),
+('REG010', 'SN010', 'Desktop Model 10', 'Store A', '32GB', 'Intel i9', '5 Years', '8TB', 'Ubuntu 20.04', 'Active', 'Yes', 'Creative', 'N/A', 'Realtek', 'MON010', 'PROJ010', 'SPEAK010', 'MOU010', 'KEYB010', 'MIC010', 'SCAN010', 'NIC010'),
+('REG011', 'SN011', 'Desktop Model 11', 'Store B', '8GB', 'AMD Ryzen 5', '2 Years', '1TB', 'Windows 10', 'Active', 'No', 'Integrated', 'N/A', 'Intel', 'MON011', 'PROJ011', 'SPEAK011', 'MOU011', 'KEYB011', 'MIC011', 'SCAN011', 'NIC011'),
+('REG012', 'SN012', 'Desktop Model 12', 'Store C', '16GB', 'Intel i7', '3 Years', '2TB', 'Ubuntu 22.04', 'Active', 'Yes', 'N/A', 'N/A', 'TP-Link', 'MON012', 'PROJ012', 'SPEAK012', 'MOU012', 'KEYB012', 'MIC012', 'SCAN012', 'NIC012'),
+('REG013', 'SN013', 'Desktop Model 13', 'Store A', '8GB', 'AMD Ryzen 3', '1 Year', '500GB', 'Windows 10', 'Active', 'Yes', 'N/A', 'N/A', 'Realtek', 'MON013', 'PROJ013', 'SPEAK013', 'MOU013', 'KEYB013', 'MIC013', 'SCAN013', 'NIC013'),
+('REG014', 'SN014', 'Desktop Model 14', 'Store B', '4GB', 'Intel Celeron', '1 Year', '250GB', 'Windows 8', 'Inactive', 'No', 'N/A', 'N/A', 'Intel', 'MON014', 'PROJ014', 'SPEAK014', 'MOU014', 'KEYB014', 'MIC014', 'SCAN014', 'NIC014');
+
+
+
+
+INSERT INTO printer (regNum, serialNum, paperInput, paperOutput, warranty, model, status, userNIC) 
+VALUES 
+('PRN001', 'SN123456', 'Tray 1', 'Tray 2', '1 year', 'HP LaserJet Pro M402n', 'Active', 'NIC1234567890'),
+('PRN002', 'SN789012', 'Tray 1', 'Tray 2', '2 years', 'Canon imageCLASS MF264dw', 'Active', 'NIC0987654321'),
+('PRN003', 'SN345678', 'Tray 1', 'Tray 2', '3 years', 'Brother HL-L2390DW', 'Inactive', NULL),
+('PRN004', 'SN901234', 'Tray 1', 'Tray 2', '1 year', 'Epson EcoTank ET-2720', 'Active', 'NIC2468101214'),
+('PRN005', 'SN567890', 'Tray 1', 'Tray 2', '2 years', 'Samsung Xpress M2020W', 'Active', 'NIC1357911131'),
+('PRN006', 'SN234567', 'Tray 1', 'Tray 2', '3 years', 'Lexmark MB2236adwe', 'Inactive', NULL),
+('PRN007', 'SN890123', 'Tray 1', 'Tray 2', '1 year', 'Dell E310dw', 'Active', 'NIC1112131415'),
+('PRN008', 'SN456789', 'Tray 1', 'Tray 2', '2 years', 'Xerox Phaser 6510/DNI', 'Active', 'NIC1617181920'),
+('PRN009', 'SN012345', 'Tray 1', 'Tray 2', '3 years', 'Ricoh SP 4510DN', 'Inactive', NULL),
+('PRN010', 'SN678901', 'Tray 1', 'Tray 2', '1 year', 'Konica Minolta Bizhub C250i', 'Active', 'NIC2122232425'),
+('PRN011', 'SN234567', 'Tray 1', 'Tray 2', '2 years', 'HP OfficeJet Pro 6978', 'Active', 'NIC1324354657'),
+('PRN012', 'SN890123', 'Tray 1', 'Tray 2', '3 years', 'Canon PIXMA TR8520', 'Inactive', NULL),
+('PRN013', 'SN456789', 'Tray 1', 'Tray 2', '1 year', 'Epson WorkForce Pro WF-3720', 'Active', 'NIC1928374655'),
+('PRN014', 'SN012345', 'Tray 1', 'Tray 2', '2 years', 'Brother HL-L2350DW', 'Active', 'NIC3847563920'),
+('PRN015', 'SN678901', 'Tray 1', 'Tray 2', '3 years', 'Samsung ProXpress M3820DW', 'Inactive', NULL),
+('PRN016', 'SN234567', 'Tray 1', 'Tray 2', '1 year', 'Lexmark CX517de', 'Active', 'NIC2938475612'),
+('PRN017', 'SN890123', 'Tray 1', 'Tray 2', '2 years', 'Dell Color Laser Printer 1320c', 'Active', 'NIC3847562938'),
+('PRN018', 'SN456789', 'Tray 1', 'Tray 2', '3 years', 'Xerox VersaLink C405/DN', 'Inactive', NULL),
+('PRN019', 'SN012345', 'Tray 1', 'Tray 2', '1 year', 'Ricoh SP 3600DN', 'Active', 'NIC4857392010'),
+('PRN020', 'SN678901', 'Tray 1', 'Tray 2', '2 years', 'Konica Minolta Magicolor 3730DN', 'Active', 'NIC1029384756');
+
+
+
+
+
+INSERT INTO user (nic, name, title, gmail) VALUES ('1234567890123', 'John Doe', 'Mr.', 'john.doe@gmail.com');
+INSERT INTO user (nic, name, title, gmail) VALUES ('9876543210987', 'Jane Smith', 'Ms.', 'jane.smith@gmail.com');
+INSERT INTO user (nic, name, title, gmail) VALUES ('4567890123456', 'Michael Johnson', 'Mr.', 'michael.johnson@gmail.com');
+INSERT INTO user (nic, name, title, gmail) VALUES ('3210987654321', 'Emily Brown', 'Ms.', 'emily.brown@gmail.com');
+INSERT INTO user (nic, name, title, gmail) VALUES ('6543210987654', 'David Williams', 'Mr.', 'david.williams@gmail.com');
+INSERT INTO user (nic, name, title, gmail) VALUES ('8901234567890', 'Sarah Wilson', 'Ms.', 'sarah.wilson@gmail.com');
+INSERT INTO user (nic, name, title, gmail) VALUES ('5678901234567', 'Jessica Taylor', 'Ms.', 'jessica.taylor@gmail.com');
+INSERT INTO user (nic, name, title, gmail) VALUES ('2345678901234', 'Christopher Anderson', 'Mr.', 'christopher.anderson@gmail.com');
+INSERT INTO user (nic, name, title, gmail) VALUES ('1098765432109', 'Daniel Martinez', 'Mr.', 'daniel.martinez@gmail.com');
+INSERT INTO user (nic, name, title, gmail) VALUES ('5432109876543', 'Jennifer Garcia', 'Ms.', 'jennifer.garcia@gmail.com');
+INSERT INTO user (nic, name, title, gmail) VALUES ('8765432109876', 'James Hernandez', 'Mr.', 'james.hernandez@gmail.com');
+INSERT INTO user (nic, name, title, gmail) VALUES ('9012345678901', 'Elizabeth Lopez', 'Ms.', 'elizabeth.lopez@gmail.com');
+INSERT INTO user (nic, name, title, gmail) VALUES ('6789012345678', 'Matthew Gonzalez', 'Mr.', 'matthew.gonzalez@gmail.com');
+INSERT INTO user (nic, name, title, gmail) VALUES ('3456789012345', 'Amanda Perez', 'Ms.', 'amanda.perez@gmail.com');
+INSERT INTO user (nic, name, title, gmail) VALUES ('2109876543210', 'Ryan Torres', 'Mr.', 'ryan.torres@gmail.com');
+INSERT INTO user (nic, name, title, gmail) VALUES ('4321098765432', 'Mary Smith', 'Ms.', 'mary.smith@gmail.com');
+INSERT INTO user (nic, name, title, gmail) VALUES ('7654321098765', 'Justin Johnson', 'Mr.', 'justin.johnson@gmail.com');
+INSERT INTO user (nic, name, title, gmail) VALUES ('0987654321098', 'Laura Brown', 'Ms.', 'laura.brown@gmail.com');
+INSERT INTO user (nic, name, title, gmail) VALUES ('8765432109876', 'Robert Martinez', 'Mr.', 'robert.martinez@gmail.com');
+INSERT INTO user (nic, name, title, gmail) VALUES ('5432109876543', 'Olivia Garcia', 'Ms.', 'olivia.garcia@gmail.com');
+
+
+

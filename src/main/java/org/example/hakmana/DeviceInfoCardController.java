@@ -66,12 +66,12 @@ public class DeviceInfoCardController extends AnchorPane implements Initializabl
           root.setScaleX(1.1);
           root.setScaleY(1.1);
      }
-
      @FXML
      private void onMouseExited() {
           root.setScaleX(1.0);
           root.setScaleY(1.0);
      }
+
      public String getDevId() {
           return devId;
      }
@@ -106,8 +106,8 @@ public class DeviceInfoCardController extends AnchorPane implements Initializabl
      public void setNote(String note) {
           this.note = note;
           noteTxtArea.setText(this.note);
-
      }
+
 
      public void DetailedViewSceneLoad(ActionEvent event) throws IOException {
           Parent sceneroot = FXMLLoader.load(getClass().getResource("Scene/DevDetailedView.fxml"));

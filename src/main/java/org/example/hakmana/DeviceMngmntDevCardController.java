@@ -11,8 +11,13 @@ import java.net.URL;
 import java.security.PrivilegedAction;
 import java.util.ResourceBundle;
 import org.example.hakmana.DeviceInfoCardController;
+import org.example.hakmana.model.DatabaseConnection;
+import org.example.hakmana.model.Desktop;
+
 public class DeviceMngmntDevCardController implements Initializable{
 
+    @FXML
+    private PathFinderController pathFinderController;
     @FXML
     private NavPanelController navPanelController;//NavPanel custom component injector
     @FXML
@@ -21,8 +26,6 @@ public class DeviceMngmntDevCardController implements Initializable{
     private  VBox bodyComponet;//injector for VBox to expand
     @FXML
     private GridPane grid;
-    @FXML
-    private PathFinderController pathCmp;
     private int rowCount = 1;
     private int colCount = 0;
 
@@ -34,7 +37,12 @@ public class DeviceMngmntDevCardController implements Initializable{
 
         headerController.setFontSize("2.5em");
         headerController.setTitleMsg("Device Management");
+        headerController.setUsernameMsg("Mr.Udara Mahanama");
+        headerController.setDesignationMsg("Development Officer");
         navPanelController.setDeviceMngmntdBorder();
+        pathFinderController.setPathTxt("Device Management>Desktop");
+        pathFinderController.setBckBtnScene("Scene/DeviceMngmntDevCard.fxml");
+
         //create the event listener to the navigation panel ToggleButton() method
         navPanelController.collapseStateProperty().addListener((observable, oldValue, newValue) ->{
             if(newValue){
@@ -43,48 +51,32 @@ public class DeviceMngmntDevCardController implements Initializable{
                 collapse();
             }
         });
-        pathCmp.setPathTxt("Device Management > Desktop Computers");
-
-        addComponent();
-        addComponent();
-        addComponent();
-        addComponent();
-        addComponent();
-        addComponent();
-        addComponent();
-        addComponent();
-        addComponent();
-        addComponent();
-        addComponent();
-        addComponent();
-        addComponent();
-        addComponent();
-        addComponent();
-        addComponent();
-        addComponent();
         addComponent();
         addLastComponent();
     }
     @FXML
     private void addComponent() {
-        // Create a new label
-        DeviceInfoCardController card=new DeviceInfoCardController();
-        card.setNote("Error");
-        card.setUser("Nimal");
-        card.setBrand("hP");
-        card.setDevId("Hak/01");
+        DatabaseConnection databaseConnection=DatabaseConnection.getInstance();
+        Desktop[] desktops =databaseConnection.getDesktops();
 
+        DeviceInfoCardController card;
+        for (Desktop desktop : desktops) {
+            card=new DeviceInfoCardController();
+            card.setUser(desktop.getUserName());
+            card.setBrand(desktop.getModel());
+            card.setDevId(desktop.getRegNum());
 
-        // Add the label to the grid
-        grid.add(card, colCount, rowCount);
+            // Add the label to the grid
+            grid.add(card, colCount, rowCount);
 
-        // Increment the row count for the next component
-        colCount++;
+            // Increment the row count for the next component
+            colCount++;
 
-        // If the row count is a multiple of 3, increment the column count
-        if (colCount % 4 == 0) {
-            rowCount++;
-            colCount = 0;
+            // If the row count is a multiple of 3, increment the column count
+            if (colCount % 3 == 0) {
+                rowCount++;
+                colCount = 0;
+            }
         }
 
     }
@@ -99,7 +91,7 @@ public class DeviceMngmntDevCardController implements Initializable{
         colCount++;
 
         // If the row count is a multiple of 3, increment the column count
-        if (colCount % 4 == 0) {
+        if (colCount % 3 == 0) {
             rowCount++;
             colCount = 0;
         }

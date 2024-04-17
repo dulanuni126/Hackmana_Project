@@ -35,8 +35,8 @@
                <children>
                   <VBox fx:id="designationTextContianer" alignment="CENTER_RIGHT" maxHeight="75.0" prefHeight="75.0" HBox.hgrow="ALWAYS">
                      <children>
-                        <Text fx:id="userName" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="username" text="R.gunathilaka" />
-                        <Text fx:id="designation" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="username" text="Designation" />
+                        <Text fx:id="userName" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="username" text="Mr.Udara Mahanama" />
+                        <Text fx:id="designation" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="username" text="Development officer" />
                      </children>
                   </VBox>
                   <ImageView fx:id="userIcon" fitHeight="48.0" fitWidth="48.0" pickOnBounds="true" preserveRatio="true" HBox.hgrow="ALWAYS">

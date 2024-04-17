@@ -3,7 +3,9 @@ package org.example.hakmana;
 import javafx.animation.*;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
 import javafx.util.Duration;
 import java.net.URL;
@@ -20,16 +22,26 @@ public class DeviceMngmntController implements Initializable {
     private  VBox bodyComponet;//injector for VBox to expand
     @FXML
     private PathFinderController pathFinderController;
-
-    private  TranslateTransition bodyExpand;//Animation object refernce
     @FXML
     private AnchorPane parentAnchor;
-    public void initialize(URL location, ResourceBundle resources) {
 
+    @FXML
+    private GridPane grid;
+    private int rowCount = 1;
+    private int colCount = 0;
+    private  TranslateTransition bodyExpand;//Animation object refernce
+
+
+
+    public void initialize(URL location, ResourceBundle resources) {
         headerController.setFontSize("2.5em");
         headerController.setTitleMsg("Device Management");
+        headerController.setUsernameMsg("Mr.Udara Mahanama");
+        headerController.setDesignationMsg("Development Officer");
         navPanelController.setDeviceMngmntdBorder();
         pathFinderController.setSearchBarVisible(false);
+        pathFinderController.setPathTxt("Device Management");
+
         //create the event listener to the navigation panel ToggleButton() method
         navPanelController.collapseStateProperty().addListener((observable, oldValue, newValue) ->{
             if(newValue){
@@ -38,6 +50,39 @@ public class DeviceMngmntController implements Initializable {
                 collapse();
             }
         });
+
+
+        addComponent("Desktop", new Image(getClass().getResourceAsStream("Scene/Images/Desktop.png")),"Scene/DeviceMngmntDevCard.fxml",false);
+        addComponent("Photocopy Machines",new Image(getClass().getResourceAsStream("Scene/Images/photoCopy.png")),"Scene/DeviceMngmntDevCard.fxml",true);
+        addComponent("Monitors",new Image(getClass().getResourceAsStream("Scene/Images/monitor.png")),"Scene/DeviceMngmntDevCard.fxml",true);
+        addComponent("Projectors",new Image(getClass().getResourceAsStream("Scene/Images/projector.png")),"Scene/DeviceMngmntDevCard.fxml",true);
+        addComponent("Laptops",new Image(getClass().getResourceAsStream("Scene/Images/laptopcat.png")),"Scene/DeviceMngmntDevCard.fxml",true);
+        addComponent("Other Devices",new Image(getClass().getResourceAsStream("Scene/Images/other.png")),"Scene/DeviceMngmntDevCard.fxml",true);
+
+
+    }
+
+    @FXML
+    private void addComponent(String catTitle, Image catImage,String scnelink,boolean stateVal) {
+        // Create a new label
+        DeviceCategoryCardController card=new DeviceCategoryCardController();
+        card.setDevName(catTitle);
+        card.setDeviceImage(catImage);
+        card.setDevCatSceneName(scnelink);
+        card.disableBtn(stateVal);
+
+        // Add the label to the grid
+        grid.add(card, colCount, rowCount);
+
+        // Increment the row count for the next component
+        colCount++;
+
+        // If the row count is a multiple of 3, increment the column count
+        if (colCount % 4 == 0) {
+            rowCount++;
+            colCount = 0;
+        }
+
     }
 
     private void Animation(double animStartPos,double animEndPos){

@@ -1,0 +1,73 @@
+CREATE DATABASE hakmanaEdm;
+
+USE hakmanaEdm;
+
+CREATE TABLE desktop (
+    regNum VARCHAR(20) PRIMARY KEY,
+    serialNum VARCHAR(30),
+    model VARCHAR(25),
+    purchasedFrom VARCHAR(25),
+    ram VARCHAR(8),
+    processor VARCHAR(10),
+    warranty VARCHAR(25),
+    hardDisk VARCHAR(8),
+    os VARCHAR(10),
+    status VARCHAR(10),
+    floppyDisk VARCHAR(3),
+    soundCard VARCHAR(15),
+    tvCard VARCHAR(15),
+    networkCard VARCHAR(15),
+    monitorRegNum VARCHAR(20),
+    projectorRegNum VARCHAR(20),
+    speakerRegNum VARCHAR(20),
+    mouseRegNum VARCHAR(20),
+    keyboardRegNum VARCHAR(20),
+    micRegNum VARCHAR(20),
+	scannerRegNum VARCHAR(20),
+    userNIC VARCHAR(15)
+	
+);
+
+CREATE TABLE printer (
+    regNum VARCHAR(20) PRIMARY KEY,
+    serialNum VARCHAR(30),
+    paperInput VARCHAR(15),
+    paperOutput VARCHAR(15),
+    warranty VARCHAR(25),
+    model VARCHAR(25),
+    status VARCHAR(10),
+    userNIC VARCHAR(15)
+);
+
+
+CREATE TABLE user (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    nic VARCHAR(15),
+    name VARCHAR(20),
+    title VARCHAR(20),
+    gmail VARCHAR(25)
+);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

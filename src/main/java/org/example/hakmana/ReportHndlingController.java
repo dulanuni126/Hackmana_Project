@@ -29,8 +29,11 @@ public class ReportHndlingController implements Initializable {
 
         headerController.setFontSize("2.5em");
         headerController.setTitleMsg("Report Handling");
+        headerController.setUsernameMsg("Mr.Udara Mahanama");
+        headerController.setDesignationMsg("Development Officer");
         navPanelController.setReportHndlingdBorder();
         pathFinderController.setSearchBarVisible(false);
+        pathFinderController.setPathTxt("Report handling");
         //create the event listener to the navigation panel ToggleButton() method
         navPanelController.collapseStateProperty().addListener((observable, oldValue, newValue) ->{
             if(newValue){

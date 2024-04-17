@@ -2,11 +2,21 @@
     -fx-border-width:0 0 2 0 ;
 }
 .goBackBtn{
+    -fx-padding: 0;
     -fx-font-family: Zen Kaku Gothic Antique;
-    -fx-font-weight: 500;
-    -fx-line-height: 22.53px;
+    -fx-font-weight: 600;
     -fx-background-color:linear-gradient(rgba(255, 184, 184, 0.55) 0%, rgba(248, 186, 144, 0.43) 75%);
-    -fx-background-radius: 18px;
-    -fx-max-width: 100px;
-    -fx-max-height: 18px;
+    -fx-background-radius: 22px;
+    -fx-pref-width: 90px;
+    -fx-min-height: 26px;
+    -fx-border-width:0 0 2 0 ;
+    -fx-border-color: black;
+    -fx-border-radius: 22px;
+    -fx-effect:dropshadow( gaussian,rgba(0, 0, 0, 0.13),1,1,2,1);
+}
+.goBackBtn:hover{
+    -fx-cursor: hand;
+    -fx-background-color: linear-gradient(#24243E 0%, #59599B 48.52%, #0F0C29 100%);
+    -fx-font-weight: 800;
+    -fx-text-fill: white;
 }
