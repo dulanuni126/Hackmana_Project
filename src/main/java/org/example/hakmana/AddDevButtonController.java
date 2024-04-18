@@ -19,14 +19,12 @@ public class AddDevButtonController extends AnchorPane implements Initializable 
 
     @FXML
     private Button addDeviceBtn;
-
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
-
-    }
     @FXML
     private AnchorPane root;
 
+    //methods for component initialize and constructor for component load----------------------------
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {}
     public AddDevButtonController() {
         super();
         FXMLLoader fxmlFooterLoader = new FXMLLoader(getClass().getResource("Component/addDevButton.fxml"));
@@ -39,19 +37,21 @@ public class AddDevButtonController extends AnchorPane implements Initializable 
         catch (IOException e){
             throw new RuntimeException(e);
         }
-
     }
+
+    //methods for animation----------------------------------------------------
     @FXML
-    private void onMouseEntered() {
+    private void onMouseEntered() {//scale up when mouse enter
         root.setScaleX(1.1);
         root.setScaleY(1.1);
     }
-
     @FXML
-    private void onMouseExited() {
+    private void onMouseExited() {//scale up when mouse enter
         root.setScaleX(1.0);
         root.setScaleY(1.0);
     }
+
+    //Open new device adding dialog pane----------------------------------------------------
     public void addDeviceBtnDialogOpen(ActionEvent event) throws IOException {
         FXMLLoader addDevicefxmlLoad = new FXMLLoader();
         addDevicefxmlLoad.setLocation(getClass().getResource("Scene/DesktopForm.fxml"));
@@ -59,7 +59,7 @@ public class AddDevButtonController extends AnchorPane implements Initializable 
 
         Dialog<ButtonType> dialog=new Dialog<>();
         dialog.setDialogPane(addDeviceDialogPane);
-        dialog.setTitle("Contact Us");
+        dialog.setTitle("Add new device");
 
         Optional<ButtonType> clickedButton=dialog.showAndWait();
 

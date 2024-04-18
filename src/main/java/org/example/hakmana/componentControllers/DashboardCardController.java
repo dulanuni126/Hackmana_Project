@@ -1,4 +1,4 @@
-package org.example.hakmana;
+package org.example.hakmana.componentControllers;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -15,13 +15,13 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 public class DashboardCardController extends ScrollPane implements Initializable {
-
-
-
     @FXML
     private Label topLabel;
     private String text;
 
+    //methods for component initialize and constructor for component load----------------------------
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {}
     public DashboardCardController() {
         super();
         FXMLLoader fxmlDashboardCardLoader=new FXMLLoader(getClass().getResource("Component/dashboardCard.fxml"));
@@ -40,7 +40,7 @@ public class DashboardCardController extends ScrollPane implements Initializable
     }
 
 
-
+    //getters and setters for label set----------------------------------------------------
     public void setText(String text) {
         this.text = text;
         topLabel.setText(this.text);
@@ -49,9 +49,4 @@ public class DashboardCardController extends ScrollPane implements Initializable
         return topLabel.getText();
     }
 
-
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
-
-    }
 }
