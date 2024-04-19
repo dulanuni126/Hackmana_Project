@@ -1,4 +1,4 @@
-package org.example.hakmana;
+package org.example.hakmana.view;
 
 import javafx.animation.*;
 import javafx.fxml.FXML;
@@ -6,8 +6,11 @@ import javafx.fxml.Initializable;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 import javafx.util.Duration;
+import org.example.hakmana.componentControllers.HeaderController;
+import org.example.hakmana.componentControllers.NavPanelController;
+import org.example.hakmana.componentControllers.PathFinderController;
+
 import java.net.URL;
-import java.security.PrivilegedAction;
 import java.util.ResourceBundle;
 
 public class ReportHndlingController implements Initializable {

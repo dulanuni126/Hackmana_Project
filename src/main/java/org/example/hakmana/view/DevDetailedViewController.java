@@ -1,20 +1,25 @@
-package org.example.hakmana;
+package org.example.hakmana.view;
 
 import javafx.animation.*;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.GridPane;
-import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
 import javafx.util.Duration;
+import org.example.hakmana.componentControllers.HeaderController;
+import org.example.hakmana.componentControllers.NavPanelController;
+import org.example.hakmana.componentControllers.PathFinderController;
 
+import java.io.File;
 import java.io.IOException;
+import java.net.MalformedURLException;
 import java.net.URL;
-import java.security.PrivilegedAction;
 import java.util.ResourceBundle;
 
 public class DevDetailedViewController implements Initializable {
@@ -41,7 +46,7 @@ public class DevDetailedViewController implements Initializable {
         headerController.setDesignationMsg("Development Officer");
         navPanelController.setDeviceMngmntdBorder();
         pathFinderController.setSearchBarVisible(false);
-        pathFinderController.setBckBtnScene("Scene/DevDetailedView.fxml");
+        pathFinderController.setBckBtnScene("src/main/resources/org/example/hakmana/Scene/DevDetailedView.fxml");
         pathFinderController.setPathTxt("Device Management>Desktop>Detailed view");
         //create the event listener to the navigation panel ToggleButton() method
         navPanelController.collapseStateProperty().addListener((observable, oldValue, newValue) ->{
@@ -51,7 +56,7 @@ public class DevDetailedViewController implements Initializable {
                 collapse();
             }
         });
-        loadForm("Scene/DesktopDetails.fxml");
+        loadForm("src/main/resources/org/example/hakmana/Scene/DesktopDetails.fxml");
     }
 
     private void Animation(double animStartPos,double animEndPos){
@@ -73,14 +78,14 @@ public class DevDetailedViewController implements Initializable {
         bodyComponet.setMinWidth(bodyComponet.getWidth()-244);
         bodyComponet.setMinWidth(748);
     }
-    private void loadForm(String fxmlFile) {
+    private void loadForm(String fxmlFile){
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlFile));
-            Parent root = loader.load();
-            formPane.setContent(root);
-
-        } catch (IOException e) {
-            e.printStackTrace();
+            Parent sceneRoot = FXMLLoader.load(new File(fxmlFile).toURI().toURL());
+            formPane.setContent(sceneRoot);
+        } catch (MalformedURLException e) {
+            throw new RuntimeException(e);
+        }catch (IOException err){
+            err.printStackTrace();
         }
     }
 

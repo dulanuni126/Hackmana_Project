@@ -1,4 +1,4 @@
-package org.example.hakmana;
+package org.example.hakmana.view;
 
 import javafx.animation.*;
 import javafx.fxml.FXML;
@@ -8,13 +8,13 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
 import javafx.util.Duration;
 import java.net.URL;
-import java.security.PrivilegedAction;
 import java.util.ResourceBundle;
-import org.example.hakmana.DeviceInfoCardController;
+
+import org.example.hakmana.componentControllers.*;
 import org.example.hakmana.model.DatabaseConnection;
 import org.example.hakmana.model.Desktop;
 
-public class DeviceMngmntDevCardController implements Initializable{
+public class DeviceMngmntSmmrySceneController implements Initializable{
 
     @FXML
     private PathFinderController pathFinderController;
@@ -41,7 +41,7 @@ public class DeviceMngmntDevCardController implements Initializable{
         headerController.setDesignationMsg("Development Officer");
         navPanelController.setDeviceMngmntdBorder();
         pathFinderController.setPathTxt("Device Management>Desktop");
-        pathFinderController.setBckBtnScene("Scene/DeviceMngmntDevCard.fxml");
+        pathFinderController.setBckBtnScene("src/main/resources/org/example/hakmana/Scene/DeviceMngmntSmmryScene.fxml");
 
         //create the event listener to the navigation panel ToggleButton() method
         navPanelController.collapseStateProperty().addListener((observable, oldValue, newValue) ->{

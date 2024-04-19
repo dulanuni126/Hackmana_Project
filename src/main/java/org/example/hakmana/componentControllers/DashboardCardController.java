@@ -10,7 +10,9 @@ import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 
+import java.io.File;
 import java.io.IOException;
+import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -24,7 +26,13 @@ public class DashboardCardController extends ScrollPane implements Initializable
     public void initialize(URL url, ResourceBundle resourceBundle) {}
     public DashboardCardController() {
         super();
-        FXMLLoader fxmlDashboardCardLoader=new FXMLLoader(getClass().getResource("Component/dashboardCard.fxml"));
+        String filePath = "src/main/resources/org/example/hakmana/Component/dashboardCard.fxml";
+        FXMLLoader fxmlDashboardCardLoader = null;
+        try {
+            fxmlDashboardCardLoader = new FXMLLoader(new File(filePath).toURI().toURL());
+        } catch (MalformedURLException e) {
+            throw new RuntimeException(e);
+        }
 
         fxmlDashboardCardLoader.setController(this);
         fxmlDashboardCardLoader.setRoot(this);

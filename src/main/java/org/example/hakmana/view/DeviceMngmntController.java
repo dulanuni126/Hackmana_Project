@@ -1,4 +1,4 @@
-package org.example.hakmana;
+package org.example.hakmana.view;
 
 import javafx.animation.*;
 import javafx.fxml.FXML;
@@ -8,8 +8,14 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
 import javafx.util.Duration;
+import org.example.hakmana.componentControllers.DeviceCategoryCardController;
+import org.example.hakmana.componentControllers.HeaderController;
+import org.example.hakmana.componentControllers.NavPanelController;
+import org.example.hakmana.componentControllers.PathFinderController;
+
+import java.io.File;
+import java.net.MalformedURLException;
 import java.net.URL;
-import java.security.PrivilegedAction;
 import java.util.ResourceBundle;
 
 public class DeviceMngmntController implements Initializable {
@@ -32,7 +38,6 @@ public class DeviceMngmntController implements Initializable {
     private  TranslateTransition bodyExpand;//Animation object refernce
 
 
-
     public void initialize(URL location, ResourceBundle resources) {
         headerController.setFontSize("2.5em");
         headerController.setTitleMsg("Device Management");
@@ -52,22 +57,24 @@ public class DeviceMngmntController implements Initializable {
         });
 
 
-        addComponent("Desktop", new Image(getClass().getResourceAsStream("Scene/Images/Desktop.png")),"Scene/DeviceMngmntDevCard.fxml",false);
-        addComponent("Photocopy Machines",new Image(getClass().getResourceAsStream("Scene/Images/photoCopy.png")),"Scene/DeviceMngmntDevCard.fxml",true);
-        addComponent("Monitors",new Image(getClass().getResourceAsStream("Scene/Images/monitor.png")),"Scene/DeviceMngmntDevCard.fxml",true);
-        addComponent("Projectors",new Image(getClass().getResourceAsStream("Scene/Images/projector.png")),"Scene/DeviceMngmntDevCard.fxml",true);
-        addComponent("Laptops",new Image(getClass().getResourceAsStream("Scene/Images/laptopcat.png")),"Scene/DeviceMngmntDevCard.fxml",true);
-        addComponent("Other Devices",new Image(getClass().getResourceAsStream("Scene/Images/other.png")),"Scene/DeviceMngmntDevCard.fxml",true);
-
-
+        addComponent("Desktop", new File("src/main/resources/org/example/hakmana/Scene/Images/Desktop.png"),"src/main/resources/org/example/hakmana/Scene/DeviceMngmntSmmryScene.fxml",false);
+        addComponent("Photocopy Machines",new File("src/main/resources/org/example/hakmana/Scene/Images/photoCopy.png"),"src/main/resources/org/example/hakmana/Scene/DeviceMngmntSmmryScene.fxml",false);
+        addComponent("Monitors",new File("src/main/resources/org/example/hakmana/Scene/Images/monitor.png"),"src/main/resources/org/example/hakmana/Scene/DeviceMngmntSmmryScene.fxml",false);
+        addComponent("Projectors",new File("src/main/resources/org/example/hakmana/Scene/Images/projector.png"),"src/main/resources/org/example/hakmana/Scene/DeviceMngmntSmmryScene.fxml",false);
+        addComponent("Laptops",new File("src/main/resources/org/example/hakmana/Scene/Images/laptopcat.png"),"src/main/resources/org/example/hakmana/Scene/DeviceMngmntSmmryScene.fxml",false);
+        addComponent("Other Devices",new File("src/main/resources/org/example/hakmana/Scene/Images/other.png"),"src/main/resources/org/example/hakmana/Scene/DeviceMngmntSmmryScene.fxml",false);
     }
 
     @FXML
-    private void addComponent(String catTitle, Image catImage,String scnelink,boolean stateVal) {
+    private void addComponent(String catTitle, File imageFile,String scnelink,boolean stateVal) {
         // Create a new label
         DeviceCategoryCardController card=new DeviceCategoryCardController();
         card.setDevName(catTitle);
-        card.setDeviceImage(catImage);
+        try {
+            card.setDeviceImage(new Image(String.valueOf(imageFile.toURI().toURL())));
+        } catch (MalformedURLException e) {
+            throw new RuntimeException(e);
+        }
         card.setDevCatSceneName(scnelink);
         card.disableBtn(stateVal);
 
@@ -97,7 +104,6 @@ public class DeviceMngmntController implements Initializable {
         Animation(0, -244);
         bodyComponet.setMinWidth(992);
         bodyComponet.setMinWidth(bodyComponet.getWidth()+244);
-        //System.out.println(bodyComponet.getWidth()+244);
     }
     public  void collapse() {
         Animation(-244, 0);

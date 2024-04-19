@@ -1,25 +1,23 @@
-package org.example.hakmana;
+package org.example.hakmana.view;
 
 import javafx.animation.TranslateTransition;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Node;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.Dialog;
 import javafx.scene.control.DialogPane;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
-import javafx.stage.Stage;
 import javafx.util.Duration;
-import org.example.hakmana.HeaderController;
-import org.example.hakmana.NavPanelController;
-import org.example.hakmana.PathFinderController;
+import org.example.hakmana.componentControllers.HeaderController;
+import org.example.hakmana.componentControllers.NavPanelController;
+import org.example.hakmana.componentControllers.PathFinderController;
 
+import java.io.File;
 import java.io.IOException;
+import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.Optional;
 import java.util.ResourceBundle;
@@ -81,8 +79,13 @@ public class UserMngmntController implements Initializable {
     // Button action methods
     @FXML
     public void handleCreateAccountButtonAction(ActionEvent event) throws IOException{
-        FXMLLoader createAccfxmlLoad = new FXMLLoader();
-        createAccfxmlLoad.setLocation(getClass().getResource("Scene/CreateAccount.fxml"));
+        String filePath = "src/main/resources/org/example/hakmana/Scene/CreateAccount.fxml";
+        FXMLLoader createAccfxmlLoad = null;
+        try {
+            createAccfxmlLoad = new FXMLLoader(new File(filePath).toURI().toURL());
+        } catch (MalformedURLException e) {
+            throw new RuntimeException(e);
+        }
         DialogPane createAccDialogPane=createAccfxmlLoad.load();
 
         Dialog<ButtonType> dialog=new Dialog<>();
@@ -94,8 +97,13 @@ public class UserMngmntController implements Initializable {
 
     @FXML
     protected void handleEditProfileButtonAction(ActionEvent event)throws IOException {
-        FXMLLoader editAccfxmlLoad = new FXMLLoader();
-        editAccfxmlLoad.setLocation(getClass().getResource("Scene/EditProfile.fxml"));
+        String filePath = "src/main/resources/org/example/hakmana/Scene/EditProfile.fxml";
+        FXMLLoader editAccfxmlLoad = null;
+        try {
+            editAccfxmlLoad = new FXMLLoader(new File(filePath).toURI().toURL());
+        } catch (MalformedURLException e) {
+            throw new RuntimeException(e);
+        }
         DialogPane editAccDialogPane=editAccfxmlLoad.load();
 
         Dialog<ButtonType> dialog=new Dialog<>();
@@ -107,8 +115,13 @@ public class UserMngmntController implements Initializable {
 
     @FXML
     protected void handleShowUsersButtonAction(ActionEvent event)throws IOException {
-        FXMLLoader showAccfxmlLoad = new FXMLLoader();
-        showAccfxmlLoad.setLocation(getClass().getResource("Scene/ShowUsers.fxml"));
+        String filePath = "src/main/resources/org/example/hakmana/Scene/ShowUsers.fxml";
+        FXMLLoader showAccfxmlLoad = null;
+        try {
+            showAccfxmlLoad = new FXMLLoader(new File(filePath).toURI().toURL());
+        } catch (MalformedURLException e) {
+            throw new RuntimeException(e);
+        }
         DialogPane showAccDialogPane=showAccfxmlLoad.load();
 
         Dialog<ButtonType> dialog=new Dialog<>();
@@ -117,8 +130,6 @@ public class UserMngmntController implements Initializable {
 
         Optional<ButtonType> clickedButton=dialog.showAndWait();
     }
-
-
 
 }
 

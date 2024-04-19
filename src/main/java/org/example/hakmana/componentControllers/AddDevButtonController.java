@@ -1,4 +1,8 @@
-package org.example.hakmana;
+package org.example.hakmana.componentControllers;
+
+//***********************************************************************************
+//              controller for fxml file which is for add new device button
+//***********************************************************************************
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -10,7 +14,9 @@ import javafx.scene.control.Dialog;
 import javafx.scene.control.DialogPane;
 import javafx.scene.layout.AnchorPane;
 
+import java.io.File;
 import java.io.IOException;
+import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.Optional;
 import java.util.ResourceBundle;
@@ -27,7 +33,13 @@ public class AddDevButtonController extends AnchorPane implements Initializable 
     public void initialize(URL url, ResourceBundle resourceBundle) {}
     public AddDevButtonController() {
         super();
-        FXMLLoader fxmlFooterLoader = new FXMLLoader(getClass().getResource("Component/addDevButton.fxml"));
+        String filePath = "src/main/resources/org/example/hakmana/Component/addDevButton.fxml";
+        FXMLLoader fxmlFooterLoader = null;
+        try {
+            fxmlFooterLoader = new FXMLLoader(new File(filePath).toURI().toURL());
+        } catch (MalformedURLException e) {
+            throw new RuntimeException(e);
+        }
         fxmlFooterLoader.setController(this);
         fxmlFooterLoader.setRoot(this);
 

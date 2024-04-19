@@ -1,22 +1,25 @@
-package org.example.hakmana;
+package org.example.hakmana.view;
 
 import javafx.animation.*;
-import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import javafx.util.Duration;
+import org.example.hakmana.componentControllers.FooterController;
+import org.example.hakmana.componentControllers.HeaderController;
+import org.example.hakmana.componentControllers.NavPanelController;
+import org.example.hakmana.componentControllers.PathFinderController;
 import org.example.hakmana.model.DatabaseConnection;
 
+import java.io.File;
 import java.io.IOException;
+import java.net.MalformedURLException;
 import java.net.URL;
 import java.sql.*;
 import java.util.Optional;
@@ -123,13 +126,7 @@ public class DashboardController implements Initializable {
                     collapse();
                 }
             });
-
-
-
         }
-
-
-
     }
 
     private void Animation(double animStartPos,double animEndPos){
@@ -154,13 +151,18 @@ public class DashboardController implements Initializable {
         bodyComponet.setMinWidth(W1);
     }
     public void addDeviceBtnDialogOpen(ActionEvent event) throws IOException {
-        FXMLLoader addDevicefxmlLoad = new FXMLLoader();
-        addDevicefxmlLoad.setLocation(getClass().getResource("Scene/DesktopForm.fxml"));
+        String filePath = "src/main/resources/org/example/hakmana/Scene/DesktopForm.fxml";
+        FXMLLoader addDevicefxmlLoad = null;
+        try {
+            addDevicefxmlLoad = new FXMLLoader(new File(filePath).toURI().toURL());
+        } catch (MalformedURLException e) {
+            throw new RuntimeException(e);
+        }
         DialogPane addDeviceDialogPane=addDevicefxmlLoad.load();
 
         Dialog<ButtonType> dialog=new Dialog<>();
         dialog.setDialogPane(addDeviceDialogPane);
-        dialog.setTitle("Contact Us");
+        dialog.setTitle("Add device");
 
         Optional<ButtonType> clickedButton=dialog.showAndWait();
 
