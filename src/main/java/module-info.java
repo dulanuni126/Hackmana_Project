@@ -9,5 +9,9 @@ module org.example.hakmana {
     exports org.example.hakmana;
     exports org.example.hakmana.model;
     opens org.example.hakmana.model to javafx.fxml;
+    exports org.example.hakmana.componentControllers;
+    opens org.example.hakmana.componentControllers to javafx.fxml;
+    exports org.example.hakmana.view;
+    opens org.example.hakmana.view to javafx.fxml;
 
 }

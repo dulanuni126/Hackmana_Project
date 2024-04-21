@@ -1,4 +1,4 @@
-package org.example.hakmana;
+package org.example.hakmana.componentControllers;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -14,7 +14,9 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
+import java.io.File;
 import java.io.IOException;
+import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -35,19 +37,24 @@ public class DeviceCategoryCardController extends AnchorPane implements Initiali
     @FXML
     private ImageView devImage;
 
-    //private variable to set iamge and the device naem
+    //private variable to set iamge and the device name
     private Image deviceImage;
     private String devName;
     private String devCatSceneName;
 
     @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
-
-    }
+    public void initialize(URL url, ResourceBundle resourceBundle) {}
 
     public DeviceCategoryCardController() {
         super();
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("Component/DeviceCategoryCard.fxml"));
+        String filePath = "src/main/resources/org/example/hakmana/Component/DeviceCategoryCard.fxml";
+        FXMLLoader fxmlLoader = null;
+        try {
+            fxmlLoader = new FXMLLoader(new File(filePath).toURI().toURL());
+        } catch (MalformedURLException e) {
+            throw new RuntimeException(e);
+        }
+
         fxmlLoader.setRoot(this);
         fxmlLoader.setController(this);
 
@@ -70,10 +77,6 @@ public class DeviceCategoryCardController extends AnchorPane implements Initiali
         root.setScaleY(1.0);
     }
 
-
-    public Image getDeviceImage() {
-        return deviceImage;
-    }
     public void setDeviceImage(Image deviceImage) {
         this.deviceImage = deviceImage;
         devImage.setImage(deviceImage);
@@ -95,12 +98,18 @@ public class DeviceCategoryCardController extends AnchorPane implements Initiali
         devInfoBtn.setDisable(stateVal);
     }
 
+    //handle devInfo button pressing event.call in fxml file
     public void DevInfoCall(ActionEvent event) throws IOException {
-        Parent sceneRoot = FXMLLoader.load(getClass().getResource(devCatSceneName));
-        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-        scene = new Scene(sceneRoot);
-        stage.setScene(scene);
-        stage.show();
+        String filePath = devCatSceneName;//this String variable will pass to this controller when card create
+        try {
+            Parent sceneRoot = FXMLLoader.load(new File(filePath).toURI().toURL());
+            stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+            scene = new Scene(sceneRoot);
+            stage.setScene(scene);
+            stage.show();
+        } catch (MalformedURLException e) {
+            throw new RuntimeException(e);
+        }
     }
 }
 

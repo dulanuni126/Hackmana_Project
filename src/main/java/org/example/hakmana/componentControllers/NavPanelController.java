@@ -1,4 +1,4 @@
-package org.example.hakmana;
+package org.example.hakmana.componentControllers;
 
 import javafx.animation.TranslateTransition;
 import javafx.beans.property.BooleanProperty;
@@ -11,19 +11,17 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.ToggleButton;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.Background;
 import javafx.scene.layout.VBox;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
 import javafx.util.Duration;
+
+import java.io.File;
 import java.io.IOException;
+import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -107,7 +105,13 @@ public class NavPanelController extends AnchorPane implements Initializable {
     /*--------Load the custom Component using a constructor--------*/
     public NavPanelController() {
         super();
-        FXMLLoader fxmlNavPanelController=new FXMLLoader(getClass().getResource("Component/Nav_panel.fxml"));
+        String filePath = "src/main/resources/org/example/hakmana/Component/Nav_panel.fxml";
+        FXMLLoader fxmlNavPanelController = null;
+        try {
+            fxmlNavPanelController = new FXMLLoader(new File(filePath).toURI().toURL());
+        } catch (MalformedURLException e) {
+            throw new RuntimeException(e);
+        }
         fxmlNavPanelController.setController(this);
         fxmlNavPanelController.setRoot(this);
         try {
@@ -151,65 +155,101 @@ public class NavPanelController extends AnchorPane implements Initializable {
         isCollapsed = !isCollapsed;
     }
     public void deviceMnagmnt(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("Scene/DeviceMngmnt.fxml"));
-        pathFinderController.setBckBtnScene("Scene/DeviceMngmnt.fxml");
-        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-        scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
+        String filePath = "src/main/resources/org/example/hakmana/Scene/DeviceMngmnt.fxml";
+        pathFinderController.setBckBtnScene(filePath);
+        try {
+            Parent sceneRoot = FXMLLoader.load(new File(filePath).toURI().toURL());
+            stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+            scene = new Scene(sceneRoot);
+            stage.setScene(scene);
+            stage.show();
+        } catch (MalformedURLException e) {
+            throw new RuntimeException(e);
+        }
+
     }
     public void overviewScene(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("Scene/Overview.fxml"));
-        pathFinderController.setBckBtnScene("Scene/Overview.fxml");
-        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-        scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
+        String filePath = "src/main/resources/org/example/hakmana/Scene/Overview.fxml";
+        pathFinderController.setBckBtnScene(filePath);
+        try {
+            Parent sceneRoot = FXMLLoader.load(new File(filePath).toURI().toURL());
+            stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+            scene = new Scene(sceneRoot);
+            stage.setScene(scene);
+            stage.show();
+        } catch (MalformedURLException e) {
+            throw new RuntimeException(e);
+        }
+
     }
     public void userMngmntScene(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("Scene/UserMngmnt.fxml"));
-        pathFinderController.setBckBtnScene("Scene/UserMngmnt.fxml");
-        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-        scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
+        String filePath = "src/main/resources/org/example/hakmana/Scene/UserMngmnt.fxml";
+        pathFinderController.setBckBtnScene(filePath);
+        try {
+            Parent sceneRoot = FXMLLoader.load(new File(filePath).toURI().toURL());
+            stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+            scene = new Scene(sceneRoot);
+            stage.setScene(scene);
+            stage.show();
+        } catch (MalformedURLException e) {
+            throw new RuntimeException(e);
+        }
+
     }
     public void reportHndlingScene(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("Scene/ReportHndling.fxml"));
-        pathFinderController.setBckBtnScene("Scene/ReportHndling.fxml");
-        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-        scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
+        String filePath = "src/main/resources/org/example/hakmana/Scene/ReportHndling.fxml";
+        pathFinderController.setBckBtnScene(filePath);
+        try {
+            Parent sceneRoot = FXMLLoader.load(new File(filePath).toURI().toURL());
+            stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+            scene = new Scene(sceneRoot);
+            stage.setScene(scene);
+            stage.show();
+        } catch (MalformedURLException e) {
+            throw new RuntimeException(e);
+        }
+
     }
     public void dashboardScene(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("Scene/dashboard.fxml"));
-        pathFinderController.setBckBtnScene("Scene/dashboard.fxml");
-        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-        scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
+        String filePath = "src/main/resources/org/example/hakmana/Scene/dashboard.fxml";
+        pathFinderController.setBckBtnScene(filePath);
+        try {
+            Parent sceneRoot = FXMLLoader.load(new File(filePath).toURI().toURL());
+            stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+            scene = new Scene(sceneRoot);
+            stage.setScene(scene);
+            stage.show();
+        } catch (MalformedURLException e) {
+            throw new RuntimeException(e);
+        }
+
     }
     public void logOut(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("Scene/login.fxml"));
-        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-        stage.setWidth(845.0);
-        stage.setHeight(565.0);
+        String filePath = "src/main/resources/org/example/hakmana/Scene/loginPage.fxml";
+        pathFinderController.setBckBtnScene(filePath);
+        try {
+            Parent sceneRoot = FXMLLoader.load(new File(filePath).toURI().toURL());
+            stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+            stage.setWidth(845.0);
+            stage.setHeight(565.0);
 
+            //for load the login page in the center of the screen
+            Screen screen = Screen.getPrimary();
+            double screenWidth = screen.getBounds().getWidth();
+            double screenHeight = screen.getBounds().getHeight();
 
-        //for load the login page in the center of the screen
-        Screen screen = Screen.getPrimary();
-        double screenWidth = screen.getBounds().getWidth();
-        double screenHeight = screen.getBounds().getHeight();
+            double stageCenterX = (screenWidth - stage.getWidth()) / 2;
+            double stageCenterY = (screenHeight - stage.getHeight()) / 2;
+            stage.setX(stageCenterX);
+            stage.setY(stageCenterY);
 
-        double stageCenterX = (screenWidth - stage.getWidth()) / 2;
-        double stageCenterY = (screenHeight - stage.getHeight()) / 2;
-        stage.setX(stageCenterX);
-        stage.setY(stageCenterY);
+            scene = new Scene(sceneRoot);
+            stage.setScene(scene);
+            stage.show();
+            System.out.println("logout");
 
-        scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
-        System.out.println("logout");
+        } catch (MalformedURLException e) {
+            throw new RuntimeException(e);
+        }
     }
 }

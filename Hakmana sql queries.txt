@@ -48,15 +48,113 @@ CREATE TABLE user (
     gmail VARCHAR(25)
 );
 
+CREATE TABLE Laptop (
+ ID INT PRIMARY KEY,
+ Model VARCHAR(100),
+ RAM VARCHAR(20),
+ CPU VARCHAR(100),
+ Storage VARCHAR(100),
+ Display VARCHAR(100),
+ GraphicsCard VARCHAR(100),
+ OperatingSystem VARCHAR(100)
+);
+
+CREATE TABLE PhotoCopyMachine (
+ ID INT PRIMARY KEY,
+ Model VARCHAR(100),
+ CopyingCapability VARCHAR(20)
+);
+
+CREATE TABLE MultimediaProjector (
+ ID INT PRIMARY KEY,
+ Model VARCHAR(100)
+);
+
+CREATE TABLE FaxMachine (
+ ID INT PRIMARY KEY,
+ Model VARCHAR(100)
+);
+
+CREATE TABLE UPS (
+ ID INT PRIMARY KEY,
+ Model VARCHAR(100),
+ BackupPower VARCHAR(50),
+ Runtime VARCHAR(50)
+);
 
 
+CREATE TABLE WebCam (
+ ID INT PRIMARY KEY,
+ Brand VARCHAR(100)
+);
 
 
+CREATE TABLE Tripod (
+ ID INT PRIMARY KEY,
+ Stability VARCHAR(50),
+ AdjustableHeight VARCHAR(50)
+);
 
+CREATE TABLE Headphone (
+ ID INT PRIMARY KEY,
+ SoundQuality VARCHAR(50),
+ Connectivity VARCHAR(50)
+);
 
+CREATE TABLE USBHub (
+ ID INT PRIMARY KEY
+);
 
+CREATE TABLE ExternalDVDRom (
+ ID INT PRIMARY KEY
+);
 
+CREATE TABLE AccessPoint (
+ ID INT PRIMARY KEY
+);
 
+CREATE TABLE ExternalUSB (
+ ID INT PRIMARY KEY,
+ USBType VARCHAR(10)
+);
+
+CREATE TABLE SpeakerSet (
+ ID INT PRIMARY KEY,
+ SoundQuality VARCHAR(50),
+ NumberOfSpeakers INT
+);
+
+CREATE TABLE Router (
+ ID INT PRIMARY KEY,
+ NumberOfPorts INT
+);
+
+CREATE TABLE ToolKit (
+ ID INT PRIMARY KEY
+);
+
+CREATE TABLE USBCable (
+ ID INT PRIMARY KEY,
+ Length VARCHAR(20)
+);
+
+CREATE TABLE RouterSwitch (
+ ID INT PRIMARY KEY
+);
+
+CREATE TABLE VGACable (
+ ID INT PRIMARY KEY
+);
+
+CREATE TABLE Keyboard (
+ ID INT PRIMARY KEY,
+ Connectivity VARCHAR(50)
+);
+
+CREATE TABLE Mouse (
+ ID INT PRIMARY KEY,
+ Connectivity VARCHAR(50)
+);
 
 
 
