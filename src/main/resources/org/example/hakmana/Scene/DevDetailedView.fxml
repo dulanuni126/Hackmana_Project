@@ -10,6 +10,15 @@
 <?import org.example.hakmana.NavPanelController?>
 <?import org.example.hakmana.PathFinderController?>
 
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
 <AnchorPane fx:id="parentAnchor" prefHeight="640.0" prefWidth="1024.0" style="-fx-background-color: #00000021;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.hakmana.DevDetailedViewController">
     <children>
         <VBox prefHeight="640.0" prefWidth="1024.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
@@ -28,7 +37,115 @@
                                 <PathFinderController fx:id="pathFinderController" prefWidth="770.0" />
                                 <AnchorPane prefHeight="430.0" prefWidth="758.0" style="-fx-background-color: #FFFFFF; -fx-background-radius: 20;" VBox.vgrow="ALWAYS">
                                     <children>
-                              <ScrollPane fx:id="formPane" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                                        <ScrollPane fx:id="formPane" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" >
+                                            <GridPane hgap="20.0" maxWidth="1200.0" minWidth="1200.0" prefHeight="518.0" prefWidth="1200.0" style="-fx-border-color: black; -fx-border-width: 2; -fx-border-radius: 10; -fx-background-color: #EEEEEE;" styleClass="details" vgap="27.0">
+                                                <columnConstraints>
+                                                    <ColumnConstraints hgrow="SOMETIMES" maxWidth="582.7999877929688" minWidth="10.0" prefWidth="170.79286193847656" />
+                                                    <ColumnConstraints hgrow="SOMETIMES" maxWidth="1099.0000213623046" minWidth="10.0" prefWidth="373.70713806152344" />
+                                                    <ColumnConstraints hgrow="SOMETIMES" maxWidth="1099.0000213623046" minWidth="10.0" prefWidth="246.04730224609375" />
+                                                    <ColumnConstraints hgrow="SOMETIMES" maxWidth="1099.0000213623046" minWidth="10.0" prefWidth="335.45269775390625" />
+                                                </columnConstraints>
+                                                <rowConstraints>
+                                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                </rowConstraints>
+                                                <children>
+                                                    <Label text="Serial Number" GridPane.rowIndex="1" />
+                                                    <Label text="Model" GridPane.rowIndex="2" />
+                                                    <Label text="Purchased From" GridPane.rowIndex="3" />
+                                                    <Label text="Ram" GridPane.rowIndex="4" />
+                                                    <Label text="Processor" GridPane.rowIndex="5" />
+                                                    <Label text="Warranty" GridPane.rowIndex="6" />
+                                                    <Label text="Hard Disk" GridPane.rowIndex="7" />
+                                                    <Label text="Operatiing System" GridPane.rowIndex="8" />
+                                                    <Label text="Status" GridPane.rowIndex="9" />
+                                                    <Label text="Monitor Registration number" GridPane.rowIndex="11" />
+                                                    <Label text="Projector Registration number" GridPane.rowIndex="12" />
+                                                    <Label text="Speaker Registration number" GridPane.rowIndex="13" />
+                                                    <Label text="Registration Number" />
+                                                    <TextField fx:id="regNumTextField" GridPane.columnIndex="1" />
+                                                    <TextField fx:id="serialNumTextField" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                                                    <TextField fx:id="modelTextField" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                                                    <TextField fx:id="purchasedFromTextField" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                                                    <TextField fx:id="ramTextField" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                                                    <TextField fx:id="processorTextField" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+                                                    <TextField fx:id="warrantyTextField" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+                                                    <TextField fx:id="hardDiskTextField" GridPane.columnIndex="1" GridPane.rowIndex="7" />
+                                                    <TextField fx:id="monitorRegNumTextField" GridPane.columnIndex="1" GridPane.rowIndex="11" />
+                                                    <TextField fx:id="projectorRegNumTextField" GridPane.columnIndex="1" GridPane.rowIndex="12" />
+                                                    <TextField fx:id="speakerRegNumTextField" GridPane.columnIndex="1" GridPane.rowIndex="13" />
+                                                    <Button fx:id="addUserButton" maxHeight="26.0" maxWidth="90.0" minHeight="26.0" minWidth="90.0" mnemonicParsing="false" onAction="#addUser" prefHeight="26.0" prefWidth="90.0" text="ADD USER" GridPane.columnIndex="1" GridPane.hgrow="ALWAYS" GridPane.rowIndex="15">
+                                                        <GridPane.margin>
+                                                            <Insets left="50.0" />
+                                                        </GridPane.margin>
+                                                    </Button>
+                                                    <ChoiceBox fx:id="StatusChoiseBox" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="9" />
+                                                    <Line endX="46.32987976074219" startX="-100.0" GridPane.rowIndex="10" />
+                                                    <Label prefHeight="20.0" prefWidth="100.0" text="Input Devices" GridPane.columnIndex="1" GridPane.rowIndex="10">
+                                                        <font>
+                                                            <Font size="16.0" />
+                                                        </font>
+                                                    </Label>
+                                                    <Line endX="100.0" startX="322.0299072265625" startY="0.02018815279006958" GridPane.columnIndex="1" GridPane.rowIndex="10">
+                                                        <GridPane.margin>
+                                                            <Insets left="100.0" />
+                                                        </GridPane.margin>
+                                                    </Line>
+                                                    <Line endX="539.2736206054688" layoutX="184.0" layoutY="437.0" startX="329.28765869140625" startY="-0.37858349084854126" GridPane.columnIndex="3" GridPane.rowIndex="10">
+                                                        <GridPane.margin>
+                                                            <Insets left="140.0" />
+                                                        </GridPane.margin>
+                                                    </Line>
+                                                    <Line endX="541.4157104492188" endY="-0.9998172521591187" layoutX="827.0" layoutY="437.0" startX="350.28558349609375" startY="-0.49763572216033936" GridPane.columnIndex="2" GridPane.rowIndex="10" />
+                                                    <Label layoutX="183.0" layoutY="427.0" prefHeight="20.0" prefWidth="111.0" text="Output Devices" GridPane.columnIndex="3" GridPane.rowIndex="10">
+                                                        <font>
+                                                            <Font size="16.0" />
+                                                        </font>
+                                                    </Label>
+                                                    <Label layoutX="22.0" layoutY="469.0" text="Mouse Registration number" GridPane.columnIndex="2" GridPane.rowIndex="11" />
+                                                    <Label layoutX="22.0" layoutY="509.0" text="Keyboard Registration number" GridPane.columnIndex="2" GridPane.rowIndex="12" />
+                                                    <Label layoutX="22.0" layoutY="549.0" text="External Mic Registration number" GridPane.columnIndex="2" GridPane.rowIndex="13" />
+                                                    <Label layoutX="22.0" layoutY="549.0" text="Scanner Registration number" GridPane.columnIndex="2" GridPane.rowIndex="14" />
+                                                    <TextField fx:id="mouseRegNumTextField" layoutX="174.0" layoutY="431.0" GridPane.columnIndex="3" GridPane.rowIndex="11" />
+                                                    <TextField fx:id="keyboardRegNumTextField" layoutX="873.0" layoutY="431.0" GridPane.columnIndex="3" GridPane.rowIndex="12" />
+                                                    <TextField fx:id="micRegNumTextField" layoutX="873.0" layoutY="468.0" GridPane.columnIndex="3" GridPane.rowIndex="13" />
+                                                    <TextField fx:id="scannerRegNumTextField" layoutX="873.0" layoutY="505.0" GridPane.columnIndex="3" GridPane.rowIndex="14" />
+                                                    <Label layoutX="22.0" layoutY="325.0" text="TV Card" GridPane.columnIndex="2" GridPane.rowIndex="7" />
+                                                    <Label layoutX="22.0" layoutY="362.0" text="Network Card" GridPane.columnIndex="2" GridPane.rowIndex="8" />
+                                                    <Label layoutX="22.0" layoutY="288.0" text="Sound Card" GridPane.columnIndex="2" GridPane.rowIndex="6" />
+                                                    <Label layoutX="22.0" layoutY="251.0" text="Floppy Disk Drive" GridPane.columnIndex="2" GridPane.rowIndex="5" />
+                                                    <ChoiceBox fx:id="NetworkCardChoiseBox" layoutX="212.0" layoutY="357.0" prefWidth="150.0" GridPane.columnIndex="3" GridPane.rowIndex="8" />
+                                                    <ChoiceBox fx:id="TVCardChoiseBox" layoutX="873.0" layoutY="357.0" prefWidth="150.0" GridPane.columnIndex="3" GridPane.rowIndex="7" />
+                                                    <ChoiceBox fx:id="SoundCardChoiseBox" layoutX="873.0" layoutY="320.0" prefWidth="150.0" GridPane.columnIndex="3" GridPane.rowIndex="6" />
+                                                    <ChoiceBox fx:id="FloppyDiskChoiseBox" layoutX="873.0" layoutY="283.0" prefWidth="150.0" GridPane.columnIndex="3" GridPane.rowIndex="5" />
+                                                    <ChoiceBox fx:id="OSChoiseBox" layoutX="200.0" layoutY="357.0" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="8" />
+                                                    <Button fx:id="submitButton" onAction="#submitButtonOnAction" text="Submit" GridPane.columnIndex="1" GridPane.rowIndex="16">
+                                                        <GridPane.margin>
+                                                            <Insets left="300.0" />
+                                                        </GridPane.margin></Button>
+                                                    <Button fx:id="cancelButton" onAction="#cancelButtonOnAction" text="Cancel" GridPane.columnIndex="2" GridPane.rowIndex="16" />
+                                                </children>
+                                                <padding>
+                                                    <Insets left="10.0" right="50.0" top="20.0" />
+                                                </padding>
+                                            </GridPane>
+
+                                        </ScrollPane>
                                     </children>
                            <VBox.margin>
                               <Insets left="27.0" right="27.0" />

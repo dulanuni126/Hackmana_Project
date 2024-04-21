@@ -29,10 +29,10 @@
                   <NavPanelController fx:id="navPanelController" HBox.hgrow="NEVER" />
                   <VBox fx:id="bodyComponet" prefHeight="217.0" prefWidth="748.0" style="0: 0;" HBox.hgrow="ALWAYS">
                      <children>
-                  
+
                         <!--Header Component-->
                         <HeaderController fx:id="headerController" designationMsg="Product owner" prefHeight="109.0" prefWidth="770.0" usernameMsg="R.Gunathilaka" VBox.vgrow="NEVER" />
-                  
+
                         <!--Path Component-->
                         <PathFinderController fx:id="pathFinderController" prefWidth="770.0" />
                         <AnchorPane style="-fx-background-color: yelllow;" VBox.vgrow="ALWAYS">
@@ -42,43 +42,23 @@
                                     <VBox prefHeight="567.0" prefWidth="696.0" spacing="10.0" stylesheets="@CSS/dashboard.css">
                                        <children>
                                           <GridPane hgap="20.0" styleClass="Mpane1" VBox.vgrow="NEVER">
-                                            <columnConstraints>
-                                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                             <columnConstraints>
                                                 <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                            </columnConstraints>
-                                            <rowConstraints>
-                                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                            </rowConstraints>
+                                                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                             </columnConstraints>
+                                             <rowConstraints>
+                                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                             </rowConstraints>
                                              <children>
                                                 <ScrollPane hbarPolicy="NEVER" prefHeight="109.0" prefWidth="206.0" styleClass="dashboardCard" stylesheets="@../Component/CSS/dashboardCard.css" GridPane.columnIndex="1" GridPane.hgrow="NEVER" GridPane.vgrow="NEVER">
                                                    <content>
-                                                      <HBox prefHeight="214.0" prefWidth="480.0" style="-fx-background-color: linear-gradient( #F2AFEF 6.49%, rgba(196, 153, 243, 0.645) 43.29%, rgba(115, 96, 223, 0.31) 78.02%, rgba(51, 24, 107, 0) 110.16%);">
+                                                      <HBox fx:id="hbox1" maxHeight="300.0" prefHeight="108.8" prefWidth="480.0" style="-fx-background-color: linear-gradient( #F2AFEF 6.49%, rgba(196, 153, 243, 0.645) 43.29%, rgba(115, 96, 223, 0.31) 78.02%, rgba(51, 24, 107, 0) 110.16%);">
                                                          <children>
-                                                            <VBox HBox.hgrow="ALWAYS">
+                                                            <VBox fx:id="vbox1" prefHeight="108.8" HBox.hgrow="ALWAYS">
                                                                <children>
                                                                   <Label styleClass="Lables" text="Repairing  devices" />
-                                                                  <Label text="Label">
-                                                                     <VBox.margin>
-                                                                        <Insets left="47.0" />
-                                                                     </VBox.margin>
-                                                                  </Label>
-                                                                  <Label text="Label">
-                                                                     <VBox.margin>
-                                                                        <Insets left="47.0" />
-                                                                     </VBox.margin>
-                                                                  </Label>
-                                                                  <Label text="Label">
-                                                                     <VBox.margin>
-                                                                        <Insets left="47.0" />
-                                                                     </VBox.margin>
-                                                                  </Label>
-                                                                  <Label text="Label">
-                                                                     <VBox.margin>
-                                                                        <Insets left="47.0" />
-                                                                     </VBox.margin>
-                                                                  </Label>
                                                                </children>
                                                             </VBox>
                                                          </children>
@@ -87,31 +67,11 @@
                                                 </ScrollPane>
                                                 <ScrollPane hbarPolicy="NEVER" prefHeight="200.0" prefWidth="200.0" styleClass="dashboardCard" stylesheets="@../Component/CSS/dashboardCard.css" GridPane.columnIndex="2" GridPane.hgrow="NEVER" GridPane.vgrow="NEVER">
                                                    <content>
-                                                      <HBox prefHeight="222.0" prefWidth="480.0" style="-fx-background-color: linear-gradient(rgba(39, 0, 93, 0.87) 3.59%, rgba(148, 0, 255, 0.83) 64.1%, #AED2FF 114.63%);;">
+                                                      <HBox fx:id="hbox2" maxHeight="300.0" prefHeight="108.8" prefWidth="480.0" style="-fx-background-color: linear-gradient(rgba(39, 0, 93, 0.87) 3.59%, rgba(148, 0, 255, 0.83) 64.1%, #AED2FF 114.63%);;">
                                                          <children>
-                                                            <VBox HBox.hgrow="ALWAYS">
+                                                            <VBox fx:id="vbox2" HBox.hgrow="ALWAYS">
                                                                <children>
                                                                   <Label styleClass="Lables" text="Inactive devices" />
-                                                                  <Label text="Label">
-                                                                     <VBox.margin>
-                                                                        <Insets left="47.0" />
-                                                                     </VBox.margin>
-                                                                  </Label>
-                                                                  <Label text="Label">
-                                                                     <VBox.margin>
-                                                                        <Insets left="47.0" />
-                                                                     </VBox.margin>
-                                                                  </Label>
-                                                                  <Label text="Label">
-                                                                     <VBox.margin>
-                                                                        <Insets left="47.0" />
-                                                                     </VBox.margin>
-                                                                  </Label>
-                                                                  <Label text="Label">
-                                                                     <VBox.margin>
-                                                                        <Insets left="47.0" />
-                                                                     </VBox.margin>
-                                                                  </Label>
                                                                </children>
                                                             </VBox>
                                                          </children>
@@ -120,31 +80,11 @@
                                                 </ScrollPane>
                                                 <ScrollPane hbarPolicy="NEVER" prefHeight="200.0" prefWidth="200.0" styleClass="dashboardCard" stylesheets="@../Component/CSS/dashboardCard.css" GridPane.hgrow="NEVER" GridPane.rowIndex="1" GridPane.vgrow="NEVER">
                                                    <content>
-                                                      <HBox prefHeight="191.0" prefWidth="480.0" style="-fx-background-color: linear-gradient( #B4FEE7 16.97%, rgba(150, 239, 255, 0.87) 84.41%);;">
+                                                      <HBox fx:id="hbox3" maxHeight="300.0" prefHeight="108.8" prefWidth="480.0" style="-fx-background-color: linear-gradient( #B4FEE7 16.97%, rgba(150, 239, 255, 0.87) 84.41%);;">
                                                          <children>
-                                                            <VBox HBox.hgrow="ALWAYS">
+                                                            <VBox fx:id="vbox3" HBox.hgrow="ALWAYS">
                                                                <children>
                                                                   <Label styleClass="Lables" text="Not assigned" />
-                                                                  <Label text="Label">
-                                                                     <VBox.margin>
-                                                                        <Insets left="47.0" />
-                                                                     </VBox.margin>
-                                                                  </Label>
-                                                                  <Label text="Label">
-                                                                     <VBox.margin>
-                                                                        <Insets left="47.0" />
-                                                                     </VBox.margin>
-                                                                  </Label>
-                                                                  <Label text="Label">
-                                                                     <VBox.margin>
-                                                                        <Insets left="47.0" />
-                                                                     </VBox.margin>
-                                                                  </Label>
-                                                                  <Label text="Label">
-                                                                     <VBox.margin>
-                                                                        <Insets left="47.0" />
-                                                                     </VBox.margin>
-                                                                  </Label>
                                                                </children>
                                                             </VBox>
                                                          </children>
@@ -153,31 +93,11 @@
                                                 </ScrollPane>
                                                 <ScrollPane hbarPolicy="NEVER" prefHeight="200.0" prefWidth="200.0" styleClass="dashboardCard" stylesheets="@../Component/CSS/dashboardCard.css" GridPane.columnIndex="1" GridPane.hgrow="NEVER" GridPane.rowIndex="1" GridPane.vgrow="NEVER">
                                                    <content>
-                                                      <HBox prefHeight="211.0" prefWidth="480.0" style="-fx-background-color: linear-gradient( #FFBD39 -11.6%, #FBF0B2 135.56%);;">
+                                                      <HBox fx:id="hbox4" maxHeight="300.0" prefHeight="108.8" prefWidth="480.0" style="-fx-background-color: linear-gradient( #FFBD39 -11.6%, #FBF0B2 135.56%);;">
                                                          <children>
-                                                            <VBox HBox.hgrow="ALWAYS">
+                                                            <VBox fx:id="vbox4" HBox.hgrow="ALWAYS">
                                                                <children>
                                                                   <Label styleClass="Lables" text="Total Devices" />
-                                                                  <Label text="Label">
-                                                                     <VBox.margin>
-                                                                        <Insets left="47.0" />
-                                                                     </VBox.margin>
-                                                                  </Label>
-                                                                  <Label text="Label">
-                                                                     <VBox.margin>
-                                                                        <Insets left="47.0" />
-                                                                     </VBox.margin>
-                                                                  </Label>
-                                                                  <Label text="Label">
-                                                                     <VBox.margin>
-                                                                        <Insets left="47.0" />
-                                                                     </VBox.margin>
-                                                                  </Label>
-                                                                  <Label text="Label">
-                                                                     <VBox.margin>
-                                                                        <Insets left="47.0" />
-                                                                     </VBox.margin>
-                                                                  </Label>
                                                                </children>
                                                             </VBox>
                                                          </children>
@@ -186,31 +106,11 @@
                                                 </ScrollPane>
                                                 <ScrollPane hbarPolicy="NEVER" prefHeight="200.0" prefWidth="200.0" styleClass="dashboardCard" stylesheets="@../Component/CSS/dashboardCard.css" GridPane.hgrow="NEVER" GridPane.vgrow="NEVER">
                                                    <content>
-                                                      <HBox prefHeight="223.0" prefWidth="480.0" style="-fx-background-color: linear-gradient(rgba(89, 5, 123, 0.84) 14.01%, rgba(159, 36, 132, 0.79) 62.28%, #DC408B 104.59%);;">
+                                                      <HBox fx:id="hbox5" maxHeight="300.0" prefHeight="108.8" prefWidth="480.0" style="-fx-background-color: linear-gradient(rgba(89, 5, 123, 0.84) 14.01%, rgba(159, 36, 132, 0.79) 62.28%, #DC408B 104.59%);;">
                                                          <children>
-                                                            <VBox HBox.hgrow="ALWAYS">
+                                                            <VBox fx:id="vbox5" HBox.hgrow="ALWAYS">
                                                                <children>
                                                                   <Label styleClass="Lables" text="Active devices" />
-                                                                  <Label text="Label">
-                                                                     <VBox.margin>
-                                                                        <Insets left="47.0" />
-                                                                     </VBox.margin>
-                                                                  </Label>
-                                                                  <Label text="Label">
-                                                                     <VBox.margin>
-                                                                        <Insets left="47.0" />
-                                                                     </VBox.margin>
-                                                                  </Label>
-                                                                  <Label text="Label">
-                                                                     <VBox.margin>
-                                                                        <Insets left="47.0" />
-                                                                     </VBox.margin>
-                                                                  </Label>
-                                                                  <Label text="Label">
-                                                                     <VBox.margin>
-                                                                        <Insets left="47.0" />
-                                                                     </VBox.margin>
-                                                                  </Label>
                                                                </children>
                                                                <HBox.margin>
                                                                   <Insets />
@@ -230,14 +130,14 @@
                                                    </HBox.margin>
                                                    <children>
                                                       <GridPane alignment="CENTER" cacheShape="false" prefHeight="358.0" prefWidth="389.0" styleClass="Mpane1" VBox.vgrow="NEVER">
-                                                        <columnConstraints>
-                                                          <ColumnConstraints hgrow="SOMETIMES" maxWidth="388.4" minWidth="0.0" prefWidth="138.3999755859375" />
-                                                        </columnConstraints>
-                                                        <rowConstraints>
-                                                          <RowConstraints maxHeight="75.59994735717774" minHeight="10.0" prefHeight="75.59994735717774" vgrow="SOMETIMES" />
-                                                          <RowConstraints maxHeight="118.80002059936524" minHeight="10.0" prefHeight="41.6000244140625" vgrow="SOMETIMES" />
-                                                          <RowConstraints maxHeight="127.4" minHeight="10.0" prefHeight="101.5999755859375" vgrow="SOMETIMES" />
-                                                        </rowConstraints>
+                                                         <columnConstraints>
+                                                            <ColumnConstraints hgrow="SOMETIMES" maxWidth="388.4" minWidth="0.0" prefWidth="138.3999755859375" />
+                                                         </columnConstraints>
+                                                         <rowConstraints>
+                                                            <RowConstraints maxHeight="75.59994735717774" minHeight="10.0" prefHeight="75.59994735717774" vgrow="SOMETIMES" />
+                                                            <RowConstraints maxHeight="118.80002059936524" minHeight="10.0" prefHeight="41.6000244140625" vgrow="SOMETIMES" />
+                                                            <RowConstraints maxHeight="127.4" minHeight="10.0" prefHeight="101.5999755859375" vgrow="SOMETIMES" />
+                                                         </rowConstraints>
                                                          <children>
                                                             <Label alignment="CENTER" contentDisplay="CENTER" styleClass="noteLabel" text="Note" GridPane.hgrow="ALWAYS">
                                                                <GridPane.margin>
@@ -275,13 +175,13 @@
                                                    </HBox.margin>
                                                    <children>
                                                       <GridPane accessibleRole="BUTTON" alignment="CENTER" prefHeight="269.0" prefWidth="232.0" styleClass="Mpane3">
-                                                        <columnConstraints>
-                                                          <ColumnConstraints hgrow="SOMETIMES" maxWidth="232.8" minWidth="10.0" prefWidth="139.1999619483948" />
-                                                        </columnConstraints>
-                                                        <rowConstraints>
-                                                          <RowConstraints maxHeight="76.39999999999999" minHeight="10.0" prefHeight="76.39999999999999" vgrow="SOMETIMES" />
-                                                          <RowConstraints maxHeight="148.8" minHeight="0.0" prefHeight="34.79998779296875" vgrow="SOMETIMES" />
-                                                        </rowConstraints>
+                                                         <columnConstraints>
+                                                            <ColumnConstraints hgrow="SOMETIMES" maxWidth="232.8" minWidth="10.0" prefWidth="139.1999619483948" />
+                                                         </columnConstraints>
+                                                         <rowConstraints>
+                                                            <RowConstraints maxHeight="76.39999999999999" minHeight="10.0" prefHeight="76.39999999999999" vgrow="SOMETIMES" />
+                                                            <RowConstraints maxHeight="148.8" minHeight="0.0" prefHeight="34.79998779296875" vgrow="SOMETIMES" />
+                                                         </rowConstraints>
                                                          <children>
                                                             <Label alignment="CENTER" styleClass="quickaccessLabel" text="Quick access" GridPane.hgrow="ALWAYS">
                                                                <GridPane.margin>
@@ -362,7 +262,7 @@
                         </AnchorPane>
                         <AnchorPane maxHeight="64.0" prefHeight="64.0" prefWidth="746.0" VBox.vgrow="NEVER">
                            <children>
-                        
+
                               <!--Footer Component-->
                               <FooterController fx:id="footerController" layoutX="26.0" prefHeight="64.0" prefWidth="694.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="26.0" AnchorPane.rightAnchor="27.0" AnchorPane.topAnchor="0.0" />
                            </children>
