@@ -4,6 +4,7 @@ module org.example.hakmana {
     requires javafx.graphics;
     requires java.sql;
     requires com.jfoenix;
+    requires java.desktop;
 
     opens org.example.hakmana to javafx.fxml;
     exports org.example.hakmana;

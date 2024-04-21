@@ -12,6 +12,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 import javafx.util.Duration;
 
+import java.net.URL;
 
 import java.io.File;
 import java.io.IOException;
@@ -22,6 +23,7 @@ import java.util.Optional;
 import org.example.hakmana.HeaderController;
 import org.example.hakmana.NavPanelController;
 import org.example.hakmana.PathFinderController;
+
 import java.util.ResourceBundle;
 
 public class UserMngmntController implements Initializable {
@@ -43,8 +45,6 @@ public class UserMngmntController implements Initializable {
 
         headerController.setFontSize("2.5em");
         headerController.setTitleMsg("User management");
-        headerController.setUsernameMsg("Mr.Udara Mahanama");
-        headerController.setDesignationMsg("Development Officer");
         navPanelController.setUserMngmntBorder();
         pathFinderController.setSearchBarVisible(false);
         pathFinderController.setPathTxt("User Management");
