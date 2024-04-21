@@ -1,53 +1,39 @@
-package org.example.hakmana.view;
+package org.example.hakmana;
 
 import javafx.animation.*;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Node;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
-import javafx.stage.Stage;
 import javafx.util.Duration;
-import org.example.hakmana.componentControllers.HeaderController;
-import org.example.hakmana.componentControllers.NavPanelController;
-import org.example.hakmana.componentControllers.PathFinderController;
-
-import java.io.File;
-import java.io.IOException;
-import java.net.MalformedURLException;
 import java.net.URL;
+import java.security.PrivilegedAction;
 import java.util.ResourceBundle;
 
-public class DevDetailedViewController implements Initializable {
+public class ReportHndlingController implements Initializable {
 
     @FXML
-    private NavPanelController navPanelController;//NavPanel custom component injector
-    @FXML
     private HeaderController headerController;
+    @FXML
+    private NavPanelController navPanelController;//NavPanel custom component injector
     @FXML
     private  VBox bodyComponet;//injector for VBox to expand
     @FXML
     private PathFinderController pathFinderController;
-    @FXML
-    private ScrollPane formPane;
 
     private  TranslateTransition bodyExpand;//Animation object refernce
+
     @FXML
     private AnchorPane parentAnchor;
     public void initialize(URL location, ResourceBundle resources) {
 
         headerController.setFontSize("2.5em");
-        headerController.setTitleMsg("Device Management");
+        headerController.setTitleMsg("Report Handling");
         headerController.setUsernameMsg("Mr.Udara Mahanama");
         headerController.setDesignationMsg("Development Officer");
-        navPanelController.setDeviceMngmntdBorder();
+        navPanelController.setReportHndlingdBorder();
         pathFinderController.setSearchBarVisible(false);
-        pathFinderController.setBckBtnScene("src/main/resources/org/example/hakmana/Scene/DevDetailedView.fxml");
-        pathFinderController.setPathTxt("Device Management>Desktop>Detailed view");
+        pathFinderController.setPathTxt("Report handling");
         //create the event listener to the navigation panel ToggleButton() method
         navPanelController.collapseStateProperty().addListener((observable, oldValue, newValue) ->{
             if(newValue){
@@ -56,7 +42,6 @@ public class DevDetailedViewController implements Initializable {
                 collapse();
             }
         });
-        loadForm("src/main/resources/org/example/hakmana/Scene/DesktopDetails.fxml");
     }
 
     private void Animation(double animStartPos,double animEndPos){
@@ -78,16 +63,8 @@ public class DevDetailedViewController implements Initializable {
         bodyComponet.setMinWidth(bodyComponet.getWidth()-244);
         bodyComponet.setMinWidth(748);
     }
-    private void loadForm(String fxmlFile){
-        try {
-            Parent sceneRoot = FXMLLoader.load(new File(fxmlFile).toURI().toURL());
-            formPane.setContent(sceneRoot);
-        } catch (MalformedURLException e) {
-            throw new RuntimeException(e);
-        }catch (IOException err){
-            err.printStackTrace();
-        }
-    }
 
 
 }
+
+

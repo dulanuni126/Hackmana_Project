@@ -1,4 +1,4 @@
-package org.example.hakmana.view;
+package org.example.hakmana;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -7,13 +7,13 @@ import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import org.example.hakmana.model.DatabaseConnection;
+import org.example.hakmana.model.Desktop;
 import org.example.hakmana.model.User;
-import org.example.hakmana.view.DesktopFormController;
 
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class UserAssignViewController implements Initializable {
+public class UserController implements Initializable {
     @FXML
     private TextField gmailTextField;
 
@@ -30,6 +30,8 @@ public class UserAssignViewController implements Initializable {
     private User user;
 
     public static boolean isAssignUserButtonClicked = false;
+
+
 
     public void assignUserButtonOnAction(ActionEvent event) {
         user=new User();

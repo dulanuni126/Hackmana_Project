@@ -7,12 +7,12 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
-<?import org.example.hakmana.componentControllers.FooterController?>
-<?import org.example.hakmana.componentControllers.HeaderController?>
-<?import org.example.hakmana.componentControllers.NavPanelController?>
-<?import org.example.hakmana.componentControllers.PathFinderController?>
+<?import org.example.hakmana.FooterController?>
+<?import org.example.hakmana.HeaderController?>
+<?import org.example.hakmana.NavPanelController?>
+<?import org.example.hakmana.PathFinderController?>
 
-<AnchorPane fx:id="parentAnchor" prefHeight="640.0" prefWidth="1024.0" style="-fx-background-color: #00000021;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.hakmana.view.DeviceMngmntSmmrySceneController">
+<AnchorPane fx:id="parentAnchor" prefHeight="640.0" prefWidth="1024.0" style="-fx-background-color: #00000021;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.hakmana.DeviceMngmntDevCardController">
     <children>
         <VBox prefHeight="640.0" prefWidth="1024.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
             <children>
@@ -20,7 +20,7 @@
                     <children>
                         <!-- Navigation panel Component-->
                         <NavPanelController fx:id="navPanelController" HBox.hgrow="NEVER" />
-                        <VBox fx:id="bodyComponet" prefHeight="640.0" prefWidth="748.0"  HBox.hgrow="ALWAYS">
+                        <VBox fx:id="bodyComponet" prefHeight="640.0" prefWidth="748.0" style="0: 0;" HBox.hgrow="ALWAYS">
                             <children>
 
                                 <!--Header Component-->
@@ -47,10 +47,7 @@
                            </VBox.margin></AnchorPane>
 
                                 <!--Footer Component-->
-                                <FooterController prefHeight="39.0" prefWidth="770.0">
-                           <VBox.margin>
-                              <Insets left="27.0" right="27.0" />
-                           </VBox.margin></FooterController>
+                                <FooterController prefHeight="39.0" prefWidth="770.0" />
                             </children>
                         </VBox>
                     </children>

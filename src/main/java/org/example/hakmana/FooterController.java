@@ -1,4 +1,4 @@
-package org.example.hakmana.componentControllers;
+package org.example.hakmana;
 
 import javafx.application.Platform;
 import javafx.concurrent.Task;
@@ -13,9 +13,7 @@ import javafx.scene.control.*;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
-import java.io.File;
 import java.io.IOException;
-import java.net.MalformedURLException;
 import java.net.URL;
 import java.text.SimpleDateFormat;
 import java.util.*;
@@ -60,14 +58,7 @@ public class FooterController extends VBox implements Initializable {
 
     public FooterController() {
         super();
-        String filePath = "src/main/resources/org/example/hakmana/Component/Footer.fxml";
-        FXMLLoader fxmlFooterLoader = null;
-        try {
-            fxmlFooterLoader = new FXMLLoader(new File(filePath).toURI().toURL());
-        } catch (MalformedURLException e) {
-            throw new RuntimeException(e);
-        }
-
+        FXMLLoader fxmlFooterLoader = new FXMLLoader(getClass().getResource("Component/Footer.fxml"));
         fxmlFooterLoader.setController(this);
         fxmlFooterLoader.setRoot(this);
 
@@ -79,13 +70,8 @@ public class FooterController extends VBox implements Initializable {
         }
     }
     public void ContactusBtnDialogOpen(ActionEvent event) throws IOException{
-        String filePath = "src/main/resources/org/example/hakmana/Component/ContactUsDialogPane.fxml";
-        FXMLLoader contactUsfxmlLoad = null;
-        try {
-            contactUsfxmlLoad = new FXMLLoader(new File(filePath).toURI().toURL());
-        } catch (MalformedURLException e) {
-            throw new RuntimeException(e);
-        }
+        FXMLLoader contactUsfxmlLoad = new FXMLLoader();
+        contactUsfxmlLoad.setLocation(getClass().getResource("Component/ContactUsDialogPane.fxml"));
         DialogPane conactUsDialogPane=contactUsfxmlLoad.load();
 
         Dialog<ButtonType> dialog=new Dialog<>();

@@ -1,4 +1,4 @@
-package org.example.hakmana.componentControllers;
+package org.example.hakmana;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -6,9 +6,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 
-import java.io.File;
 import java.io.IOException;
-import java.net.MalformedURLException;
 import java.net.URL;
 import java.security.PublicKey;
 import java.util.ResourceBundle;
@@ -35,13 +33,7 @@ public class HeaderController extends VBox implements Initializable {
 
     public HeaderController() {
         super();
-        String filePath = "src/main/resources/org/example/hakmana/Component/Header.fxml";
-        FXMLLoader fxmlHeaderLoader = null;
-        try {
-            fxmlHeaderLoader = new FXMLLoader(new File(filePath).toURI().toURL());
-        } catch (MalformedURLException e) {
-            throw new RuntimeException(e);
-        }
+        FXMLLoader fxmlHeaderLoader = new FXMLLoader(getClass().getResource("Component/Header.fxml"));
         fxmlHeaderLoader.setController(this);
         fxmlHeaderLoader.setRoot(this);
 

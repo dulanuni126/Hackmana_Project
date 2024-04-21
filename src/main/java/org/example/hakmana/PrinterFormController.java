@@ -1,4 +1,4 @@
-package org.example.hakmana.view;
+package org.example.hakmana;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -23,13 +23,14 @@ public class PrinterFormController implements Initializable {
     private ChoiceBox<String> StatusChoiseBox;
     private String[] deviceStatus={"Active","Repairing","Inactive"};
     public void addUser(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("Scene/UserAssignDialog.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("Scene/user.fxml"));
         Stage stage=new Stage();
         stage.initModality(Modality.APPLICATION_MODAL);
         stage.setScene(new Scene(root));
         stage.show();
 
     }
+
 
     public void desktop(ActionEvent event) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("Scene/printerForm.fxml"));
@@ -39,6 +40,7 @@ public class PrinterFormController implements Initializable {
         stage.show();
 
     }
+
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {

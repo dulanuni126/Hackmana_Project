@@ -1,6 +1,6 @@
 package org.example.hakmana;
 
-public class Launcher {
+public class launcher {
     public static void main(String[] args) {
         MainApplication.main(args);
     }
