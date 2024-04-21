@@ -41,3 +41,10 @@
     -fx-spacing: 8px; /* space between children */
     -fx-effect: dropshadow(gaussian, purple, 5, 0.5, 0, 0);
 }
+/*Adding hover effect for button*/
+.option-button:hover{
+    -fx-transition: color 0.8s ease-in-out;
+    -fx-background-color:black; /* dark background on hover */
+    -fx-cursor: hand; /* Change cursor to pointer */
+    -fx-font-weight:800;
+}
