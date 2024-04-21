@@ -23,7 +23,7 @@ public class PrinterFormController implements Initializable {
     private ChoiceBox<String> StatusChoiseBox;
     private String[] deviceStatus={"Active","Repairing","Inactive"};
     public void addUser(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("Scene/user.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("Scene/userAssignDialog.fxml"));
         Stage stage=new Stage();
         stage.initModality(Modality.APPLICATION_MODAL);
         stage.setScene(new Scene(root));
