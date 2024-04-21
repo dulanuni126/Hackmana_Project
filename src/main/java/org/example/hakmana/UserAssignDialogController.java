@@ -7,13 +7,12 @@ import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import org.example.hakmana.model.DatabaseConnection;
-import org.example.hakmana.model.Desktop;
 import org.example.hakmana.model.User;
 
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class UserController implements Initializable {
+public class UserAssignDialogController implements Initializable {
     @FXML
     private TextField gmailTextField;
 

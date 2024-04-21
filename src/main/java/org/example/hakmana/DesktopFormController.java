@@ -16,7 +16,6 @@ import org.example.hakmana.model.User;
 
 import java.io.IOException;
 import java.net.URL;
-import java.sql.SQLOutput;
 import java.util.ResourceBundle;
 
 public class DesktopFormController implements Initializable {
@@ -97,10 +96,10 @@ public class DesktopFormController implements Initializable {
 
     public static User user;
     public void addUser(ActionEvent event) throws IOException {
-        ((Node) event.getSource()).setDisable(UserController.isAssignUserButtonClicked);
+        ((Node) event.getSource()).setDisable(UserAssignDialogController.isAssignUserButtonClicked);
 
-        if(!UserController.isAssignUserButtonClicked){
-            Parent root = FXMLLoader.load(getClass().getResource("Scene/user.fxml"));
+        if(!UserAssignDialogController.isAssignUserButtonClicked){
+            Parent root = FXMLLoader.load(getClass().getResource("Scene/userAssignDialog.fxml"));
             Stage stage=new Stage();
             stage.initModality(Modality.APPLICATION_MODAL);
             stage.setScene(new Scene(root));
@@ -145,8 +144,6 @@ public class DesktopFormController implements Initializable {
         // Disable the submitButton initially if regNumTextField is empty
         submitButton.setDisable(regNumTextField.getText().isEmpty());
         addUserButton.setDisable(regNumTextField.getText().isEmpty());
-
-        
 
     }
 
@@ -207,7 +204,7 @@ public class DesktopFormController implements Initializable {
         NetworkCardChoiseBox.getSelectionModel().clearSelection();
         micRegNumTextField.clear();
 
-        UserController.isAssignUserButtonClicked=false;
+        UserAssignDialogController.isAssignUserButtonClicked=false;
         addUserButton.setDisable(false);
 
 
