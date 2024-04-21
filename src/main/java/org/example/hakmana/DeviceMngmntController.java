@@ -52,12 +52,12 @@ public class DeviceMngmntController implements Initializable {
         });
 
 
-        addComponent("Desktop", new Image(getClass().getResourceAsStream("Scene/Images/Desktop.png")),"Scene/DeviceMngmntDevCard.fxml",false);
-        addComponent("Photocopy Machines",new Image(getClass().getResourceAsStream("Scene/Images/photoCopy.png")),"Scene/DeviceMngmntDevCard.fxml",true);
-        addComponent("Monitors",new Image(getClass().getResourceAsStream("Scene/Images/monitor.png")),"Scene/DeviceMngmntDevCard.fxml",true);
-        addComponent("Projectors",new Image(getClass().getResourceAsStream("Scene/Images/projector.png")),"Scene/DeviceMngmntDevCard.fxml",true);
-        addComponent("Laptops",new Image(getClass().getResourceAsStream("Scene/Images/laptopcat.png")),"Scene/DeviceMngmntDevCard.fxml",true);
-        addComponent("Other Devices",new Image(getClass().getResourceAsStream("Scene/Images/other.png")),"Scene/DeviceMngmntDevCard.fxml",true);
+        addComponent("Desktop", new Image(getClass().getResourceAsStream("Scene/Images/Desktop.png")),"Scene/DeviceMngmntSmmryScene.fxml",false);
+        addComponent("Photocopy Machines",new Image(getClass().getResourceAsStream("Scene/Images/photoCopy.png")),"Scene/DeviceMngmntSmmryScene.fxml",false);
+        addComponent("Monitors",new Image(getClass().getResourceAsStream("Scene/Images/monitor.png")),"Scene/DeviceMngmntSmmryScene.fxml",false);
+        addComponent("Projectors",new Image(getClass().getResourceAsStream("Scene/Images/projector.png")),"Scene/DeviceMngmntSmmryScene.fxml",false);
+        addComponent("Laptops",new Image(getClass().getResourceAsStream("Scene/Images/laptopcat.png")),"Scene/DeviceMngmntSmmryScene.fxml",false);
+        addComponent("Other Devices",new Image(getClass().getResourceAsStream("Scene/Images/other.png")),"Scene/DeviceMngmntSmmryScene.fxml",false);
 
 
     }

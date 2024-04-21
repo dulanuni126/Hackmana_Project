@@ -12,12 +12,6 @@
     -fx-border-radius: 5px;
     -fx-background-radius: 5px;
 }
-.option-button:hover{
-    -fx-transition: color 0.8s ease-in-out;
-    -fx-background-color:black;
-    -fx-cursor: hand; /* Change cursor to pointer */
-    -fx-font-weight:800;
-}
 
 .detail-card {
     -fx-background-color: #ecf0f1;

@@ -12,7 +12,7 @@
 <?import org.example.hakmana.NavPanelController?>
 <?import org.example.hakmana.PathFinderController?>
 
-<AnchorPane fx:id="parentAnchor" prefHeight="640.0" prefWidth="1024.0" style="-fx-background-color: #00000021;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.hakmana.DeviceMngmntDevCardController">
+<AnchorPane fx:id="parentAnchor" prefHeight="640.0" prefWidth="1024.0" style="-fx-background-color: #00000021;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.hakmana.DeviceMngmntSmmryScene">
     <children>
         <VBox prefHeight="640.0" prefWidth="1024.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
             <children>
@@ -47,10 +47,7 @@
                            </VBox.margin></AnchorPane>
 
                                 <!--Footer Component-->
-                                <FooterController prefHeight="39.0" prefWidth="770.0">
-                           <VBox.margin>
-                              <Insets left="27.0" right="27.0" />
-                           </VBox.margin></FooterController>
+                                <FooterController prefHeight="39.0" prefWidth="770.0" />
                             </children>
                         </VBox>
                     </children>
