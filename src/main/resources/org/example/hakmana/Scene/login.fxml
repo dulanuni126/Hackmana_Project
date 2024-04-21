@@ -15,9 +15,9 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="526.0" prefWidth="800.0" style="-fx-background-color: #EEEEEE;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.hakmana.view.LoginPageController">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="526.0" prefWidth="800.0" style="-fx-background-color: #EEEEEE;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.hakmana.LoginPageController">
    <children>
-      <VBox layoutY="-1.0" prefHeight="527.0" prefWidth="221.0" styleClass="vbox_background_left" stylesheets="@CSS/loginPage.css">
+      <VBox layoutY="-1.0" prefHeight="527.0" prefWidth="221.0" styleClass="vbox_background_left" stylesheets="@CSS/login.css">
          <children>
             <HBox prefHeight="142.0" prefWidth="221.0" />
             <ImageView fitHeight="199.0" fitWidth="172.0" pickOnBounds="true" preserveRatio="true">
@@ -99,7 +99,7 @@
                   <Font size="14.0" />
                </font>
             </Text>
-            <Button fx:id="login" layoutX="132.0" layoutY="290.0" mnemonicParsing="false" onAction="#DashboardSceneLoad" prefHeight="33.0" prefWidth="247.0" styleClass="loginBtnHvrStyle" stylesheets="@CSS/loginPage.css" text="LOG IN" textFill="WHITE" />
+            <Button fx:id="login" layoutX="132.0" layoutY="290.0" mnemonicParsing="false" onAction="#DashboardSceneLoad" prefHeight="33.0" prefWidth="247.0" styleClass="loginBtnHvrStyle" stylesheets="@CSS/login.css" text="LOG IN" textFill="WHITE" />
             <PasswordField fx:id="psswrdFeild" layoutX="131.0" layoutY="189.0" prefHeight="26.0" prefWidth="247.0" promptText="Password" />
          </children>
       </Pane>

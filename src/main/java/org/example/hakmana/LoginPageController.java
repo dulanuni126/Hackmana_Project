@@ -1,4 +1,4 @@
-package org.example.hakmana.view;
+package org.example.hakmana;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;

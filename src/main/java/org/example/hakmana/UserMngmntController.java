@@ -1,29 +1,29 @@
-package org.example.hakmana.view;
+package org.example.hakmana;
 
-import javafx.animation.*;
+import javafx.animation.TranslateTransition;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 import javafx.util.Duration;
-import org.example.hakmana.componentControllers.HeaderController;
-import org.example.hakmana.componentControllers.NavPanelController;
-import org.example.hakmana.componentControllers.PathFinderController;
+import org.example.hakmana.HeaderController;
+import org.example.hakmana.NavPanelController;
+import org.example.hakmana.PathFinderController;
 
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class ReportHndlingController implements Initializable {
+public class UserMngmntController implements Initializable {
 
     @FXML
     private HeaderController headerController;
+
     @FXML
     private NavPanelController navPanelController;//NavPanel custom component injector
     @FXML
     private  VBox bodyComponet;//injector for VBox to expand
     @FXML
     private PathFinderController pathFinderController;
-
     private  TranslateTransition bodyExpand;//Animation object refernce
 
     @FXML
@@ -31,12 +31,12 @@ public class ReportHndlingController implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
 
         headerController.setFontSize("2.5em");
-        headerController.setTitleMsg("Report Handling");
+        headerController.setTitleMsg("User management");
         headerController.setUsernameMsg("Mr.Udara Mahanama");
         headerController.setDesignationMsg("Development Officer");
-        navPanelController.setReportHndlingdBorder();
+        navPanelController.setUserMngmntBorder();
         pathFinderController.setSearchBarVisible(false);
-        pathFinderController.setPathTxt("Report handling");
+        pathFinderController.setPathTxt("User Management");
         //create the event listener to the navigation panel ToggleButton() method
         navPanelController.collapseStateProperty().addListener((observable, oldValue, newValue) ->{
             if(newValue){
@@ -69,5 +69,4 @@ public class ReportHndlingController implements Initializable {
 
 
 }
-
 

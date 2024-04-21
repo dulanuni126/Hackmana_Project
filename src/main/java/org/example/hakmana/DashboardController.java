@@ -1,4 +1,4 @@
-package org.example.hakmana.view;
+package org.example.hakmana;
 
 import javafx.animation.*;
 import javafx.application.Platform;
@@ -16,10 +16,6 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import javafx.util.Duration;
-import org.example.hakmana.componentControllers.FooterController;
-import org.example.hakmana.componentControllers.HeaderController;
-import org.example.hakmana.componentControllers.NavPanelController;
-import org.example.hakmana.componentControllers.PathFinderController;
 
 import java.io.IOException;
 import java.net.URL;

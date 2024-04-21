@@ -1,23 +1,24 @@
-package org.example.hakmana.view;
+package org.example.hakmana;
 
 import javafx.animation.*;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.util.Duration;
+
+import java.io.IOException;
 import java.net.URL;
+import java.security.PrivilegedAction;
 import java.util.ResourceBundle;
 
-import org.example.hakmana.componentControllers.*;
-import org.example.hakmana.model.DatabaseConnection;
-import org.example.hakmana.model.Desktop;
+public class DevDetailedViewController implements Initializable {
 
-public class DeviceMngmntSmmrySceneController implements Initializable{
-
-    @FXML
-    private PathFinderController pathFinderController;
     @FXML
     private NavPanelController navPanelController;//NavPanel custom component injector
     @FXML
@@ -25,12 +26,11 @@ public class DeviceMngmntSmmrySceneController implements Initializable{
     @FXML
     private  VBox bodyComponet;//injector for VBox to expand
     @FXML
-    private GridPane grid;
-    private int rowCount = 1;
-    private int colCount = 0;
+    private PathFinderController pathFinderController;
+    @FXML
+    private ScrollPane formPane;
 
     private  TranslateTransition bodyExpand;//Animation object refernce
-
     @FXML
     private AnchorPane parentAnchor;
     public void initialize(URL location, ResourceBundle resources) {
@@ -40,9 +40,8 @@ public class DeviceMngmntSmmrySceneController implements Initializable{
         headerController.setUsernameMsg("Mr.Udara Mahanama");
         headerController.setDesignationMsg("Development Officer");
         navPanelController.setDeviceMngmntdBorder();
-        pathFinderController.setPathTxt("Device Management>Desktop");
-        pathFinderController.setBckBtnScene("src/main/resources/org/example/hakmana/Scene/DeviceMngmntSmmryScene.fxml");
-
+        pathFinderController.setSearchBarVisible(false);
+        pathFinderController.setBckBtnScene("Scene/DevDetailedView.fxml");
         //create the event listener to the navigation panel ToggleButton() method
         navPanelController.collapseStateProperty().addListener((observable, oldValue, newValue) ->{
             if(newValue){
@@ -51,51 +50,7 @@ public class DeviceMngmntSmmrySceneController implements Initializable{
                 collapse();
             }
         });
-        addComponent();
-        addLastComponent();
-    }
-    @FXML
-    private void addComponent() {
-        DatabaseConnection databaseConnection=DatabaseConnection.getInstance();
-        Desktop[] desktops =databaseConnection.getDesktops();
-
-        DeviceInfoCardController card;
-        for (Desktop desktop : desktops) {
-            card=new DeviceInfoCardController();
-            card.setUser(desktop.getUserName());
-            card.setBrand(desktop.getModel());
-            card.setDevId(desktop.getRegNum());
-
-            // Add the label to the grid
-            grid.add(card, colCount, rowCount);
-
-            // Increment the row count for the next component
-            colCount++;
-
-            // If the row count is a multiple of 3, increment the column count
-            if (colCount % 3 == 0) {
-                rowCount++;
-                colCount = 0;
-            }
-        }
-
-    }
-    private void addLastComponent() {
-        AddDevButtonController addDevButtonController=new AddDevButtonController();
-
-
-        // Add the label to the grid
-        grid.add(addDevButtonController, colCount, rowCount);
-
-        // Increment the row count for the next component
-        colCount++;
-
-        // If the row count is a multiple of 3, increment the column count
-        if (colCount % 3 == 0) {
-            rowCount++;
-            colCount = 0;
-        }
-
+        loadForm("Scene/DesktopDetails.fxml");
     }
 
     private void Animation(double animStartPos,double animEndPos){
@@ -117,4 +72,16 @@ public class DeviceMngmntSmmrySceneController implements Initializable{
         bodyComponet.setMinWidth(bodyComponet.getWidth()-244);
         bodyComponet.setMinWidth(748);
     }
+    private void loadForm(String fxmlFile) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlFile));
+            Parent root = loader.load();
+            formPane.setContent(root);
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+
 }
