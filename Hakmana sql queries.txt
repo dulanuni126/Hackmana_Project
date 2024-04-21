@@ -156,6 +156,21 @@ CREATE TABLE Mouse (
  Connectivity VARCHAR(50)
 );
 
+CREATE TABLE systemUser (
+    userName VARCHAR(50),
+    fullName VARCHAR(100),
+    post VARCHAR(50),
+    empId VARCHAR(50),
+    pwd VARCHAR(64),
+    email VARCHAR(50),
+    phoneNum VARCHAR(10),
+    isRemember BOOLEAN DEFAULT FALSE,
+    PRIMARY KEY (userName)
+);
+
+INSERT INTO systemUser (userName, pwd)
+VALUES ('hakmanaedm', SHA1('adminuserhakmana'));
+
 
 
 

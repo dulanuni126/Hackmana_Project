@@ -51,9 +51,9 @@
                                                 <Label fx:id="userDetailTitle" contentDisplay="CENTER" prefHeight="23.0" prefWidth="78.0" styleClass="detail-title" text="Mr Kamal" textAlignment="CENTER" />
                                                 <Label fx:id="userNameLabel" styleClass="detail-label" text="Full Name" />
                                                 <Label fx:id="userPostLabel" styleClass="detail-label" text="Post" />
-                                    <Label styleClass="detail-label" stylesheets="@CSS/UserManagement.css" text="Employee ID" />
+                                                <Label styleClass="detail-label" stylesheets="@CSS/UserManagement.css" text="Employee ID" />
                                                 <Label fx:id="userEmailLabel" styleClass="detail-label" text="Email Address" />
-                                    <Label prefHeight="17.0" prefWidth="91.0" styleClass="detail-label" stylesheets="@CSS/UserManagement.css" text="Phone Number" />
+                                                <Label prefHeight="17.0" prefWidth="91.0" styleClass="detail-label" stylesheets="@CSS/UserManagement.css" text="Phone Number" />
                                             </children>
                                         </VBox>
 
