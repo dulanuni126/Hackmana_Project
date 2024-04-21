@@ -79,7 +79,7 @@ public class UserMngmntController implements Initializable {
     // Button action methods
     @FXML
     public void handleCreateAccountButtonAction(ActionEvent event) throws IOException{
-        String filePath = "src/main/resources/org/example/hakmana/Scene/CreateAccount.fxml";
+        String filePath = "src/main/resources/org/example/hakmana/Scene/DialogBoxView/CreateAccount.fxml";
         FXMLLoader createAccfxmlLoad = null;
         try {
             createAccfxmlLoad = new FXMLLoader(new File(filePath).toURI().toURL());
@@ -97,7 +97,7 @@ public class UserMngmntController implements Initializable {
 
     @FXML
     protected void handleEditProfileButtonAction(ActionEvent event)throws IOException {
-        String filePath = "src/main/resources/org/example/hakmana/Scene/EditProfile.fxml";
+        String filePath = "src/main/resources/org/example/hakmana/Scene/DialogBoxView/EditProfile.fxml";
         FXMLLoader editAccfxmlLoad = null;
         try {
             editAccfxmlLoad = new FXMLLoader(new File(filePath).toURI().toURL());
@@ -115,7 +115,7 @@ public class UserMngmntController implements Initializable {
 
     @FXML
     protected void handleShowUsersButtonAction(ActionEvent event)throws IOException {
-        String filePath = "src/main/resources/org/example/hakmana/Scene/ShowUsers.fxml";
+        String filePath = "src/main/resources/org/example/hakmana/Scene/DialogBoxView/ShowUsers.fxml";
         FXMLLoader showAccfxmlLoad = null;
         try {
             showAccfxmlLoad = new FXMLLoader(new File(filePath).toURI().toURL());

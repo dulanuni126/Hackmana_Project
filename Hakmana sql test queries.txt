@@ -68,4 +68,125 @@ INSERT INTO user (nic, name, title, gmail) VALUES ('8765432109876', 'Robert Mart
 INSERT INTO user (nic, name, title, gmail) VALUES ('5432109876543', 'Olivia Garcia', 'Ms.', 'olivia.garcia@gmail.com');
 
 
+INSERT INTO Laptop (ID, Model, RAM, CPU, Storage, Display, GraphicsCard, OperatingSystem)
+VALUES
+ (1, 'Dell XPS 13', '16GB', 'Intel Core i7-1165G7', '512GB SSD', '13.4-inch FHD+', 'Intel Iris Xe Graphics',
+'Windows 10 Home'),
+ (2, 'Apple MacBook Pro', '32GB', 'Apple M1', '1TB SSD', '16-inch Retina Display', 'Apple M1', 'macOS
+Big Sur'),
+ (3, 'HP Spectre x360', '8GB', 'Intel Core i5-1135G7', '256GB SSD', '13.3-inch FHD Touchscreen', 'Intel
+Iris Xe Graphics', 'Windows 11');
 
+INSERT INTO PhotoCopyMachine (ID, Model, CopyingCapability)
+VALUES
+ (1, 'Xerox WorkCentre 3335', 'Black and White'),
+ (2, 'Canon imageRUNNER ADVANCE C5560i III', 'Color'),
+ (3, 'Sharp MX-M5070', 'Black and White');
+
+INSERT INTO MultimediaProjector (ID, Model)
+VALUES
+ (1, 'Epson Home Cinema 5050UB'),
+ (2, 'BenQ HT3550'),
+ (3, 'Optoma HD146X');
+
+INSERT INTO FaxMachine (ID, Model)
+VALUES
+ (1, 'Brother FAX-2840'),
+ (2, 'Canon FAXPHONE L190'),
+ (3, 'HP OfficeJet Pro 9015');
+
+INSERT INTO UPS (ID, Model, BackupPower, Runtime)
+VALUES
+ (1, 'APC Back-UPS Pro 1500', '865 Watts', '10.3 minutes at half load'),
+ (2, 'CyberPower CP1500AVRLCD', '900 Watts', '10 minutes at half load'),
+ (3, 'Tripp Lite SMART1500LCDT', '900 Watts', '11 minutes at half load');
+
+INSERT INTO WebCam (ID, Brand)
+VALUES
+ (1, 'Logitech'),
+ (2, 'Microsoft'),
+ (3, 'Razer');
+
+INSERT INTO Tripod (ID, Stability, AdjustableHeight)
+VALUES
+ (1, 'High', 'Yes'),
+ (2, 'Medium', 'Yes'),
+ (3, 'Low', 'No');
+
+INSERT INTO Headphone (ID, SoundQuality, Connectivity)
+VALUES
+ (1, 'High fidelity', 'Wired'),
+ (2, 'Noise-cancelling', 'Wireless'),
+ (3, 'Bass-heavy', 'Bluetooth');
+-- 4 Port USB Hub sample data
+INSERT INTO USBHub (ID)
+VALUES
+ (1),
+ (2),
+ (3);
+
+INSERT INTO ExternalDVDRom (ID)
+VALUES
+ (1),
+ (2),
+ (3);
+
+INSERT INTO AccessPoint (ID)
+VALUES
+ (1),
+ (2),
+ (3);
+
+INSERT INTO ExternalUSB (ID, USBType)
+VALUES
+ (1, 'Type-A'),
+ (2, 'Type-C'),
+ (3, 'Type-C');
+
+INSERT INTO SpeakerSet (ID, SoundQuality, NumberOfSpeakers)
+VALUES
+ (1, 'Stereo', 2),
+ (2, 'Surround', 5),
+ (3, 'Hi-Fi', 2);
+
+INSERT INTO Router (ID, NumberOfPorts)
+VALUES
+ (1, 4),
+ (2, 8),
+ (3, 12);
+
+INSERT INTO ToolKit (ID)
+VALUES
+ (1),
+ (2),
+ (3);
+
+INSERT INTO USBCable (ID, Length)
+VALUES
+ (1, '6 feet'),
+ (2, '3 feet'),
+ (3, '10 feet');
+
+INSERT INTO RouterSwitch (ID)
+VALUES
+ (1),
+ (2),
+ (3);
+
+INSERT INTO VGACable (ID)
+VALUES
+ (1),
+ (2),
+ (3);
+
+INSERT INTO Keyboard (ID, Connectivity)
+VALUES
+ (1, 'Wired'),
+ (2, 'Wireless'),
+ (3, 'Bluetooth');
+
+INSERT INTO Mouse (ID, Connectivity)
+VALUES
+ (1, 'Wired'),
+ (2, 'Wireless'),
+ (3, 'Bluetooth')

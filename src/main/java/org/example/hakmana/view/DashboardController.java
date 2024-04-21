@@ -151,7 +151,7 @@ public class DashboardController implements Initializable {
         bodyComponet.setMinWidth(W1);
     }
     public void addDeviceBtnDialogOpen(ActionEvent event) throws IOException {
-        String filePath = "src/main/resources/org/example/hakmana/Scene/DesktopForm.fxml";
+        String filePath = "src/main/resources/org/example/hakmana/Scene/DialogBoxView/DesktopForm.fxml";
         FXMLLoader addDevicefxmlLoad = null;
         try {
             addDevicefxmlLoad = new FXMLLoader(new File(filePath).toURI().toURL());

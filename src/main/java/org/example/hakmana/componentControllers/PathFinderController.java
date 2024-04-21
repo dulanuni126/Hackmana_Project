@@ -100,7 +100,7 @@ public class PathFinderController extends VBox implements Initializable {
                 sceneList.removeLast();
                 continuousPressed = true;
             }
-            System.out.println(sceneList);
+            //System.out.println(sceneList);
             listScenename = sceneList.getLast();
             sceneList.removeLast();
             sceneListCounter--;

@@ -1,4 +1,4 @@
-package org.example.hakmana;
+package org.example.hakmana.view;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -14,9 +14,10 @@ import org.example.hakmana.model.DatabaseConnection;
 import org.example.hakmana.model.Desktop;
 import org.example.hakmana.model.User;
 
+import java.io.File;
 import java.io.IOException;
+import java.net.MalformedURLException;
 import java.net.URL;
-import java.sql.SQLOutput;
 import java.util.ResourceBundle;
 
 public class DesktopFormController implements Initializable {
@@ -97,10 +98,17 @@ public class DesktopFormController implements Initializable {
 
     public static User user;
     public void addUser(ActionEvent event) throws IOException {
-        ((Node) event.getSource()).setDisable(UserController.isAssignUserButtonClicked);
+        ((Node) event.getSource()).setDisable(UserAssignViewController.isAssignUserButtonClicked);
 
-        if(!UserController.isAssignUserButtonClicked){
-            Parent root = FXMLLoader.load(getClass().getResource("Scene/user.fxml"));
+        if(!UserAssignViewController.isAssignUserButtonClicked){
+            String filePath = "src/main/resources/org/example/hakmana/Component/Header.fxml";
+            FXMLLoader fxmlHeaderLoader = null;
+            try {
+                fxmlHeaderLoader = new FXMLLoader(new File(filePath).toURI().toURL());
+            } catch (MalformedURLException e) {
+                throw new RuntimeException(e);
+            }
+            Parent root = FXMLLoader.load(getClass().getResource("Scene/DialogBoxView/UserAssignDialog.fxml"));
             Stage stage=new Stage();
             stage.initModality(Modality.APPLICATION_MODAL);
             stage.setScene(new Scene(root));
@@ -108,8 +116,6 @@ public class DesktopFormController implements Initializable {
         }
 
     }
-
-
 
     public void desktop(ActionEvent event) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("Scene/desktop.fxml"));
@@ -119,7 +125,6 @@ public class DesktopFormController implements Initializable {
         stage.show();
 
     }
-
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -207,16 +212,15 @@ public class DesktopFormController implements Initializable {
         NetworkCardChoiseBox.getSelectionModel().clearSelection();
         micRegNumTextField.clear();
 
-        UserController.isAssignUserButtonClicked=false;
+        UserAssignViewController.isAssignUserButtonClicked=false;
         addUserButton.setDisable(false);
 
 
     }
- public void cancelButtonOnAction(ActionEvent event) {
+    public void cancelButtonOnAction(ActionEvent event) {
      Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
      stage.close();
 
- }
-
+    }
 
 }

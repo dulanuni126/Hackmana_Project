@@ -27,7 +27,7 @@
                <children>
                   <!-- Navigation panel Component-->
                   <NavPanelController fx:id="navPanelController" HBox.hgrow="NEVER" />
-                  <VBox fx:id="bodyComponet" prefHeight="217.0" prefWidth="748.0" style="0: 0;" HBox.hgrow="ALWAYS">
+                  <VBox fx:id="bodyComponet" prefHeight="217.0" prefWidth="748.0"  HBox.hgrow="ALWAYS">
                      <children>
                   
                         <!--Header Component-->
