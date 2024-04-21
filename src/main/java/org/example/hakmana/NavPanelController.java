@@ -191,7 +191,7 @@ public class NavPanelController extends AnchorPane implements Initializable {
         stage.show();
     }
     public void logOut(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("Scene/login.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("Scene/loginPage.fxml"));
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         stage.setWidth(845.0);
         stage.setHeight(565.0);
