@@ -53,7 +53,6 @@ public class LoginPageController implements Initializable {
     public void DashboardSceneLoad(ActionEvent event) throws IOException {
         String tempUserName = usrNameFeild.getText();
         String tempPsswrd = sha1(psswrdFeild.getText()); // Hash the input password using SHA-1
-
         try {
             // Query to retrieve user information
             query = "SELECT * FROM systemUser WHERE userName = ?";
