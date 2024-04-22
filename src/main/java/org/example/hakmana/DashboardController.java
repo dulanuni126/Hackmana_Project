@@ -57,7 +57,11 @@ public class DashboardController implements Initializable {
             int count2;
             //get numbers of columns from database
             Statement st=conn.createStatement();
-            ResultSet rs=st.executeQuery("show tables");
+            ResultSet rs=st.executeQuery("SELECT t.TABLE_NAME\n" +
+                    "FROM information_schema.TABLES t\n" +
+                    "INNER JOIN information_schema.COLUMNS c ON t.TABLE_NAME = c.TABLE_NAME\n" +
+                    "WHERE c.COLUMN_NAME = 'regNum' \n" +
+                    "  AND t.TABLE_SCHEMA = 'hakmanaedm'");
             int size=0;
             while(rs.next()){
                 size++;
@@ -66,7 +70,11 @@ public class DashboardController implements Initializable {
             String[] table=new String[size];
             int item=0;
             rs.close();
-            ResultSet rs0=st.executeQuery("show tables");
+            ResultSet rs0=st.executeQuery("SELECT t.TABLE_NAME\n" +
+                    "FROM information_schema.TABLES t\n" +
+                    "INNER JOIN information_schema.COLUMNS c ON t.TABLE_NAME = c.TABLE_NAME\n" +
+                    "WHERE c.COLUMN_NAME = 'regNum' \n" +
+                    "  AND t.TABLE_SCHEMA = 'hakmanaedm';");
             while(rs0.next()) {
 
                 table[item] = rs0.getString(1);
