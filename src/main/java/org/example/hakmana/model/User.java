@@ -45,4 +45,13 @@ public class User {
         this.title = title;
         this.gmail = gmail;
     }
+
+    /*-----------User verification-------------*/
+    //check mail return boolean val
+
+    //store verfication code and generate sql querry
+
+    //get verification code and send bool val
+
+    //cahnge the new password
 }

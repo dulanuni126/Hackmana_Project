@@ -168,8 +168,6 @@ CREATE TABLE systemUser (
     PRIMARY KEY (userName)
 );
 
-INSERT INTO systemUser (userName, pwd)
-VALUES ('hakmanaedm', SHA1('adminuserhakmana'));
 
 
 

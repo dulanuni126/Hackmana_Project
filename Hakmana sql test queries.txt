@@ -190,3 +190,8 @@ VALUES
  (1, 'Wired'),
  (2, 'Wireless'),
  (3, 'Bluetooth')
+
+
+INSERT INTO systemUser (userName, pwd)
+VALUES ('hakmanaedm', SHA1('adminuserhakmana'));
+VALUES ('test', SHA1('test'));

@@ -3,17 +3,18 @@ package org.example.hakmana;
 import javafx.animation.*;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
 import javafx.util.Duration;
 import java.net.URL;
+import java.util.Objects;
 import java.util.ResourceBundle;
 
-import org.example.hakmana.model.DatabaseConnection;
 import org.example.hakmana.model.Desktop;
+import org.example.hakmana.model.Devices;
+import org.example.hakmana.model.Printer;
 
-public class DeviceMngmntSmmryScene implements Initializable{
+public class DeviceMngmntSmmryScene implements Initializable {
 
     @FXML
     private PathFinderController pathFinderController;
@@ -23,17 +24,23 @@ public class DeviceMngmntSmmryScene implements Initializable{
     private HeaderController headerController;
     @FXML
     private  VBox bodyComponet;//injector for VBox to expand
+
     @FXML
     private GridPane grid;
     private int rowCount = 1;
     private int colCount = 0;
 
-    private  TranslateTransition bodyExpand;//Animation object refernce
+    private String dbSelector;
 
-    @FXML
-    private AnchorPane parentAnchor;
+    public String getDbSelector() {
+        return dbSelector;
+    }
+
+    public void setDbSelector(String dbSelector) {
+        this.dbSelector = dbSelector;
+    }
+
     public void initialize(URL location, ResourceBundle resources) {
-
         headerController.setFontSize("2.5em");
         headerController.setTitleMsg("Device Management");
         headerController.setUsernameMsg("Mr.Udara Mahanama");
@@ -43,27 +50,44 @@ public class DeviceMngmntSmmryScene implements Initializable{
         pathFinderController.setBckBtnScene("Scene/DeviceMngmntSmmryScene.fxml");
 
         //create the event listener to the navigation panel ToggleButton() method
-        navPanelController.collapseStateProperty().addListener((observable, oldValue, newValue) ->{
-            if(newValue){
+        navPanelController.collapseStateProperty().addListener((observable, oldValue, newValue) -> {
+            if (newValue) {
                 expand();
-            }else{
+            } else {
                 collapse();
             }
         });
-        addComponent();
-        addLastComponent();
+
     }
+
     @FXML
-    private void addComponent() {
-        DatabaseConnection databaseConnection=DatabaseConnection.getInstance();
-        Desktop[] desktops =databaseConnection.getDesktops();
+    public void addComponent() {
+        System.out.println(dbSelector);
+
+        //use polymhophism concept upcasting
+        Devices[] dev=null;
+        if(dbSelector.equals("Desktop")){
+            dev=new Desktop().getDevices();
+        }
+        if(dbSelector.equals("Photocopy Machines")){
+            dev=new Printer().getDevices();
+        }
+        if(dbSelector.equals("Monitors")){
+            dev=new Desktop().getDevices();
+        }
+        if(dbSelector.equals("Projectors")){
+            dev=new Desktop().getDevices();
+        }
+        if(dbSelector.equals("Laptops")){
+            dev=new Desktop().getDevices();
+        }
 
         DeviceInfoCardController card;
-        for (Desktop desktop : desktops) {
+        for (Devices d : dev) {
             card=new DeviceInfoCardController();
-            card.setUser(desktop.getUserName());
-            card.setBrand(desktop.getModel());
-            card.setDevId(desktop.getRegNum());
+            card.setUser(d.getUserName());
+            card.setBrand(d.getModel());
+            card.setDevId(d.getRegNum());
 
             // Add the label to the grid
             grid.add(card, colCount, rowCount);
@@ -79,7 +103,8 @@ public class DeviceMngmntSmmryScene implements Initializable{
         }
 
     }
-    private void addLastComponent() {
+
+    public void addLastComponent() {
         AddDevButtonController addDevButtonController=new AddDevButtonController();
 
 
@@ -98,7 +123,8 @@ public class DeviceMngmntSmmryScene implements Initializable{
     }
 
     private void Animation(double animStartPos,double animEndPos){
-        bodyExpand = new TranslateTransition(Duration.millis(300), bodyComponet);
+        //Animation object refernce
+        TranslateTransition bodyExpand = new TranslateTransition(Duration.millis(300), bodyComponet);
         bodyExpand.setFromX(animStartPos);
         bodyExpand.setToX(animEndPos); // expand VBox
         bodyExpand.setAutoReverse(true);
