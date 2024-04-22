@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import org.example.hakmana.FooterController?>
+<?import org.example.hakmana.HeaderController?>
+<?import org.example.hakmana.NavPanelController?>
+<?import org.example.hakmana.PathFinderController?>
+
+<AnchorPane fx:id="parentAnchor" prefHeight="640.0" prefWidth="1024.0" style="-fx-background-color: #00000021;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.hakmana.OtherDevicesController">
+    <children>
+        <VBox prefHeight="640.0" prefWidth="1024.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <children>
+                <HBox prefHeight="640.0" prefWidth="1024.0" VBox.vgrow="ALWAYS">
+                    <children>
+                        <!-- Navigation panel Component-->
+                        <NavPanelController fx:id="navPanelController" HBox.hgrow="NEVER" />
+                        <VBox fx:id="bodyComponet" prefHeight="217.0" prefWidth="748.0" HBox.hgrow="ALWAYS">
+                            <children>
+
+                                <!--Header Component-->
+                                <HeaderController fx:id="headerController" designationMsg="Product owner" prefHeight="109.0" prefWidth="770.0" usernameMsg="R.Gunathilaka" VBox.vgrow="NEVER" />
+
+                                <!--Path Component-->
+                                <PathFinderController fx:id="pathFinderController" prefWidth="770.0" />
+                        <AnchorPane prefHeight="413.0" prefWidth="748.0" />
+
+                                <AnchorPane maxHeight="64.0" prefHeight="64.0" prefWidth="746.0" VBox.vgrow="NEVER">
+                                    <children>
+
+                                        <!--Footer Component-->
+                                        <FooterController fx:id="footerController" layoutX="26.0" prefHeight="64.0" prefWidth="694.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="26.0" AnchorPane.rightAnchor="27.0" AnchorPane.topAnchor="0.0" />
+                                    </children>
+                                </AnchorPane>
+                            </children>
+                        </VBox>
+                    </children>
+                </HBox>
+            </children>
+        </VBox>
+
+    </children>
+</AnchorPane>

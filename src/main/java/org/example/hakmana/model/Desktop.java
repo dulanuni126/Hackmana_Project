@@ -1,6 +1,12 @@
 package org.example.hakmana.model;
 
-public class Desktop {
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+
+public class Desktop extends Devices{
     private String regNum;
     private String serialNum="NO";
     private String model="NO";
@@ -22,6 +28,40 @@ public class Desktop {
     private String micRegNum="NO";
     private String userNIC="No User";
     private String userName="No User";
+    private String floppyDisk="NO";
+    private String scannerRegNum="NO";
+
+    public Desktop(String regNum, String serialNum, String model, String purchasedFrom, String ram, String processor, String warranty, String hardDisk, String os, String status,String floppyDisk,String soundCard,String tvCard,String networkCard, String monitorRegNum, String projectorRegNum, String speakerRegNum, String mouseRegNum, String keyboardRegNum, String micRegNum, String scannerRegNum,String userNIC) {
+        this.floppyDisk=floppyDisk;
+        this.soundCard=soundCard;
+        this.tvCard=tvCard;
+        this.networkCard=networkCard;
+        this.regNum = regNum;
+        this.serialNum = serialNum;
+        this.model = model;
+        this.purchasedFrom = purchasedFrom;
+        this.ram = ram;
+        this.processor = processor;
+        this.warranty = warranty;
+        this.hardDisk = hardDisk;
+        this.os = os;
+        this.status = status;
+        this.monitorRegNum = monitorRegNum;
+        this.projectorRegNum = projectorRegNum;
+        this.speakerRegNum = speakerRegNum;
+        this.mouseRegNum = mouseRegNum;
+        this.keyboardRegNum = keyboardRegNum;
+        this.micRegNum = micRegNum;
+        this.scannerRegNum = scannerRegNum;
+        this.userNIC=userNIC;
+    }
+    public Desktop(){
+
+    }
+
+    public Desktop(String regNum, String model, String userName) {
+        super(regNum, model, userName);
+    }
 
     public String getUserName() {
         return userName;
@@ -30,10 +70,6 @@ public class Desktop {
     public void setUserName(String userName) {
         this.userName = userName;
     }
-
-    private String floppyDisk="NO";
-    private String scannerRegNum="NO";
-
 
     public String getFloppyDisk() {
         return floppyDisk;
@@ -66,38 +102,7 @@ public class Desktop {
     public void setNetworkCard(String networkCard) {
         this.networkCard = networkCard;
     }
-
-
-
-    public Desktop(String regNum, String serialNum, String model, String purchasedFrom, String ram, String processor, String warranty, String hardDisk, String os, String status,String floppyDisk,String soundCard,String tvCard,String networkCard, String monitorRegNum, String projectorRegNum, String speakerRegNum, String mouseRegNum, String keyboardRegNum, String micRegNum, String scannerRegNum,String userNIC) {
-        this.floppyDisk=floppyDisk;
-        this.soundCard=soundCard;
-        this.tvCard=tvCard;
-        this.networkCard=networkCard;
-        this.regNum = regNum;
-        this.serialNum = serialNum;
-        this.model = model;
-        this.purchasedFrom = purchasedFrom;
-        this.ram = ram;
-        this.processor = processor;
-        this.warranty = warranty;
-        this.hardDisk = hardDisk;
-        this.os = os;
-        this.status = status;
-        this.monitorRegNum = monitorRegNum;
-        this.projectorRegNum = projectorRegNum;
-        this.speakerRegNum = speakerRegNum;
-        this.mouseRegNum = mouseRegNum;
-        this.keyboardRegNum = keyboardRegNum;
-        this.micRegNum = micRegNum;
-        this.scannerRegNum = scannerRegNum;
-        this.userNIC=userNIC;
-    }
-    public Desktop(){
-
-    }
-
-
+    
     public String getRegNum() {
         return regNum;
     }
@@ -241,6 +246,51 @@ public class Desktop {
         this.userNIC = userNIC;
     }
 
+    public Desktop[] getDevices() {
+        DatabaseConnection conn=DatabaseConnection.getInstance();
+        List<Desktop> desktops = new ArrayList<>();
+        //pass query to the connection class
+        String sql = "SELECT desktop.*, user.name FROM desktop LEFT JOIN user ON desktop.userNIC = user.nic";
 
+        try {
+            // get result set from connection class
+            ResultSet resultSet = conn.executeSt(sql);
+
+            // Iterate through the result set and create Desktop and User objects
+            while (resultSet.next()) {
+                Desktop desktop = new Desktop();
+                desktop.setRegNum(resultSet.getString("regNum"));
+                desktop.setSerialNum(resultSet.getString("serialNum"));
+                desktop.setModel(resultSet.getString("model"));
+                desktop.setPurchasedFrom(resultSet.getString("purchasedFrom"));
+                desktop.setRam(resultSet.getString("ram"));
+                desktop.setProcessor(resultSet.getString("processor"));
+                desktop.setWarranty(resultSet.getString("warranty"));
+                desktop.setHardDisk(resultSet.getString("hardDisk"));
+                desktop.setOs(resultSet.getString("os"));
+                desktop.setStatus(resultSet.getString("status"));
+                desktop.setMonitorRegNum(resultSet.getString("monitorRegNum"));
+                desktop.setProjectorRegNum(resultSet.getString("projectorRegNum"));
+                desktop.setSpeakerRegNum(resultSet.getString("speakerRegNum"));
+                desktop.setMouseRegNum(resultSet.getString("mouseRegNum"));
+                desktop.setKeyboardRegNum(resultSet.getString("keyboardRegNum"));
+                desktop.setMicRegNum(resultSet.getString("micRegNum"));
+                desktop.setScannerRegNum(resultSet.getString("scannerRegNum"));
+                desktop.setUserNIC(resultSet.getString("userNIC"));
+                desktop.setFloppyDisk(resultSet.getString("floppyDisk"));
+                desktop.setSoundCard(resultSet.getString("soundCard"));
+                desktop.setTvCard(resultSet.getString("tvCard"));
+                desktop.setNetworkCard(resultSet.getString("networkCard"));
+                desktop.setUserName(resultSet.getString("name"));
+
+                desktops.add(desktop);
+            }
+        }
+        catch (SQLException e){
+            throw new RuntimeException(e);
+        }
+
+        return desktops.toArray(new Desktop[0]);
+    }
 
 }

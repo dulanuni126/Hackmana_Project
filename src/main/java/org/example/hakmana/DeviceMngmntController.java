@@ -52,24 +52,27 @@ public class DeviceMngmntController implements Initializable {
         });
 
 
-        addComponent("Desktop", new Image(getClass().getResourceAsStream("Scene/Images/Desktop.png")),"Scene/DeviceMngmntSmmryScene.fxml",false);
-        addComponent("Photocopy Machines",new Image(getClass().getResourceAsStream("Scene/Images/photoCopy.png")),"Scene/DeviceMngmntSmmryScene.fxml",false);
-        addComponent("Monitors",new Image(getClass().getResourceAsStream("Scene/Images/monitor.png")),"Scene/DeviceMngmntSmmryScene.fxml",false);
-        addComponent("Projectors",new Image(getClass().getResourceAsStream("Scene/Images/projector.png")),"Scene/DeviceMngmntSmmryScene.fxml",false);
-        addComponent("Laptops",new Image(getClass().getResourceAsStream("Scene/Images/laptopcat.png")),"Scene/DeviceMngmntSmmryScene.fxml",false);
-        addComponent("Other Devices",new Image(getClass().getResourceAsStream("Scene/Images/other.png")),"Scene/DeviceMngmntSmmryScene.fxml",false);
+        addComponent("Desktop", new Image(getClass().getResourceAsStream("Scene/Images/Desktop.png")));
+        addComponent("Photocopy Machines",new Image(getClass().getResourceAsStream("Scene/Images/photoCopy.png")));
+        addComponent("Monitors",new Image(getClass().getResourceAsStream("Scene/Images/monitor.png")));
+        addComponent("Projectors",new Image(getClass().getResourceAsStream("Scene/Images/projector.png")));
+        addComponent("Laptops",new Image(getClass().getResourceAsStream("Scene/Images/laptopcat.png")));
+        addComponent("Other Devices",new Image(getClass().getResourceAsStream("Scene/Images/other.png")));
 
 
     }
 
     @FXML
-    private void addComponent(String catTitle, Image catImage,String scnelink,boolean stateVal) {
+    private void addComponent(String catTitle, Image catImage) {
         // Create a new label
         DeviceCategoryCardController card=new DeviceCategoryCardController();
         card.setDevName(catTitle);
         card.setDeviceImage(catImage);
-        card.setDevCatSceneName(scnelink);
-        card.disableBtn(stateVal);
+        if(catTitle=="Other Devices")
+            card.setDevCatSceneName("Scene/OtherDevices.fxml");
+        else
+            card.setDevCatSceneName("Scene/DeviceMngmntSmmryScene.fxml");
+        card.disableBtn(false);
 
         // Add the label to the grid
         grid.add(card, colCount, rowCount);

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.ButtonType?>
+<?import javafx.scene.control.DialogPane?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Text?>
+
+<DialogPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="300.0" prefWidth="480.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+    <header>
+      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="200.0" prefWidth="320.0" stylesheets="@CSS/dashboard.css">
+         <children>
+            <Text fill="#e13b3b" layoutX="7.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text" text="Device ID" wrappingWidth="94.12890625" />
+            <Text fill="#e41414" layoutX="3.0" layoutY="69.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text" text="User name" wrappingWidth="103.38824462890625" />
+            <Text fill="#cf1515" layoutX="14.0" layoutY="143.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text" text="Note" />
+            <Label layoutX="111.0" layoutY="5.0" prefHeight="30.0" prefWidth="359.0" text="Label" />
+            <Label layoutX="112.0" layoutY="47.0" prefHeight="30.0" prefWidth="359.0" text="Label" />
+            <TextArea layoutX="101.0" layoutY="92.0" prefHeight="110.0" prefWidth="378.0" />
+         </children></AnchorPane>
+    </header>
+    <content>
+      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="200.0" prefWidth="320.0" />
+    </content>
+    <expandableContent>
+      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="200.0" prefWidth="320.0" />
+    </expandableContent>
+   <buttonTypes>
+      <ButtonType fx:constant="CANCEL" />
+      <ButtonType fx:constant="APPLY" />
+   </buttonTypes>
+</DialogPane>

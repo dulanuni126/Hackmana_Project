@@ -7,7 +7,7 @@ public class FrogotPasswrdController {
 
     //check validation
 
-    //send the mail to the user.java model controller and get the result
+    //send the mail to the user.java model controller and get the result boolean
 
     //send the output according to the result
 
