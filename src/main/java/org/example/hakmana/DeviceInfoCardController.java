@@ -117,5 +117,9 @@ public class DeviceInfoCardController extends AnchorPane implements Initializabl
           stage.show();
      }
 
+     public void popupdialog(){
+               dialogPane popup=new dialogPane();
+     }
+
 
 }
