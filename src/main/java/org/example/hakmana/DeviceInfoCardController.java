@@ -134,7 +134,7 @@ public class DeviceInfoCardController extends AnchorPane implements Initializabl
                dialogPaneController dialogpane=fxmlLoader.getController();
                Dialog<ButtonType> dialog=new Dialog<>();
                dialog.setDialogPane(dialogpane.getDialogpane1());
-               dialog.setTitle("test");
+               dialog.setTitle("ADD NOTE");
                Optional<ButtonType> clickedButton=dialog.showAndWait();
                if(clickedButton.get()==ButtonType.OK){
                     dialogpane.addDetails();
