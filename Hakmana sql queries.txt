@@ -170,7 +170,7 @@ CREATE TABLE systemUser (
 
 
 
-
+CREATE TABLE notes(id varchar(20),username varchar(20),brand varchar(20),notes varchar(60),PRIMARY KEY(id,username,brand,notes));
 
 
 
