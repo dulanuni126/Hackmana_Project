@@ -64,11 +64,15 @@
                               </Pane>
                               <Pane fx:id="addBtn" layoutX="158.0" layoutY="94.0" prefHeight="17.0" prefWidth="50.0" style="-fx-background-color: F179BB; -fx-background-radius: 14 0 0 0;">
                                  <children>
-                                    <Label layoutX="10.0" text="Add">
-                                       <font>
-                                          <Font size="15.0" />
-                                       </font>
-                                    </Label>
+                                    <Button mnemonicParsing="false" text="Button">
+                                       <graphic>
+                                          <Label text="Add">
+                                             <font>
+                                                <Font size="15.0" />
+                                             </font>
+                                          </Label>
+                                       </graphic>
+                                    </Button>
                                  </children>
                               </Pane>
                               <TextArea fx:id="noteTxtArea" editable="false" layoutX="7.0" layoutY="24.0" prefHeight="65.0" prefWidth="195.0" style="-fx-background-color: black;" />
