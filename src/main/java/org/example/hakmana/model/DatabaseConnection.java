@@ -80,49 +80,18 @@ public class DatabaseConnection {
             e.printStackTrace();
         }
     }
-    public Desktop[] getDesktops() {
-        List<Desktop> desktops = new ArrayList<>();
+    public ResultSet executeSt(String sqlSt) {
+        ResultSet resultSet;
         try {
-            String sql = "SELECT desktop.*, user.name FROM desktop LEFT JOIN user ON desktop.userNIC = user.nic";
-            PreparedStatement preparedStatement = connection.prepareStatement(sql);
-
+            PreparedStatement preparedStatement = connection.prepareStatement(sqlSt);
             // Execute the SQL query and get the result set
-            ResultSet resultSet = preparedStatement.executeQuery();
+            resultSet = preparedStatement.executeQuery();
 
-            // Iterate through the result set and create Desktop and User objects
-            while (resultSet.next()) {
-                Desktop desktop = new Desktop();
-                desktop.setRegNum(resultSet.getString("regNum"));
-                desktop.setSerialNum(resultSet.getString("serialNum"));
-                desktop.setModel(resultSet.getString("model"));
-                desktop.setPurchasedFrom(resultSet.getString("purchasedFrom"));
-                desktop.setRam(resultSet.getString("ram"));
-                desktop.setProcessor(resultSet.getString("processor"));
-                desktop.setWarranty(resultSet.getString("warranty"));
-                desktop.setHardDisk(resultSet.getString("hardDisk"));
-                desktop.setOs(resultSet.getString("os"));
-                desktop.setStatus(resultSet.getString("status"));
-                desktop.setMonitorRegNum(resultSet.getString("monitorRegNum"));
-                desktop.setProjectorRegNum(resultSet.getString("projectorRegNum"));
-                desktop.setSpeakerRegNum(resultSet.getString("speakerRegNum"));
-                desktop.setMouseRegNum(resultSet.getString("mouseRegNum"));
-                desktop.setKeyboardRegNum(resultSet.getString("keyboardRegNum"));
-                desktop.setMicRegNum(resultSet.getString("micRegNum"));
-                desktop.setScannerRegNum(resultSet.getString("scannerRegNum"));
-                desktop.setUserNIC(resultSet.getString("userNIC"));
-                desktop.setFloppyDisk(resultSet.getString("floppyDisk"));
-                desktop.setSoundCard(resultSet.getString("soundCard"));
-                desktop.setTvCard(resultSet.getString("tvCard"));
-                desktop.setNetworkCard(resultSet.getString("networkCard"));
-                desktop.setUserName(resultSet.getString("name"));
-
-                desktops.add(desktop);
-            }
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
 
-        return desktops.toArray(new Desktop[0]);
+        return resultSet;
     }
 
     public User[] getUsers() {

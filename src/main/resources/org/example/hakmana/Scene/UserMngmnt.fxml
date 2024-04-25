@@ -57,18 +57,8 @@
                                                     </children>
                                                 </VBox>
 
-                                                <!-- User Detail Card -->
-                                                <VBox fx:id="userDetailCard" prefHeight="221.0" prefWidth="210.0" spacing="10" style="-fx-border-color: #800080; -fx-border-width: 1.5;" styleClass="user-detail-card" stylesheets="@CSS/UserManagement.css" HBox.hgrow="ALWAYS">
-                                                    <children>
-                                                        <Label fx:id="userDetailTitle" alignment="CENTER" contentDisplay="CENTER" prefHeight="72.0" prefWidth="174.0" styleClass="detail-title" text="Mr. Udara" textAlignment="CENTER" wrapText="true" VBox.vgrow="ALWAYS" />
-                                                        <Label fx:id="userNameLabel" styleClass="detail-label" text="Full Name" />
-                                                        <Label fx:id="userPostLabel" styleClass="detail-label" text="Desiganation" />
-                                                        <Label styleClass="detail-label" stylesheets="@CSS/UserManagement.css" text="Employee ID" />
-                                                        <Label fx:id="userEmailLabel" styleClass="detail-label" text="Email Address" />
-                                                        <Label prefHeight="17.0" prefWidth="91.0" styleClass="detail-label" stylesheets="@CSS/UserManagement.css" text="Phone Number" />
-                                                    </children>
-                                                </VBox>
-
+                                            </children>
+                                        </VBox>
                                             </children>
                                         </HBox>
 

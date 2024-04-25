@@ -11,14 +11,13 @@ import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class DeviceCategoryCardController extends AnchorPane implements Initializable {
+public class DeviceCategoryCardController extends AnchorPane implements Initializable{
 
     //For change the scene when press the button
     private Stage stage;
@@ -39,6 +38,7 @@ public class DeviceCategoryCardController extends AnchorPane implements Initiali
     private Image deviceImage;
     private String devName;
     private String devCatSceneName;
+
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -96,11 +96,32 @@ public class DeviceCategoryCardController extends AnchorPane implements Initiali
     }
 
     public void DevInfoCall(ActionEvent event) throws IOException {
-        Parent sceneRoot = FXMLLoader.load(getClass().getResource(devCatSceneName));
+        if(devCatSceneName.equals("Scene/OtherDevices.fxml")){
+            sceneRoot = FXMLLoader.load(getClass().getResource(devCatSceneName));
+        }else {
+            String selectedDeviceName = getDevName();  // Get the selected device name
+
+            // Load the FXML loader for the target scene
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(devCatSceneName));
+
+            //Using Setter Method
+            DeviceMngmntSmmryScene controller = new DeviceMngmntSmmryScene();  // Create controller instance
+            fxmlLoader.setController(controller);  // Set controller to the loader
+
+            sceneRoot = fxmlLoader.load();  // Load the scene
+
+            //After loading, set device name using setter
+            controller.setDbSelector(selectedDeviceName);
+            //System.out.println(controller.getDbSelector());
+            controller.addComponent();
+            controller.addLastComponent();
+        }
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         scene = new Scene(sceneRoot);
         stage.setScene(scene);
         stage.show();
     }
+
+
 }
 
