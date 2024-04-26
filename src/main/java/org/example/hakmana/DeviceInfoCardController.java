@@ -117,7 +117,6 @@ public class DeviceInfoCardController extends AnchorPane implements Initializabl
           noteTxtArea.setText(this.note);
      }
 
-
      public void DetailedViewSceneLoad(ActionEvent event) throws IOException {
           Parent sceneroot = FXMLLoader.load(getClass().getResource("Scene/DevDetailedView.fxml"));
           stage = (Stage)((Node)event.getSource()).getScene().getWindow();
@@ -181,6 +180,7 @@ public class DeviceInfoCardController extends AnchorPane implements Initializabl
               throw new RuntimeException(e);
           }
      }
+
 
 
 }

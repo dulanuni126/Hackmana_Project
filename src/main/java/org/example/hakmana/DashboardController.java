@@ -163,7 +163,7 @@ public class DashboardController implements Initializable {
     }
     public void addDeviceBtnDialogOpen(ActionEvent event) throws IOException {
         FXMLLoader addDevicefxmlLoad = new FXMLLoader();
-        addDevicefxmlLoad.setLocation(getClass().getResource("Scene/DesktopForm.fxml"));
+        addDevicefxmlLoad.setLocation(getClass().getResource("Scene/DialogBox/DesktopForm.fxml"));
         DialogPane addDeviceDialogPane=addDevicefxmlLoad.load();
 
         Dialog<ButtonType> dialog=new Dialog<>();
