@@ -14,88 +14,59 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<fx:root fx:id="root" maxHeight="403.0" maxWidth="219.0" minHeight="403.0" minWidth="219.0"
-         onMouseEntered="#onMouseEntered" onMouseExited="#onMouseExited" prefHeight="403.0" prefWidth="219.0"
-         style="-fx-background-radius: 10; -fx-background-color: white; -fx-border-color: black; -fx-border-radius: 10;"
-         type="AnchorPane" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+<fx:root fx:id="root" maxHeight="403.0" maxWidth="219.0" minHeight="403.0" minWidth="219.0" onMouseEntered="#onMouseEntered" onMouseExited="#onMouseExited" prefHeight="403.0" prefWidth="219.0" style="-fx-background-radius: 10; -fx-background-color: white; -fx-border-color: black; -fx-border-radius: 10;" type="AnchorPane" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
 
-    <HBox layoutX="123.0" layoutY="67.0" style="-fx-background-radius: 10;" AnchorPane.bottomAnchor="0.0"
-          AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+    <HBox layoutX="123.0" layoutY="67.0" style="-fx-background-radius: 10;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <VBox style="-fx-background-radius: 10;" HBox.hgrow="ALWAYS">
             <Pane style="-fx-background-color: white; -fx-background-radius: 10;" VBox.vgrow="ALWAYS">
                 <VBox.margin>
-                    <Insets/>
+                    <Insets />
                 </VBox.margin>
-                <Line endX="67.0" layoutX="142.0" layoutY="99.0" startX="-131.5" strokeWidth="3.0"/>
+                <Line endX="67.0" layoutX="142.0" layoutY="99.0" startX="-131.5" strokeWidth="3.0" />
                 <Label layoutX="9.0" layoutY="116.0" text="Device ID">
                     <font>
-                        <Font size="16.0"/>
+                        <Font size="16.0" />
                     </font>
                 </Label>
                 <Label layoutX="9.0" layoutY="162.0" prefHeight="20.0" prefWidth="64.0" text="User">
                     <font>
-                        <Font size="16.0"/>
+                        <Font size="16.0" />
                     </font>
                 </Label>
                 <Label layoutX="9.0" layoutY="205.0" prefHeight="20.0" prefWidth="64.0" text="Brand">
                     <font>
-                        <Font size="16.0"/>
+                        <Font size="16.0" />
                     </font>
                 </Label>
-                <Pane fx:id="moreInfoBtn" layoutX="86.0" layoutY="240.0" prefHeight="24.0" prefWidth="124.0"
-                      style="-fx-background-radius: 10; -fx-background-color: F179BB;">
+                <Pane fx:id="moreInfoBtn" layoutX="86.0" layoutY="240.0" prefHeight="24.0" prefWidth="124.0" style="-fx-background-radius: 10; -fx-background-color: F179BB;">
                     <Label layoutX="26.0" layoutY="1.0" text="more Info">
                         <font>
-                            <Font size="17.0"/>
+                            <Font size="17.0" />
                         </font>
                     </Label>
-                    <Button fx:id="DetailedViewBtn" mnemonicParsing="false"
-                            onAction="#DetailedViewSceneLoad" prefHeight="25.0" prefWidth="124.0"
-                            styleClass="moreInfoBtn" stylesheets="@CSS/DeviceInfoCard.css"
-                            text="more Info"/>
+                    <Button fx:id="DetailedViewBtn" mnemonicParsing="false" onAction="#DetailedViewSceneLoad" prefHeight="25.0" prefWidth="124.0" styleClass="moreInfoBtn" stylesheets="@CSS/DeviceInfoCard.css" text="more Info" />
                 </Pane>
-                <TextField fx:id="devIdTxt" editable="false" layoutX="77.0" layoutY="114.0"
-                           prefHeight="26.0" prefWidth="139.0"/>
-                <TextField fx:id="userTxt" editable="false" layoutX="77.0" layoutY="159.0" prefHeight="26.0"
-                           prefWidth="139.0"/>
-                <TextField fx:id="brandTxt" editable="false" layoutX="77.0" layoutY="202.0"
-                           prefHeight="26.0" prefWidth="139.0"/>
-                <Pane layoutX="5.0" layoutY="285.0" prefHeight="111.0" prefWidth="208.0"
-                      style="-fx-background-color: cea9ff; -fx-background-radius: 0 10 0 10;">
-                    <Pane prefHeight="22.0" prefWidth="109.0"/>
-                    <Pane prefHeight="22.0" prefWidth="109.0"
-                          style="-fx-background-radius: 0 0 10 0; -fx-background-color: #9747FF;">
+                <TextField fx:id="devIdTxt" editable="false" layoutX="77.0" layoutY="114.0" prefHeight="26.0" prefWidth="139.0" />
+                <TextField fx:id="userTxt" editable="false" layoutX="77.0" layoutY="159.0" prefHeight="26.0" prefWidth="139.0" />
+                <TextField fx:id="brandTxt" editable="false" layoutX="77.0" layoutY="202.0" prefHeight="26.0" prefWidth="139.0" />
+                <Pane layoutX="5.0" layoutY="285.0" prefHeight="111.0" prefWidth="208.0" style="-fx-background-color: cea9ff; -fx-background-radius: 0 10 0 10;">
+                    <Pane prefHeight="22.0" prefWidth="109.0" />
+                    <Pane prefHeight="22.0" prefWidth="109.0" style="-fx-background-radius: 0 0 10 0; -fx-background-color: #9747FF;">
                         <Label layoutX="30.0" text="Note">
                             <font>
-                                <Font size="18.0"/>
+                                <Font size="18.0" />
                             </font>
                         </Label>
                     </Pane>
-                    <Pane fx:id="addBtn" layoutX="158.0" layoutY="89.0" prefHeight="22.0"
-                          prefWidth="50.0"
-                          style="-fx-background-color: F179BB; -fx-background-radius: 14 0 0 0;">
-                        <Button mnemonicParsing="false" text="Button">
-                            <graphic>
-                                <Label text="Add">
-                                    <font>
-                                        <Font size="15.0"/>
-                                    </font>
-                                </Label>
-                            </graphic>
-                        </Button>
+                    <Pane fx:id="addBtn" layoutX="158.0" layoutY="89.0" prefHeight="22.0" prefWidth="50.0" style="-fx-background-color: F179BB; -fx-background-radius: 14 0 0 0;">
 
-                        <Button fx:id="dia" layoutY="-3.0" mnemonicParsing="false"
-                                onAction="#popupdialog" prefHeight="22.0" prefWidth="50.0"
-                                style="-fx-background-color: F179BB; -fx-background-radius: 14 0 0 0;"
-                                text="add"/>
+                        <Button fx:id="dia" layoutY="-3.0" mnemonicParsing="false" onAction="#popupdialog" prefHeight="22.0" prefWidth="50.0" style="-fx-background-color: F179BB; -fx-background-radius: 14 0 0 0;" text="add" />
 
                     </Pane>
-                    <TextArea fx:id="noteTxtArea" editable="false" layoutX="7.0" layoutY="24.0"
-                              prefHeight="65.0" prefWidth="195.0" style="-fx-background-color: black;"/>
+                    <TextArea fx:id="noteTxtArea" editable="false" layoutX="7.0" layoutY="24.0" prefHeight="65.0" prefWidth="195.0" style="-fx-background-color: black;" />
                 </Pane>
-                <ImageView fitHeight="71.0" fitWidth="124.0" layoutX="53.0" layoutY="14.0" opacity="0.2"
-                           pickOnBounds="true" preserveRatio="true">
-                    <Image url="@Images/devicePhoto.jpg"/>
+                <ImageView fitHeight="71.0" fitWidth="124.0" layoutX="53.0" layoutY="14.0" opacity="0.2" pickOnBounds="true" preserveRatio="true">
+                    <Image url="@Images/devicePhoto.jpg" />
                 </ImageView>
             </Pane>
         </VBox>
