@@ -7,15 +7,21 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.TextArea;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
+import org.example.hakmana.model.DatabaseConnection;
 
+import javax.swing.*;
 import java.io.IOException;
 import java.net.URL;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.Optional;
 import java.util.ResourceBundle;
 
 public class DeviceInfoCardController extends AnchorPane implements Initializable {
@@ -55,6 +61,9 @@ public class DeviceInfoCardController extends AnchorPane implements Initializabl
      private Pane addBtn;
      @FXML
      private Pane moreInfoBtn;
+     @FXML
+
+
 
      private String devId;
      private String user;
@@ -108,7 +117,6 @@ public class DeviceInfoCardController extends AnchorPane implements Initializabl
           noteTxtArea.setText(this.note);
      }
 
-
      public void DetailedViewSceneLoad(ActionEvent event) throws IOException {
           Parent sceneroot = FXMLLoader.load(getClass().getResource("Scene/DevDetailedView.fxml"));
           stage = (Stage)((Node)event.getSource()).getScene().getWindow();
@@ -116,6 +124,63 @@ public class DeviceInfoCardController extends AnchorPane implements Initializabl
           stage.setScene(scene);
           stage.show();
      }
+
+     public void popupdialog(){
+          try{
+               FXMLLoader fxmlLoader=new FXMLLoader();
+               fxmlLoader.setLocation(getClass().getResource("Scene/dialogbox.fxml"));
+               DialogPane dialogPane=fxmlLoader.load();
+               dialogPaneController dialogpane=fxmlLoader.getController();
+               Dialog<ButtonType> dialog=new Dialog<>();
+               dialog.setDialogPane(dialogpane.getDialogpane1());
+               dialog.setTitle("ADD NOTE");
+               Optional<ButtonType> clickedButton=dialog.showAndWait();
+               if(clickedButton.get()==ButtonType.OK){
+                    dialogpane.addDetails();
+                    DatabaseConnection instance=DatabaseConnection.getInstance();
+                    Connection conn=instance.getConnection();
+                    Alert.AlertType type=Alert.AlertType.CONFIRMATION;
+                    Alert alert=new Alert(type,"");
+                    alert.initModality(Modality.APPLICATION_MODAL);
+                    alert.initOwner(stage);
+                    alert.getDialogPane().setContentText("do you want to add this note?");
+                    alert.getDialogPane().setHeaderText("confirmation!");
+                    Optional<ButtonType> reasult=alert.showAndWait();
+                    if(reasult.get()==ButtonType.OK){
+
+                         if((dialogpane.getIds()!=null) && (dialogpane.getUserName()!=null) && (dialogpane.getBrand() !=null) && (dialogpane.getNote()!=null)){
+                              PreparedStatement notesse=conn.prepareStatement("insert into notes values(?,?,?,?)");
+                              notesse.setString(1,dialogpane.getIds());
+                              notesse.setString(2,dialogpane.getUserName());
+                              notesse.setString(3,dialogpane.getBrand());
+                              notesse.setString(4,dialogpane.getNote());
+                              notesse.executeUpdate();
+                              notesse.close();
+                              JOptionPane.showMessageDialog(dialogpane,"add a new note!","alert!",JOptionPane.INFORMATION_MESSAGE);
+                         }
+                         else{
+                              JOptionPane.showMessageDialog(dialogpane,"all field need to fill!","Rejected!",JOptionPane.ERROR_MESSAGE);
+                         }
+
+
+                    }
+                    else if(reasult.get()==ButtonType.CANCEL){
+                         JOptionPane.showMessageDialog(dialogpane,"cancel the note!","alert!",JOptionPane.INFORMATION_MESSAGE);
+
+                    }
+
+
+               } else if (clickedButton.get()==ButtonType.CANCEL) {
+                    JOptionPane.showMessageDialog(dialogpane,"cancel the note!","alert!",JOptionPane.INFORMATION_MESSAGE);
+
+               }
+          } catch (IOException e) {
+               throw new RuntimeException(e);
+          } catch (SQLException e) {
+              throw new RuntimeException(e);
+          }
+     }
+
 
 
 }
