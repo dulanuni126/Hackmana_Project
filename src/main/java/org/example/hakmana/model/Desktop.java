@@ -59,8 +59,8 @@ public class Desktop extends Devices{
 
     }
 
-    public Desktop(String regNum, String model, String userName) {
-        super(regNum, model, userName);
+    public Desktop(String regNum, String model, String userName,String status) {
+        super(regNum, model, userName,status);
     }
 
     public String getUserName() {
