@@ -15,8 +15,8 @@ public class Printer extends Devices {
     private String status;
     private String userNIC;
 
-    public Printer(String regNum, String model, String userName) {
-        super(regNum, model, userName);
+    public Printer(String regNum, String model, String userName,String status) {
+        super(regNum, model, userName,status);
     }
 
     public Printer(String regNum, String serialNum, String paperInput, String paperOutput, String warranty, String model, String status, String userNIC) {
@@ -123,7 +123,7 @@ public class Printer extends Devices {
             }
         }
         catch (SQLException e){
-            throw new RuntimeException(e);
+            System.out.println(e);
         }
 
         return printers.toArray(new Printer[0]);

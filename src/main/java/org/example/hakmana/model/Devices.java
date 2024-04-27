@@ -4,11 +4,13 @@ public abstract class Devices {
     private String regNum;
     private String model="No";
     private String userName="No User";
+    private String status;
 
-    public Devices(String regNum, String model, String userName) {
+    public Devices(String regNum, String model, String userName,String status) {
         this.regNum = regNum;
         this.model = model;
         this.userName = userName;
+        this.status=status;
     }
 
     public Devices() {
@@ -29,6 +31,10 @@ public abstract class Devices {
         this.userName = userName;
     }
 
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
     public String getRegNum() {
         return null;
     }
@@ -36,6 +42,9 @@ public abstract class Devices {
         return null;
     }
     public String getModel() {
+        return null;
+    }
+    public String getStatus() {
         return null;
     }
 }
