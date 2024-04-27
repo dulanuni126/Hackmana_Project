@@ -123,7 +123,7 @@ public class Printer extends Devices {
             }
         }
         catch (SQLException e){
-            throw new RuntimeException(e);
+            System.out.println(e);
         }
 
         return printers.toArray(new Printer[0]);
