@@ -14,7 +14,7 @@
     -fx-effect:dropshadow( gaussian,rgba(0, 0, 0, 0.13),10,0,0,10);
 }
 
-.loginBtnHvrStyle:hover {
+.loginBtnHvrStyle:hover,.forgotBtn:hover {
     -fx-transition: color 0.8s ease-in-out;
     -fx-background-color:black; /* Lighter background on hover */
     -fx-cursor: hand; /* Change cursor to pointer */

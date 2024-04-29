@@ -12,6 +12,7 @@ import java.util.ResourceBundle;
 
 import org.example.hakmana.model.Desktop;
 import org.example.hakmana.model.Devices;
+import org.example.hakmana.model.PhotocpyMchine;
 import org.example.hakmana.model.Printer;
 
 public class DeviceMngmntSmmryScene implements Initializable {
@@ -66,20 +67,25 @@ public class DeviceMngmntSmmryScene implements Initializable {
 
         //use polymhophism concept upcasting
         Devices[] dev=null;
-        if(dbSelector.equals("Desktop")){
-            dev=new Desktop().getDevices();
-        }
         if(dbSelector.equals("Photocopy Machines")){
-            dev=new Printer().getDevices();
+            //dev=new Printer().getDevices();
+            dev=new PhotocpyMchine().getDevices();
         }
         if(dbSelector.equals("Monitors")){
             dev=new Desktop().getDevices();
+            //dev=new Monitors.getDevices();
         }
         if(dbSelector.equals("Projectors")){
             dev=new Desktop().getDevices();
+            //dev=new Projectors.getDevices();
         }
         if(dbSelector.equals("Laptops")){
             dev=new Desktop().getDevices();
+            //dev=new Laptops.getDevices();
+        }
+        if(dbSelector.equals("Printers")){
+            dev=new Desktop().getDevices();
+            //dev=new Printer.getDevices();
         }
 
         DeviceInfoCardController card;
