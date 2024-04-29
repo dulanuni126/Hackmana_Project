@@ -6,39 +6,26 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Printer extends Devices {
-    private String regNum;
     private String serialNum;
     private String paperInput;
     private String paperOutput;
     private String warranty;
-    private String model;
-    private String status;
     private String userNIC;
+
+    public Printer(String regNum, String model, String userName,String status,String serialNum, String paperInput, String paperOutput, String warranty, String userNIC) {
+        super(regNum, model, userName,status);
+        this.serialNum = serialNum;
+        this.paperInput = paperInput;
+        this.paperOutput = paperOutput;
+        this.warranty = warranty;
+        this.userNIC = userNIC;
+    }
 
     public Printer(String regNum, String model, String userName,String status) {
         super(regNum, model, userName,status);
     }
 
-    public Printer(String regNum, String serialNum, String paperInput, String paperOutput, String warranty, String model, String status, String userNIC) {
-        this.regNum = regNum;
-        this.serialNum = serialNum;
-        this.paperInput = paperInput;
-        this.paperOutput = paperOutput;
-        this.warranty = warranty;
-        this.model = model;
-        this.status = status;
-        this.userNIC = userNIC;
-    }
-
     public Printer() {
-    }
-
-    public String getRegNum() {
-        return regNum;
-    }
-
-    public void setRegNum(String regNum) {
-        this.regNum = regNum;
     }
 
     public String getSerialNum() {
@@ -73,22 +60,6 @@ public class Printer extends Devices {
         this.warranty = warranty;
     }
 
-    public String getModel() {
-        return model;
-    }
-
-    public void setModel(String model) {
-        this.model = model;
-    }
-
-    public String getStatus() {
-        return status;
-    }
-
-    public void setStatus(String status) {
-        this.status = status;
-    }
-
     public String getUserNIC() {
         return userNIC;
     }
@@ -113,7 +84,7 @@ public class Printer extends Devices {
                 printer.setSerialNum(resultSet.getString("serialNum"));
                 printer.setModel(resultSet.getString("model"));
                 printer.setStatus(resultSet.getString("status"));
-                //printer.setUserName(resultSet.getString("name"));
+                printer.setUserName(resultSet.getString("name"));
                 printer.setPaperInput(resultSet.getString("PaperInput"));
                 printer.setPaperOutput(resultSet.getString("PaperOutput"));
                 printer.setWarranty(resultSet.getString("Warranty"));
