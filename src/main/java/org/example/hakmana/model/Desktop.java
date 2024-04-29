@@ -7,16 +7,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Desktop extends Devices{
-    private String regNum;
+
     private String serialNum="NO";
-    private String model="NO";
     private String purchasedFrom="NO";
     private String ram="NO";
     private String processor="NO";
     private String warranty="NO";
     private String hardDisk="NO";
     private String os="NO";
-    private String status="NO";
     private String monitorRegNum="NO";
     private String projectorRegNum="NO";
     private String speakerRegNum="NO";
@@ -27,25 +25,22 @@ public class Desktop extends Devices{
     private String networkCard="NO";
     private String micRegNum="NO";
     private String userNIC="No User";
-    private String userName="No User";
     private String floppyDisk="NO";
     private String scannerRegNum="NO";
 
-    public Desktop(String regNum, String serialNum, String model, String purchasedFrom, String ram, String processor, String warranty, String hardDisk, String os, String status,String floppyDisk,String soundCard,String tvCard,String networkCard, String monitorRegNum, String projectorRegNum, String speakerRegNum, String mouseRegNum, String keyboardRegNum, String micRegNum, String scannerRegNum,String userNIC) {
+    public Desktop(String regNum,String model,String userName,String status, String serialNum,  String purchasedFrom, String ram, String processor, String warranty, String hardDisk, String os, String floppyDisk,String soundCard,String tvCard,String networkCard, String monitorRegNum, String projectorRegNum, String speakerRegNum, String mouseRegNum, String keyboardRegNum, String micRegNum, String scannerRegNum,String userNIC) {
+        super(regNum, model, userName,status);
         this.floppyDisk=floppyDisk;
         this.soundCard=soundCard;
         this.tvCard=tvCard;
         this.networkCard=networkCard;
-        this.regNum = regNum;
         this.serialNum = serialNum;
-        this.model = model;
         this.purchasedFrom = purchasedFrom;
         this.ram = ram;
         this.processor = processor;
         this.warranty = warranty;
         this.hardDisk = hardDisk;
         this.os = os;
-        this.status = status;
         this.monitorRegNum = monitorRegNum;
         this.projectorRegNum = projectorRegNum;
         this.speakerRegNum = speakerRegNum;
@@ -55,20 +50,13 @@ public class Desktop extends Devices{
         this.scannerRegNum = scannerRegNum;
         this.userNIC=userNIC;
     }
-    public Desktop(){
-
-    }
 
     public Desktop(String regNum, String model, String userName,String status) {
         super(regNum, model, userName,status);
     }
 
-    public String getUserName() {
-        return userName;
-    }
+    public Desktop(){
 
-    public void setUserName(String userName) {
-        this.userName = userName;
     }
 
     public String getFloppyDisk() {
@@ -102,14 +90,6 @@ public class Desktop extends Devices{
     public void setNetworkCard(String networkCard) {
         this.networkCard = networkCard;
     }
-    
-    public String getRegNum() {
-        return regNum;
-    }
-
-    public void setRegNum(String regNum) {
-        this.regNum = regNum;
-    }
 
     public String getSerialNum() {
         return serialNum;
@@ -117,14 +97,6 @@ public class Desktop extends Devices{
 
     public void setSerialNum(String serialNum) {
         this.serialNum = serialNum;
-    }
-
-    public String getModel() {
-        return model;
-    }
-
-    public void setModel(String model) {
-        this.model = model;
     }
 
     public String getPurchasedFrom() {
@@ -173,14 +145,6 @@ public class Desktop extends Devices{
 
     public void setOs(String os) {
         this.os = os;
-    }
-
-    public String getStatus() {
-        return status;
-    }
-
-    public void setStatus(String status) {
-        this.status = status;
     }
 
     public String getMonitorRegNum() {
@@ -238,6 +202,7 @@ public class Desktop extends Devices{
     public void setScannerRegNum(String scannerRegNum) {
         this.scannerRegNum = scannerRegNum;
     }
+
     public String getUserNIC() {
         return userNIC;
     }
