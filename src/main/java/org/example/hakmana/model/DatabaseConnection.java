@@ -2,6 +2,7 @@ package org.example.hakmana.model;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 
 public class DatabaseConnection {
@@ -12,6 +13,7 @@ public class DatabaseConnection {
             Class.forName("com.mysql.cj.jdbc.Driver");
             connection = (Connection)DriverManager.getConnection("jdbc:mysql://localhost:3306/hakmanaEdm", "root", "");
             System.out.println("Connection Successfully");
+
 
         } catch (ClassNotFoundException | SQLException e) {
         }
