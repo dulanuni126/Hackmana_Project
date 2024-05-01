@@ -32,6 +32,7 @@ public abstract class Devices {
 
     public abstract void setStatus(String para1);
     public abstract String getStatus();
+
 }
 
 

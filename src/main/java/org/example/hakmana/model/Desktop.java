@@ -78,6 +78,7 @@ public class Desktop extends Devices{
     @Override
     public void setModel(String model) {
         this.model = model;
+
     }
 
     @Override
