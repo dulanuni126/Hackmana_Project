@@ -1,0 +1,23 @@
+.txt{
+        -fx-font-family: "Inter";
+        -fx-font-size: 14px;
+        -fx-font-weight: 700;
+        -fx-line-height: 16px;
+        -fx-letter-spacing: -0.01em;
+        -fx-text-alignment: left;
+        -fx-text-fill: #2D3648;
+
+}
+
+.bttn{
+         -fx-font-family: "Inter";
+            -fx-font-size: 14px;
+            -fx-font-weight: 800;
+            -fx-line-height: 24px;
+            -fx-letter-spacing: -0.01em;
+            -fx-text-alignment: left;
+
+}
+
+
+
