@@ -221,7 +221,7 @@ CREATE TABLE systemUser (
 );
 
 
-CREATE TABLE notes(id varchar(20),username varchar(20),,notes varchar(60),createdate Date,title varchar(30),PRIMARY KEY(id,username,notes,title));
+CREATE TABLE notes(id varchar(20),username varchar(20),notes varchar(60),createdate Date,title varchar(30),PRIMARY KEY(id,username,notes,title));
 
 
 
