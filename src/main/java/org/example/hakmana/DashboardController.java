@@ -66,7 +66,7 @@ public class DashboardController implements Initializable {
             while(rs.next()){
                 size++;
             }
-            System.out.println(size);
+            //System.out.println(size);
             String[] table=new String[size];
             int item=0;
             rs.close();
@@ -78,7 +78,7 @@ public class DashboardController implements Initializable {
             while(rs0.next()) {
 
                 table[item] = rs0.getString(1);
-                System.out.println(table[item]);
+                //System.out.println(table[item]);
                 item++;
 
             }

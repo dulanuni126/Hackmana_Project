@@ -5,20 +5,20 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.VBox;
+import org.example.hakmana.model.SystemUser;
 import org.example.hakmana.model.User;
 
 import javax.mail.MessagingException;
-import java.awt.event.ActionEvent;
 import java.sql.SQLException;
 import java.util.regex.Pattern;
 
 public class ForgotPasswrdController {
-    public User userModelCls=new User();
+    public SystemUser systemUser =new SystemUser();
     private String usrEmail;
 
     //injectors for fxml components
     @FXML
-    private VBox usrMailVbox,verificationCodeVbox,newEmailVbox;
+    private VBox usrMailVbox,verificationCodeVbox,newPsswrdVbox;
     @FXML
     private Label outputLbl;
     @FXML
@@ -35,8 +35,8 @@ public class ForgotPasswrdController {
         return verificationCodeVbox;
     }
 
-    public VBox getNewEmailVbox() {
-        return newEmailVbox;
+    public VBox getnewPsswrdVbox() {
+        return newPsswrdVbox;
     }
 
     public Label getOutputLbl() {
@@ -86,7 +86,7 @@ public class ForgotPasswrdController {
     public boolean isValidEmail(String email) throws SQLException {
         String regex = "^[\\w!#$%&'*+/=?`{|}~^-]+(?:\\.[\\w!#$%&'*+/=?`{|}~^-]+)*@(?:[a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,6}$";
         Pattern pattern = Pattern.compile(regex);
-        return pattern.matcher(email).matches() && userModelCls.dbMailChecker(email);
+        return pattern.matcher(email).matches() && systemUser.dbMailChecker(email);
     }
 
     //set the output in label
@@ -99,11 +99,12 @@ public class ForgotPasswrdController {
     public void nextBtnClick() throws SQLException, MessagingException {
         storeUsrEmail();
         if(isValidEmail(getUsrEmail())){
+            getOutputLbl().setVisible(false);
             System.out.println("valid");
-            String code=userModelCls.generateVerificationCode();
+            String code= systemUser.generateVerificationCode();
             System.out.println(code);
-            userModelCls.dbUpdate(code,getUsrEmail());
-            //userModelCls.sendEmail(getUsrEmail(),code);
+            systemUser.dbUpdate(code,getUsrEmail());
+            //systemUser.sendEmail(getUsrEmail(),code);
             getVerificationCodeVbox().setDisable(false);
         }
         else{
@@ -112,24 +113,37 @@ public class ForgotPasswrdController {
         }
     }
 
+    //handle OTP verification button
     @FXML
-    public void verifyOTP(){
-        if(getVerificationCodeField().getText().equals("")){
-            usrOutput("Verified");
+    public void verifyOTP() throws SQLException {
+        if(systemUser.verifyWithDb(getUsrEmail(),getVerificationCodeField().getText())){
+            getVerificationCodeField().setStyle("-fx-border-color: green;-fx-border-width: 2px");
+            getOutputLbl().setVisible(true);
+            usrOutput("Verified! Now you can enter a new password");
+            getnewPsswrdVbox().setDisable(false);
             System.out.println("verified");
         }
         else{
             usrOutput("Incorrect code");
+            getVerificationCodeField().setStyle("-fx-border-color: red;-fx-border-width: 2px");
         }
 
     }
-    //send verification code and timer to expire as a query yot the db
-
-    //and timer update
-
-    //disable all other except new password entering field
 
     //get the new password and send to the db
+    public void newPsswrd(){
+        if(getNewPsswrdFiled1().getText().equals(getNewPsswrdFiled2().getText())){
+            getNewPsswrdFiled1().setStyle("-fx-border-color: green;-fx-border-width: 2px");
+            getNewPsswrdFiled2().setStyle("-fx-border-color: green;-fx-border-width: 2px");
+            systemUser.pswrdChanger();
+        }
+        else{
+            System.out.println("Passwords not matched");
+            getNewPsswrdFiled1().setStyle("-fx-border-color: red;-fx-border-width: 2px");
+            getNewPsswrdFiled2().setStyle("-fx-border-color: red;-fx-border-width: 2px");
+        }
+    }
+
 
 
 }

@@ -7,8 +7,6 @@ CREATE TABLE User (
     name VARCHAR(20),
     title VARCHAR(20),
     gmail VARCHAR(25),
-    verification_code CHAR(6) NULL,
-    code_expiry DATETIME NULL
 );
 
 CREATE TABLE Desktop (
@@ -217,7 +215,10 @@ CREATE TABLE systemUser (
     email VARCHAR(50),
     phoneNum VARCHAR(10),
     isRemember BOOLEAN DEFAULT FALSE,
+    verification_code CHAR(6) NULL,
+    code_expiry DATETIME NULL,
     PRIMARY KEY (userName)
+
 );
 
 

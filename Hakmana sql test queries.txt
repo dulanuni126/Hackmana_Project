@@ -152,7 +152,7 @@ VALUES ('MS001', 'Logitech MX Master 3', 'In Stock', 'Wireless'),
       ('MS002', 'Microsoft Sculpt Ergonomic', 'Sold', 'Wired'),
       ('MS003', 'Apple Magic Mouse 2', 'Out of Stock', 'Bluetooth');
 
-INSERT INTO systemUser (userName, pwd)
+INSERT INTO systemUser (userName, pwd,email)
 VALUES
-('hakmanaedm', SHA1('adminuserhakmana')),
-('test', SHA1('test'));
+('hakmanaedm', SHA1('adminuserhakmana'),'hakmanaedm@gmail.com'),
+('test', SHA1('test'),'test@gmail.com');
