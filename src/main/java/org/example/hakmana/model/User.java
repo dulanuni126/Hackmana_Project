@@ -60,7 +60,7 @@ public class User {
     }
 
     /*-----------User verification for password reset-------------*/
-    //check mail return boolean val
+    //check mail in database and return boolean val
     public boolean dbMailChecker(String mail) throws SQLException {
         String query = "SELECT * FROM User WHERE gmail = ?";
         databaseConnection=DatabaseConnection.getInstance();
@@ -74,9 +74,11 @@ public class User {
     }
 
     //store verification code under the corrected user
-    public void dbUpdate(PreparedStatement ps,Connection conn,String verificationCode,String mail) throws SQLException {
-        String sql = "UPDATE users SET verification_code = ?, code_expiry = DATE_ADD(NOW(), INTERVAL 15 MINUTE) WHERE email = ?"; // Update with expiry time
-        ps = conn.prepareStatement(sql);
+    public void dbUpdate(String verificationCode,String mail) throws SQLException {
+        String sql = "UPDATE user SET verification_code = ?, code_expiry = DATE_ADD(NOW(), INTERVAL 15 MINUTE) WHERE gmail = ?"; // Update with expiry time
+        databaseConnection=DatabaseConnection.getInstance();
+        Connection conn=databaseConnection.getConnection();
+        PreparedStatement ps = conn.prepareStatement(sql);
         ps.setString(1, verificationCode);
         ps.setString(2, mail);
         ps.executeUpdate();
@@ -96,7 +98,7 @@ public class User {
 
     //send the verification code to the email
     public void sendEmail(String recipientEmail, String verificationCode) throws MessagingException {
-        String fromEmail = "your_email@example.com"; // sender email
+        String fromEmail = "hakmanaedm@gmail.com"; // sender email
         String host = "smtp.gmail.com"; //SMTP host (e.g., Gmail, Outlook)
         int port = 587; // Replace with your SMTP port
         boolean auth = true; // Authentication required for most free services
@@ -114,7 +116,7 @@ public class User {
             authenticator = new Authenticator() {
                 @Override
                 protected javax.mail.PasswordAuthentication getPasswordAuthentication() {
-                    return new PasswordAuthentication(fromEmail,"pasword");
+                    return new PasswordAuthentication(fromEmail,"hakmanaedm123");
                 }
             };
         }

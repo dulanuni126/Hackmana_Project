@@ -72,7 +72,7 @@
                   </Label>
                </children>
             </VBox>
-            <VBox fx:id="verificationCodeVbox" fillWidth="false" prefHeight="128.0" prefWidth="506.0" VBox.vgrow="NEVER">
+            <VBox fx:id="verificationCodeVbox" disable="true" fillWidth="false" prefHeight="128.0" prefWidth="506.0" VBox.vgrow="NEVER">
                <children>
                   <Label text="Enter verification code" textFill="#59057b">
                      <font>
@@ -106,7 +106,7 @@
                         <Insets />
                      </VBox.margin>
                   </HBox>
-                  <Button mnemonicParsing="false" text="verify" />
+                  <Button fx:id="verfiyBtn" mnemonicParsing="false" text="verify" />
                </children>
             </VBox>
             <VBox fx:id="newEmailVbox" disable="true" fillWidth="false" prefHeight="156.0" prefWidth="506.0" VBox.vgrow="NEVER">

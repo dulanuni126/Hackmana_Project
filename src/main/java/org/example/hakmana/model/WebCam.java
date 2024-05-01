@@ -6,6 +6,49 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class WebCam extends Devices{
+    private String regNum;
+    private String model;
+    private String status;
+    private String userName;
+    @Override
+    public String getRegNum() {
+        return regNum;
+    }
+    @Override
+    public void setRegNum(String regNum) {
+        this.regNum = regNum;
+    }
+
+    @Override
+    public String getModel() {
+        return model;
+    }
+
+    @Override
+    public void setModel(String model) {
+        this.model = model;
+    }
+
+    @Override
+    public String getStatus() {
+        return status;
+    }
+
+    @Override
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    @Override
+    public String getUserName() {
+        return userName;
+    }
+
+    @Override
+    public void setUserName(String userName) {
+        this.userName = userName;
+    }
+
     public WebCam(String regNum, String model, String userName, String status) {
         super(regNum, model, userName, status);
     }

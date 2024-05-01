@@ -2,17 +2,26 @@ CREATE DATABASE hakmanaEdm;
 
 USE hakmanaEdm;
 
-CREATE TABLE desktop (
+CREATE TABLE User (
+    userNIC VARCHAR(15) PRIMARY KEY,
+    name VARCHAR(20),
+    title VARCHAR(20),
+    gmail VARCHAR(25),
+    verification_code CHAR(6) NULL,
+    code_expiry DATETIME NULL
+);
+
+CREATE TABLE Desktop (
     regNum VARCHAR(20) PRIMARY KEY,
-    serialNum VARCHAR(30),
     model VARCHAR(25),
+    status VARCHAR(10),
+    serialNum VARCHAR(30),
     purchasedFrom VARCHAR(25),
     ram VARCHAR(8),
     processor VARCHAR(10),
     warranty VARCHAR(25),
     hardDisk VARCHAR(8),
     os VARCHAR(10),
-    status VARCHAR(10),
     floppyDisk VARCHAR(3),
     soundCard VARCHAR(15),
     tvCard VARCHAR(15),
@@ -24,136 +33,179 @@ CREATE TABLE desktop (
     keyboardRegNum VARCHAR(20),
     micRegNum VARCHAR(20),
 	scannerRegNum VARCHAR(20),
-    userNIC VARCHAR(15)
-	
+    userNIC VARCHAR(15),
+    FOREIGN KEY (userNIC) REFERENCES User (userNIC)
 );
 
-CREATE TABLE printer (
-    regNum VARCHAR(20) PRIMARY KEY,
+CREATE TABLE Printer (
+    regNum VARCHAR(20) PRIMARY KEY NOT NULL,
+    model VARCHAR(25),
+    status VARCHAR(10),
     serialNum VARCHAR(30),
     paperInput VARCHAR(15),
     paperOutput VARCHAR(15),
     warranty VARCHAR(25),
-    model VARCHAR(25),
-    status VARCHAR(10),
-    userNIC VARCHAR(15)
-);
-
-
-CREATE TABLE user (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    nic VARCHAR(15),
-    name VARCHAR(20),
-    title VARCHAR(20),
-    gmail VARCHAR(25)
+    userNIC VARCHAR(15),
+    FOREIGN KEY (userNIC) REFERENCES User (userNIC)
 );
 
 CREATE TABLE Laptop (
- ID INT PRIMARY KEY,
- Model VARCHAR(100),
- RAM VARCHAR(20),
- CPU VARCHAR(100),
- Storage VARCHAR(100),
- Display VARCHAR(100),
- GraphicsCard VARCHAR(100),
- OperatingSystem VARCHAR(100)
+    regNum VARCHAR(20) PRIMARY KEY NOT NULL,
+    model VARCHAR(25),
+    status VARCHAR(10),
+    RAM VARCHAR(20),
+    CPU VARCHAR(100),
+    Storage VARCHAR(100),
+    Display VARCHAR(100),
+    GraphicsCard VARCHAR(100),
+    OperatingSystem VARCHAR(100),
+    userNIC VARCHAR(15),
+    FOREIGN KEY (userNIC) REFERENCES User (userNIC)
 );
 
 CREATE TABLE PhotoCopyMachine (
- ID INT PRIMARY KEY,
- Model VARCHAR(100),
- CopyingCapability VARCHAR(20)
+    regNum VARCHAR(20) PRIMARY KEY NOT NULL,
+    model VARCHAR(25),
+    status VARCHAR(10),
+    CopyingCapability VARCHAR(20)
+);
+
+CREATE TABLE Monitors (
+    regNum VARCHAR(20) PRIMARY KEY NOT NULL,
+    model VARCHAR(25),
+    status VARCHAR(10),
+    userNIC VARCHAR(15),
+    regNumDesktop VARCHAR(20),
+    FOREIGN KEY (userNIC) REFERENCES User (userNIC),
+    FOREIGN KEY (regNumDesktop) REFERENCES Desktop (regNum)
 );
 
 CREATE TABLE MultimediaProjector (
- ID INT PRIMARY KEY,
- Model VARCHAR(100)
+    regNum VARCHAR(20) PRIMARY KEY NOT NULL,
+    model VARCHAR(25),
+    status VARCHAR(10)
 );
 
+
 CREATE TABLE FaxMachine (
- ID INT PRIMARY KEY,
- Model VARCHAR(100)
+    regNum VARCHAR(20) PRIMARY KEY NOT NULL,
+    model VARCHAR(25),
+    status VARCHAR(10)
 );
 
 CREATE TABLE UPS (
- ID INT PRIMARY KEY,
- Model VARCHAR(100),
- BackupPower VARCHAR(50),
- Runtime VARCHAR(50)
+    regNum VARCHAR(20) PRIMARY KEY NOT NULL,
+    model VARCHAR(25),
+    status VARCHAR(10),
+    BackupPower VARCHAR(50),
+    Runtime VARCHAR(50),
+    regNumDesktop VARCHAR(20),
+    FOREIGN KEY (regNumDesktop) REFERENCES desktop (regNum)
 );
 
 
 CREATE TABLE WebCam (
- ID INT PRIMARY KEY,
- Brand VARCHAR(100)
+    regNum VARCHAR(20) PRIMARY KEY NOT NULL,
+    model VARCHAR(25),
+    status VARCHAR(10),
+    regNumDesktop VARCHAR(20),
+    FOREIGN KEY (regNumDesktop) REFERENCES desktop (regNum)
 );
 
 
 CREATE TABLE Tripod (
- ID INT PRIMARY KEY,
- Stability VARCHAR(50),
- AdjustableHeight VARCHAR(50)
+    regNum VARCHAR(20) PRIMARY KEY NOT NULL,
+    model VARCHAR(25),
+    status VARCHAR(10),
+    Stability VARCHAR(50),
+    AdjustableHeight VARCHAR(50)
 );
 
 CREATE TABLE Headphone (
- ID INT PRIMARY KEY,
- SoundQuality VARCHAR(50),
- Connectivity VARCHAR(50)
+    regNum VARCHAR(20) PRIMARY KEY NOT NULL,
+    model VARCHAR(25),
+    status VARCHAR(10),
+    SoundQuality VARCHAR(50),
+    Connectivity VARCHAR(50)
 );
 
 CREATE TABLE USBHub (
- ID INT PRIMARY KEY
+    regNum VARCHAR(20) PRIMARY KEY NOT NULL,
+    model VARCHAR(25),
+    status VARCHAR(10)
 );
 
 CREATE TABLE ExternalDVDRom (
- ID INT PRIMARY KEY
+     regNum VARCHAR(20) PRIMARY KEY NOT NULL,
+     model VARCHAR(25),
+     status VARCHAR(10)
 );
 
 CREATE TABLE AccessPoint (
- ID INT PRIMARY KEY
+    regNum VARCHAR(20) PRIMARY KEY NOT NULL,
+    model VARCHAR(25),
+    status VARCHAR(10)
 );
 
 CREATE TABLE ExternalUSB (
- ID INT PRIMARY KEY,
- USBType VARCHAR(10)
+    regNum VARCHAR(20) PRIMARY KEY NOT NULL,
+    model VARCHAR(25),
+    status VARCHAR(10),
+    usbType VARCHAR(10)
 );
 
 CREATE TABLE SpeakerSet (
- ID INT PRIMARY KEY,
- SoundQuality VARCHAR(50),
- NumberOfSpeakers INT
+    regNum VARCHAR(20) PRIMARY KEY NOT NULL,
+    model VARCHAR(25),
+    status VARCHAR(10),
+    SoundQuality VARCHAR(50),
+    numberOfSpeakers INT
 );
 
 CREATE TABLE Router (
- ID INT PRIMARY KEY,
- NumberOfPorts INT
+    regNum VARCHAR(20) PRIMARY KEY NOT NULL,
+    model VARCHAR(25),
+    status VARCHAR(10),
+    numberOfPorts INT
 );
 
 CREATE TABLE ToolKit (
- ID INT PRIMARY KEY
+     regNum VARCHAR(20) PRIMARY KEY NOT NULL,
+     model VARCHAR(25),
+     status VARCHAR(10)
 );
 
 CREATE TABLE USBCable (
- ID INT PRIMARY KEY,
- Length VARCHAR(20)
+     regNum VARCHAR(20) PRIMARY KEY NOT NULL,
+     model VARCHAR(25),
+     status VARCHAR(10),
+     length DOUBLE(5,2)
 );
 
 CREATE TABLE RouterSwitch (
- ID INT PRIMARY KEY
+     regNum VARCHAR(20) PRIMARY KEY NOT NULL,
+     model VARCHAR(25),
+     status VARCHAR(10)
 );
 
 CREATE TABLE VGACable (
- ID INT PRIMARY KEY
+    regNum VARCHAR(20) PRIMARY KEY NOT NULL,
+    model VARCHAR(25),
+    status VARCHAR(10)
 );
 
 CREATE TABLE Keyboard (
- ID INT PRIMARY KEY,
- Connectivity VARCHAR(50)
+     regNum VARCHAR(20) PRIMARY KEY NOT NULL,
+     model VARCHAR(25),
+     status VARCHAR(10),
+    Connectivity VARCHAR(50)
 );
 
 CREATE TABLE Mouse (
- ID INT PRIMARY KEY,
- Connectivity VARCHAR(50)
+    regNum VARCHAR(20) PRIMARY KEY NOT NULL,
+    model VARCHAR(25),
+    status VARCHAR(10),
+    Connectivity VARCHAR(50)
 );
 
 CREATE TABLE systemUser (
@@ -169,8 +221,13 @@ CREATE TABLE systemUser (
 );
 
 
-
-CREATE TABLE notes(id varchar(20),username varchar(20),brand varchar(20),notes varchar(60),PRIMARY KEY(id,username,brand,notes));
+CREATE TABLE notes(
+    regNumDevice varchar(20) NULL,
+    username varchar(20) NULL,
+    model varchar(20) NULL,
+    notes varchar(60),
+    PRIMARY KEY(regNumDevice,username,model,notes)
+);
 
 
 

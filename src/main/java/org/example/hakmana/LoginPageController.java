@@ -111,8 +111,6 @@ public class LoginPageController implements Initializable {
     }
 
 
-
-
     // Method to load dashboard scene
     private void loadDashboard(ActionEvent event) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("Scene/dashboard.fxml"));

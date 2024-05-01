@@ -1,12 +1,15 @@
 package org.example.hakmana.model;
 
-import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
 public class Desktop extends Devices{
+    private String regNum;
+    private String model;
+    private String status;
+    private String userName;
 
     private String serialNum="NO";
     private String purchasedFrom="NO";
@@ -56,7 +59,45 @@ public class Desktop extends Devices{
     }
 
     public Desktop(){
+    }
+    @Override
+    public String getRegNum() {
+        return regNum;
+    }
 
+    @Override
+    public void setRegNum(String regNum) {
+        this.regNum = regNum;
+    }
+
+    @Override
+    public String getModel() {
+        return model;
+    }
+
+    @Override
+    public void setModel(String model) {
+        this.model = model;
+    }
+
+    @Override
+    public String getStatus() {
+        return status;
+    }
+
+    @Override
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    @Override
+    public String getUserName() {
+        return userName;
+    }
+
+    @Override
+    public void setUserName(String userName) {
+        this.userName = userName;
     }
 
     public String getFloppyDisk() {
@@ -211,50 +252,32 @@ public class Desktop extends Devices{
         this.userNIC = userNIC;
     }
 
+    //get the Desktop array from the database
+    @Override
     public Desktop[] getDevices() {
         DatabaseConnection conn=DatabaseConnection.getInstance();
         List<Desktop> desktops = new ArrayList<>();
         //pass query to the connection class
-        String sql = "SELECT desktop.*, user.name FROM desktop LEFT JOIN user ON desktop.userNIC = user.nic";
+        String sql = "SELECT desktop.regNum,desktop.model,desktop.status,user.name FROM desktop LEFT JOIN user ON desktop.userNIC = user.userNIC";
 
-        try {
-            // get result set from connection class
-            ResultSet resultSet = conn.executeSt(sql);
+        try(ResultSet resultSet = conn.executeSt(sql)) {// get result set from connection class and auto closable
 
             // Iterate through the result set and create Desktop and User objects
             while (resultSet.next()) {
-                Desktop desktop = new Desktop();
+                Desktop desktop = new Desktop(null,null,null,null);
                 desktop.setRegNum(resultSet.getString("regNum"));
-                desktop.setSerialNum(resultSet.getString("serialNum"));
                 desktop.setModel(resultSet.getString("model"));
-                desktop.setPurchasedFrom(resultSet.getString("purchasedFrom"));
-                desktop.setRam(resultSet.getString("ram"));
-                desktop.setProcessor(resultSet.getString("processor"));
-                desktop.setWarranty(resultSet.getString("warranty"));
-                desktop.setHardDisk(resultSet.getString("hardDisk"));
-                desktop.setOs(resultSet.getString("os"));
                 desktop.setStatus(resultSet.getString("status"));
-                desktop.setMonitorRegNum(resultSet.getString("monitorRegNum"));
-                desktop.setProjectorRegNum(resultSet.getString("projectorRegNum"));
-                desktop.setSpeakerRegNum(resultSet.getString("speakerRegNum"));
-                desktop.setMouseRegNum(resultSet.getString("mouseRegNum"));
-                desktop.setKeyboardRegNum(resultSet.getString("keyboardRegNum"));
-                desktop.setMicRegNum(resultSet.getString("micRegNum"));
-                desktop.setScannerRegNum(resultSet.getString("scannerRegNum"));
-                desktop.setUserNIC(resultSet.getString("userNIC"));
-                desktop.setFloppyDisk(resultSet.getString("floppyDisk"));
-                desktop.setSoundCard(resultSet.getString("soundCard"));
-                desktop.setTvCard(resultSet.getString("tvCard"));
-                desktop.setNetworkCard(resultSet.getString("networkCard"));
                 desktop.setUserName(resultSet.getString("name"));
 
-                desktops.add(desktop);
+                desktops.add(desktop);//add desktop to the desktops list
             }
         }
         catch (SQLException e){
             throw new RuntimeException(e);
         }
 
+        //return desktops list as an array
         return desktops.toArray(new Desktop[0]);
     }
 

@@ -28,23 +28,6 @@ public class DeviceInfoCardController extends AnchorPane implements Initializabl
      private Stage stage;
      private Scene scene;
      private Parent sceneroot;
-     @Override
-     public void initialize(URL url, ResourceBundle resourceBundle) {
-
-     }
-     public DeviceInfoCardController() {
-          super();
-          FXMLLoader fxmlFooterLoader = new FXMLLoader(getClass().getResource("Component/DeviceInfoCard.fxml"));
-          fxmlFooterLoader.setController(this);
-          fxmlFooterLoader.setRoot(this);
-
-          try {
-               fxmlFooterLoader.load();
-          }
-          catch (IOException e){
-               throw new RuntimeException(e);
-          }
-     }
      @FXML
      private Button DetailedViewBtn;
      @FXML
@@ -62,13 +45,27 @@ public class DeviceInfoCardController extends AnchorPane implements Initializabl
      @FXML
      private Pane moreInfoBtn;
      @FXML
-
-
-
      private String devId;
      private String user;
      private String brand;
      private String note;
+     @Override
+     public void initialize(URL url, ResourceBundle resourceBundle) {
+
+     }
+     public DeviceInfoCardController() {
+          super();
+          FXMLLoader fxmlFooterLoader = new FXMLLoader(getClass().getResource("Component/DeviceInfoCard.fxml"));
+          fxmlFooterLoader.setController(this);
+          fxmlFooterLoader.setRoot(this);
+
+          try {
+               fxmlFooterLoader.load();
+          }
+          catch (IOException e){
+               throw new RuntimeException(e);
+          }
+     }
 
      @FXML
      private void onMouseEntered() {
@@ -117,6 +114,7 @@ public class DeviceInfoCardController extends AnchorPane implements Initializabl
           noteTxtArea.setText(this.note);
      }
 
+     //handle more info button to load DevDetailedView scene
      public void DetailedViewSceneLoad(ActionEvent event) throws IOException {
           Parent sceneroot = FXMLLoader.load(getClass().getResource("Scene/DevDetailedView.fxml"));
           stage = (Stage)((Node)event.getSource()).getScene().getWindow();
@@ -125,6 +123,7 @@ public class DeviceInfoCardController extends AnchorPane implements Initializabl
           stage.show();
      }
 
+     //note adding dialog box control
      public void popupdialog(){
           try{
                FXMLLoader fxmlLoader=new FXMLLoader();

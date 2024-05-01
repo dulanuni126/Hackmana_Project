@@ -15,38 +15,23 @@ public abstract class Devices {
 
     public Devices() {
     }
+
+    //get the Devices array from the database
     public Devices[] getDevices(){
         return null;
     }
 
-    public void setRegNum(String regNum) {
-        this.regNum = regNum;
-    }
+    public abstract void setRegNum(String para1);
+    public abstract String getRegNum();
 
-    public void setModel(String model) {
-        this.model = model;
-    }
+    public abstract void setModel(String para1);
+    public abstract String getModel();
 
-    public void setUserName(String userName) {
-        this.userName = userName;
-    }
+    public abstract String getUserName();
+    public abstract void setUserName(String para1);
 
-    public void setStatus(String status) {
-        this.status = status;
-    }
-
-    public String getRegNum() {
-        return null;
-    }
-    public String getUserName() {
-        return null;
-    }
-    public String getModel() {
-        return null;
-    }
-    public String getStatus() {
-        return null;
-    }
+    public abstract void setStatus(String para1);
+    public abstract String getStatus();
 }
 
 
