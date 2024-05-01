@@ -7,40 +7,62 @@ import java.util.List;
 
 public class Printer extends Devices {
     private String regNum;
+    private String model;
+    private String status;
+    private String userName;
     private String serialNum;
     private String paperInput;
     private String paperOutput;
     private String warranty;
-    private String model;
-    private String status;
     private String userNIC;
+
+    public Printer(String regNum, String model, String userName,String status,String serialNum, String paperInput, String paperOutput, String warranty, String userNIC) {
+        super(regNum, model, userName,status);
+        this.serialNum = serialNum;
+        this.paperInput = paperInput;
+        this.paperOutput = paperOutput;
+        this.warranty = warranty;
+        this.userNIC = userNIC;
+    }
 
     public Printer(String regNum, String model, String userName,String status) {
         super(regNum, model, userName,status);
     }
 
-    public Printer(String regNum, String serialNum, String paperInput, String paperOutput, String warranty, String model, String status, String userNIC) {
-        this.regNum = regNum;
-        this.serialNum = serialNum;
-        this.paperInput = paperInput;
-        this.paperOutput = paperOutput;
-        this.warranty = warranty;
-        this.model = model;
-        this.status = status;
-        this.userNIC = userNIC;
-    }
-
     public Printer() {
     }
-
+    @Override
     public String getRegNum() {
         return regNum;
     }
-
+    @Override
     public void setRegNum(String regNum) {
         this.regNum = regNum;
     }
-
+    @Override
+    public String getModel() {
+        return model;
+    }
+    @Override
+    public void setModel(String model) {
+        this.model = model;
+    }
+    @Override
+    public String getStatus() {
+        return status;
+    }
+    @Override
+    public void setStatus(String status) {
+        this.status = status;
+    }
+    @Override
+    public String getUserName() {
+        return userName;
+    }
+    @Override
+    public void setUserName(String userName) {
+        this.userName = userName;
+    }
     public String getSerialNum() {
         return serialNum;
     }
@@ -73,22 +95,6 @@ public class Printer extends Devices {
         this.warranty = warranty;
     }
 
-    public String getModel() {
-        return model;
-    }
-
-    public void setModel(String model) {
-        this.model = model;
-    }
-
-    public String getStatus() {
-        return status;
-    }
-
-    public void setStatus(String status) {
-        this.status = status;
-    }
-
     public String getUserNIC() {
         return userNIC;
     }
@@ -100,7 +106,7 @@ public class Printer extends Devices {
         DatabaseConnection conn=DatabaseConnection.getInstance();
         List<Printer> printers = new ArrayList<>();
         //pass query to the connection class
-        String sql = "SELECT printer.* FROM printer";
+        String sql = "ELECT printer.regNum,printer.model,printer.status, user.name FROM printer LEFT JOIN user ON printer.userNIC = user.userNIC";
 
         try {
             // get result set from connection class
@@ -108,22 +114,17 @@ public class Printer extends Devices {
 
             // Iterate through the result set and create Desktop and User objects
             while (resultSet.next()) {
-                Printer printer = new Printer();
+                Printer printer = new Printer(null,null,null,null);
                 printer.setRegNum(resultSet.getString("regNum"));
-                printer.setSerialNum(resultSet.getString("serialNum"));
                 printer.setModel(resultSet.getString("model"));
                 printer.setStatus(resultSet.getString("status"));
-                //printer.setUserName(resultSet.getString("name"));
-                printer.setPaperInput(resultSet.getString("PaperInput"));
-                printer.setPaperOutput(resultSet.getString("PaperOutput"));
-                printer.setWarranty(resultSet.getString("Warranty"));
-                printer.setUserNIC(resultSet.getString("UserNIC"));
+                printer.setUserName(resultSet.getString("name"));
 
                 printers.add(printer);
             }
         }
         catch (SQLException e){
-            throw new RuntimeException(e);
+            System.out.println(e);
         }
 
         return printers.toArray(new Printer[0]);

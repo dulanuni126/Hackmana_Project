@@ -5,6 +5,7 @@ module org.example.hakmana {
     requires java.sql;
     requires com.jfoenix;
     requires java.desktop;
+    requires java.mail;
 
     opens org.example.hakmana to javafx.fxml;
     exports org.example.hakmana;

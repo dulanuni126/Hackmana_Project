@@ -5,22 +5,20 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Projectors extends Devices{
+public class UPS extends Devices{
     private String regNum;
     private String model;
     private String status;
     private String userName;
-    public Projectors(String regNum, String model, String userName, String status) {
+    public UPS(String regNum, String model, String userName, String status) {
         super(regNum, model, userName, status);
     }
-
-    public Projectors() {
+    public UPS() {
     }
     @Override
     public String getRegNum() {
         return regNum;
     }
-
     @Override
     public void setRegNum(String regNum) {
         this.regNum = regNum;
@@ -56,11 +54,11 @@ public class Projectors extends Devices{
         this.userName = userName;
     }
 
-    public Projectors[] getDevices() {
+    public UPS[] getDevices() {
         DatabaseConnection conn=DatabaseConnection.getInstance();
-        List<Projectors> projectors = new ArrayList<>();
+        List<UPS> ups = new ArrayList<>();
         //pass query to the connection class
-        String sql = "SELECT * FROM multimediaprojector";
+        String sql = "SELECT * FROM ups";
 
         try {
             // get result set from connection class
@@ -68,20 +66,20 @@ public class Projectors extends Devices{
 
             // Iterate through the result set and create Desktop and User objects
             while (resultSet.next()) {
-                Projectors projector = new Projectors(null,null,null,null);
+                UPS ups1 = new UPS(null,null,null,null);
 
-                projector.setRegNum(resultSet.getString("regNum"));
-                projector.setModel(resultSet.getString("model"));
-                projector.setStatus(resultSet.getString("status"));
-                projector.setUserName("no user");
+                ups1.setRegNum(resultSet.getString("regNum"));
+                ups1.setModel(resultSet.getString("model"));
+                ups1.setStatus(resultSet.getString("status"));
 
-                projectors.add(projector);
+                ups.add(ups1);
             }
         }
         catch (SQLException e){
             System.out.println(e);
         }
 
-        return projectors.toArray(new Projectors[0]);
+        return ups.toArray(new UPS[0]);
     }
+
 }

@@ -8,14 +8,13 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
-import javafx.scene.control.CheckBox;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.input.MouseEvent;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
+import javafx.stage.Window;
 import org.example.hakmana.model.DatabaseConnection;
 
 import java.io.IOException;
@@ -26,6 +25,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.Optional;
 import java.util.ResourceBundle;
 
 public class LoginPageController implements Initializable {
@@ -53,6 +53,7 @@ public class LoginPageController implements Initializable {
     public void DashboardSceneLoad(ActionEvent event) throws IOException {
         String tempUserName = usrNameFeild.getText();
         String tempPsswrd = sha1(psswrdFeild.getText()); // Hash the input password using SHA-1
+
         try {
             // Query to retrieve user information
             query = "SELECT * FROM systemUser WHERE userName = ?";
@@ -108,8 +109,6 @@ public class LoginPageController implements Initializable {
             return null;
         }
     }
-
-
 
 
     // Method to load dashboard scene
@@ -169,6 +168,21 @@ public class LoginPageController implements Initializable {
                 }
             }
         });
+    }
+
+    public void forgotPsswrdDialogPane(MouseEvent event) throws IOException{
+        FXMLLoader forgotFxmlLoad = new FXMLLoader();
+        forgotFxmlLoad.setLocation(getClass().getResource("Scene/DialogBox/FrogotPasswrd.fxml"));
+        DialogPane forgotDialogPane=forgotFxmlLoad.load();
+
+        Dialog<ButtonType> dialog=new Dialog<>();
+        dialog.setDialogPane(forgotDialogPane);
+        dialog.setTitle("Forgot password");
+
+       Optional<ButtonType> clickedButton=dialog.showAndWait();
+        if (clickedButton.isPresent() && clickedButton.get() == ButtonType.APPLY) {
+            System.out.println("Apply");
+        }
     }
 
 }

@@ -5,22 +5,15 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Projectors extends Devices{
+public class WebCam extends Devices{
     private String regNum;
     private String model;
     private String status;
     private String userName;
-    public Projectors(String regNum, String model, String userName, String status) {
-        super(regNum, model, userName, status);
-    }
-
-    public Projectors() {
-    }
     @Override
     public String getRegNum() {
         return regNum;
     }
-
     @Override
     public void setRegNum(String regNum) {
         this.regNum = regNum;
@@ -56,11 +49,18 @@ public class Projectors extends Devices{
         this.userName = userName;
     }
 
-    public Projectors[] getDevices() {
+    public WebCam(String regNum, String model, String userName, String status) {
+        super(regNum, model, userName, status);
+    }
+
+    public WebCam() {
+    }
+
+    public WebCam[] getDevices() {
         DatabaseConnection conn=DatabaseConnection.getInstance();
-        List<Projectors> projectors = new ArrayList<>();
+        List<WebCam> webCams = new ArrayList<>();
         //pass query to the connection class
-        String sql = "SELECT * FROM multimediaprojector";
+        String sql = "SELECT webCam.*, user.name FROM webCam LEFT JOIN user ON webCam.userNIC = user.nic";
 
         try {
             // get result set from connection class
@@ -68,20 +68,19 @@ public class Projectors extends Devices{
 
             // Iterate through the result set and create Desktop and User objects
             while (resultSet.next()) {
-                Projectors projector = new Projectors(null,null,null,null);
+                WebCam webCam = new WebCam();
 
-                projector.setRegNum(resultSet.getString("regNum"));
-                projector.setModel(resultSet.getString("model"));
-                projector.setStatus(resultSet.getString("status"));
-                projector.setUserName("no user");
+                webCam.setRegNum(resultSet.getString("regNum"));
+                webCam.setModel(resultSet.getString("model"));
+                webCam.setStatus(resultSet.getString("status"));
 
-                projectors.add(projector);
+                webCams.add(webCam);
             }
         }
         catch (SQLException e){
             System.out.println(e);
         }
 
-        return projectors.toArray(new Projectors[0]);
+        return webCams.toArray(new WebCam[0]);
     }
 }

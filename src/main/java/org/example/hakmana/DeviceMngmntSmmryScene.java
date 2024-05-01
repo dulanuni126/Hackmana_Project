@@ -10,9 +10,7 @@ import java.net.URL;
 import java.util.Objects;
 import java.util.ResourceBundle;
 
-import org.example.hakmana.model.Desktop;
-import org.example.hakmana.model.Devices;
-import org.example.hakmana.model.Printer;
+import org.example.hakmana.model.*;
 
 public class DeviceMngmntSmmryScene implements Initializable {
 
@@ -60,30 +58,35 @@ public class DeviceMngmntSmmryScene implements Initializable {
 
     }
 
+    //add DeviceInfoCards to the scene
     @FXML
     public void addComponent() {
-        System.out.println(dbSelector);
-
         //use polymhophism concept upcasting
-        Devices[] dev=null;
+        Devices[] dev=null;//dev store the array of Devices
         if(dbSelector.equals("Desktop")){
             dev=new Desktop().getDevices();
         }
         if(dbSelector.equals("Photocopy Machines")){
-            dev=new Printer().getDevices();
+            dev=new PhotocpyMchine().getDevices();
         }
         if(dbSelector.equals("Monitors")){
-            dev=new Desktop().getDevices();
+            dev=new Monitors().getDevices();
         }
         if(dbSelector.equals("Projectors")){
-            dev=new Desktop().getDevices();
+            dev=new Projectors().getDevices();
         }
         if(dbSelector.equals("Laptops")){
-            dev=new Desktop().getDevices();
+            dev=new Laptops().getDevices();
+        }
+        if(dbSelector.equals("Printers")){
+            dev=new Printer().getDevices();
+        }
+        if(dbSelector.equals("UPS")){
+            dev=new UPS().getDevices();
         }
 
         DeviceInfoCardController card;
-        for (Devices d : dev) {
+        for (Devices d : dev) {//for all the Devices in dev array add card to the scene
             card=new DeviceInfoCardController();
             card.setUser(d.getUserName());
             card.setBrand(d.getModel());
@@ -104,10 +107,9 @@ public class DeviceMngmntSmmryScene implements Initializable {
 
     }
 
+    //add AddDevice card to the scene
     public void addLastComponent() {
         AddDevButtonController addDevButtonController=new AddDevButtonController();
-
-
         // Add the label to the grid
         grid.add(addDevButtonController, colCount, rowCount);
 
@@ -135,7 +137,6 @@ public class DeviceMngmntSmmryScene implements Initializable {
         Animation(0, -244);
         bodyComponet.setMinWidth(992);
         bodyComponet.setMinWidth(bodyComponet.getWidth()+244);
-        //System.out.println(bodyComponet.getWidth()+244);
     }
     public  void collapse() {
         Animation(-244, 0);
