@@ -10,6 +10,7 @@ import org.example.hakmana.model.User;
 
 import javax.mail.MessagingException;
 import java.sql.SQLException;
+import java.util.Objects;
 import java.util.regex.Pattern;
 
 public class ForgotPasswrdController {
@@ -130,9 +131,16 @@ public class ForgotPasswrdController {
 
     }
 
+    //check the password vbox is enable
+    public void isVboxEnable(){
+        if(!getnewPsswrdVbox().isDisable()){
+            newPsswrd();
+        }
+    }
+
     //get the new password and send to the db
     public void newPsswrd(){
-        if(getNewPsswrdFiled1().getText().equals(getNewPsswrdFiled2().getText())){
+        if(getNewPsswrdFiled1().getText().equals(getNewPsswrdFiled2().getText()) && !Objects.equals(getNewPsswrdFiled1().getText(), "")){
             getNewPsswrdFiled1().setStyle("-fx-border-color: green;-fx-border-width: 2px");
             getNewPsswrdFiled2().setStyle("-fx-border-color: green;-fx-border-width: 2px");
             systemUser.pswrdChanger();

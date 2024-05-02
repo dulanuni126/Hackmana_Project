@@ -183,11 +183,14 @@ public class LoginPageController implements Initializable {
 
 
        Optional<ButtonType> clickedButton=dialog.showAndWait();
-        if (clickedButton.isPresent() && clickedButton.get() == ButtonType.APPLY) {
-            System.out.println("Apply");
-            forgotPasswrdController.newPsswrd();
-            clickedButton=dialog.showAndWait();
-        }
+       while(clickedButton.get()==ButtonType.APPLY) {
+//           System.out.println("Apply");
+              forgotPasswrdController.isVboxEnable();
+//           if (clickedButton.get() == ButtonType.CANCEL) {
+//              dialog.showAndWait();
+//           }
+           dialog.showAndWait();
+       }
     }
 
 }
