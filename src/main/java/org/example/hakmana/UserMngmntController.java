@@ -8,6 +8,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.Dialog;
 import javafx.scene.control.DialogPane;
+import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 import javafx.util.Duration;
@@ -18,16 +19,32 @@ import java.io.File;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.Optional;
 
 import org.example.hakmana.HeaderController;
 import org.example.hakmana.NavPanelController;
 import org.example.hakmana.PathFinderController;
+import org.example.hakmana.model.DatabaseConnection;
 
 import java.util.ResourceBundle;
 
 public class UserMngmntController implements Initializable {
-
+    @FXML
+    public Label userDetailTitle;
+    @FXML
+    public Label userNameLabel;
+    @FXML
+    public Label userPostLabel;
+    @FXML
+    public Label userEmpIdLabel;
+    @FXML
+    public Label userEmailLabel;
+    @FXML
+    public Label userPhNumLabel;
     @FXML
     private HeaderController headerController;
 
@@ -38,6 +55,9 @@ public class UserMngmntController implements Initializable {
     @FXML
     private PathFinderController pathFinderController;
     private  TranslateTransition bodyExpand;//Animation object refernce
+    private DatabaseConnection databaseConnection;
+    private Connection connection;
+    private PreparedStatement preparedStatement;
 
     @FXML
     private AnchorPane parentAnchor;
@@ -56,6 +76,38 @@ public class UserMngmntController implements Initializable {
                 collapse();
             }
         });
+
+        databaseConnection = DatabaseConnection.getInstance();
+        connection = databaseConnection.getConnection();
+
+        try {
+            // Query to retrieve user information
+            String query = "SELECT * FROM systemUser WHERE userName = ?";
+            preparedStatement = connection.prepareStatement(query);
+            preparedStatement.setString(1, LoginPageController.curentUser);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            System.out.println(LoginPageController.curentUser);
+
+            if (resultSet.next()) {
+                String storedFullName = (resultSet.getString("fullName")==null)?"":resultSet.getString("fullName");
+                String storedPost = (resultSet.getString("post")==null)?"":resultSet.getString("post");
+                String storedEmail =(resultSet.getString("email")==null)?"":resultSet.getString("email");
+                String storedPhoneNum =(resultSet.getString("phoneNum")==null)?"":resultSet.getString("phoneNum");
+                String storedEmpId =(resultSet.getString("empId")==null)?"":resultSet.getString("empId");
+
+                String[] name=storedFullName.split(" ");
+                userDetailTitle.setText(name[0]);
+                userNameLabel.setText("Full Name     : "+storedFullName);
+                userPostLabel.setText("Post          : "+storedPost);
+                userEmailLabel.setText("Email        : "+storedEmail);
+                userPhNumLabel.setText("Phone Number : "+storedPhoneNum);
+                userEmpIdLabel.setText("Employee Id  : "+storedEmpId);
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+
+        }
     }
 
     private void Animation(double animStartPos,double animEndPos){
