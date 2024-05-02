@@ -47,7 +47,7 @@ public class LoginPageController implements Initializable {
     @FXML
     private CheckBox remenberCheckBox;
 
-    public static String cuurentUser="";
+    public static String curentUser="";
 
 
     public void DashboardSceneLoad(ActionEvent event) throws IOException {
@@ -68,7 +68,7 @@ public class LoginPageController implements Initializable {
                     // Passwords match, load dashboard
                     loadDashboard(event);
 
-                    cuurentUser = tempUserName;
+                    curentUser = tempUserName;
 
                     if (remenberCheckBox.isSelected()) {
                         query = "UPDATE systemUser SET isRemember = TRUE WHERE userName = ?";

@@ -8,6 +8,8 @@ import javafx.scene.control.Alert;
 
 import javafx.scene.control.Button;
 
+import javafx.scene.control.PasswordField;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 import org.example.hakmana.model.DatabaseConnection;
@@ -21,38 +23,25 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
 public class CreateAccountController {
-    @FXML
-    private AnchorPane parentAnchor;
 
     @FXML
-    private VBox createAccountFields;
-
+    public TextField userNameTxt;
     @FXML
-    private JFXTextField userNameTxtField;
-
+    public TextField fullNameTxt;
     @FXML
-    private JFXTextField fullNameTxtField;
-
+    public TextField postTxt;
     @FXML
-    private JFXTextField postTxtField;
-
+    public TextField empIdTxt;
     @FXML
-    private JFXTextField empIdTxtField;
-
+    public PasswordField pwdText;
     @FXML
-    private JFXPasswordField pwdTextField;
-
+    public TextField emailTxt;
     @FXML
-    private JFXTextField emailTxtField;
-
-    @FXML
-    private JFXTextField phoneNumTxtField;
+    public TextField phoneNumTxt;
 
     private DatabaseConnection databaseConnection;
     private Connection connection;
 
-    @FXML
-    private Button createAccountBtutton;
 
     static void alertBox(ActionEvent event,String title,String content){
         Alert alert=new Alert(Alert.AlertType.ERROR);
@@ -62,24 +51,25 @@ public class CreateAccountController {
     }
 
     public void clearFields() {
-        userNameTxtField.setText("");
-        fullNameTxtField.setText("");
-        postTxtField.setText("");
-        empIdTxtField.setText("");
-        pwdTextField.setText("");
-        emailTxtField.setText("");
-        phoneNumTxtField.setText("");
+        userNameTxt.setText("");
+        fullNameTxt.setText("");
+        postTxt.setText("");
+        empIdTxt.setText("");
+        pwdText.setText("");
+        emailTxt.setText("");
+        phoneNumTxt.setText("");
 
     }
-    public void createAccountBtuttonOnAction(ActionEvent actionEvent) {
-        if(!(userNameTxtField.getText().equals("")||fullNameTxtField.getText().equals("")||postTxtField.getText().equals("")||pwdTextField.getText().equals("")||phoneNumTxtField.getText().equals(""))){
+
+    public void createAccButtonOnAction(ActionEvent actionEvent) {
+        if(!(userNameTxt.getText().equals("")||fullNameTxt.getText().equals("")||postTxt.getText().equals("")||pwdText.getText().equals("")||phoneNumTxt.getText().equals(""))){
             databaseConnection=DatabaseConnection.getInstance();
             connection=databaseConnection.getConnection();
 
-            SystemUser user=new SystemUser(userNameTxtField.getText(),fullNameTxtField.getText(),postTxtField.getText(),empIdTxtField.getText(),pwdTextField.getText(),emailTxtField.getText(),phoneNumTxtField.getText());
+            SystemUser user=new SystemUser(userNameTxt.getText(),fullNameTxt.getText(),postTxt.getText(),empIdTxt.getText(),pwdText.getText(),emailTxt.getText(),phoneNumTxt.getText());
 
             // SQL query with placeholders
-            String sql = "INSERT INTO systemUser (userName, fullName, post, empId, pwd, email, phoneNum) VALUES (?, ?, ?, ?, SHA2(?,256), ?, ?)";
+            String sql = "INSERT INTO systemUser (userName, fullName, post, empId, pwd, email, phoneNum) VALUES (?, ?, ?, ?, SHA1(?), ?, ?)";
 
 
 
@@ -87,13 +77,13 @@ public class CreateAccountController {
 
                 PreparedStatement preparedStatement = connection.prepareStatement(sql);
 
-                preparedStatement.setString(1, userNameTxtField.getText());
-                preparedStatement.setString(2, fullNameTxtField.getText());
-                preparedStatement.setString(3, postTxtField.getText());
-                preparedStatement.setString(4, empIdTxtField.getText());
-                preparedStatement.setString(5, pwdTextField.getText());
-                preparedStatement.setString(6, emailTxtField.getText());
-                preparedStatement.setString(7, phoneNumTxtField.getText());
+                preparedStatement.setString(1, userNameTxt.getText());
+                preparedStatement.setString(2, fullNameTxt.getText());
+                preparedStatement.setString(3, postTxt.getText());
+                preparedStatement.setString(4, empIdTxt.getText());
+                preparedStatement.setString(5, pwdText.getText());
+                preparedStatement.setString(6, emailTxt.getText());
+                preparedStatement.setString(7, phoneNumTxt.getText());
 
 
                 // Execute the PreparedStatement
@@ -113,7 +103,7 @@ public class CreateAccountController {
             }
 
         }else{
-          alertBox(actionEvent,"Error","You Should Enter All Required Fields!");
+            alertBox(actionEvent,"Error","You Should Enter All Required Fields!");
         }
 
     }

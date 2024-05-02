@@ -9,8 +9,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-
-<DialogPane xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+<DialogPane xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.hakmana.EditAccountController">
    <content>
       <AnchorPane fx:id="parentAnchor" style="-fx-background-color: #00000021;">
           <children>
@@ -25,10 +24,10 @@
                   <VBox prefHeight="200.0" prefWidth="100.0" spacing="10.0">
                      <children>
                                     <TextField fx:id="editNameField" promptText="Full Name" stylesheets="@../CSS/EditProfile.css" />
-                        <TextField promptText="Post" />
+                                     <TextField fx:id="editPostField" promptText="Post" />
                                     <TextField fx:id="editEmailField" promptText="Email" />
                                     <TextField fx:id="editPhoneField" promptText="Phone Number" styleClass="edit-profile-field" stylesheets="@../CSS/EditProfile.css" />
-                                    <Button fx:id="updateProfileButton" styleClass="edit-profile-button" stylesheets="@../CSS/EditProfile.css" text="Update Profile" />
+                                    <Button fx:id="updateProfileButton" onAction="#updateProfileButtonOnAction" styleClass="edit-profile-button" stylesheets="@../CSS/EditProfile.css" text="Update Profile" />
                      </children>
                   </VBox>
                           </children>
