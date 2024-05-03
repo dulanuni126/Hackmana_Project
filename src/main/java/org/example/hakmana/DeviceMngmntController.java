@@ -58,7 +58,7 @@ public class DeviceMngmntController implements Initializable {
         addComponent("Monitors",new Image(getClass().getResourceAsStream("Scene/Images/monitor.png")));
         addComponent("Projectors",new Image(getClass().getResourceAsStream("Scene/Images/projector.png")));
         addComponent("Laptops",new Image(getClass().getResourceAsStream("Scene/Images/laptopcat.png")));
-        addComponent("UPS",new Image(getClass().getResourceAsStream("Scene/Images/laptopcat.png")));
+        addComponent("UPS",new Image(getClass().getResourceAsStream("Scene/Images/UPS.png")));
         addComponent("Other Devices",new Image(getClass().getResourceAsStream("Scene/Images/other.png")));
 
 

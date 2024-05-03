@@ -6,6 +6,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.geometry.Insets;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -55,6 +56,8 @@ public class DashboardController implements Initializable {
 
             int count1;
             int count2;
+            int count3;
+            int count4;
             //get numbers of columns from database
             Statement st=conn.createStatement();
             ResultSet rs=st.executeQuery("SELECT t.TABLE_NAME\n" +
@@ -66,7 +69,7 @@ public class DashboardController implements Initializable {
             while(rs.next()){
                 size++;
             }
-            System.out.println(size);
+            //System.out.println(size);
             String[] table=new String[size];
             int item=0;
             rs.close();
@@ -78,7 +81,7 @@ public class DashboardController implements Initializable {
             while(rs0.next()) {
 
                 table[item] = rs0.getString(1);
-                System.out.println(table[item]);
+                //System.out.println(table[item]);
                 item++;
 
             }
@@ -87,6 +90,9 @@ public class DashboardController implements Initializable {
             for(int j=0;j<size;j++) {
                 count1=0;
                 count2=0;
+                count3=0;
+                count4=0;
+
                 if(!(table[j].equals("user"))) {
                     PreparedStatement pr = conn.prepareStatement("SELECT regNum FROM " +table[j]+ " WHERE status=?");
                     pr.setString(1, "Active");
@@ -95,17 +101,41 @@ public class DashboardController implements Initializable {
                         count1++;
                     }
                     Label label1 = new Label(table[j] +" "+ Integer.toString(count1));
+                    vbox5.setMargin(label1, new Insets(0, 0, 0, 10));
                     vbox5.getChildren().add(label1);
                     rs1.close();
-                    pr.setString(1, "inactive");
+
+                    pr.setString(1, "Repairing");
+                    ResultSet rs4 = pr.executeQuery();
+                    while (rs4.next()) {
+                        count3++;
+                    }
+                    Label label4 = new Label(table[j] +" "+ Integer.toString(count3));
+                    vbox1.setMargin(label4, new Insets(0, 0, 0, 10));
+                    vbox1.getChildren().add(label4);
+                    rs4.close();
+
+                    pr.setString(1, "Not Assign");
+                    ResultSet rs5 = pr.executeQuery();
+                    while (rs5.next()) {
+                        count4++;
+                    }
+                    Label label5 = new Label(table[j] +" "+ Integer.toString(count4));
+                    vbox3.setMargin(label5, new Insets(0, 0, 0, 10));
+                    vbox3.getChildren().add(label5);
+                    rs5.close();
+
+                    pr.setString(1, "Inactive");
                     ResultSet rs2 = pr.executeQuery();
                     while (rs2.next()) {
                         count2++;
                     }
                     Label label2 = new Label(table[j] + " "+Integer.toString(count2));
+                    vbox2.setMargin(label2, new Insets(0, 0, 0, 10));
                     vbox2.getChildren().add(label2);
                     rs2.close();
-                    Label label3=new Label(table[j] + " "+Integer.toString(count1+count2));
+                    Label label3=new Label(table[j] + " "+Integer.toString(count1+count2+count3+count4));
+                    vbox4.setMargin(label3, new Insets(0, 0, 0, 10));
                     vbox4.getChildren().add(label3);
 
                 }
