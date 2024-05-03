@@ -2,12 +2,16 @@ package org.example.hakmana;
 
 import javafx.animation.*;
 import javafx.application.Platform;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
 import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
@@ -20,6 +24,7 @@ import org.example.hakmana.model.DatabaseConnection;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.*;
+import java.util.Date;
 import java.util.Optional;
 import java.util.ResourceBundle;
 
@@ -47,8 +52,20 @@ public class DashboardController implements Initializable {
     @FXML
     private VBox vbox1,vbox2,vbox3,vbox4,vbox5;
 
+    @FXML
+    private TableView<getNoteController> table1;
+    @FXML
+    private TableColumn<getNoteController,String> col1;
+    @FXML
+    private TableColumn<getNoteController,String> col2;
+    @FXML
+    private TableColumn<getNoteController, Date> col3;
+
+
+
     public void initialize(URL location, ResourceBundle resources) {
         //automaticaly upadate the cards
+
         try{
             //create the connections
             DatabaseConnection instance=DatabaseConnection.getInstance();
@@ -161,6 +178,8 @@ public class DashboardController implements Initializable {
                     collapse();
                 }
             });
+            tableAdd();
+
 
 
 
@@ -168,8 +187,21 @@ public class DashboardController implements Initializable {
 
 
 
+
     }
 
+    public void tableAdd(){
+                getDataController controller=new getDataController();
+               ObservableList<getNoteController> list= controller.getNote();
+                col1.setCellValueFactory(new PropertyValueFactory<getNoteController,String>("id"));
+                col2.setCellValueFactory(new PropertyValueFactory<getNoteController,String>("title"));
+                col3.setCellValueFactory(new PropertyValueFactory<getNoteController,Date>("date"));
+                table1.setItems(list);
+
+    }
+    public void delete(){
+
+    }
     private void Animation(double animStartPos,double animEndPos){
         bodyExpand = new TranslateTransition(Duration.millis(300), bodyComponet);
         bodyExpand.setFromX(animStartPos);
@@ -203,4 +235,27 @@ public class DashboardController implements Initializable {
         Optional<ButtonType> clickedButton=dialog.showAndWait();
 
     }
-}
+
+    public void Add(){
+
+        FXMLLoader fxmlLoader = new FXMLLoader();
+        fxmlLoader.setLocation(getClass().getResource("Scene/dialogbox.fxml"));
+        try {
+            DialogPane dialogPane = fxmlLoader.load();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+
+        dialogPaneController dialogpane = fxmlLoader.getController();
+        Dialog<ButtonType> dialog = new Dialog<>();
+        dialog.setDialogPane(dialogpane.getDialogpane1());
+        dialog.setTitle("ADD NOTE");
+        Optional<ButtonType> check = dialog.showAndWait();
+        if(check.get()==ButtonType.CANCEL){
+            tableAdd();
+        }
+
+
+
+    }
+    }

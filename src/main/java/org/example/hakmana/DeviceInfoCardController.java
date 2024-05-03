@@ -125,43 +125,6 @@ public class DeviceInfoCardController extends AnchorPane implements Initializabl
           stage.show();
      }
 
-     //note adding dialog box control
-//     public void popupdialog(){
-//          try{
-//               FXMLLoader fxmlLoader=new FXMLLoader();
-//               fxmlLoader.setLocation(getClass().getResource("Scene/dialogbox.fxml"));
-//               DialogPane dialogPane=fxmlLoader.load();
-//               dialogPaneController dialogpane=fxmlLoader.getController();
-//               Dialog<ButtonType> dialog=new Dialog<>();
-//               dialog.setDialogPane(dialogpane.getDialogpane1());
-//               dialog.setTitle("ADD NOTE");
-//               Optional<ButtonType> clickedButton=dialog.showAndWait();
-//               if(clickedButton.get()==ButtonType.OK){
-//                    dialogpane.addDetails();
-//                    DatabaseConnection instance=DatabaseConnection.getInstance();
-//                    Connection conn=instance.getConnection();
-//                    Alert.AlertType type=Alert.AlertType.CONFIRMATION;
-//                    Alert alert=new Alert(type,"");
-//                    alert.initModality(Modality.APPLICATION_MODAL);
-//                    alert.initOwner(stage);
-//                    alert.getDialogPane().setContentText("do you want to add this note?");
-//                    alert.getDialogPane().setHeaderText("confirmation!");
-//                    Optional<ButtonType> reasult=alert.showAndWait();
-//                    if(reasult.get()==ButtonType.OK){
-//
-//                         if((dialogpane.getIds()!=null) && (dialogpane.getUserName()!=null) && (dialogpane.getBrand() !=null) && (dialogpane.getNote()!=null)){
-//                              PreparedStatement notesse=conn.prepareStatement("insert into notes values(?,?,?,?)");
-//                              notesse.setString(1,dialogpane.getIds());
-//                              notesse.setString(2,dialogpane.getUserName());
-//                              notesse.setString(3,dialogpane.getBrand());
-//                              notesse.setString(4,dialogpane.getNote());
-//                              notesse.executeUpdate();
-//                              notesse.close();
-//                              JOptionPane.showMessageDialog(dialogpane,"add a new note!","alert!",JOptionPane.INFORMATION_MESSAGE);
-//                         }
-//                         else{
-//                              JOptionPane.showMessageDialog(dialogpane,"all field need to fill!","Rejected!",JOptionPane.ERROR_MESSAGE);
-//                         }
 
      public void popupdialog() {
 

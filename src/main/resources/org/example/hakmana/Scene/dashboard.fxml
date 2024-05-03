@@ -6,6 +6,8 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -147,12 +149,22 @@
                                                             <RadioButton layoutX="306.0" layoutY="4.0" mnemonicParsing="false" text="Date" />
                                                          </children>
                                                       </Pane>
-                                                      <ScrollPane prefHeight="142.0" prefWidth="385.0">
+                                                      <ScrollPane nodeOrientation="LEFT_TO_RIGHT" prefHeight="142.0" prefWidth="385.0">
                                                          <VBox.margin>
                                                             <Insets top="20.0" />
                                                          </VBox.margin>
                                                          <content>
-                                                            <VBox prefHeight="200.0" prefWidth="384.0" />
+                                                            <HBox prefWidth="625.0">
+                                                               <children>
+                                                                  <TableView fx:id="table1" prefWidth="624.0" HBox.hgrow="ALWAYS">
+                                                                    <columns>
+                                                                      <TableColumn fx:id="col1" editable="false" prefWidth="100.0" resizable="false" sortable="false" text="Device Id" />
+                                                                        <TableColumn fx:id="col2" editable="false" prefWidth="400.0" resizable="false" sortable="false" text="title" />
+                                                                      <TableColumn fx:id="col3" editable="false" prefWidth="125.0" resizable="false" text="Date" />
+                                                                    </columns>
+                                                                  </TableView>
+                                                               </children>
+                                                            </HBox>
                                                          </content>
                                                       </ScrollPane>
                                                       <HBox alignment="TOP_RIGHT" prefHeight="41.0" prefWidth="385.0">
@@ -160,7 +172,7 @@
                                                             <Insets top="5.0" />
                                                          </VBox.margin>
                                                          <children>
-                                                            <Button maxWidth="35.0" mnemonicParsing="false" prefHeight="36.0" style="-fx-background-color: white;">
+                                                            <Button maxWidth="35.0" mnemonicParsing="false" onAction="#Add" prefHeight="36.0" style="-fx-background-color: white;">
                                                                <graphic>
                                                                   <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
                                                                      <image>
@@ -169,7 +181,7 @@
                                                                   </ImageView>
                                                                </graphic>
                                                             </Button>
-                                                            <Button maxWidth="35.0" mnemonicParsing="false" prefHeight="36.0" style="-fx-background-color: white;">
+                                                            <Button maxWidth="35.0" mnemonicParsing="false" onAction="#delete" prefHeight="36.0" style="-fx-background-color: white;">
                                                                <graphic>
                                                                   <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
                                                                      <image>
