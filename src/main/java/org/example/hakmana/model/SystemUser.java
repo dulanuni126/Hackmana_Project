@@ -1,5 +1,8 @@
 package org.example.hakmana.model;
 
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
+
 import javax.mail.*;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
@@ -8,11 +11,17 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.Optional;
 import java.util.Properties;
 import java.util.Random;
 
 public class SystemUser {
     private DatabaseConnection databaseConnection;
+    private Connection conn;
+    private ResultSet rs;
+    private OAuth2ForGmail auth;
+
+    private boolean checkCode;
     private String userName;
     private String fullName;
     private String post;
@@ -24,6 +33,8 @@ public class SystemUser {
 
     // Constructors
     public SystemUser() {
+        setDatabaseConnection();
+        setConn();
     }
 
     public SystemUser(String userName, String fullName, String post, String empId, String pwd, String email, String phoneNum) {
@@ -34,6 +45,29 @@ public class SystemUser {
         this.pwd = pwd;
         this.email = email;
         this.phoneNum = phoneNum;
+        setDatabaseConnection();
+        setConn();
+    }
+
+    private void setDatabaseConnection() {
+        databaseConnection = DatabaseConnection.getInstance();
+    }
+
+    private void setConn() {
+        conn = databaseConnection.getConnection();
+        ;
+    }
+
+    public ResultSet getRs() {
+        return rs;
+    }
+
+    public boolean isCheckCode() {
+        return checkCode;
+    }
+
+    public void setCheckCode(boolean checkCode) {
+        this.checkCode = checkCode;
     }
 
     // Setters and Getters
@@ -117,44 +151,19 @@ public class SystemUser {
 
     /*-----------User verification for password reset-------------*/
     //return reultset acording to the user mail
-    public ResultSet getResultSet(String mail) throws SQLException {
+    public void setResultSet() throws SQLException {
         String query = "SELECT * FROM systemuser WHERE email = ?";
-        databaseConnection=DatabaseConnection.getInstance();
-        Connection conn=databaseConnection.getConnection();
         PreparedStatement ps = conn.prepareStatement(query);
-        ps.setString(1, mail);
-        return ps.executeQuery();
+        ps.setString(1, getEmail());
+        rs = ps.executeQuery();
     }
 
     //check mail in database and return boolean val
     public boolean dbMailChecker(String mail) throws SQLException {
-        return getResultSet(mail).next();// return false if result set is empty else (rs not empty)place cursor to the 1 row.
+        setEmail(mail);
+        setResultSet();
+        return getRs().next();// return false if result set is empty else (rs not empty)place cursor to the 1 row.
     }
-    public boolean verifyWithDb(String mail,String code) throws SQLException {
-        ResultSet rs=getResultSet(mail);
-        while (rs.next()){
-            if(code.equals(rs.getString("verification_code"))){
-                System.out.println("code mathced");
-                return true;
-            }
-            else{
-                System.out.println("code NOT MATCHED");
-            }
-        }
-        return false;
-    }
-
-    //store verification code under the corrected user
-    public void dbUpdate(String verificationCode,String mail) throws SQLException {
-        String sql = "UPDATE systemuser SET verification_code = ?, code_expiry = DATE_ADD(NOW(), INTERVAL 15 MINUTE) WHERE email = ?"; // Update with expiry time
-        databaseConnection=DatabaseConnection.getInstance();
-        Connection conn=databaseConnection.getConnection();
-        PreparedStatement ps = conn.prepareStatement(sql);
-        ps.setString(1, verificationCode);
-        ps.setString(2, mail);
-        ps.executeUpdate();
-    }
-
 
     //generate verification code
     public String generateVerificationCode() {
@@ -167,55 +176,103 @@ public class SystemUser {
         return code.toString();
     }
 
-    //send the verification code to the email
-    public void sendEmail(String recipientEmail, String verificationCode) throws MessagingException {
+    //store verification code under the username
+    public void dbUpdate(String verificationCode) throws SQLException {
+        String sql = "UPDATE systemuser SET verification_code = ?, code_expiry = DATE_ADD(NOW(), INTERVAL 15 MINUTE) WHERE email = ?"; // Update with expiry time
+        PreparedStatement ps = conn.prepareStatement(sql);
+        ps.setString(1, verificationCode);
+        ps.setString(2, getEmail());
+        ps.executeUpdate();
+    }
+
+
+    //send verification code to the email
+    public void sendEmail(String verificationCode) throws Exception {
+        auth=new OAuth2ForGmail();
+
         String fromEmail = "hakmanaedm@gmail.com"; // sender email
-        String host = "smtp.gmail.com"; //SMTP host (e.g., Gmail, Outlook)
-        int port = 587; // Replace with your SMTP port
-        boolean auth = true; // Authentication required for most free services
-
         Properties props = new Properties();
-        props.put("mail.smtp.auth", auth);
-        props.put("mail.smtp.starttls.enable", "true"); // Enable STARTTLS for encryption
-        props.put("mail.smtp.host", host);
-        props.put("mail.smtp.port", port);
-
-        //getting authentication for email account
-        Authenticator authenticator = null;
-        if (auth) {
-            // Configure authentication if required
-            authenticator = new Authenticator() {
-                @Override
-                protected javax.mail.PasswordAuthentication getPasswordAuthentication() {
-                    return new PasswordAuthentication(fromEmail,"hakmanaedm123");
-                }
-            };
-        }
 
         //start new mail session
-        Session session = Session.getInstance(props, authenticator);
+        Session session = Session.getDefaultInstance(props, null);
 
-        //set the message
-        MimeMessage message = new MimeMessage(session);
-        message.setFrom(new InternetAddress(fromEmail));//set message sender
-        message.setRecipient(Message.RecipientType.TO, new InternetAddress(recipientEmail));//set message rciever
-        message.setSubject("Password Reset Verification Code");
+        //set the email
+        MimeMessage email = new MimeMessage(session);
+        email.setFrom(new InternetAddress(fromEmail));//set email sender
+        email.addRecipient(javax.mail.Message.RecipientType.TO, new InternetAddress(getEmail()));//set email rciever
+        email.setSubject("Password Reset Verification Code");
 
-        StringBuilder emailBody = new StringBuilder();
-        emailBody.append("\n");
-        emailBody.append("You requested a password reset for your account.\n");
-        emailBody.append("Your verification code is: ").append(verificationCode).append("\n");
-        emailBody.append("Please enter this code in the app to reset your password.\n");
-        emailBody.append("This code will expire in 15 minutes.\n");
-        emailBody.append("If you did not request a password reset, please ignore this email.\n");
+        String emailBody = """
+                You requested a password reset for your account.
+                 
+                Your verification code is:\s""" + verificationCode+"""
+                \n
+                Please enter this code in the app to reset your password.
+                
+                This code will expire in 15 minutes.
+                
+                If you did not request a password reset, please ignore this email.
+                
+                """;
 
-        message.setContent(emailBody.toString(), "text/html; charset=utf-8");
+        email.setText(emailBody);
 
-        Transport.send(message);
+        auth.sendMail(email);
+
     }
 
-    //change the new password
-    public void pswrdChanger(){
-        System.out.println("psswrd changed");
+    //check verification with the db
+    public boolean verifyWithDb(String code) throws SQLException {
+        setResultSet();//have to run and assign resultset
+        while (getRs().next()) {
+            if (code.equals(rs.getString("verification_code"))) {
+                // System.out.println("code matched");
+                setCheckCode(true);
+                return true;
+            }
+        }
+        return false;
     }
+
+    //change the password
+    public boolean pswrdChanger(String newPsswrd) throws SQLException {
+        if (isCheckCode()) {//check the verification code success or not
+            setResultSet();
+            if (getRs().next()) {
+                setUserName(getRs().getString("userName"));
+                setFullName(getRs().getString("fullName"));
+                setPwd(getRs().getString("pwd"));
+            }
+
+            conn.setAutoCommit(false);
+
+            String sql = "UPDATE systemUser SET pwd=SHA1(?) WHERE username=?"; // Update with expiry time
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ps.setString(1, newPsswrd);
+            ps.setString(2, getUserName());
+            ps.executeUpdate();
+
+            //Check confirmation when password change
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+            alert.setTitle("Confirmation");
+            alert.setContentText("password cahnge for the user" + getUserName());
+
+            Optional<ButtonType> result = alert.showAndWait();//wait until button press in alert box
+
+            //if alert box ok pressed execute sql quires
+            if (result.isPresent() && result.get() == ButtonType.OK) {
+                // commit the sql quires
+                conn.commit();
+                conn.setAutoCommit(true);
+                return true;
+            } else {
+                conn.rollback();
+                conn.setAutoCommit(true);
+                return false;
+            }
+        }
+        return false;
+    }
+
+
 }

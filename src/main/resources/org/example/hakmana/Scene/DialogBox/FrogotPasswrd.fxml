@@ -158,6 +158,20 @@
                         </TextField>
                      </children>
                   </VBox>
+                  <HBox alignment="CENTER_LEFT" prefHeight="25.0" prefWidth="413.0" spacing="10.0">
+                     <children>
+                        <Button fx:id="ApplyBtn" mnemonicParsing="false" onAction="#newPsswrd" text="Change the passwrod" />
+                        <Button fx:id="ClearBtn" mnemonicParsing="false" onAction="#clearFileds" text="Clear" />
+                        <Label fx:id="psswrdOutputLbl">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                     </children>
+                     <VBox.margin>
+                        <Insets top="10.0" />
+                     </VBox.margin>
+                  </HBox>
                </children>
             </VBox>
          </children>
@@ -165,7 +179,6 @@
    </content>
    <buttonTypes>
       <ButtonType fx:constant="CANCEL" />
-      <ButtonType fx:constant="APPLY" />
    </buttonTypes>
    <effect>
       <Glow level="0.19" />
