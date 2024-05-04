@@ -1,11 +1,13 @@
 package org.example.hakmana.model;
 
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
 public class Monitors extends Devices{
+    private DatabaseConnection conn;
     private String regNum;
     private String model;
     private String status;
@@ -66,7 +68,7 @@ public class Monitors extends Devices{
     }
 
     public Monitors[] getDevices() {
-        DatabaseConnection conn=DatabaseConnection.getInstance();
+        conn=DatabaseConnection.getInstance();
         List<Monitors> monitors = new ArrayList<>();
         //pass query to the connection class
         String sql = "SELECT monitors.regNum,monitors.model,monitors.status, user.name FROM monitors LEFT JOIN user ON monitors.userNIC = user.userNIC";
@@ -93,5 +95,32 @@ public class Monitors extends Devices{
         }
 
         return monitors.toArray(new Monitors[0]);
+    }
+    @Override
+    public Devices getDevice(String regNum) {
+        conn = DatabaseConnection.getInstance();
+        //pass query to the connection class
+        String sql = "SELECT * FROM monitors Where regNum=?";
+
+        try {
+            PreparedStatement ps = conn.getConnection().prepareStatement(sql);
+            ps.setString(1, regNum);
+            ResultSet rs = ps.executeQuery();
+
+            while (rs.next()) {
+                Monitors monitors = new Monitors();
+                monitors.setRegNum(rs.getString("regNum"));
+                //desktop.setModel(rs.getString("model"));
+                //desktop.setStatus(rs.getString("status"));
+                //desktop.setUserName(rs.getString("name"));
+
+                return monitors;
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
+        //return null if there is no result
+        return null;
     }
 }

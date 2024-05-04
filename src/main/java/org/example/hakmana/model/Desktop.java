@@ -1,42 +1,44 @@
 package org.example.hakmana.model;
 
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Desktop extends Devices{
+public class Desktop extends Devices {
+    private DatabaseConnection conn;
     private String regNum;
     private String model;
     private String status;
     private String userName;
 
-    private String serialNum="NO";
-    private String purchasedFrom="NO";
-    private String ram="NO";
-    private String processor="NO";
-    private String warranty="NO";
-    private String hardDisk="NO";
-    private String os="NO";
-    private String monitorRegNum="NO";
-    private String projectorRegNum="NO";
-    private String speakerRegNum="NO";
-    private String mouseRegNum="NO";
-    private String keyboardRegNum="NO";
-    private String soundCard="NO";
-    private String tvCard="NO";
-    private String networkCard="NO";
-    private String micRegNum="NO";
-    private String userNIC="No User";
-    private String floppyDisk="NO";
-    private String scannerRegNum="NO";
+    private String serialNum = "NO";
+    private String purchasedFrom = "NO";
+    private String ram = "NO";
+    private String processor = "NO";
+    private String warranty = "NO";
+    private String hardDisk = "NO";
+    private String os = "NO";
+    private String monitorRegNum = "NO";
+    private String projectorRegNum = "NO";
+    private String speakerRegNum = "NO";
+    private String mouseRegNum = "NO";
+    private String keyboardRegNum = "NO";
+    private String soundCard = "NO";
+    private String tvCard = "NO";
+    private String networkCard = "NO";
+    private String micRegNum = "NO";
+    private String userNIC = "No User";
+    private String floppyDisk = "NO";
+    private String scannerRegNum = "NO";
 
-    public Desktop(String regNum,String model,String userName,String status, String serialNum,  String purchasedFrom, String ram, String processor, String warranty, String hardDisk, String os, String floppyDisk,String soundCard,String tvCard,String networkCard, String monitorRegNum, String projectorRegNum, String speakerRegNum, String mouseRegNum, String keyboardRegNum, String micRegNum, String scannerRegNum,String userNIC) {
-        super(regNum, model, userName,status);
-        this.floppyDisk=floppyDisk;
-        this.soundCard=soundCard;
-        this.tvCard=tvCard;
-        this.networkCard=networkCard;
+    public Desktop(String regNum, String model, String userName, String status, String serialNum, String purchasedFrom, String ram, String processor, String warranty, String hardDisk, String os, String floppyDisk, String soundCard, String tvCard, String networkCard, String monitorRegNum, String projectorRegNum, String speakerRegNum, String mouseRegNum, String keyboardRegNum, String micRegNum, String scannerRegNum, String userNIC) {
+        super(regNum, model, userName, status);
+        this.floppyDisk = floppyDisk;
+        this.soundCard = soundCard;
+        this.tvCard = tvCard;
+        this.networkCard = networkCard;
         this.serialNum = serialNum;
         this.purchasedFrom = purchasedFrom;
         this.ram = ram;
@@ -51,15 +53,16 @@ public class Desktop extends Devices{
         this.keyboardRegNum = keyboardRegNum;
         this.micRegNum = micRegNum;
         this.scannerRegNum = scannerRegNum;
-        this.userNIC=userNIC;
+        this.userNIC = userNIC;
     }
 
-    public Desktop(String regNum, String model, String userName,String status) {
-        super(regNum, model, userName,status);
+    public Desktop(String regNum, String model, String userName, String status) {
+        super(regNum, model, userName, status);
     }
 
-    public Desktop(){
+    public Desktop() {
     }
+
     @Override
     public String getRegNum() {
         return regNum;
@@ -256,16 +259,16 @@ public class Desktop extends Devices{
     //get the Desktop array from the database
     @Override
     public Desktop[] getDevices() {
-        DatabaseConnection conn=DatabaseConnection.getInstance();
+        conn = DatabaseConnection.getInstance();
         List<Desktop> desktops = new ArrayList<>();
         //pass query to the connection class
         String sql = "SELECT desktop.regNum,desktop.model,desktop.status,user.name FROM desktop LEFT JOIN user ON desktop.userNIC = user.userNIC";
 
-        try(ResultSet resultSet = conn.executeSt(sql)) {// get result set from connection class and auto closable
+        try (ResultSet resultSet = conn.executeSt(sql)) {// get result set from connection class and auto closable
 
             // Iterate through the result set and create Desktop and User objects
             while (resultSet.next()) {
-                Desktop desktop = new Desktop(null,null,null,null);
+                Desktop desktop = new Desktop(null, null, null, null);
                 desktop.setRegNum(resultSet.getString("regNum"));
                 desktop.setModel(resultSet.getString("model"));
                 desktop.setStatus(resultSet.getString("status"));
@@ -273,8 +276,7 @@ public class Desktop extends Devices{
 
                 desktops.add(desktop);//add desktop to the desktops list
             }
-        }
-        catch (SQLException e){
+        } catch (SQLException e) {
             throw new RuntimeException(e);
         }
 
@@ -282,4 +284,32 @@ public class Desktop extends Devices{
         return desktops.toArray(new Desktop[0]);
     }
 
+    //for get special device from the database
+    @Override
+    public Devices getDevice(String regNum) {
+        conn = DatabaseConnection.getInstance();
+        //pass query to the connection class
+        String sql = "SELECT * FROM desktop Where regNum=?";
+
+        try {
+            PreparedStatement ps = conn.getConnection().prepareStatement(sql);
+            ps.setString(1, regNum);
+            ResultSet rs = ps.executeQuery();
+
+            while (rs.next()) {
+                Desktop desktop = new Desktop();
+                desktop.setRegNum(rs.getString("regNum"));
+                //desktop.setModel(rs.getString("model"));
+                //desktop.setStatus(rs.getString("status"));
+                //desktop.setUserName(rs.getString("name"));
+
+                return desktop;
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
+        //return null if there is no result
+        return null;
+    }
 }

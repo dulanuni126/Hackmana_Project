@@ -1,28 +1,17 @@
 package org.example.hakmana;
 
-import javafx.animation.*;
-import javafx.event.ActionEvent;
+import javafx.animation.TranslateTransition;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Node;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.scene.control.*;
+import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.ScrollPane;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.GridPane;
-import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
-import javafx.stage.Modality;
-import javafx.stage.Stage;
 import javafx.util.Duration;
-import org.example.hakmana.model.DatabaseConnection;
-import org.example.hakmana.model.Desktop;
-import org.example.hakmana.model.User;
+import org.example.hakmana.model.*;
 
-import java.io.IOException;
 import java.net.URL;
-import java.security.PrivilegedAction;
 import java.util.ResourceBundle;
 
 public class DevDetailedViewController implements Initializable {
@@ -38,91 +27,64 @@ public class DevDetailedViewController implements Initializable {
     @FXML
     private ScrollPane formPane;
 
+    //Device details
     @FXML
-    private ChoiceBox<String> FloppyDiskChoiseBox;
-
+    private TextField FloppyDiskTextField;
     @FXML
-    private ChoiceBox<String> NetworkCardChoiseBox;
-
+    private TextField NetworkCardTextField;
     @FXML
-    private ChoiceBox<String> OSChoiseBox;
+    private TextField TVCardTextField;
     @FXML
-    private Button submitButton;
-
+    private TextField SoundCardTextField;
     @FXML
-    private ChoiceBox<String> SoundCardChoiseBox;
-
+    private TextField OSTextField;
     @FXML
-    private ChoiceBox<String> StatusChoiseBox;
-
-    @FXML
-    private ChoiceBox<String> TVCardChoiseBox;
-
+    private TextField StatusTextField;
     @FXML
     private TextField hardDiskTextField;
-
     @FXML
     private TextField keyboardRegNumTextField;
-
     @FXML
     private TextField micRegNumTextField;
-
     @FXML
     private TextField modelTextField;
-
     @FXML
     private TextField monitorRegNumTextField;
-
     @FXML
     private TextField mouseRegNumTextField;
-
     @FXML
     private TextField processorTextField;
-
     @FXML
     private TextField projectorRegNumTextField;
-
     @FXML
     private TextField purchasedFromTextField;
-
     @FXML
     private TextField ramTextField;
-
     @FXML
     private TextField regNumTextField;
-
     @FXML
     private TextField scannerRegNumTextField;
-
     @FXML
     private TextField serialNumTextField;
-
     @FXML
     private TextField speakerRegNumTextField;
-
     @FXML
     private TextField warrantyTextField;
     @FXML
-    private Button addUserButton;
-
-    private String[] deviceStatus={"Active","Repairing","Inactive"};
-    private String[] YN={"Yes","No"};
-    private String[] WinLin={"Windows","Linux"};
-    private String[] OnboardDecicated={"On Board","Dedicated"};
-
-    public static User user;
-    private  TranslateTransition bodyExpand;//Animation object refernce
-    @FXML
     private AnchorPane parentAnchor;
-    public void initialize(URL location, ResourceBundle resources) {
 
+    private String deviceSelector;
+    private String devRegNum;
+    private  TranslateTransition bodyExpand;//Animation object refernce
+
+    public void initialize(URL location, ResourceBundle resources) {
         headerController.setFontSize("2.5em");
         headerController.setTitleMsg("Device Management");
         headerController.setUsernameMsg("Mr.Udara Mahanama");
         headerController.setDesignationMsg("Development Officer");
         navPanelController.setDeviceMngmntdBorder();
         pathFinderController.setSearchBarVisible(false);
-        pathFinderController.setBckBtnScene("Scene/DevDetailedView.fxml");
+        //pathFinderController.setBckBtnScene("Scene/DevDetailedView.fxml");
         //create the event listener to the navigation panel ToggleButton() method
         navPanelController.collapseStateProperty().addListener((observable, oldValue, newValue) ->{
             if(newValue){
@@ -131,29 +93,6 @@ public class DevDetailedViewController implements Initializable {
                 collapse();
             }
         });
-
-        StatusChoiseBox.getItems().addAll(deviceStatus);
-        FloppyDiskChoiseBox.getItems().addAll(YN);
-        NetworkCardChoiseBox.getItems().addAll(OnboardDecicated);
-        SoundCardChoiseBox.getItems().addAll(OnboardDecicated);
-        TVCardChoiseBox.getItems().addAll(OnboardDecicated);
-        OSChoiseBox.getItems().addAll(WinLin);
-        user=new User();
-        user.setNic("No User");
-
-        DialogPane dialogPane = new DialogPane();
-        ButtonType customButtonType = new ButtonType("Submit");
-        dialogPane.getButtonTypes().addAll(customButtonType, ButtonType.CANCEL);
-
-        regNumTextField.textProperty().addListener((observable, oldValue, newValue) -> {
-            // Enable the submitButton only if regNumTextField is not empty
-            submitButton.setDisable(newValue.isEmpty());
-            addUserButton.setDisable(newValue.isEmpty() );
-        });
-
-        // Disable the submitButton initially if regNumTextField is empty
-        submitButton.setDisable(regNumTextField.getText().isEmpty());
-        addUserButton.setDisable(regNumTextField.getText().isEmpty());
 
     }
 
@@ -176,85 +115,62 @@ public class DevDetailedViewController implements Initializable {
         bodyComponet.setMinWidth(bodyComponet.getWidth()-244);
         bodyComponet.setMinWidth(748);
     }
-    public void cancelButtonOnAction(ActionEvent event) {
-        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        stage.close();
 
+    public String getDevRegNum() {
+        return devRegNum;
     }
 
-    public void submitButtonOnAction(ActionEvent event) {
+    public void setDevRegNum(String devRegNum) {
+        this.devRegNum = devRegNum;
+    }
 
-        Desktop desktop=new Desktop();
-        desktop.setRegNum(regNumTextField.getText());
-        desktop.setSerialNum(serialNumTextField.getText());
-        desktop.setModel(modelTextField.getText());
-        desktop.setPurchasedFrom(purchasedFromTextField.getText());
-        desktop.setRam(ramTextField.getText());
-        desktop.setProcessor(processorTextField.getText());
-        desktop.setWarranty(warrantyTextField.getText());
-        desktop.setHardDisk(hardDiskTextField.getText());
-        desktop.setOs(OSChoiseBox.getValue());
-        desktop.setStatus(StatusChoiseBox.getValue());
-        desktop.setMonitorRegNum(monitorRegNumTextField.getText());
-        desktop.setProjectorRegNum(projectorRegNumTextField.getText());
-        desktop.setSpeakerRegNum(speakerRegNumTextField.getText());
-        desktop.setMouseRegNum(mouseRegNumTextField.getText());
-        desktop.setKeyboardRegNum(keyboardRegNumTextField.getText());
-        desktop.setSoundCard(SoundCardChoiseBox.getValue());
-        desktop.setTvCard(TVCardChoiseBox.getValue());
-        desktop.setNetworkCard(NetworkCardChoiseBox.getValue());
-        desktop.setMicRegNum(micRegNumTextField.getText());
+    public String getDeviceSelector() {
+        return deviceSelector;
+    }
 
-        desktop.setUserNIC(user.getNic());
+    public void setDeviceSelector(String deviceSelector) {
+        this.deviceSelector = deviceSelector;
+    }
 
-        DatabaseConnection databaseConnection = DatabaseConnection.getInstance();
-
-        databaseConnection.insertDesktop(desktop);
-        if(!user.getNic().equalsIgnoreCase("No User")){
-            databaseConnection.insertUser(user);
+    public void showDeviceDetail(){
+        //use polymorphism concept upcasting
+        Devices dev=null;//dev store the Device
+        if(deviceSelector.equals("Desktop")){
+            dev=new Desktop().getDevice(getDevRegNum());
+            pathFinderController.setPathTxt("Device Management>Desktop>"+getDevRegNum());
+            regNumTextField.setText(dev.getRegNum());
         }
-        System.out.println("Done");
-
-
-
-        // Reset the form
-        regNumTextField.clear();
-        serialNumTextField.clear();
-        modelTextField.clear();
-        purchasedFromTextField.clear();
-        ramTextField.clear();
-        processorTextField.clear();
-        warrantyTextField.clear();
-        hardDiskTextField.clear();
-        OSChoiseBox.getSelectionModel().clearSelection();
-        StatusChoiseBox.getSelectionModel().clearSelection();
-        monitorRegNumTextField.clear();
-        projectorRegNumTextField.clear();
-        speakerRegNumTextField.clear();
-        mouseRegNumTextField.clear();
-        keyboardRegNumTextField.clear();
-        SoundCardChoiseBox.getSelectionModel().clearSelection();
-        TVCardChoiseBox.getSelectionModel().clearSelection();
-        NetworkCardChoiseBox.getSelectionModel().clearSelection();
-        micRegNumTextField.clear();
-
-        UserAssignDialogController.isAssignUserButtonClicked=false;
-        addUserButton.setDisable(false);
-
-
-    }
-
-    public void addUser(ActionEvent event) throws IOException {
-        ((Node) event.getSource()).setDisable(UserAssignDialogController.isAssignUserButtonClicked);
-
-        if(!UserAssignDialogController.isAssignUserButtonClicked){
-            Parent root = FXMLLoader.load(getClass().getResource("Scene/userAssignDialog.fxml"));
-            Stage stage=new Stage();
-            stage.initModality(Modality.APPLICATION_MODAL);
-            stage.setScene(new Scene(root));
-            stage.show();
+        if(deviceSelector.equals("Photocopy Machines")){
+            dev=new PhotocpyMchine().getDevice(getDevRegNum());
+            pathFinderController.setPathTxt("Device Management>Photocopy Machines>"+getDevRegNum());
+            regNumTextField.setText(dev.getRegNum());
         }
-
+        if(deviceSelector.equals("Monitors")){
+            dev=new Monitors().getDevice(getDevRegNum());
+            pathFinderController.setPathTxt("Device Management>Monitors>"+getDevRegNum());
+            regNumTextField.setText(dev.getRegNum());
+        }
+        if(deviceSelector.equals("Projectors")){
+            dev=new Projectors().getDevice(getDevRegNum());
+            pathFinderController.setPathTxt("Device Management>Projectors>"+getDevRegNum());
+            regNumTextField.setText(dev.getRegNum());
+        }
+        if(deviceSelector.equals("Laptops")){
+            dev=new Laptops().getDevice(getDevRegNum());
+            pathFinderController.setPathTxt("Device Management>Laptops>"+getDevRegNum());
+            regNumTextField.setText(dev.getRegNum());
+        }
+        if(deviceSelector.equals("Printers")){
+            dev=new Printer().getDevice(getDevRegNum());
+            pathFinderController.setPathTxt("Device Management>Printers>"+getDevRegNum());
+            regNumTextField.setText(dev.getRegNum());
+        }
+        if(deviceSelector.equals("UPS")){
+            dev=new UPS().getDevice(getDevRegNum());
+            pathFinderController.setPathTxt("Device Management>UPS>"+getDevRegNum());
+            regNumTextField.setText(dev.getRegNum());
+        }
     }
+
 
 }
