@@ -216,11 +216,7 @@ public class DashboardController extends Component implements Initializable {
 
 
     }
-    public String help(){
-        int selectedValue=table1.getSelectionModel().getSelectedIndex();
-        String  ids = table1.getItems().get(selectedValue).getId();
-        return ids;
-    }
+
     public void delete(){
         DatabaseConnection instance=DatabaseConnection.getInstance();
         Connection conn=instance.getConnection();
