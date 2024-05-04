@@ -188,7 +188,7 @@ public class SystemUser {
 
     //send verification code to the email
     public void sendEmail(String verificationCode) throws Exception {
-        auth=new OAuth2ForGmail();
+        //auth=new OAuth2ForGmail();
 
         String fromEmail = "hakmanaedm@gmail.com"; // sender email
         Properties props = new Properties();
@@ -217,7 +217,7 @@ public class SystemUser {
 
         email.setText(emailBody);
 
-        auth.sendMail(email);
+        //auth.sendMail(email);
 
     }
 
