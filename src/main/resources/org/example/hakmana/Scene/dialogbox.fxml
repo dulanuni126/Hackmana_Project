@@ -1,32 +1,32 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ButtonType?>
 <?import javafx.scene.control.DialogPane?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextArea?>
-<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Text?>
 
-<DialogPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="300.0" prefWidth="480.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
-    <header>
-      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="200.0" prefWidth="320.0" stylesheets="@CSS/dashboard.css">
+<DialogPane fx:id="dialogpane1" prefHeight="421.0" prefWidth="600.0" stylesheets="@CSS/dialogPane.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.hakmana.dialogPaneController">
+   <graphic>
+      <Pane prefHeight="374.0" prefWidth="600.0" style="-fx-background-color: linear-gradient( #CFCDCD -9.83%, #F2F1F1 114.02%);;">
          <children>
-            <Text fill="#e13b3b" layoutX="7.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text" text="Device ID" wrappingWidth="94.12890625" />
-            <Text fill="#e41414" layoutX="3.0" layoutY="69.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text" text="User name" wrappingWidth="103.38824462890625" />
-            <Text fill="#cf1515" layoutX="14.0" layoutY="143.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text" text="Note" />
-            <Label layoutX="111.0" layoutY="5.0" prefHeight="30.0" prefWidth="359.0" text="Label" />
-            <Label layoutX="112.0" layoutY="47.0" prefHeight="30.0" prefWidth="359.0" text="Label" />
-            <TextArea layoutX="101.0" layoutY="92.0" prefHeight="110.0" prefWidth="378.0" />
-         </children></AnchorPane>
-    </header>
-    <content>
-      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="200.0" prefWidth="320.0" />
-    </content>
-    <expandableContent>
-      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="200.0" prefWidth="320.0" />
-    </expandableContent>
+            <TextField fx:id="title" layoutX="136.0" layoutY="34.0" prefHeight="25.0" prefWidth="292.0" />
+            <Text layoutX="20.0" layoutY="52.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="txt" text="Title of the note:" />
+            <Label fx:id="date" alignment="CENTER" layoutX="445.0" layoutY="35.0" prefHeight="23.0" prefWidth="151.0" styleClass="txt" text="Label" />
+            <Text layoutX="455.0" layoutY="180.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="txt" text="Device ID" />
+            <Text layoutX="451.0" layoutY="255.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="txt" text="User Name" />
+            <Text layoutX="129.0" layoutY="108.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="txt" text="Description" />
+            <TextField fx:id="id" layoutX="391.0" layoutY="200.0" prefHeight="25.0" prefWidth="191.0" />
+            <TextField fx:id="username" layoutX="391.0" layoutY="276.0" prefHeight="25.0" prefWidth="189.0" />
+            <TextArea fx:id="note" layoutX="14.0" layoutY="137.0" prefHeight="176.0" prefWidth="293.0" />
+            <Button layoutX="20.0" layoutY="331.0" mnemonicParsing="false" onAction="#createnote" styleClass="bttn" text="ADD Note" />
+         </children>
+      </Pane>
+   </graphic>
    <buttonTypes>
       <ButtonType fx:constant="CANCEL" />
-      <ButtonType fx:constant="APPLY" />
    </buttonTypes>
 </DialogPane>

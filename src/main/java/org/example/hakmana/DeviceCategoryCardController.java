@@ -95,6 +95,8 @@ public class DeviceCategoryCardController extends AnchorPane implements Initiali
         devInfoBtn.setDisable(stateVal);
     }
 
+
+//  For the DeviceMngmntSmmryScene load when device category button click
     public void DevInfoCall(ActionEvent event) throws IOException {
         if(devCatSceneName.equals("Scene/OtherDevices.fxml")){
             sceneRoot = FXMLLoader.load(getClass().getResource(devCatSceneName));

@@ -10,6 +10,7 @@ import javafx.scene.layout.VBox;
 import javafx.util.Duration;
 import java.net.URL;
 import java.security.PrivilegedAction;
+import java.util.Objects;
 import java.util.ResourceBundle;
 
 public class DeviceMngmntController implements Initializable {
@@ -51,12 +52,13 @@ public class DeviceMngmntController implements Initializable {
             }
         });
 
-
+        //add DeviceCategoryCardController for the scene
         addComponent("Desktop", new Image(getClass().getResourceAsStream("Scene/Images/Desktop.png")));
         addComponent("Photocopy Machines",new Image(getClass().getResourceAsStream("Scene/Images/photoCopy.png")));
         addComponent("Monitors",new Image(getClass().getResourceAsStream("Scene/Images/monitor.png")));
         addComponent("Projectors",new Image(getClass().getResourceAsStream("Scene/Images/projector.png")));
         addComponent("Laptops",new Image(getClass().getResourceAsStream("Scene/Images/laptopcat.png")));
+        addComponent("UPS",new Image(getClass().getResourceAsStream("Scene/Images/UPS.png")));
         addComponent("Other Devices",new Image(getClass().getResourceAsStream("Scene/Images/other.png")));
 
 
@@ -68,7 +70,7 @@ public class DeviceMngmntController implements Initializable {
         DeviceCategoryCardController card=new DeviceCategoryCardController();
         card.setDevName(catTitle);
         card.setDeviceImage(catImage);
-        if(catTitle=="Other Devices")
+        if(Objects.equals(catTitle, "Other Devices"))
             card.setDevCatSceneName("Scene/OtherDevices.fxml");
         else
             card.setDevCatSceneName("Scene/DeviceMngmntSmmryScene.fxml");

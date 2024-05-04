@@ -6,7 +6,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Monitors extends Devices{
-
+    private String regNum;
+    private String model;
+    private String status;
+    private String userName;
     private String screenSize;
 
     public Monitors(String regNum, String model, String userName, String status, String screenSize, String status1, String userName1, String model1, String regNum1) {
@@ -21,6 +24,39 @@ public class Monitors extends Devices{
     public Monitors() {
     }
 
+    @Override
+    public String getRegNum() {
+        return regNum;
+    }
+    @Override
+    public void setRegNum(String regNum) {
+        this.regNum = regNum;
+    }
+    @Override
+    public String getModel() {
+        return model;
+    }
+    @Override
+    public void setModel(String model) {
+        this.model = model;
+    }
+    @Override
+    public String getStatus() {
+        return status;
+    }
+    @Override
+    public void setStatus(String status) {
+        this.status = status;
+    }
+    @Override
+    public String getUserName() {
+        return userName;
+    }
+    @Override
+    public void setUserName(String userName) {
+        this.userName = userName;
+    }
+
     public String getScreenSize() {
         return screenSize;
     }
@@ -33,7 +69,7 @@ public class Monitors extends Devices{
         DatabaseConnection conn=DatabaseConnection.getInstance();
         List<Monitors> monitors = new ArrayList<>();
         //pass query to the connection class
-        String sql = "SELECT moniter.*, user.name FROM moniter LEFT JOIN user ON moniter.userNIC = user.nic";
+        String sql = "SELECT monitors.regNum,monitors.model,monitors.status, user.name FROM monitors LEFT JOIN user ON monitors.userNIC = user.userNIC";
 
         try {
             // get result set from connection class
@@ -41,16 +77,15 @@ public class Monitors extends Devices{
 
             // Iterate through the result set and create Desktop and User objects
             while (resultSet.next()) {
-                Monitors monitor = new Monitors();
+                Monitors monitor = new Monitors(null,null,null,null);
 
                 monitor.setRegNum(resultSet.getString("regNum"));
                 monitor.setModel(resultSet.getString("model"));
                 monitor.setStatus(resultSet.getString("status"));
                 monitor.setUserName(resultSet.getString("name"));
 
-                monitor.setScreenSize(resultSet.getString("screenSize"));
 
-                monitors.add(monitor);
+                monitors.add(monitor);//add monitor to the monitors list
             }
         }
         catch (SQLException e){
