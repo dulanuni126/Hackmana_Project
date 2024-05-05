@@ -21,6 +21,8 @@ public abstract class Devices {
         return null;
     }
 
+    public Devices getDevice(String regNum){return null;}
+
     public abstract void setRegNum(String para1);
     public abstract String getRegNum();
 

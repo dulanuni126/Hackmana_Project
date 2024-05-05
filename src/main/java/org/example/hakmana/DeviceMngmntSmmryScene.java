@@ -44,8 +44,7 @@ public class DeviceMngmntSmmryScene implements Initializable {
         headerController.setUsernameMsg("Mr.Udara Mahanama");
         headerController.setDesignationMsg("Development Officer");
         navPanelController.setDeviceMngmntdBorder();
-        pathFinderController.setPathTxt("Device Management>Desktop");
-        pathFinderController.setBckBtnScene("Scene/DeviceMngmntSmmryScene.fxml");
+        //pathFinderController.setBckBtnScene("Scene/DeviceMngmntSmmryScene.fxml");
 
         //create the event listener to the navigation panel ToggleButton() method
         navPanelController.collapseStateProperty().addListener((observable, oldValue, newValue) -> {
@@ -58,31 +57,39 @@ public class DeviceMngmntSmmryScene implements Initializable {
 
     }
 
+
     //add DeviceInfoCards to the scene
     @FXML
     public void addComponent() {
-        //use polymhophism concept upcasting
+        //use polymorphism concept upcasting
         Devices[] dev=null;//dev store the array of Devices
         if(dbSelector.equals("Desktop")){
             dev=new Desktop().getDevices();
+            pathFinderController.setPathTxt("Device Management>Desktop");
         }
         if(dbSelector.equals("Photocopy Machines")){
             dev=new PhotocpyMchine().getDevices();
+            pathFinderController.setPathTxt("Device Management>Photocopy Machines");
         }
         if(dbSelector.equals("Monitors")){
             dev=new Monitors().getDevices();
+            pathFinderController.setPathTxt("Device Management>Monitors");
         }
         if(dbSelector.equals("Projectors")){
             dev=new Projectors().getDevices();
+            pathFinderController.setPathTxt("Device Management>Projectors");
         }
         if(dbSelector.equals("Laptops")){
             dev=new Laptops().getDevices();
+            pathFinderController.setPathTxt("Device Management>Laptops");
         }
         if(dbSelector.equals("Printers")){
             dev=new Printer().getDevices();
+            pathFinderController.setPathTxt("Device Management>Printers");
         }
         if(dbSelector.equals("UPS")){
             dev=new UPS().getDevices();
+            pathFinderController.setPathTxt("Device Management>UPS");
         }
 
         DeviceInfoCardController card;
@@ -91,6 +98,7 @@ public class DeviceMngmntSmmryScene implements Initializable {
             card.setUser(d.getUserName());
             card.setBrand(d.getModel());
             card.setDevId(d.getRegNum());
+            card.setDeviceCat(getDbSelector());
 
             // Add the label to the grid
             grid.add(card, colCount, rowCount);

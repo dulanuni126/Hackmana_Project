@@ -2,7 +2,12 @@
     -fx-background-color: #F179BB;
     -fx-background-radius: 50;
 }
-.moreInfoBtn:hover{
+.noteBtn{
+    -fx-background-color: #F179BB;
+    -fx-background-radius:  14 0 0 0;
+    -fx-padding: 0;
+}
+.moreInfoBtn:hover,.noteBtn:hover{
     -fx-transition: color 0.8s ease-in-out;
     -fx-background-color:black;
     -fx-text-fill: white;

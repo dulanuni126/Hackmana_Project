@@ -5,6 +5,7 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -14,7 +15,7 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<fx:root fx:id="root" maxHeight="403.0" maxWidth="219.0" minHeight="403.0" minWidth="219.0" onMouseEntered="#onMouseEntered" onMouseExited="#onMouseExited" prefHeight="403.0" prefWidth="219.0" style="-fx-background-radius: 10; -fx-background-color: white; -fx-border-color: black; -fx-border-radius: 10;" type="AnchorPane" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+<fx:root fx:id="root" maxHeight="403.0" maxWidth="219.0" minHeight="403.0" minWidth="219.0" onMouseEntered="#onMouseEntered" onMouseExited="#onMouseExited" prefHeight="403.0" prefWidth="219.0" style="-fx-background-radius: 10; -fx-background-color: white; -fx-border-color: black; -fx-border-radius: 10;" stylesheets="@CSS/DeviceInfoCard.css" type="AnchorPane" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
 
     <HBox layoutX="123.0" layoutY="67.0" style="-fx-background-radius: 10;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <VBox style="-fx-background-radius: 10;" HBox.hgrow="ALWAYS">
@@ -44,7 +45,10 @@
                             <Font size="17.0" />
                         </font>
                     </Label>
-                    <Button fx:id="DetailedViewBtn" mnemonicParsing="false" onAction="#DetailedViewSceneLoad" prefHeight="25.0" prefWidth="124.0" styleClass="moreInfoBtn" stylesheets="@CSS/DeviceInfoCard.css" text="more Info" />
+                    <Button fx:id="DetailedViewBtn" mnemonicParsing="false" onAction="#DetailedViewSceneLoad" prefHeight="25.0" prefWidth="124.0" styleClass="moreInfoBtn" text="more Info">
+                  <effect>
+                     <DropShadow />
+                  </effect></Button>
                 </Pane>
                 <TextField fx:id="devIdTxt" editable="false" layoutX="77.0" layoutY="114.0" prefHeight="26.0" prefWidth="139.0" />
                 <TextField fx:id="userTxt" editable="false" layoutX="77.0" layoutY="159.0" prefHeight="26.0" prefWidth="139.0" />
@@ -58,9 +62,13 @@
                             </font>
                         </Label>
                     </Pane>
-                    <Pane fx:id="addBtn" layoutX="158.0" layoutY="89.0" prefHeight="22.0" prefWidth="50.0" style="-fx-background-color: F179BB; -fx-background-radius: 14 0 0 0;">
-
-                        <Button fx:id="dia" layoutY="-3.0" mnemonicParsing="false" onAction="#popupdialog" prefHeight="22.0" prefWidth="50.0" style="-fx-background-color: F179BB; -fx-background-radius: 14 0 0 0;" text="add" />
+                    <Pane fx:id="addBtn" layoutX="158.0" layoutY="89.0" prefHeight="22.0" prefWidth="50.0">
+   
+                        <Button fx:id="dia" layoutX="-7.0" layoutY="1.0" mnemonicParsing="false" onAction="#popupdialog" prefHeight="18.0" prefWidth="50.0" styleClass="noteBtn" text="add">
+                     <effect>
+                        <DropShadow />
+                     </effect>
+                  </Button>
 
                     </Pane>
                     <TextArea fx:id="noteTxtArea" editable="false" layoutX="7.0" layoutY="24.0" prefHeight="65.0" prefWidth="195.0" style="-fx-background-color: black;" />

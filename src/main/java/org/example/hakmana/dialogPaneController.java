@@ -122,13 +122,13 @@ public  class dialogPaneController extends Component implements Initializable  {
                 }
 
 
-                JOptionPane.showMessageDialog(this, "add a new note!", "alert!", JOptionPane.INFORMATION_MESSAGE);
+                JOptionPane.showMessageDialog(this, "the note is successfully added!", "alert!", JOptionPane.INFORMATION_MESSAGE);
             } else {
-                JOptionPane.showMessageDialog(this, "all field need to fill!", "Rejected!", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(this, "All fields need to be filled.", "Rejected!", JOptionPane.ERROR_MESSAGE);
             }
 
         } else if (reasult.get() == ButtonType.CANCEL) {
-            JOptionPane.showMessageDialog(this, "cancel the note!", "alert!", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(this, "note is cancelled!", "alert!", JOptionPane.INFORMATION_MESSAGE);
 
         }
 

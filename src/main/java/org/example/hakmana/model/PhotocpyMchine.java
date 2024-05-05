@@ -1,5 +1,6 @@
 package org.example.hakmana.model;
 
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -7,6 +8,7 @@ import java.util.List;
 
 
 public class PhotocpyMchine extends Devices {
+    private DatabaseConnection conn;
     private String regNum;
     private String model;
     private String status;
@@ -68,7 +70,7 @@ public class PhotocpyMchine extends Devices {
     }
     @Override
     public Devices[] getDevices() {
-        DatabaseConnection conn=DatabaseConnection.getInstance();
+       conn=DatabaseConnection.getInstance();
         List<PhotocpyMchine> photocopyMachines = new ArrayList<>();
         //pass query to the connection class
         String sql = "SELECT PhotoCopyMachine.* FROM PhotoCopyMachine";
@@ -92,5 +94,32 @@ public class PhotocpyMchine extends Devices {
         }
 
         return photocopyMachines.toArray(new PhotocpyMchine[0]);
-}
+    }
+    @Override
+    public Devices getDevice(String regNum) {
+        conn = DatabaseConnection.getInstance();
+        //pass query to the connection class
+        String sql = "SELECT * FROM PhotoCopyMachine Where regNum=?";
+
+        try {
+            PreparedStatement ps = conn.getConnection().prepareStatement(sql);
+            ps.setString(1, regNum);
+            ResultSet rs = ps.executeQuery();
+
+            while (rs.next()) {
+                PhotocpyMchine PhotoCopyMachine = new PhotocpyMchine();
+                PhotoCopyMachine.setRegNum(rs.getString("regNum"));
+                //PhotoCopyMachine.setModel(rs.getString("model"));
+                //PhotoCopyMachine.setStatus(rs.getString("status"));
+                //PhotoCopyMachine.setUserName(rs.getString("name"));
+
+                return PhotoCopyMachine;
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
+        //return null if there is no result
+        return null;
+    }
 }
