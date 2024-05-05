@@ -1,11 +1,13 @@
 package org.example.hakmana.model;
 
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
 public class Projectors extends Devices{
+    private DatabaseConnection conn;
     private String regNum;
     private String model;
     private String status;
@@ -57,7 +59,7 @@ public class Projectors extends Devices{
     }
 
     public Projectors[] getDevices() {
-        DatabaseConnection conn=DatabaseConnection.getInstance();
+        conn=DatabaseConnection.getInstance();
         List<Projectors> projectors = new ArrayList<>();
         //pass query to the connection class
         String sql = "SELECT * FROM multimediaprojector";
@@ -83,5 +85,32 @@ public class Projectors extends Devices{
         }
 
         return projectors.toArray(new Projectors[0]);
+    }
+    @Override
+    public Devices getDevice(String regNum) {
+        conn = DatabaseConnection.getInstance();
+        //pass query to the connection class
+        String sql = "SELECT * FROM multimediaprojector Where regNum=?";
+
+        try {
+            PreparedStatement ps = conn.getConnection().prepareStatement(sql);
+            ps.setString(1, regNum);
+            ResultSet rs = ps.executeQuery();
+
+            while (rs.next()) {
+                Projectors multimediaprojector = new Projectors();
+                multimediaprojector.setRegNum(rs.getString("regNum"));
+                //multimediaprojector.setModel(rs.getString("model"));
+                //multimediaprojector.setStatus(rs.getString("status"));
+                //multimediaprojector.setUserName(rs.getString("name"));
+
+                return multimediaprojector;
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
+        //return null if there is no result
+        return null;
     }
 }

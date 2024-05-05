@@ -117,7 +117,6 @@ public class DashboardController extends Component implements Initializable {
             while(rs0.next()) {
 
                 table[item] = rs0.getString(1);
-
                 item++;
 
             }

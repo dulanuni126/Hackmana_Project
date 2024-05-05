@@ -15,14 +15,10 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.Objects;
 import java.util.ResourceBundle;
 
 public class DeviceCategoryCardController extends AnchorPane implements Initializable{
-
-    //For change the scene when press the button
-    private Stage stage;
-    private Scene scene;
-    private Parent sceneRoot;
 
     //Injector for anchorpane For animation
     @FXML
@@ -69,8 +65,6 @@ public class DeviceCategoryCardController extends AnchorPane implements Initiali
         root.setScaleX(1.0);
         root.setScaleY(1.0);
     }
-
-
     public Image getDeviceImage() {
         return deviceImage;
     }
@@ -85,6 +79,7 @@ public class DeviceCategoryCardController extends AnchorPane implements Initiali
         this.devName = devName;
         devInfoBtn.setText(this.devName);
     }
+
     public String getDevCatSceneName() {
         return devCatSceneName;
     }
@@ -98,8 +93,9 @@ public class DeviceCategoryCardController extends AnchorPane implements Initiali
 
 //  For the DeviceMngmntSmmryScene load when device category button click
     public void DevInfoCall(ActionEvent event) throws IOException {
+        Parent sceneRoot;
         if(devCatSceneName.equals("Scene/OtherDevices.fxml")){
-            sceneRoot = FXMLLoader.load(getClass().getResource(devCatSceneName));
+            sceneRoot = FXMLLoader.load(Objects.requireNonNull(getClass().getResource(devCatSceneName)));
         }else {
             String selectedDeviceName = getDevName();  // Get the selected device name
 
@@ -118,8 +114,9 @@ public class DeviceCategoryCardController extends AnchorPane implements Initiali
             controller.addComponent();
             controller.addLastComponent();
         }
-        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-        scene = new Scene(sceneRoot);
+        //For change the scene when press the button
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        Scene scene = new Scene(sceneRoot);
         stage.setScene(scene);
         stage.show();
     }

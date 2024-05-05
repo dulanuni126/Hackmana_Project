@@ -47,7 +47,7 @@ public class LoginPageController implements Initializable {
     @FXML
     private CheckBox remenberCheckBox;
 
-    public static String cuurentUser="";
+    public static String curentUser="";
 
 
     public void DashboardSceneLoad(ActionEvent event) throws IOException {
@@ -68,7 +68,7 @@ public class LoginPageController implements Initializable {
                     // Passwords match, load dashboard
                     loadDashboard(event);
 
-                    cuurentUser = tempUserName;
+                    curentUser = tempUserName;
 
                     if (remenberCheckBox.isSelected()) {
                         query = "UPDATE systemUser SET isRemember = TRUE WHERE userName = ?";
@@ -171,17 +171,20 @@ public class LoginPageController implements Initializable {
     }
 
     public void forgotPsswrdDialogPane(MouseEvent event) throws IOException{
+        ForgotPasswrdController forgotPasswrdController=new ForgotPasswrdController();
         FXMLLoader forgotFxmlLoad = new FXMLLoader();
         forgotFxmlLoad.setLocation(getClass().getResource("Scene/DialogBox/FrogotPasswrd.fxml"));
+        forgotFxmlLoad.setController(forgotPasswrdController);
         DialogPane forgotDialogPane=forgotFxmlLoad.load();
 
         Dialog<ButtonType> dialog=new Dialog<>();
         dialog.setDialogPane(forgotDialogPane);
         dialog.setTitle("Forgot password");
 
+
        Optional<ButtonType> clickedButton=dialog.showAndWait();
-        if (clickedButton.isPresent() && clickedButton.get() == ButtonType.APPLY) {
-            System.out.println("Apply");
+        if(clickedButton.get()==ButtonType.CANCEL) {
+           dialog.close();
         }
     }
 

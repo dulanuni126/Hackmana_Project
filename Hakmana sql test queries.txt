@@ -13,7 +13,6 @@ INSERT INTO user (userNIC, name, title, gmail) VALUES
 
 
 -- INSERT queries for the Desktop table
--- INSERT queries for the Desktop table
 INSERT INTO desktop (regNum, serialNum, model, purchasedFrom, ram, processor, warranty, hardDisk, os, status, floppyDisk, soundCard, tvCard, networkCard) 
 VALUES 
 ('REG001', 'SN001', 'Desktop Model 1', 'Store A', '8GB', 'Intel i5', '1 Year', '1TB', 'Windows 10', 'Active', 'Yes', 'Sound Blaster', 'N/A', 'Realtek'),
@@ -148,4 +147,64 @@ INSERT INTO systemUser (userName, fullName, post, empId, pwd, email, phoneNum, i
 VALUES ('hakmanaedm', 'John Doe', 'Manager', 'EMP001', SHA1('adminuserhakmana'), 'john.doe@example.com', '1234567890', FALSE);
 
 
+INSERT INTO ExternalDVDRom (regNum, model, status)
+VALUES ('ED001', 'LG GH24NSB0B', 'In Stock'),
+       ('ED002', 'Pioneer DVR-212DBK', 'Sold'),
+       ('ED003', 'Sony DVDRS330', 'Out of Stock');
+
+INSERT INTO AccessPoint (regNum, model, status)
+VALUES ('AP001', 'Netgear Nighthawk AX8', 'In Stock'),
+       ('AP002', 'TP-Link Archer AX20', 'Sold'),
+       ('AP003', 'Asus ZenWiFi AX (XT8)', 'Out of Stock');
+
+INSERT INTO ExternalUSB (regNum, model, status, usbType)
+VALUES ('EU001', 'Sandisk Extreme Portable External SSD', 'In Stock', 'SSD'),
+       ('EU002', 'Kingston DataTraveler G3', 'Sold', 'USB 3.0'),
+       ('EU003', 'Corsair Flash Voyager GTX', 'Out of Stock', 'USB 3.1');
+
+INSERT INTO SpeakerSet (regNum, model, status, SoundQuality, numberOfSpeakers)
+VALUES ('SS001', 'Bose SoundLink Revolve', 'In Stock', 'Excellent', 2),
+       ('SS002', 'JBL Flip 5', 'Sold', 'Very Good', 1),
+       ('SS003', 'Sonos One SL', 'Out of Stock', 'Good', 1);
+
+INSERT INTO Router (regNum, model, status, numberOfPorts)
+VALUES ('R001', 'Netgear Nighthawk RAX80', 'In Stock', 8),
+       ('R002', 'TP-Link Archer AX6000', 'Sold', 4),
+       ('R003', 'Asus ZenWiFi AX (XT8)', 'Out of Stock', 6);
+
+INSERT INTO ToolKit (regNum, model, status)
+VALUES ('TK001', 'Stanley 137-piece', 'In Stock'),
+       ('TK002', 'DEWALT 200-piece', 'Sold'),
+       ('TK003', 'Craftsman 150-piece', 'Out of Stock');
+
+INSERT INTO USBCable (regNum, model, status, length)
+VALUES ('UC001', 'Anker Powerline II', 'In Stock', 1.8),
+       ('UC002', 'AmazonBasics USB-C to USB-A', 'Sold', 1.5),
+       ('UC003', 'Monoprice USB-C to USB-C', 'Out of Stock', 2.0);
+
+INSERT INTO RouterSwitch (regNum, model, status)
+VALUES ('RS001', 'Netgear JGS524P', 'In Stock'),
+       ('RS002', 'TP-Link T1600G-10T', 'Sold'),
+       ('RS003', 'D-Link DGS-1008P', 'Out of Stock');
+
+INSERT INTO VGACable (regNum, model, status)
+VALUES ('VC001', 'Monoprice VGA to VGA', 'In Stock'),
+      ('VC002', 'Cable Matters VGA to HDMI', 'Sold'),
+      ('VC003', 'AmazonBasics VGA to DVI', 'Out of Stock');
+
+INSERT INTO Keyboard (regNum, model, status, Connectivity)
+VALUES ('KB001', 'Logitech K800', 'In Stock', 'Bluetooth'),
+      ('KB002', 'Microsoft Sculpt Ergonomic', 'Sold', 'Wired'),
+      ('KB003', 'Apple Magic Keyboard', 'Out of Stock', 'Bluetooth');
+
+INSERT INTO Mouse (regNum, model, status, Connectivity)
+VALUES ('MS001', 'Logitech MX Master 3', 'In Stock', 'Wireless'),
+      ('MS002', 'Microsoft Sculpt Ergonomic', 'Sold', 'Wired'),
+      ('MS003', 'Apple Magic Mouse 2', 'Out of Stock', 'Bluetooth');
+
+
+INSERT INTO systemUser (userName, pwd,email)
+VALUES
+('hakmanaedm', SHA1('adminuserhakmana'),'hakmanaedm@gmail.com'),
+('test', SHA1('test'),'test@gmail.com');
 

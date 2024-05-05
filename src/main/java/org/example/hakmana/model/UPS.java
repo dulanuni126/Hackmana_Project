@@ -1,11 +1,13 @@
 package org.example.hakmana.model;
 
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
 public class UPS extends Devices{
+    private DatabaseConnection conn;
     private String regNum;
     private String model;
     private String status;
@@ -55,7 +57,7 @@ public class UPS extends Devices{
     }
 
     public UPS[] getDevices() {
-        DatabaseConnection conn=DatabaseConnection.getInstance();
+       conn=DatabaseConnection.getInstance();
         List<UPS> ups = new ArrayList<>();
         //pass query to the connection class
         String sql = "SELECT * FROM ups";
@@ -80,6 +82,33 @@ public class UPS extends Devices{
         }
 
         return ups.toArray(new UPS[0]);
+    }
+    @Override
+    public Devices getDevice(String regNum) {
+        conn = DatabaseConnection.getInstance();
+        //pass query to the connection class
+        String sql = "SELECT * FROM ups Where regNum=?";
+
+        try {
+            PreparedStatement ps = conn.getConnection().prepareStatement(sql);
+            ps.setString(1, regNum);
+            ResultSet rs = ps.executeQuery();
+
+            while (rs.next()) {
+                UPS ups = new UPS();
+                ups.setRegNum(rs.getString("regNum"));
+                //ups.setModel(rs.getString("model"));
+                //ups.setStatus(rs.getString("status"));
+                //ups.setUserName(rs.getString("name"));
+
+                return ups;
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
+        //return null if there is no result
+        return null;
     }
 
 }
