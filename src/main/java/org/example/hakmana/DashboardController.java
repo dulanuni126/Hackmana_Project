@@ -11,24 +11,34 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
 import javafx.scene.control.*;
+import javafx.scene.control.Button;
+import javafx.scene.control.Dialog;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextArea;
+import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 import org.example.hakmana.model.DatabaseConnection;
 
+import javax.swing.*;
+import java.awt.*;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.*;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.Date;
 import java.util.Optional;
 import java.util.ResourceBundle;
 
-public class DashboardController implements Initializable {
+public class DashboardController extends Component implements Initializable {
     @FXML
     private HeaderController headerController;//header custom component injector
     @FXML
@@ -44,7 +54,7 @@ public class DashboardController implements Initializable {
     @FXML
     private Button addDeviceBtn;
     private  TranslateTransition bodyExpand;//Animation object refernce
-
+    private int selectedIndex;
     @FXML
     private AnchorPane parentAnchor;
     @FXML
@@ -60,6 +70,15 @@ public class DashboardController implements Initializable {
     private TableColumn<getNoteController,String> col2;
     @FXML
     private TableColumn<getNoteController, Date> col3;
+    private String ids;
+    private TextField titl1;
+    private TextField user1;
+    private TextField id1;
+    private  TextArea note1;
+
+    private  Label date1;
+
+
 
 
 
@@ -86,7 +105,7 @@ public class DashboardController implements Initializable {
             while(rs.next()){
                 size++;
             }
-            //System.out.println(size);
+
             String[] table=new String[size];
             int item=0;
             rs.close();
@@ -98,7 +117,6 @@ public class DashboardController implements Initializable {
             while(rs0.next()) {
 
                 table[item] = rs0.getString(1);
-                //System.out.println(table[item]);
                 item++;
 
             }
@@ -180,9 +198,6 @@ public class DashboardController implements Initializable {
             });
             tableAdd();
 
-
-
-
         }
 
 
@@ -198,10 +213,134 @@ public class DashboardController implements Initializable {
                 col3.setCellValueFactory(new PropertyValueFactory<getNoteController,Date>("date"));
                 table1.setItems(list);
 
-    }
-    public void delete(){
 
     }
+
+    public void delete(){
+        DatabaseConnection instance=DatabaseConnection.getInstance();
+        Connection conn=instance.getConnection();
+        int selectedValue=table1.getSelectionModel().getSelectedIndex();
+        System.out.println(selectedValue);
+        if(selectedValue>=0){
+        Alert.AlertType type = Alert.AlertType.CONFIRMATION;
+        Alert alert = new Alert(type, "");
+        alert.initModality(Modality.APPLICATION_MODAL);
+        alert.initOwner(stage);
+        alert.getDialogPane().setContentText("do you want to delete this note?");
+        alert.getDialogPane().setHeaderText("confirmation!");
+        Optional<ButtonType> reasult = alert.showAndWait();
+                if(reasult.get()==ButtonType.OK) {
+                       String  ids = table1.getItems().get(selectedValue).getId();
+                        table1.getItems().remove(selectedValue);
+                    table1.getSelectionModel().clearSelection();
+                        System.out.println(ids);
+                        try {
+                            Statement st=conn.createStatement();
+                            st.executeUpdate("delete from notes where id='"+ids+"'");
+                            st.close();
+                        } catch (SQLException e) {
+                            throw new RuntimeException(e);
+                        }
+
+                    }
+
+                if(reasult.get()==ButtonType.CANCEL){
+                    table1.getSelectionModel().clearSelection();
+                }
+                // Clear the selection after removing the item
+
+            }
+        else{
+            JOptionPane.showMessageDialog(this,"please select a note","alert",JOptionPane.ERROR_MESSAGE);
+        }
+                }
+
+        public void view(){
+            DatabaseConnection instance=DatabaseConnection.getInstance();
+            Connection conn=instance.getConnection();
+
+            int selectedValue=table1.getSelectionModel().getSelectedIndex();
+            System.out.println(selectedValue);
+            if(selectedValue>=0) {
+
+                ids = table1.getItems().get(selectedValue).getId();
+                try {
+                    Statement str2 = conn.createStatement();
+                    ResultSet rs = str2.executeQuery("Select id,username,notes,createdate,title from notes where id='" + ids + "'");
+                    FXMLLoader fxmlLoader = new FXMLLoader();
+                    fxmlLoader.setLocation(getClass().getResource("Scene/View.fxml"));
+                    try {
+                        DialogPane dialog = fxmlLoader.load();
+                    } catch (IOException e) {
+                        throw new RuntimeException(e);
+                    }
+
+                    viewDialogController dialogpane = fxmlLoader.getController();
+                    dialogpane.setIds(ids);
+                    titl1=dialogpane.getTitle1();
+                    note1=dialogpane.getNote1();
+                    user1=dialogpane.getUsername1();
+                    id1=dialogpane.getId1();
+                    date1=dialogpane.getDate1();
+                    rs.next();
+                    titl1.setText(rs.getString(5));
+                    note1.setText(rs.getString(3));
+                    user1.setText(rs.getString(2));
+                    id1.setText(rs.getString(1));
+                    String date=rs.getDate(4).toString();
+                    date1.setText(date);
+                    rs.close();
+                    str2.close();
+                    titl1.setEditable(false);
+                    note1.setEditable(false);
+                    user1.setEditable(false);
+                    id1.setEditable(false);
+                    Dialog<ButtonType> dialog = new Dialog<>();
+                    dialog.setDialogPane(dialogpane.getDialogPane2());
+                    dialog.setTitle("ADD NOTE");
+                    Optional<ButtonType> check = dialog.showAndWait();
+                    if(check.get()==ButtonType.OK){
+                        Statement st3= null;
+                        try {
+                            st3 = conn.createStatement();
+                        } catch (SQLException e) {
+                            throw new RuntimeException(e);
+                        }
+                        LocalDate localDate=LocalDate.now();
+                        DateTimeFormatter formatter=DateTimeFormatter.ofPattern("yyyy-MM-dd");
+                        String currentDate=localDate.format(formatter);
+                        try {
+                            System.out.println("update notes set id='"+id1.getText()+"'"+",username='"+user1.getText()+"',notes='"+note1.getText()+"',title='"+titl1.getText()+" ,createdate='"+currentDate+"' "+" where id='"+ids+"'");
+                            st3.executeUpdate("update notes set id='"+id1.getText()+"'"+",username='"+user1.getText()+"',notes='"+note1.getText()+"',title='"+titl1.getText()+"' ,createdate='"+currentDate+"' "+" where id='"+ids+"'");
+                            tableAdd();
+                        } catch (SQLException e) {
+                            throw new RuntimeException(e);
+                        }
+                        try {
+                            st3.close();
+                        } catch (SQLException e) {
+                            throw new RuntimeException(e);
+                        }
+                        table1.getSelectionModel().clearSelection();
+                    }
+                    if(check.get()==ButtonType.CANCEL){
+                        table1.getSelectionModel().clearSelection();
+                    }
+
+
+                } catch (SQLException e) {
+                    throw new RuntimeException(e);
+                }
+
+
+            }
+
+
+
+
+            }
+
+
     private void Animation(double animStartPos,double animEndPos){
         bodyExpand = new TranslateTransition(Duration.millis(300), bodyComponet);
         bodyExpand.setFromX(animStartPos);
