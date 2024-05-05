@@ -299,9 +299,27 @@ public class Desktop extends Devices {
             while (rs.next()) {
                 Desktop desktop = new Desktop();
                 desktop.setRegNum(rs.getString("regNum"));
-                //desktop.setModel(rs.getString("model"));
-                //desktop.setStatus(rs.getString("status"));
-                //desktop.setUserName(rs.getString("name"));
+                desktop.setModel(rs.getString("model"));
+                desktop.setStatus(rs.getString("status"));
+                desktop.setSerialNum(rs.getString("serialNum"));
+                desktop.setPurchasedFrom(rs.getString("purchasedFrom"));
+                desktop.setRam(rs.getString("ram"));
+                desktop.setProcessor(rs.getString("processor"));
+                desktop.setWarranty(rs.getString("warranty"));
+                desktop.setHardDisk(rs.getString("hardDisk"));
+                desktop.setOs(rs.getString("os"));
+                desktop.setFloppyDisk(rs.getString("floppyDisk"));
+                desktop.setSoundCard(rs.getString("soundCard"));
+                desktop.setTvCard(rs.getString("tvCard"));
+                desktop.setNetworkCard(rs.getString("networkCard"));
+                desktop.setMonitorRegNum(rs.getString("monitorRegNum"));
+                desktop.setProjectorRegNum(rs.getString("projectorRegNum"));
+                desktop.setSpeakerRegNum(rs.getString("speakerRegNum"));
+                desktop.setMouseRegNum(rs.getString("mouseRegNum"));
+                desktop.setKeyboardRegNum(rs.getString("keyboardRegNum"));
+                desktop.setMicRegNum(rs.getString("micRegNum"));
+                desktop.setScannerRegNum(rs.getString("scannerRegNum"));
+                desktop.setUserNIC(rs.getString("userNIC"));
 
                 return desktop;
             }
