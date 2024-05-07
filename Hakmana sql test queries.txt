@@ -208,3 +208,4 @@ VALUES
 ('hakmanaedm', SHA1('adminuserhakmana'),'hakmanaedm@gmail.com'),
 ('test', SHA1('test'),'test@gmail.com');
 
+
