@@ -30,8 +30,6 @@ public class UserAssignDialogController implements Initializable {
 
     public static boolean isAssignUserButtonClicked = false;
 
-
-
     public void assignUserButtonOnAction(ActionEvent event) {
         user=new User();
         user.setNic(nicTextField.getText());

@@ -1,10 +1,15 @@
 package org.example.hakmana.model;
 
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
+
+import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 public class Monitors extends Devices{
     private DatabaseConnection conn;
@@ -138,5 +143,51 @@ public class Monitors extends Devices{
 
         //return null if there is no result
         return null;
+    }
+    public boolean updateDevice(ArrayList<String> list){
+        conn = DatabaseConnection.getInstance();
+        Connection connection= conn.getConnection();
+        //pass query to the connection class
+        String sql="UPDATE monitors SET model=?,status=?,regNumDesktop=? WHERE regNUM=?";
+        try {
+            connection.setAutoCommit(false);
+
+            int i=1;
+            PreparedStatement ps = connection.prepareStatement(sql);
+            for(String l:list){
+                ps.setString(i,l);
+                i++;
+            }
+
+            i=ps.executeUpdate();
+
+            //Check confirmation to change
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+            alert.setTitle("Confirmation");
+            alert.setContentText("Update "+ i+" rows desktop registration number " +list.get(3));
+
+            Optional<ButtonType> alertResult = alert.showAndWait();//wait until button press in alert box
+
+            //if alert box ok pressed execute sql quires
+            if (alertResult.isPresent() && alertResult.get() == ButtonType.OK) {
+                // commit the sql quires
+                connection.commit();
+                connection.setAutoCommit(true);
+                return true;
+            } else {
+                connection.rollback();
+                connection.setAutoCommit(true);
+                return false;
+            }
+
+        } catch (SQLException e) {
+            // Rollback the transaction on error
+            Alert alert=new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error Updating Device");
+            alert.setHeaderText("An error occurred while updating the device.");
+            alert.setContentText(e.getMessage());
+            alert.showAndWait();
+        }
+        return false;
     }
 }

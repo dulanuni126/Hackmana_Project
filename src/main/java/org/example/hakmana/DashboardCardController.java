@@ -16,8 +16,6 @@ import java.util.ResourceBundle;
 
 public class DashboardCardController extends ScrollPane implements Initializable {
 
-
-
     @FXML
     private Label topLabel;
     private String text;

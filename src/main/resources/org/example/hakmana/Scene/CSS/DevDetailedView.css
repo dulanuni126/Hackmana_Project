@@ -1,0 +1,13 @@
+.btn{
+    -fx-background-color: #B3B3B3;
+    -fx-background-radius: 15;
+    -fx-effect:dropshadow( gaussian,rgba(0, 0, 0, 0.13),2,1,2,2);
+}
+.btn:hover{
+    -fx-transition: color 0.8s ease-in-out;
+    -fx-cursor: hand; /* Change cursor to pointer */
+    -fx-font-weight:800;
+    -fx-text-fill: white;
+    -fx-background-color: black;
+    -fx-background-radius: 15;
+}
