@@ -108,7 +108,8 @@ public class DatabaseConnection {
             // Iterate through the result set and create Desktop and User objects
             while (resultSet.next()) {
                 User  user = new User();
-                user.setNic(resultSet.getString("userNIC"));
+
+                user.setNic(resultSet.getString("UserNIC"));
                 user.setName(resultSet.getString("name"));
                 user.setTitle(resultSet.getString("title"));
                 user.setGmail(resultSet.getString("gmail"));
