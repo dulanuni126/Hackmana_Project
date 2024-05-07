@@ -1,10 +1,15 @@
 package org.example.hakmana.model;
 
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
+
+import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 public class Laptops extends Devices{
     private DatabaseConnection conn;
@@ -189,5 +194,92 @@ public class Laptops extends Devices{
         //return null if there is no result
         return null;
     }
+    public boolean updateDevice(ArrayList<String> list){
+        conn = DatabaseConnection.getInstance();
+        Connection connection= conn.getConnection();
+        //pass query to the connection class
+        String sql="UPDATE laptop SET model=?,status=?,RAM=?,CPU=?,Storage=?,Display=?,OperatingSystem=?,GraphicsCard=? WHERE regNUM=?";
+        try {
+            connection.setAutoCommit(false);
 
+            int i=1;
+            PreparedStatement ps = connection.prepareStatement(sql);
+            for(String l:list){
+                ps.setString(i,l);
+                i++;
+            }
+
+            i=ps.executeUpdate();
+
+            //Check confirmation to change
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+            alert.setTitle("Confirmation");
+            alert.setContentText("Update "+ i+" rows laptop registration number " +list.get(8));
+
+            Optional<ButtonType> alertResult = alert.showAndWait();//wait until button press in alert box
+
+            //if alert box ok pressed execute sql quires
+            if (alertResult.isPresent() && alertResult.get() == ButtonType.OK) {
+                // commit the sql quires
+                connection.commit();
+                connection.setAutoCommit(true);
+                return true;
+            } else {
+                connection.rollback();
+                connection.setAutoCommit(true);
+                return false;
+            }
+
+        } catch (SQLException e) {
+            // Rollback the transaction on error
+            Alert alert=new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error Updating Device");
+            alert.setHeaderText("An error occurred while updating the device.");
+            alert.setContentText(e.getMessage());
+            alert.showAndWait();
+        }
+        return false;
+    }
+    public boolean updateDeviceUser(String userNic,String id) {
+        conn = DatabaseConnection.getInstance();
+        Connection connection = conn.getConnection();
+        //pass query to the connection class
+        String sql = "UPDATE laptop SET userNIC=? WHERE regNUM=?";
+        try {
+            connection.setAutoCommit(false);
+            PreparedStatement ps = connection.prepareStatement(sql);
+            ps.setString(1, userNic);
+            ps.setString(2, id);
+
+            ps.executeUpdate();
+
+            //Check confirmation to change
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+            alert.setTitle("Confirmation");
+            alert.setContentText("Update user laptop registration number " + id);
+
+            Optional<ButtonType> alertResult = alert.showAndWait();//wait until button press in alert box
+
+            //if alert box ok pressed execute sql quires
+            if (alertResult.isPresent() && alertResult.get() == ButtonType.OK) {
+                // commit the sql quires
+                connection.commit();
+                connection.setAutoCommit(true);
+                return true;
+            } else {
+                connection.rollback();
+                connection.setAutoCommit(true);
+                return false;
+            }
+
+        } catch (SQLException e) {
+            // Rollback the transaction on error
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error Updating User");
+            alert.setHeaderText("An error occurred while updating the device user.");
+            alert.setContentText(e.getMessage());
+            alert.showAndWait();
+        }
+        return false;
+    }
 }

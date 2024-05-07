@@ -11,7 +11,7 @@ public class DatabaseConnection {
     private DatabaseConnection() {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
-            connection = (Connection)DriverManager.getConnection("jdbc:mysql://localhost:3306/hakmanaEdm", "root", "");
+            connection = (Connection)DriverManager.getConnection("jdbc:mysql://localhost:3306/hakmanaEdm", "root", "SPAxim1@");
             System.out.println("Connection Successfully");
 
 
@@ -108,6 +108,7 @@ public class DatabaseConnection {
             // Iterate through the result set and create Desktop and User objects
             while (resultSet.next()) {
                 User  user = new User();
+
                 user.setNic(resultSet.getString("UserNIC"));
                 user.setName(resultSet.getString("name"));
                 user.setTitle(resultSet.getString("title"));
