@@ -128,14 +128,14 @@ public class DashboardController extends Component implements Initializable {
                 count3=0;
                 count4=0;
 
-                if(!(table[j].equals("user"))) {
+                if((table[j].equals("desktop")) || (table[j].equals("photocopymachine")) || (table[j].equals("monitors")) || (table[j].equals("multimediaprojector")) || (table[j].equals("laptop")) || (table[j].equals("ups"))  ) {
                     PreparedStatement pr = conn.prepareStatement("SELECT regNum FROM " +table[j]+ " WHERE status=?");
                     pr.setString(1, "Active");
                     ResultSet rs1 = pr.executeQuery();
                     while (rs1.next()) {
                         count1++;
                     }
-                    Label label1 = new Label(table[j] +" "+ Integer.toString(count1));
+                    Label label1 = new Label(table[j] +"\t\t\t"+ Integer.toString(count1));
                     vbox5.setMargin(label1, new Insets(0, 0, 0, 10));
                     vbox5.getChildren().add(label1);
                     rs1.close();
@@ -145,7 +145,7 @@ public class DashboardController extends Component implements Initializable {
                     while (rs4.next()) {
                         count3++;
                     }
-                    Label label4 = new Label(table[j] +" "+ Integer.toString(count3));
+                    Label label4 = new Label(table[j] +"\t\t\t"+ Integer.toString(count3));
                     vbox1.setMargin(label4, new Insets(0, 0, 0, 10));
                     vbox1.getChildren().add(label4);
                     rs4.close();
@@ -155,7 +155,7 @@ public class DashboardController extends Component implements Initializable {
                     while (rs5.next()) {
                         count4++;
                     }
-                    Label label5 = new Label(table[j] +" "+ Integer.toString(count4));
+                    Label label5 = new Label(table[j] +"\t\t\t"+ Integer.toString(count4));
                     vbox3.setMargin(label5, new Insets(0, 0, 0, 10));
                     vbox3.getChildren().add(label5);
                     rs5.close();
@@ -165,11 +165,11 @@ public class DashboardController extends Component implements Initializable {
                     while (rs2.next()) {
                         count2++;
                     }
-                    Label label2 = new Label(table[j] + " "+Integer.toString(count2));
+                    Label label2 = new Label(table[j] + "\t\t\t "+Integer.toString(count2));
                     vbox2.setMargin(label2, new Insets(0, 0, 0, 10));
                     vbox2.getChildren().add(label2);
                     rs2.close();
-                    Label label3=new Label(table[j] + " "+Integer.toString(count1+count2+count3+count4));
+                    Label label3=new Label(table[j] + "\t\t\t"+Integer.toString(count1+count2+count3+count4));
                     vbox4.setMargin(label3, new Insets(0, 0, 0, 10));
                     vbox4.getChildren().add(label3);
 
