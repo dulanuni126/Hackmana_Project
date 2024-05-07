@@ -19,7 +19,7 @@ public class SystemUser {
     private DatabaseConnection databaseConnection;
     private Connection conn;
     private ResultSet rs;
-    private OAuth2ForGmail auth;
+   // private OAuth2ForGmail auth;
 
     private boolean checkCode;
     private String userName;

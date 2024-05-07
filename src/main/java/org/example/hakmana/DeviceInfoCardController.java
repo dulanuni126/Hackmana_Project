@@ -137,7 +137,7 @@ public class DeviceInfoCardController extends AnchorPane implements Initializabl
 
           detailDevicefxmlLoder.setController(devDetailedViewController);
 
-             sceneRoot=detailDevicefxmlLoder.load();// Load the scene
+          sceneRoot=detailDevicefxmlLoder.load();// Load the scene
 
           //Using Setter Method
          devDetailedViewController.setDeviceSelector(getDeviceCat());

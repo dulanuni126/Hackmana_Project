@@ -2,6 +2,7 @@ package org.example.hakmana;
 
 import javafx.animation.TranslateTransition;
 import javafx.fxml.FXML;
+import javafx.scene.control.TableView;
 import javafx.scene.layout.VBox;
 import javafx.util.Duration;
 
@@ -18,6 +19,8 @@ public class OtherDevicesController {
     @FXML
     private PathFinderController pathFinderController;
     private  TranslateTransition bodyExpand;//Animation object refernce
+    @FXML
+    private TableView<?> tableView;
     public void initialize(URL location, ResourceBundle resources) {
         headerController.setFontSize("2.5em");
         headerController.setTitleMsg("Device Management");
@@ -26,6 +29,8 @@ public class OtherDevicesController {
         navPanelController.setDeviceMngmntdBorder();
         pathFinderController.setSearchBarVisible(false);
         pathFinderController.setPathTxt("Device Management");
+
+
 
         //create the event listener to the navigation panel ToggleButton() method
         navPanelController.collapseStateProperty().addListener((observable, oldValue, newValue) -> {

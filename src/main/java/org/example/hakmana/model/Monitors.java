@@ -13,13 +13,17 @@ public class Monitors extends Devices{
     private String status;
     private String userName;
     private String screenSize;
+    private String userNIC = "No User";
+    private String regNumDesktop="no desktop";
 
-    public Monitors(String regNum, String model, String userName, String status, String screenSize, String status1, String userName1, String model1, String regNum1) {
+    public Monitors(String regNum, String model, String userName, String status, String screenSize, String userNIC, String regNumDesktop) {
         super(regNum, model, userName, status);
         this.screenSize = screenSize;
+        this.userNIC = userNIC;
+        this.regNumDesktop = regNumDesktop;
     }
 
-    public Monitors(String regNum, String model, String userName,String status) {
+    public Monitors(String regNum, String model, String userName, String status) {
         super(regNum, model, userName,status);
     }
 
@@ -62,9 +66,20 @@ public class Monitors extends Devices{
     public String getScreenSize() {
         return screenSize;
     }
-
     public void setScreenSize(String screenSize) {
         this.screenSize = screenSize;
+    }
+    public String getUserNIC() {
+        return userNIC;
+    }
+    public void setUserNIC(String userNIC) {
+        this.userNIC = userNIC;
+    }
+    public String getRegNumDesktop() {
+        return regNumDesktop;
+    }
+    public void setRegNumDesktop(String regNumDesktop) {
+        this.regNumDesktop = regNumDesktop;
     }
 
     public Monitors[] getDevices() {
@@ -97,7 +112,7 @@ public class Monitors extends Devices{
         return monitors.toArray(new Monitors[0]);
     }
     @Override
-    public Devices getDevice(String regNum) {
+    public Monitors getDevice(String regNum) {
         conn = DatabaseConnection.getInstance();
         //pass query to the connection class
         String sql = "SELECT * FROM monitors Where regNum=?";
@@ -110,9 +125,10 @@ public class Monitors extends Devices{
             while (rs.next()) {
                 Monitors monitors = new Monitors();
                 monitors.setRegNum(rs.getString("regNum"));
-                //desktop.setModel(rs.getString("model"));
-                //desktop.setStatus(rs.getString("status"));
-                //desktop.setUserName(rs.getString("name"));
+                monitors.setModel(rs.getString("model"));
+                monitors.setStatus(rs.getString("status"));
+                monitors.setUserNIC(rs.getString("userNIC"));
+                monitors.setRegNumDesktop(rs.getString("regNumDesktop"));
 
                 return monitors;
             }

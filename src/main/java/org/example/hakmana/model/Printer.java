@@ -132,7 +132,7 @@ public class Printer extends Devices {
         return printers.toArray(new Printer[0]);
     }
     @Override
-    public Devices getDevice(String regNum) {
+    public Printer getDevice(String regNum) {
         conn = DatabaseConnection.getInstance();
         //pass query to the connection class
         String sql = "SELECT * FROM printer Where regNum=?";
@@ -145,9 +145,13 @@ public class Printer extends Devices {
             while (rs.next()) {
                 Printer printer = new Printer();
                 printer.setRegNum(rs.getString("regNum"));
-                //printer.setModel(rs.getString("model"));
-                //printer.setStatus(rs.getString("status"));
-                //printer.setUserName(rs.getString("name"));
+                printer.setModel(rs.getString("model"));
+                printer.setStatus(rs.getString("status"));
+                printer.setSerialNum(rs.getString("serialNum"));
+                printer.setPaperInput(rs.getString("paperInput"));
+                printer.setPaperOutput(rs.getString("paperOutput"));
+                printer.setWarranty(rs.getString("warranty"));
+                printer.setUserNIC(rs.getString("userNIC"));
 
                 return printer;
             }

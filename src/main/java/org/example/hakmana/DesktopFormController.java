@@ -99,7 +99,7 @@ public class DesktopFormController implements Initializable {
         ((Node) event.getSource()).setDisable(UserAssignDialogController.isAssignUserButtonClicked);
 
         if(!UserAssignDialogController.isAssignUserButtonClicked){
-            Parent root = FXMLLoader.load(getClass().getResource("Scene/userAssignDialog.fxml"));
+            Parent root = FXMLLoader.load(getClass().getResource("Scene/DialogBox/userAssignDialog.fxml"));
             Stage stage=new Stage();
             stage.initModality(Modality.APPLICATION_MODAL);
             stage.setScene(new Scene(root));

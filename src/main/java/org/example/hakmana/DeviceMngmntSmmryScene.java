@@ -28,14 +28,14 @@ public class DeviceMngmntSmmryScene implements Initializable {
     private int rowCount = 1;
     private int colCount = 0;
 
-    private String dbSelector;
+    private static String dbSelector;
 
     public String getDbSelector() {
         return dbSelector;
     }
 
     public void setDbSelector(String dbSelector) {
-        this.dbSelector = dbSelector;
+        DeviceMngmntSmmryScene.dbSelector = dbSelector;
     }
 
     public void initialize(URL location, ResourceBundle resources) {
@@ -44,7 +44,7 @@ public class DeviceMngmntSmmryScene implements Initializable {
         headerController.setUsernameMsg("Mr.Udara Mahanama");
         headerController.setDesignationMsg("Development Officer");
         navPanelController.setDeviceMngmntdBorder();
-        //pathFinderController.setBckBtnScene("Scene/DeviceMngmntSmmryScene.fxml");
+        pathFinderController.setBckBtnScene("Scene/DeviceMngmntSmmryScene.fxml");
 
         //create the event listener to the navigation panel ToggleButton() method
         navPanelController.collapseStateProperty().addListener((observable, oldValue, newValue) -> {
@@ -56,7 +56,6 @@ public class DeviceMngmntSmmryScene implements Initializable {
         });
 
     }
-
 
     //add DeviceInfoCards to the scene
     @FXML

@@ -88,6 +88,7 @@ public class EditAccountController  implements Initializable{
                 editPostField.setText(storedPost);
                 editEmailField.setText(storedEmail);
                 editPhoneField.setText(storedPhoneNum);
+                
             }
 
         } catch (SQLException e) {

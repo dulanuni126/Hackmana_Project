@@ -1,16 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.ColumnConstraints?>
-<?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
-<?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 <?import org.example.hakmana.FooterController?>
 <?import org.example.hakmana.HeaderController?>
@@ -35,114 +32,216 @@
                                 <PathFinderController fx:id="pathFinderController" prefWidth="770.0" />
                                 <AnchorPane prefHeight="430.0" prefWidth="758.0" style="-fx-background-color: #FFFFFF; -fx-background-radius: 20;" VBox.vgrow="ALWAYS">
                                     <children>
-                                        <ScrollPane fx:id="formPane" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                                            <GridPane hgap="20.0" maxWidth="1200.0" minWidth="1200.0" prefHeight="518.0" prefWidth="1200.0" style="-fx-border-color: black; -fx-border-width: 2; -fx-border-radius: 10; -fx-background-color: #EEEEEE;" styleClass="details" vgap="27.0">
-                                                <columnConstraints>
-                                                    <ColumnConstraints hgrow="SOMETIMES" maxWidth="582.7999877929688" minWidth="10.0" prefWidth="170.79286193847656" />
-                                                    <ColumnConstraints hgrow="SOMETIMES" maxWidth="1099.0000213623046" minWidth="10.0" prefWidth="373.70713806152344" />
-                                                    <ColumnConstraints hgrow="SOMETIMES" maxWidth="1099.0000213623046" minWidth="10.0" prefWidth="246.04730224609375" />
-                                                    <ColumnConstraints hgrow="SOMETIMES" maxWidth="1099.0000213623046" minWidth="10.0" prefWidth="335.45269775390625" />
-                                                </columnConstraints>
-                                                <rowConstraints>
-                                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                                </rowConstraints>
+                                        <ScrollPane fx:id="formPane" fitToHeight="true" fitToWidth="true" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                 <HBox spacing="20.0">
+                                    <children>
+                                       <VBox prefHeight="200.0" prefWidth="100.0" spacing="20.0" HBox.hgrow="ALWAYS">
+                                          <children>
+                                             <VBox fx:id="commonVbox" prefHeight="95.0" prefWidth="200.0" spacing="10.0">
                                                 <children>
-                                                    <Label text="Serial Number" GridPane.rowIndex="1" />
-                                                    <Label text="Model" GridPane.rowIndex="2" />
-                                                    <Label text="Purchased From" GridPane.rowIndex="3" />
-                                                    <Label text="Ram" GridPane.rowIndex="4" />
-                                                    <Label text="Processor" GridPane.rowIndex="5" />
-                                                    <Label text="Warranty" GridPane.rowIndex="6" />
-                                                    <Label text="Hard Disk" GridPane.rowIndex="7" />
-                                                    <Label text="Operatiing System" GridPane.rowIndex="8" />
-                                                    <Label text="Status" GridPane.rowIndex="9" />
-                                                    <Label text="Monitor Registration number" GridPane.rowIndex="11" />
-                                                    <Label text="Projector Registration number" GridPane.rowIndex="12" />
-                                                    <Label text="Speaker Registration number" GridPane.rowIndex="13" />
-                                                    <Label text="Registration Number" />
-                                                    <TextField fx:id="regNumTextField" GridPane.columnIndex="1" />
-                                                    <TextField fx:id="serialNumTextField" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                                                    <TextField fx:id="modelTextField" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                                                    <TextField fx:id="purchasedFromTextField" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-                                                    <TextField fx:id="ramTextField" GridPane.columnIndex="1" GridPane.rowIndex="4" />
-                                                    <TextField fx:id="processorTextField" GridPane.columnIndex="1" GridPane.rowIndex="5" />
-                                                    <TextField fx:id="warrantyTextField" GridPane.columnIndex="1" GridPane.rowIndex="6" />
-                                                    <TextField fx:id="hardDiskTextField" GridPane.columnIndex="1" GridPane.rowIndex="7" />
-                                                    <TextField fx:id="monitorRegNumTextField" GridPane.columnIndex="1" GridPane.rowIndex="11" />
-                                                    <TextField fx:id="projectorRegNumTextField" GridPane.columnIndex="1" GridPane.rowIndex="12" />
-                                                    <TextField fx:id="speakerRegNumTextField" GridPane.columnIndex="1" GridPane.rowIndex="13" />
-                                       <TextField fx:id="StatusTextField" GridPane.columnIndex="1" GridPane.rowIndex="9" />
-                                       <TextField fx:id="OSTextField" GridPane.columnIndex="1" GridPane.rowIndex="8" />
-                                                    <Line endX="46.32987976074219" startX="-100.0" GridPane.rowIndex="10" />
-                                                    <Label prefHeight="20.0" prefWidth="100.0" text="Input Devices" GridPane.columnIndex="1" GridPane.rowIndex="10">
-                                                        <font>
-                                                            <Font size="16.0" />
-                                                        </font>
-                                                    </Label>
-                                                    <Line endX="100.0" startX="322.0299072265625" startY="0.02018815279006958" GridPane.columnIndex="1" GridPane.rowIndex="10">
-                                                        <GridPane.margin>
-                                                            <Insets left="100.0" />
-                                                        </GridPane.margin>
-                                                    </Line>
-                                                    <Line endX="539.2736206054688" layoutX="184.0" layoutY="437.0" startX="329.28765869140625" startY="-0.37858349084854126" GridPane.columnIndex="3" GridPane.rowIndex="10">
-                                                        <GridPane.margin>
-                                                            <Insets left="140.0" />
-                                                        </GridPane.margin>
-                                                    </Line>
-                                                    <Line endX="541.4157104492188" endY="-0.9998172521591187" layoutX="827.0" layoutY="437.0" startX="350.28558349609375" startY="-0.49763572216033936" GridPane.columnIndex="2" GridPane.rowIndex="10" />
-                                                    <Label layoutX="183.0" layoutY="427.0" prefHeight="20.0" prefWidth="111.0" text="Output Devices" GridPane.columnIndex="3" GridPane.rowIndex="10">
-                                                        <font>
-                                                            <Font size="16.0" />
-                                                        </font>
-                                                    </Label>
-                                                    <Label layoutX="22.0" layoutY="469.0" text="Mouse Registration number" GridPane.columnIndex="2" GridPane.rowIndex="11" />
-                                                    <Label layoutX="22.0" layoutY="509.0" text="Keyboard Registration number" GridPane.columnIndex="2" GridPane.rowIndex="12" />
-                                                    <Label layoutX="22.0" layoutY="549.0" text="External Mic Registration number" GridPane.columnIndex="2" GridPane.rowIndex="13" />
-                                                    <Label layoutX="22.0" layoutY="549.0" text="Scanner Registration number" GridPane.columnIndex="2" GridPane.rowIndex="14" />
-                                                    <TextField fx:id="mouseRegNumTextField" layoutX="174.0" layoutY="431.0" GridPane.columnIndex="3" GridPane.rowIndex="11" />
-                                                    <TextField fx:id="keyboardRegNumTextField" layoutX="873.0" layoutY="431.0" GridPane.columnIndex="3" GridPane.rowIndex="12" />
-                                                    <TextField fx:id="micRegNumTextField" layoutX="873.0" layoutY="468.0" GridPane.columnIndex="3" GridPane.rowIndex="13" />
-                                                    <TextField fx:id="scannerRegNumTextField" layoutX="873.0" layoutY="505.0" GridPane.columnIndex="3" GridPane.rowIndex="14" />
-                                                    <Label layoutX="22.0" layoutY="325.0" text="TV Card" GridPane.columnIndex="2" GridPane.rowIndex="7" />
-                                                    <Label layoutX="22.0" layoutY="362.0" text="Network Card" GridPane.columnIndex="2" GridPane.rowIndex="8" />
-                                                    <Label layoutX="22.0" layoutY="288.0" text="Sound Card" GridPane.columnIndex="2" GridPane.rowIndex="6" />
-                                                    <Label layoutX="22.0" layoutY="251.0" text="Floppy Disk Drive" GridPane.columnIndex="2" GridPane.rowIndex="5" />
-                                       <TextField fx:id="NetworkCardTextField" GridPane.columnIndex="3" GridPane.rowIndex="8" />
-                                       <TextField fx:id="TVCardTextField" GridPane.columnIndex="3" GridPane.rowIndex="7" />
-                                       <TextField fx:id="SoundCardTextField" GridPane.columnIndex="3" GridPane.rowIndex="6" />
-                                       <TextField fx:id="FloppyDiskTextField" GridPane.columnIndex="3" GridPane.rowIndex="5" />
-                                       <Line endX="46.32987976074219" startX="-100.0" GridPane.rowIndex="14" />
-                                       <Label prefHeight="20.0" prefWidth="100.0" text="User Detail" GridPane.columnIndex="1" GridPane.rowIndex="14">
-                                          <font>
-                                             <Font size="16.0" />
-                                          </font>
-                                       </Label>
-                                       <Line endX="100.0" startX="322.0299072265625" startY="0.02018815279006958" GridPane.columnIndex="1" GridPane.rowIndex="14">
-                                          <GridPane.margin>
-                                             <Insets left="100.0" />
-                                          </GridPane.margin>
-                                       </Line>
+                                                   <HBox VBox.vgrow="ALWAYS">
+                                                      <children>
+                                                                      <Label prefWidth="150.0" text="Registration Number" HBox.hgrow="ALWAYS" />
+                                                                      <TextField fx:id="regNumTextField" editable="false" HBox.hgrow="ALWAYS" />
+                                                      </children>
+                                                   </HBox>
+                                                   <HBox VBox.vgrow="ALWAYS">
+                                                      <children>
+                                                                      <Label prefWidth="150.0" text="Model" HBox.hgrow="ALWAYS" />
+                                                                      <TextField fx:id="modelTextField" editable="false" HBox.hgrow="ALWAYS" />
+                                                      </children>
+                                                   </HBox>
+                                                   <HBox VBox.vgrow="ALWAYS">
+                                                      <children>
+                                                                      <Label prefWidth="150.0" text="Status" HBox.hgrow="ALWAYS" />
+                                                         <TextField fx:id="StatusTextField" editable="false" HBox.hgrow="ALWAYS" />
+                                                      </children>
+                                                   </HBox>
+                                                </children>
+                                             </VBox>
+                                             <VBox fx:id="otherDetailVbox" prefHeight="375.0" prefWidth="400.0" spacing="10.0">
+                                                <children>
+                                                   <HBox fx:id="other1Hbox" VBox.vgrow="ALWAYS">
+                                                      <children>
+                                                                      <Label fx:id="other1Lbl" prefWidth="150.0" text="Purchased From" HBox.hgrow="ALWAYS" />
+                                                                      <TextField fx:id="other1" HBox.hgrow="ALWAYS" />
+                                                      </children>
+                                                   </HBox>
+                                                   <HBox fx:id="other2Hbox">
+                                                      <children>
+                                                                      <Label fx:id="other2Lbl" prefWidth="150.0" text="Ram" HBox.hgrow="ALWAYS" />
+                                                                      <TextField fx:id="other2" HBox.hgrow="ALWAYS" />
+                                                      </children>
+                                                   </HBox>
+                                                   <HBox fx:id="other3Hbox">
+                                                      <children>
+                                                                      <Label fx:id="other3Lbl" prefWidth="150.0" text="Processor" HBox.hgrow="ALWAYS" />
+                                                                      <TextField fx:id="other3" HBox.hgrow="ALWAYS" />
+                                                      </children>
+                                                   </HBox>
+                                                   <HBox fx:id="other4Hbox">
+                                                      <children>
+                                                                      <Label fx:id="other4Lbl" prefWidth="150.0" text="Warranty" HBox.hgrow="ALWAYS" />
+                                                                      <TextField fx:id="other4" HBox.hgrow="ALWAYS" />
+                                                      </children>
+                                                   </HBox>
+                                                   <HBox fx:id="other5Hbox">
+                                                      <children>
+                                                                      <Label fx:id="other5Lbl" prefWidth="150.0" text="Hard Disk" HBox.hgrow="ALWAYS" />
+                                                                      <TextField fx:id="other5" HBox.hgrow="ALWAYS" />
+                                                      </children>
+                                                   </HBox>
+                                                   <HBox fx:id="other6Hbox">
+                                                      <children>
+                                                                      <Label fx:id="other6Lbl" prefWidth="150.0" text="Operatiing System" HBox.hgrow="ALWAYS" />
+                                                         <TextField fx:id="other6" HBox.hgrow="ALWAYS" />
+                                                      </children>
+                                                   </HBox>
+                                                   <HBox fx:id="other7Hbox">
+                                                      <children>
+                                                                      <Label fx:id="other7Lbl" prefWidth="150.0" text="Serial Number" HBox.hgrow="ALWAYS" />
+                                                                      <TextField fx:id="other7" HBox.hgrow="ALWAYS" />
+                                                      </children>
+                                                   </HBox>
+                                                   <HBox fx:id="other8Hbox">
+                                                      <children>
+                                                                      <Label fx:id="other8Lbl" prefWidth="150.0" text="Floppy Disk Drive" HBox.hgrow="ALWAYS" />
+                                                         <TextField fx:id="other8" HBox.hgrow="ALWAYS" />
+                                                      </children>
+                                                   </HBox>
+                                                   <HBox fx:id="other9Hbox">
+                                                      <children>
+                                                                      <Label fx:id="other9Lbl" prefWidth="150.0" text="Sound Card" HBox.hgrow="ALWAYS" />
+                                                         <TextField fx:id="other9" HBox.hgrow="ALWAYS" />
+                                                      </children>
+                                                   </HBox>
+                                                   <HBox fx:id="other10Hbox">
+                                                      <children>
+                                                                      <Label fx:id="other10Lbl" prefWidth="150.0" text="TV Card" HBox.hgrow="ALWAYS" />
+                                                         <TextField fx:id="other10" HBox.hgrow="ALWAYS" />
+                                                      </children>
+                                                   </HBox>
+                                                   <HBox fx:id="other11Hbox">
+                                                      <children>
+                                                                      <Label fx:id="other11Lbl" prefWidth="150.0" text="Network Card" HBox.hgrow="ALWAYS" />
+                                                         <TextField fx:id="other11" HBox.hgrow="ALWAYS" />
+                                                      </children>
+                                                   </HBox>
+                                                </children>
+                                             </VBox>
+                                             <HBox fx:id="interactionHbox" alignment="CENTER_LEFT" spacing="10.0">
+                                                <children>
+                                                   <Button mnemonicParsing="false" text="Button" />
+                                                   <Button mnemonicParsing="false" text="Button" />
+                                                </children>
+                                             </HBox>
+                                          </children>
+                                       </VBox>
+                                       <VBox prefHeight="200.0" prefWidth="100.0" spacing="20.0" HBox.hgrow="ALWAYS">
+                                          <children>
+                                             <VBox fx:id="userDetailsVbox" alignment="TOP_CENTER" spacing="10.0" style="-fx-border-color: black; -fx-border-radius: 10; -fx-border-width: 2; -fx-background-radius: 10;">
+                                                <children>
+                                                   <Label prefHeight="20.0" prefWidth="100.0" text="User Detail" VBox.vgrow="NEVER">
+                                                      <font>
+                                                         <Font size="16.0" />
+                                                      </font>
+                                                   </Label>
+                                                   <HBox fillHeight="false" VBox.vgrow="NEVER">
+                                                      <children>
+                                                         <Label prefWidth="150.0" text="NIC" HBox.hgrow="ALWAYS" />
+                                                         <TextField fx:id="userNIC" HBox.hgrow="ALWAYS" />
+                                                      </children>
+                                                   </HBox>
+                                                   <HBox fillHeight="false" VBox.vgrow="NEVER">
+                                                      <children>
+                                                         <Label prefWidth="150.0" text="Name" HBox.hgrow="ALWAYS" />
+                                                         <TextField fx:id="userName" HBox.hgrow="ALWAYS" />
+                                                      </children>
+                                                   </HBox>
+                                                   <HBox fillHeight="false" VBox.vgrow="NEVER">
+                                                      <children>
+                                                         <Label prefWidth="150.0" text="Title" HBox.hgrow="ALWAYS" />
+                                                         <TextField fx:id="userTitle" HBox.hgrow="ALWAYS" />
+                                                      </children>
+                                                   </HBox>
+                                                   <HBox fillHeight="false" VBox.vgrow="NEVER">
+                                                      <children>
+                                                         <Label prefWidth="150.0" text="Gmail Address" HBox.hgrow="ALWAYS" />
+                                                         <TextField fx:id="userGmail" HBox.hgrow="ALWAYS" />
+                                                      </children>
+                                                   </HBox>
                                                 </children>
                                                 <padding>
-                                                    <Insets left="10.0" right="50.0" top="20.0" />
+                                                   <Insets bottom="5.0" left="5.0" right="5.0" />
                                                 </padding>
-                                            </GridPane>
+                                             </VBox>
+                                             <VBox fx:id="inputVbox" alignment="TOP_CENTER" prefWidth="400.0" spacing="10.0">
+                                                <children>
+                                                                <Label prefHeight="20.0" prefWidth="111.0" text="Input Devices">
+                                                                    <font>
+                                                                        <Font size="16.0" />
+                                                                    </font>
+                                                                </Label>
+                                                   <HBox fx:id="input1Hbox">
+                                                      <children>
+                                                                      <Label fx:id="input1Lbl" prefWidth="200.0" text="Mouse Registration number" HBox.hgrow="ALWAYS" />
+                                                                      <TextField fx:id="input1" HBox.hgrow="ALWAYS" />
+                                                      </children>
+                                                   </HBox>
+                                                   <HBox fx:id="input2Hbox">
+                                                      <children>
+                                                                      <Label fx:id="input2Lbl" prefWidth="200.0" text="Keyboard Registration number" HBox.hgrow="ALWAYS" />
+                                                                      <TextField fx:id="input2" HBox.hgrow="ALWAYS" />
+                                                      </children>
+                                                   </HBox>
+                                                   <HBox fx:id="input3Hbox">
+                                                      <children>
+                                                                      <Label fx:id="input3Lbl" prefWidth="200.0" text="External Mic Registration number" HBox.hgrow="ALWAYS" />
+                                                                      <TextField fx:id="input3" HBox.hgrow="ALWAYS" />
+                                                      </children>
+                                                   </HBox>
+                                                   <HBox fx:id="input4Hbox">
+                                                      <children>
+                                                                      <Label fx:id="input4Lbl" prefWidth="200.0" text="Scanner Registration number" HBox.hgrow="ALWAYS" />
+                                                                      <TextField fx:id="input4" HBox.hgrow="ALWAYS" />
+                                                      </children>
+                                                   </HBox>
+                                                </children>
+                                             </VBox>
+                                             <VBox fx:id="outputVbox" alignment="TOP_CENTER" spacing="10.0">
+                                                <children>
+                                                                <Label prefHeight="20.0" prefWidth="100.0" text="Output device">
+                                                                    <font>
+                                                                        <Font size="16.0" />
+                                                                    </font>
+                                                                </Label>
+                                                   <HBox fx:id="output1Hbox">
+                                                      <children>
+                                                                      <Label fx:id="output1Lbl" prefWidth="200.0" text="Monitor Registration number" HBox.hgrow="ALWAYS" />
+                                                                      <TextField fx:id="output1" HBox.hgrow="ALWAYS" />
+                                                      </children>
+                                                   </HBox>
+                                                   <HBox fx:id="output2Hbox">
+                                                      <children>
+                                                                      <Label fx:id="output2Lbl" prefWidth="200.0" text="Projector Registration number" HBox.hgrow="ALWAYS" />
+                                                                      <TextField fx:id="output2" HBox.hgrow="ALWAYS" />
+                                                      </children>
+                                                   </HBox>
+                                                   <HBox fx:id="output3Hbox">
+                                                      <children>
+                                                                      <Label fx:id="output3Lbl" prefWidth="200.0" text="Speaker Registration number" HBox.hgrow="ALWAYS" />
+                                                                      <TextField fx:id="output3" HBox.hgrow="ALWAYS" />
+                                                      </children>
+                                                   </HBox>
+                                                </children>
+                                             </VBox>
+                                          </children>
+                                       </VBox>
+                                    </children>
+                                    <padding>
+                                       <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                    </padding>
+                                 </HBox>
 
                                         </ScrollPane>
                                     </children>
