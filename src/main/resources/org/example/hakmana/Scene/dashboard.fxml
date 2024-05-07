@@ -160,16 +160,19 @@
                                                          </VBox.margin>
                                                          <children>
 
-                                                            <Button mnemonicParsing="false" onAction="#view" style="-fx-background-color: white;" text="View">
+                                                            <Button mnemonicParsing="false" onAction="#view" style="-fx-background-color: white; -fx-padding: 0; -fx-background-radius: 5;" text="View">
                                                                <graphic>
-                                                                  <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                                                                  <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
                                                                      <image>
                                                                         <Image url="@Images/vector-view-icon.jpg" />
                                                                      </image>
                                                                   </ImageView>
                                                                </graphic>
+                                                               <effect>
+                                                                  <DropShadow />
+                                                               </effect>
                                                             </Button>
-                                                            <Button maxWidth="35.0" mnemonicParsing="false" onAction="#Add" prefHeight="36.0" style="-fx-background-color: white;">
+                                                            <Button maxWidth="-Infinity" mnemonicParsing="false" onAction="#Add" prefHeight="28.0" prefWidth="32.0" style="-fx-background-color: white; -fx-padding: 0; -fx-background-radius: 5;" styleClass="noteBtn">
 
                                                                <graphic>
                                                                   <ImageView fitHeight="24.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">

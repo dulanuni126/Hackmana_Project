@@ -87,7 +87,7 @@ public class Projectors extends Devices{
         return projectors.toArray(new Projectors[0]);
     }
     @Override
-    public Devices getDevice(String regNum) {
+    public Projectors getDevice(String regNum) {
         conn = DatabaseConnection.getInstance();
         //pass query to the connection class
         String sql = "SELECT * FROM multimediaprojector Where regNum=?";
@@ -100,9 +100,8 @@ public class Projectors extends Devices{
             while (rs.next()) {
                 Projectors multimediaprojector = new Projectors();
                 multimediaprojector.setRegNum(rs.getString("regNum"));
-                //multimediaprojector.setModel(rs.getString("model"));
-                //multimediaprojector.setStatus(rs.getString("status"));
-                //multimediaprojector.setUserName(rs.getString("name"));
+                multimediaprojector.setModel(rs.getString("model"));
+                multimediaprojector.setStatus(rs.getString("status"));
 
                 return multimediaprojector;
             }

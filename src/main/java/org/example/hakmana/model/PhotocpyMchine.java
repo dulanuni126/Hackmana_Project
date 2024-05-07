@@ -15,6 +15,11 @@ public class PhotocpyMchine extends Devices {
     private String userName;
     private String CopyingCapability;
 
+    public PhotocpyMchine(String regNum, String model, String userName, String status, String copyingCapability) {
+        super(regNum, model, userName, status);
+        CopyingCapability = copyingCapability;
+    }
+
     public PhotocpyMchine(String regNum, String model, String userName, String status) {
         super(regNum, model, userName, status);
     }
@@ -69,7 +74,7 @@ public class PhotocpyMchine extends Devices {
         CopyingCapability = copyingCapability;
     }
     @Override
-    public Devices[] getDevices() {
+    public PhotocpyMchine[] getDevices() {
        conn=DatabaseConnection.getInstance();
         List<PhotocpyMchine> photocopyMachines = new ArrayList<>();
         //pass query to the connection class
@@ -96,7 +101,7 @@ public class PhotocpyMchine extends Devices {
         return photocopyMachines.toArray(new PhotocpyMchine[0]);
     }
     @Override
-    public Devices getDevice(String regNum) {
+    public PhotocpyMchine getDevice(String regNum) {
         conn = DatabaseConnection.getInstance();
         //pass query to the connection class
         String sql = "SELECT * FROM PhotoCopyMachine Where regNum=?";
@@ -109,9 +114,9 @@ public class PhotocpyMchine extends Devices {
             while (rs.next()) {
                 PhotocpyMchine PhotoCopyMachine = new PhotocpyMchine();
                 PhotoCopyMachine.setRegNum(rs.getString("regNum"));
-                //PhotoCopyMachine.setModel(rs.getString("model"));
-                //PhotoCopyMachine.setStatus(rs.getString("status"));
-                //PhotoCopyMachine.setUserName(rs.getString("name"));
+                PhotoCopyMachine.setModel(rs.getString("model"));
+                PhotoCopyMachine.setStatus(rs.getString("status"));
+                PhotoCopyMachine.setCopyingCapability(rs.getString("CopyingCapability"));
 
                 return PhotoCopyMachine;
             }

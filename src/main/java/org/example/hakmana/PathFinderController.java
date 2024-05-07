@@ -77,7 +77,8 @@ public class PathFinderController extends VBox implements Initializable {
     }
     @FXML
     public void goBack(ActionEvent event) throws IOException {
-        String listScenename = "Scene/dashboard.fxml";//always this load if list is empty
+        Parent root;
+        String listScenename = "Scene/dashboard.fxml";//always load dashboard if list is empty
         if(!sceneList.isEmpty()) {
             //To remove current scene from the list.
             //Because current scene is also added to the list
@@ -91,7 +92,44 @@ public class PathFinderController extends VBox implements Initializable {
             System.out.println("list is empty");
         }
 
-        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource(listScenename)));
+        //This swith method especially load the DeviceMngmntSmmryScene and DevDetailedView
+        //Because they don't have controllers with the fxml and had to set manually
+        //Also had to call method to add componnet card and form details when calling th efxml file
+        switch (listScenename){
+            case("Scene/DeviceMngmntSmmryScene.fxml"):
+                // Load the FXML loader for the target scene
+                FXMLLoader deviceSmmryfxmlLoder = new FXMLLoader(Objects.requireNonNull(getClass().getResource("Scene/DeviceMngmntSmmryScene.fxml")));
+
+                //create DevDetailedViewController instance
+                DeviceMngmntSmmryScene deviceMngmntSmmryScene=new DeviceMngmntSmmryScene();
+
+                deviceSmmryfxmlLoder.setController(deviceMngmntSmmryScene);
+
+                root=deviceSmmryfxmlLoder.load();// Load the scene
+
+                //Using Setter Method
+                deviceMngmntSmmryScene.addComponent();
+                deviceMngmntSmmryScene.addLastComponent();
+                break;
+            case ("Scene/DevDetailedView.fxml"):
+                // Load the FXML loader for the target scene
+                FXMLLoader detailDevicefxmlLoder = new FXMLLoader(Objects.requireNonNull(getClass().getResource("Scene/DevDetailedView.fxml")));
+
+                //create DevDetailedViewController instance
+                DevDetailedViewController devDetailedViewController=new DevDetailedViewController();
+
+                detailDevicefxmlLoder.setController(devDetailedViewController);
+
+                root=detailDevicefxmlLoder.load();// Load the scene
+
+                //Using Setter Method
+                devDetailedViewController.showDeviceDetail();
+                break;
+            default:
+                root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource(listScenename)));
+
+        }
+
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         Scene scene = new Scene(root);
         stage.setScene(scene);

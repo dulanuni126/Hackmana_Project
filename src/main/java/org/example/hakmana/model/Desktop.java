@@ -67,42 +67,34 @@ public class Desktop extends Devices {
     public String getRegNum() {
         return regNum;
     }
-
     @Override
     public void setRegNum(String regNum) {
         this.regNum = regNum;
     }
-
     @Override
     public String getModel() {
         return model;
     }
-
     @Override
-    public void setModel(String model) {
-        this.model = model;
-
-    }
-
+    public void setModel(String model) {this.model = model;}
     @Override
     public String getStatus() {
         return status;
     }
-
     @Override
     public void setStatus(String status) {
         this.status = status;
     }
-
     @Override
     public String getUserName() {
         return userName;
     }
-
     @Override
     public void setUserName(String userName) {
         this.userName = userName;
     }
+
+
 
     public String getFloppyDisk() {
         return floppyDisk;
@@ -286,7 +278,7 @@ public class Desktop extends Devices {
 
     //for get special device from the database
     @Override
-    public Devices getDevice(String regNum) {
+    public Desktop getDevice(String regNum) {
         conn = DatabaseConnection.getInstance();
         //pass query to the connection class
         String sql = "SELECT * FROM desktop Where regNum=?";

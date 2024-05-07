@@ -10,6 +10,14 @@ public class WebCam extends Devices{
     private String model;
     private String status;
     private String userName;
+
+    public WebCam(String regNum, String model, String userName, String status) {
+        super(regNum, model, userName, status);
+    }
+
+    public WebCam() {
+    }
+
     @Override
     public String getRegNum() {
         return regNum;
@@ -18,43 +26,32 @@ public class WebCam extends Devices{
     public void setRegNum(String regNum) {
         this.regNum = regNum;
     }
-
     @Override
     public String getModel() {
         return model;
     }
-
     @Override
     public void setModel(String model) {
         this.model = model;
     }
-
     @Override
     public String getStatus() {
         return status;
     }
-
     @Override
     public void setStatus(String status) {
         this.status = status;
     }
-
     @Override
     public String getUserName() {
         return userName;
     }
-
     @Override
     public void setUserName(String userName) {
         this.userName = userName;
     }
 
-    public WebCam(String regNum, String model, String userName, String status) {
-        super(regNum, model, userName, status);
-    }
 
-    public WebCam() {
-    }
 
     public WebCam[] getDevices() {
         DatabaseConnection conn=DatabaseConnection.getInstance();
@@ -78,7 +75,7 @@ public class WebCam extends Devices{
             }
         }
         catch (SQLException e){
-            System.out.println(e);
+            e.printStackTrace();
         }
 
         return webCams.toArray(new WebCam[0]);
