@@ -165,11 +165,11 @@ public class DashboardController extends Component implements Initializable {
                     while (rs2.next()) {
                         count2++;
                     }
-                    Label label2 = new Label(table[j] + " "+Integer.toString(count2));
+                    Label label2 = new Label(table[j] + "\t\t\t "+Integer.toString(count2));
                     vbox2.setMargin(label2, new Insets(0, 0, 0, 10));
                     vbox2.getChildren().add(label2);
                     rs2.close();
-                    Label label3=new Label(table[j] + " "+Integer.toString(count1+count2+count3+count4));
+                    Label label3=new Label(table[j] + "\t\t\t"+Integer.toString(count1+count2+count3+count4));
                     vbox4.setMargin(label3, new Insets(0, 0, 0, 10));
                     vbox4.getChildren().add(label3);
 
