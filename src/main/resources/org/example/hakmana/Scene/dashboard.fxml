@@ -241,7 +241,7 @@
                                                                         <Insets left="5.0" top="80.0" />
                                                                      </VBox.margin>
                                                                   </JFXButton>
-                                                                  <JFXButton style="-fx-padding: 0;" styleClass="largebutt" text="Change the device &#10;status">
+                                                                  <JFXButton disable="true" style="-fx-padding: 0;" styleClass="largebutt" text="Change the device &#10;status">
                                                                      <graphic>
                                                                         <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
                                                                            <image>
@@ -252,7 +252,7 @@
                                                                         <Insets left="6.0" top="10.0" />
                                                                      </VBox.margin>
                                                                   </JFXButton>
-                                                                  <JFXButton styleClass="Button" text="View inventory">
+                                                                  <JFXButton disable="true" styleClass="Button" text="View inventory">
                                                                      <graphic>
                                                                         <ImageView fitHeight="39.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
                                                                            <image>
@@ -263,7 +263,7 @@
                                                                         <Insets left="13.0" top="10.0" />
                                                                      </VBox.margin>
                                                                   </JFXButton>
-                                                                  <JFXButton styleClass="Button" text="Daily Report">
+                                                                  <JFXButton disable="true" styleClass="Button" text="Daily Report">
                                                                      <graphic>
                                                                         <ImageView fitHeight="39.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
                                                                            <image>
