@@ -84,7 +84,6 @@ public  class dialogPaneController extends Component implements Initializable  {
         DatabaseConnection instance = DatabaseConnection.getInstance();
         Connection conn = instance.getConnection();
         addDetails();
-
         Alert.AlertType type = Alert.AlertType.CONFIRMATION;
         Alert alert = new Alert(type, "");
         alert.initModality(Modality.APPLICATION_MODAL);

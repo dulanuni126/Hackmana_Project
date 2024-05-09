@@ -10,6 +10,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
+import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import org.example.hakmana.model.DatabaseConnection;
@@ -17,10 +18,7 @@ import org.example.hakmana.model.DatabaseConnection;
 import javax.swing.*;
 import java.io.IOException;
 import java.net.URL;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.Objects;
 import java.util.Optional;
 import java.util.ResourceBundle;
@@ -36,7 +34,7 @@ public class DeviceInfoCardController extends AnchorPane implements Initializabl
      @FXML
      private TextField userTxt;
      @FXML
-     private TextArea noteTxtArea;
+     private VBox noteTxtArea;
      @FXML
      private AnchorPane root;
      @FXML
@@ -95,8 +93,29 @@ public class DeviceInfoCardController extends AnchorPane implements Initializabl
      }
 
      public void setDevId(String devId) {
+         DatabaseConnection instance = DatabaseConnection.getInstance();
+         Connection conn = instance.getConnection();
+         int r=1;
           this.devId = devId;
           devIdTxt.setText(this.devId);
+         try {
+             Statement str=conn.createStatement();
+             ResultSet rst=str.executeQuery("select title,notes from notes where id='"+devId+"'");
+
+             while(rst.next()){
+                 String finalnote=rst.getString(2);
+                 Button lab=new Button(Integer.toString(r)+")"+rst.getString(1));
+                 lab.setStyle("-fx-background-color: white; -fx-margin:0px 5px 0px 0px;");
+                 noteTxtArea.getChildren().add(lab);
+                 r++;
+
+             }
+             str.close();
+             rst.close();
+         } catch (SQLException e) {
+             throw new RuntimeException(e);
+         }
+
      }
 
      public String getUser() {
@@ -121,10 +140,7 @@ public class DeviceInfoCardController extends AnchorPane implements Initializabl
           return note;
      }
 
-     public void setNote(String note) {
-          this.note = note;
-          noteTxtArea.setText(this.note);
-     }
+
 
      //handle more info button to load DevDetailedView scene
      @FXML
@@ -151,7 +167,7 @@ public class DeviceInfoCardController extends AnchorPane implements Initializabl
      }
 
      //note adding dialog box
-     @FXML
+
      public void popupdialog() {
           FXMLLoader noteFxmlLoader = new FXMLLoader();
           noteFxmlLoader.setLocation(getClass().getResource("Scene/dialogbox.fxml"));
