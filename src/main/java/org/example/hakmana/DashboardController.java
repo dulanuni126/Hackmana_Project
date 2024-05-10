@@ -332,9 +332,6 @@ public class DashboardController extends Component implements Initializable {
 
             }
 
-
-
-
             }
 
 
@@ -361,12 +358,16 @@ public class DashboardController extends Component implements Initializable {
     }
     public void addDeviceBtnDialogOpen(ActionEvent event) throws IOException {
         FXMLLoader addDevicefxmlLoad = new FXMLLoader();
-        addDevicefxmlLoad.setLocation(getClass().getResource("Scene/DialogBox/DesktopForm.fxml"));
+        addDevicefxmlLoad.setLocation(getClass().getResource("Scene/DialogBox/AddDeviceDialog.fxml"));
+
+        AddDeviceDialogController addDeviceDialogController=new AddDeviceDialogController();
+        addDevicefxmlLoad.setController(addDeviceDialogController);
+
         DialogPane addDeviceDialogPane=addDevicefxmlLoad.load();
 
         Dialog<ButtonType> dialog=new Dialog<>();
         dialog.setDialogPane(addDeviceDialogPane);
-        dialog.setTitle("Contact Us");
+        dialog.setTitle("ADD desktop");
 
         Optional<ButtonType> clickedButton=dialog.showAndWait();
 

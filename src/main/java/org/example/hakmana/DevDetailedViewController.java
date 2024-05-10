@@ -297,7 +297,6 @@ public class DevDetailedViewController implements Initializable {
         DevDetailedViewController.deviceSelector = deviceSelector;
     }
 
-
     public void showDeviceDetail(){
         switch (deviceSelector) {
             case "Desktop" -> {

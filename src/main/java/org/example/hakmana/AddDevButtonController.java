@@ -16,16 +16,22 @@ import java.util.Optional;
 import java.util.ResourceBundle;
 
 public class AddDevButtonController extends AnchorPane implements Initializable {
-
-    @FXML
-    private Button addDeviceBtn;
-
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
-
-    }
     @FXML
     private AnchorPane root;
+    private static String devCat;
+    @FXML
+    private Button addDeviceBtn;
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+    }
+
+    public String getDevCat() {
+        return devCat;
+    }
+
+    public void setDevCat(String devCat) {
+        AddDevButtonController.devCat = devCat;
+    }
 
     public AddDevButtonController() {
         super();
@@ -54,8 +60,12 @@ public class AddDevButtonController extends AnchorPane implements Initializable 
     }
     public void addDeviceBtnDialogOpen(ActionEvent event) throws IOException {
         FXMLLoader addDevicefxmlLoad = new FXMLLoader();
-        addDevicefxmlLoad.setLocation(getClass().getResource("Scene/DialogBox/DesktopForm.fxml"));
+        addDevicefxmlLoad.setLocation(getClass().getResource("Scene/DialogBox/AddDeviceDialog.fxml"));
+        AddDeviceDialogController addDeviceDialogController=new AddDeviceDialogController();
+        addDevicefxmlLoad.setController(addDeviceDialogController);
         DialogPane addDeviceDialogPane=addDevicefxmlLoad.load();
+
+        addDeviceDialogController.setCardForm(getDevCat());
 
         Dialog<ButtonType> dialog=new Dialog<>();
         dialog.setDialogPane(addDeviceDialogPane);
