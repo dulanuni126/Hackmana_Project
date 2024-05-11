@@ -148,13 +148,14 @@ public  class dialogPaneController extends Component implements Initializable  {
                     username.setText(null);
                     title.setText(null);
                     note.setText(null);
+                    JOptionPane.showMessageDialog(this, "the note is successfully added!", "alert!", JOptionPane.INFORMATION_MESSAGE);
 
                 } catch (SQLException e) {
-                    throw new RuntimeException(e);
+                    JOptionPane.showMessageDialog(this, "seems like you trying to enter same note\n please use different title", "Rejected!", JOptionPane.ERROR_MESSAGE);
+
                 }
 
 
-                JOptionPane.showMessageDialog(this, "the note is successfully added!", "alert!", JOptionPane.INFORMATION_MESSAGE);
             } else {
                 JOptionPane.showMessageDialog(this, "All fields need to be filled.", "Rejected!", JOptionPane.ERROR_MESSAGE);
             }

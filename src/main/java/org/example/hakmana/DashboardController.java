@@ -232,12 +232,13 @@ public class DashboardController extends Component implements Initializable {
         Optional<ButtonType> reasult = alert.showAndWait();
                 if(reasult.get()==ButtonType.OK) {
                        String  titles = table1.getItems().get(selectedValue).getTitle();
+                       String ids= table1.getItems().get(selectedValue).getId();
                         table1.getItems().remove(selectedValue);
                     table1.getSelectionModel().clearSelection();
                         System.out.println(ids);
                         try {
                             Statement st=conn.createStatement();
-                            st.executeUpdate("delete from notes where title='"+titles+"'");
+                            st.executeUpdate("delete from notes where title='"+titles + "' and id='"+ids+"'");
                             st.close();
                         } catch (SQLException e) {
                             throw new RuntimeException(e);
@@ -265,9 +266,10 @@ public class DashboardController extends Component implements Initializable {
             if(selectedValue>=0) {
 
                 titles = table1.getItems().get(selectedValue).getTitle();
+                ids=table1.getItems().get(selectedValue).getId();
                 try {
                     Statement str2 = conn.createStatement();
-                    ResultSet rs = str2.executeQuery("Select id,username,notes,createdate,title from notes where title='" + titles + "'");
+                    ResultSet rs = str2.executeQuery("Select id,username,notes,createdate,title from notes where title='" + titles + "' and id='"+ids+"'");
                     FXMLLoader fxmlLoader = new FXMLLoader();
                     fxmlLoader.setLocation(getClass().getResource("Scene/View.fxml"));
                     try {
@@ -311,12 +313,13 @@ public class DashboardController extends Component implements Initializable {
                         DateTimeFormatter formatter=DateTimeFormatter.ofPattern("yyyy-MM-dd");
                         String currentDate=localDate.format(formatter);
                         try {
-                            System.out.println("update notes set id='"+id1.getText()+"'"+",username='"+user1.getText()+"',notes='"+note1.getText()+"',title='"+titl1.getText()+" ,createdate='"+currentDate+"' "+" where title='"+titles+"'");
-                            st3.executeUpdate("update notes set id='"+id1.getText()+"'"+",username='"+user1.getText()+"',notes='"+note1.getText()+"',title='"+titl1.getText()+"' ,createdate='"+currentDate+"' "+" where title='"+titles+"'");
+                          //  System.out.println("update notes set id='"+id1.getText()+"'"+",username='"+user1.getText()+"',notes='"+note1.getText()+"',title='"+titl1.getText()+" ,createdate='"+currentDate+"' "+" where title='"+titles+"' and ");
+                            st3.executeUpdate("update notes set id='"+id1.getText()+"'"+",username='"+user1.getText()+"',notes='"+note1.getText()+"',title='"+titl1.getText()+"' ,createdate='"+currentDate+"' "+" where title='"+titles + "' and id='"+ids+"'");
                             tableAdd();
                             st3.close();
                         } catch (SQLException e) {
-                            System.out.println("already have this note");
+                            JOptionPane.showMessageDialog(this, "seems like you trying to enter same note\n please use different title with different id", "Rejected!", JOptionPane.ERROR_MESSAGE);
+
                         }
                        finally{
                             table1.getSelectionModel().clearSelection();
