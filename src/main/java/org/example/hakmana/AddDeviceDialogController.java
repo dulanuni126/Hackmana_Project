@@ -2,19 +2,12 @@ package org.example.hakmana;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Node;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
-import javafx.stage.Modality;
-import javafx.stage.Stage;
 import org.example.hakmana.model.*;
 
-import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
@@ -22,20 +15,18 @@ import java.util.ResourceBundle;
 
 public class AddDeviceDialogController implements Initializable {
     @FXML
-    private ChoiceBox<String> devCat;
+    public ChoiceBox<String> devCat;
     private String devCategoryName;
     private String devRegNum;
 
     //Device details
     //common
     @FXML
-    private VBox commonVbox;
+    public TextField modelTextField;
     @FXML
-    private TextField modelTextField;
+    public TextField regNumTextField;
     @FXML
-    private TextField regNumTextField;
-    @FXML
-    private ChoiceBox<String> StatusChoiseBox;
+    public ChoiceBox<String> StatusChoiseBox;
 
 
     //other details
@@ -43,63 +34,63 @@ public class AddDeviceDialogController implements Initializable {
     private ArrayList<Label> otherLblList;
     private ArrayList<TextField> otherTextList;
     @FXML
-    private VBox otherDetailVbox;
+    public VBox otherDetailVbox;
     @FXML
-    private Label other1Lbl;
+    public Label other1Lbl;
     @FXML
-    private HBox other1Hbox;
+    public HBox other1Hbox;
     @FXML
-    private TextField other1;
+    public TextField other1;
     @FXML
-    private HBox other2Hbox;
+    public HBox other2Hbox;
     @FXML
-    private Label other2Lbl;
+    public Label other2Lbl;
     @FXML
-    private TextField other2;
+    public TextField other2;
     @FXML
-    private HBox other3Hbox;
+    public HBox other3Hbox;
     @FXML
-    private Label other3Lbl;
+    public Label other3Lbl;
     @FXML
-    private TextField other3;
+    public TextField other3;
     @FXML
-    private HBox other4Hbox;
+    public HBox other4Hbox;
     @FXML
-    private Label other4Lbl;
+    public Label other4Lbl;
     @FXML
-    private TextField other4;
+    public TextField other4;
     @FXML
-    private HBox other5Hbox;
+    public HBox other5Hbox;
     @FXML
-    private Label other5Lbl;
+    public Label other5Lbl;
     @FXML
-    private TextField other5;
+    public TextField other5;
     @FXML
-    private HBox other6Hbox;
+    public HBox other6Hbox;
     @FXML
-    private ChoiceBox<String> OSChoiseBox;
+    public ChoiceBox<String> OSChoiseBox;
     @FXML
-    private HBox other7Hbox;
+    public HBox other7Hbox;
     @FXML
-    private Label other7Lbl;
+    public Label other7Lbl;
     @FXML
-    private TextField other7;
+    public TextField other7;
     @FXML
-    private HBox other8Hbox;
+    public HBox other8Hbox;
     @FXML
-    private ChoiceBox<String> FloppyDiskChoiseBox;
+    public ChoiceBox<String> FloppyDiskChoiseBox;
     @FXML
-    private HBox other9Hbox;
+    public HBox other9Hbox;
     @FXML
-    private ChoiceBox<String> SoundCardChoiseBox;
+    public ChoiceBox<String> SoundCardChoiseBox;
     @FXML
-    private HBox other10Hbox;
+    public HBox other10Hbox;
     @FXML
-    private ChoiceBox<String> TVCardChoiseBox;
+    public ChoiceBox<String> TVCardChoiseBox;
     @FXML
-    private HBox other11Hbox;
+    public HBox other11Hbox;
     @FXML
-    private ChoiceBox<String> NetworkCardChoiseBox;
+    public ChoiceBox<String> NetworkCardChoiseBox;
 
 
     //input Dev details
@@ -107,93 +98,91 @@ public class AddDeviceDialogController implements Initializable {
     private ArrayList<Label> inputLblList;
     private ArrayList<TextField> inputTextList;
     @FXML
-    private VBox inputVbox;
+    public VBox inputVbox;
     @FXML
-    private HBox input1Hbox;
+    public HBox input1Hbox;
     @FXML
-    private Label input1Lbl;
+    public Label input1Lbl;
     @FXML
-    private TextField input1;
+    public TextField input1;
     @FXML
-    private HBox input2Hbox;
+    public HBox input2Hbox;
     @FXML
-    private Label input2Lbl;
+    public Label input2Lbl;
     @FXML
-    private TextField input2;
+    public TextField input2;
     @FXML
-    private HBox input3Hbox;
+    public HBox input3Hbox;
     @FXML
-    private Label input3Lbl;
+    public Label input3Lbl;
     @FXML
-    private TextField input3;
+    public TextField input3;
     @FXML
-    private HBox input4Hbox;
+    public HBox input4Hbox;
     @FXML
-    private Label input4Lbl;
+    public Label input4Lbl;
     @FXML
-    private TextField input4;
+    public TextField input4;
 
     //output Dev details
     private ArrayList<HBox> outputHboxList;
     private ArrayList<Label> outputLblList;
     private ArrayList<TextField> outputTextList;
     @FXML
-    private VBox outputVbox;
+    public VBox outputVbox;
     @FXML
-    private HBox output1Hbox;
+    public HBox output1Hbox;
     @FXML
-    private Label output1Lbl;
+    public Label output1Lbl;
     @FXML
-    private TextField output1;
+    public TextField output1;
     @FXML
-    private HBox output2Hbox;
+    public HBox output2Hbox;
     @FXML
-    private Label output2Lbl;
+    public Label output2Lbl;
     @FXML
-    private TextField output2;
+    public TextField output2;
     @FXML
-    private HBox output3Hbox;
+    public HBox output3Hbox;
     @FXML
-    private Label output3Lbl;
+    public Label output3Lbl;
     @FXML
-    private TextField output3;
+    public TextField output3;
 
     //user details
     private ArrayList<TextField> userTextLsit;
     @FXML
-    private VBox userDetailsVbox;
+    public VBox userDetailsVbox;
     @FXML
-    private Button assignUserBtn;
+    public TextField userNIC;
     @FXML
-    private TextField userNIC;
+    public TextField userTitle;
     @FXML
-    private TextField userTitle;
+    public TextField userName;
     @FXML
-    private TextField userName;
-    @FXML
-    private TextField userGmail;
+    public TextField userGmail;
 
     @FXML
-    private HBox interactionHbox;
+    public HBox interactionHbox;
     @FXML
-    private Button submitButton;
+    public Button submitButton;
     @FXML
-    private Button resetBtn;
+    public Button resetBtn;
     @FXML
-    private Button addUserButton;
+    public Button addUserButton;
 
     //Array fo populate the choiceBoxes
-    private String[] devCategories={"Desktop","Photocopy Machines","Monitors","Projectors","Laptops","Printers","UPS"};
-    private String[] deviceStatus={"Active","Repairing","Inactive"};
-    private String[] YN={"Yes","No"};
-    private String[] WinLin={"Windows","Linux"};
-    private String[] OnboardDecicated={"On Board","Dedicated"};
+    private final String[] devCategories={"Desktop","Photocopy Machines","Monitors","Projectors","Laptops","Printers","UPS"};
+    private final String[] deviceStatus={"Active","Repairing","Inactive"};
+    private final String[] YN={"Yes","No"};
+    private final String[] WinLin={"Windows","Linux"};
+    private final String[] OnboardDecicated={"On Board","Dedicated"};
 
     private boolean isFromComponent;
 
     public static User user;
 
-    //for get new vlaues from the textFields
+    //for get new values from the textFields
     ArrayList<String> newValues=new ArrayList<>();
 
     /*----------------------Getters and Setters----------------------*/
@@ -243,13 +232,14 @@ public class AddDeviceDialogController implements Initializable {
         //get all the user textfield
         userTextLsit=new ArrayList<>(List.of(userNIC,userName,userTitle,userGmail));
 
-        reset();
+        resetAll();
 
         //update the register number field realtime
         regNumTextField.textProperty().addListener((observable, oldValue, newValue) -> {
+            //Check the given regNUm is available
+
             // Enable the submitButton only if regNumTextField is not empty
             submitButton.setDisable(newValue.isEmpty());
-            addUserButton.setDisable(newValue.isEmpty() );
 
             //set editable textfield when user enter register number
             setEditable(new ArrayList<>(List.of(modelTextField)),true,"#03AED2");
@@ -266,7 +256,7 @@ public class AddDeviceDialogController implements Initializable {
         //Realtime get the Users
         userNIC.textProperty().addListener((observable, oldValue, newValue) -> {
             // Enable the submitButton only if regNumTextField is not empty
-            assignUserBtn.setDisable(newValue.isEmpty());
+            addUserButton.setDisable(newValue.isEmpty());
 
             // Check if the newValue is available in the users array
             User user = new User().isNicAvailable(newValue);
@@ -280,7 +270,7 @@ public class AddDeviceDialogController implements Initializable {
 
         //update the device category selecting choicebox realtime
         devCat.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
-            reset();
+            resetAll();
             setDevCategoryName(newValue);
             setView();
         });
@@ -356,6 +346,7 @@ public class AddDeviceDialogController implements Initializable {
 
     /*--------------------------Interaction------------------------------------*/
     public void submitButtonOnAction(ActionEvent event) {
+        boolean isSuccessed;
         switch (getDevCategoryName()) {
             case "Desktop" -> {
                 newValues.add(getDevRegNum());
@@ -364,12 +355,14 @@ public class AddDeviceDialogController implements Initializable {
                 getTextFieldText(otherTextList);
                 getTextFieldText(outputTextList);
                 getTextFieldText(inputTextList);
-                getChoiseBoxValue();
+                getChoiceBoxValue();
                 newValues.add(userNIC.getText());
-
                 addUser();
-                new Desktop().insertDevice(newValues);
-                    //showDeviceDetail();
+
+                System.out.println(newValues);
+                isSuccessed=true;
+                //new Desktop().insertDevice(newValues);
+
 
             }
             case "Photocopy Machines" -> {
@@ -379,7 +372,9 @@ public class AddDeviceDialogController implements Initializable {
                 getTextFieldText(otherTextList);
                 newValues.add(getDevRegNum());
 
-                new PhotocpyMchine().insertDevice(newValues);
+                System.out.println(newValues);
+                isSuccessed=true;
+                //new PhotocpyMchine().insertDevice(newValues);
             }
             case "Monitors" -> {
                 newValues.add(getDevRegNum());
@@ -388,19 +383,19 @@ public class AddDeviceDialogController implements Initializable {
                 getTextFieldText(otherTextList);
                 newValues.add(getDevRegNum());
 
-
-                new Monitors().insertDevice(newValues);
+                System.out.println(newValues);
+                isSuccessed=true;
+                //new Monitors().insertDevice(newValues);
 
             }
             case "Projectors" -> {
-                newValues.add(getDevRegNum());
                 newValues.add(modelTextField.getText());
                 newValues.add(StatusChoiseBox.getValue());
-                getTextFieldText(otherTextList);
                 newValues.add(getDevRegNum());
 
-                //System.out.println(newValues);
-                new Projectors().insertDevice(newValues);
+                System.out.println(newValues);
+                isSuccessed=true;
+                //new Projectors().insertDevice(newValues);
 
             }
             case "Laptops" -> {
@@ -412,7 +407,10 @@ public class AddDeviceDialogController implements Initializable {
                 newValues.add(getDevRegNum());
 
                 addUser();
-                new Laptops().insertDevice(newValues);
+
+                System.out.println(newValues);
+                isSuccessed=true;
+                //new Laptops().insertDevice(newValues);
 
 
             }
@@ -423,8 +421,9 @@ public class AddDeviceDialogController implements Initializable {
                 getTextFieldText(otherTextList);
                 newValues.add(getDevRegNum());
 
-
-                new Printer().insertDevice(newValues);
+                System.out.println(newValues);
+                isSuccessed=true;
+                //new Printer().insertDevice(newValues);
 
             }
             case "UPS" -> {
@@ -433,52 +432,71 @@ public class AddDeviceDialogController implements Initializable {
                 newValues.add(StatusChoiseBox.getValue());
                 getTextFieldText(otherTextList);
                 newValues.add(getDevRegNum());
-
-                new UPS().insertDevice(newValues);
+                isSuccessed=true;
+                //new UPS().insertDevice(newValues);
 
             }
-
-            default -> throw new IllegalStateException("Unexpected value: " );
+            default -> {
+                System.out.println(getDevCategoryName());
+                isSuccessed=false;
+            }
         }
 
-    }
-    // Reset the form
-    private void reset(){
-        clearChoiceBox();
-        setChoiceBoxDisablity(true);
-
-        //set non-editable textfield until user enter register number
-        setEditable(new ArrayList<>(List.of(modelTextField)),false,"grey");
-        setEditable(otherTextList,false,"grey");
-        setEditable(inputTextList,false,"grey");
-        setEditable(outputTextList,false,"grey");
-        setEditable(userTextLsit,false,"grey");
-
-        otherDetailVbox.setVisible(false);
-        inputVbox.setVisible(false);
-        outputVbox.setVisible(false);
-        userDetailsVbox.setVisible(false);
-        for(HBox h:otherHboxList){
-            h.setVisible(false);
+        if(isSuccessed) {
+            alert(Alert.AlertType.INFORMATION,"Success","Successfully INSERTED table");
         }
-
-        UserAssignDialogController.isAssignUserButtonClicked=false;
-        addUserButton.setDisable(false);
+        else {
+            alert(Alert.AlertType.WARNING,"Unsuccessful","Something went wrong, inserted table");
+        }
+        resetAll();
     }
 
-    private void clear(){
-        System.out.println("clear");
-    }
-    //cancel button
     @FXML
-    private void cancel(){
-        if(isFromComponent){
-            reset();
+    // Reset the whole form into general form
+    private void resetAll(){
+        clearAll();//clearAll the fields
+        if(!isFromComponent) {
             devCat.setValue("Select device");
+
+            setChoiceBoxDisablity(true);//disable all the choice boxes
+
+            //set text field to non-editable until user enter register number
+            setEditable(new ArrayList<>(List.of(modelTextField)), false, "grey");
+            setEditable(otherTextList, false, "grey");
+            setEditable(inputTextList, false, "grey");
+            setEditable(outputTextList, false, "grey");
+            setEditable(userTextLsit, false, "grey");
+
+            //except the common vbox set all other fields to not visible
+            otherDetailVbox.setVisible(false);
+            inputVbox.setVisible(false);
+            outputVbox.setVisible(false);
+            userDetailsVbox.setVisible(false);
+            for (HBox h : otherHboxList) {
+                h.setVisible(false);
+            }
+
+            //disable the addUserButton
+            addUserButton.setDisable(true);
         }
-        else{
-            clear();
+
+    }
+
+    //clear all  the text field and choice box values
+    private void clearAll(){
+        clearChoiceBox();
+        regNumTextField.clear();
+        modelTextField.clear();
+        for(TextField fields:otherTextList){
+            fields.clear();
         }
+        for(TextField fields:inputTextList){
+            fields.clear();
+        }
+        for(TextField fields:outputTextList){
+            fields.clear();
+        }
+
     }
 
     private void alert(Alert.AlertType alertType,String title,String content){
@@ -489,7 +507,12 @@ public class AddDeviceDialogController implements Initializable {
 
     }
 
+
+
     /*---------------------Create Configurations--------------------*/
+
+    //According to the device selected in DeviceMngmntSmmryScene load the view
+    //disable the devCat dropdown box
     public void setCardForm(String cat){
         devCat.setValue(cat);
         devCat.setDisable(true);
@@ -497,7 +520,7 @@ public class AddDeviceDialogController implements Initializable {
         setView();
     }
 
-    //set disable the choice boxes
+    //set the All Choice box Disability
     private void setChoiceBoxDisablity(boolean isDisable){
         FloppyDiskChoiseBox.setDisable(isDisable);
         OSChoiseBox.setDisable(isDisable);
@@ -507,6 +530,8 @@ public class AddDeviceDialogController implements Initializable {
         OSChoiseBox.setDisable(isDisable);
         NetworkCardChoiseBox.setDisable(isDisable);
     }
+
+    //set the Choice box Visibility(except Status Choice Box)
     private void setChoiceBoxVisibilty(boolean isVisible){
         other6Hbox.setVisible(isVisible);
         other8Hbox.setVisible(isVisible);
@@ -514,33 +539,47 @@ public class AddDeviceDialogController implements Initializable {
         other10Hbox.setVisible(isVisible);
         other11Hbox.setVisible(isVisible);
     }
+
+    //clear all the Choice boxes values
     private void clearChoiceBox(){
-        //clear all the slected choise box values
+        FloppyDiskChoiseBox.getSelectionModel().clearSelection();
         OSChoiseBox.getSelectionModel().clearSelection();
         StatusChoiseBox.getSelectionModel().clearSelection();
         SoundCardChoiseBox.getSelectionModel().clearSelection();
         TVCardChoiseBox.getSelectionModel().clearSelection();
         NetworkCardChoiseBox.getSelectionModel().clearSelection();
     }
-    private void getChoiseBoxValue(){
+
+    //get the Choice Box values and add to the newValues arraylist(except Status Choice Box)
+    private void getChoiceBoxValue(){
         newValues.add(OSChoiseBox.getValue());
         newValues.add(FloppyDiskChoiseBox.getValue());
         newValues.add(SoundCardChoiseBox.getValue());
         newValues.add(TVCardChoiseBox.getValue());
         newValues.add(NetworkCardChoiseBox.getValue());
     }
+
+    //set the text fields editing ability and border color
     private void setEditable(ArrayList<TextField> textFieldslist, boolean setEdit, String color){
         for(TextField textField:textFieldslist){
             textField.setEditable(setEdit);
             textField.setStyle("-fx-border-color: "+color+";-fx-border-width: 2;-fx-border-radius: 5");
         }
     }
+
+    //get the text fields values
     private void getTextFieldText(ArrayList<TextField> textFieldslists){
         for(TextField textField:textFieldslists){
-            if(textField.getText().isEmpty()){
-                alert(Alert.AlertType.ERROR,"Error","Empty Filed detected");
+            if(textField.getText().isEmpty() && !textField.isDisable()){
+                alert(Alert.AlertType.INFORMATION,"Confirm","Empty Field detected");
+                clearAll();
+                resetAll();
+                break;
             }
-            newValues.add(textField.getText());
+            if(!textField.isDisabled()){
+                newValues.add(textField.getText());
+            }
+
         }
     }
 
