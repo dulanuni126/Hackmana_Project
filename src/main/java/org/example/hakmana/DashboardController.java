@@ -313,15 +313,15 @@ public class DashboardController extends Component implements Initializable {
                             System.out.println("update notes set id='"+id1.getText()+"'"+",username='"+user1.getText()+"',notes='"+note1.getText()+"',title='"+titl1.getText()+" ,createdate='"+currentDate+"' "+" where id='"+ids+"'");
                             st3.executeUpdate("update notes set id='"+id1.getText()+"'"+",username='"+user1.getText()+"',notes='"+note1.getText()+"',title='"+titl1.getText()+"' ,createdate='"+currentDate+"' "+" where id='"+ids+"'");
                             tableAdd();
-                        } catch (SQLException e) {
-                            throw new RuntimeException(e);
-                        }
-                        try {
                             st3.close();
                         } catch (SQLException e) {
-                            throw new RuntimeException(e);
+                            System.out.println("already have this note");
                         }
-                        table1.getSelectionModel().clearSelection();
+                       finally{
+                            table1.getSelectionModel().clearSelection();
+
+                        }
+
                     }
                     if(check.get()==ButtonType.CANCEL){
                         table1.getSelectionModel().clearSelection();
