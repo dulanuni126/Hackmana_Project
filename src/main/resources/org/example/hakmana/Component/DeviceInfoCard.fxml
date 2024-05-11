@@ -73,7 +73,7 @@
                     </Pane>
                <ScrollPane layoutX="7.0" layoutY="24.0" prefHeight="62.0" prefWidth="197.0">
                   <content>
-                     <VBox fx:id="noteTxtArea" prefHeight="71.0" prefWidth="195.0" />
+                     <VBox fx:id="noteTxtArea" prefHeight="71.0" prefWidth="195.0" style="-fx-background-color: white;" />
                   </content>
                </ScrollPane>
                 </Pane>

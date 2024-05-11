@@ -27,7 +27,7 @@ public  class dialogPaneController extends Component implements Initializable  {
     @FXML
     private DialogPane dialogpane1;
     @FXML
-    private TextField id;
+    private TextField deviceId;
     @FXML
     private Label date;
     @FXML
@@ -38,26 +38,59 @@ public  class dialogPaneController extends Component implements Initializable  {
 
     @FXML
     private TextField title;
-
     private String ids;
     private String userName;
-
+    private String cardNoteId;
+    private String setDeviceIdName;
     private String Note;
 
     private Stage stage;
 
     private String Title;
 
+    public Stage getStage() {
+        return stage;
+    }
+
+    public void setSetDeviceIdName(String setDeviceIdName) {
+        this.deviceId.setText(setDeviceIdName);
+    }
+    public  void setUser(String userName){
+        this.username.setText(userName);
+    }
+    public void setStage(Stage stage) {
+        this.stage = stage;
+    }
+
+    public void setCardNoteId(String cardNoteId) {
+        this.cardNoteId = cardNoteId;
+    }
+
+
+    public dialogPaneController(String setDeviceIdName) {
+        this.deviceId.setText(setDeviceIdName);
+    }
 
     public dialogPaneController() {
-
     }
 
     public void addDetails() {
-        ids = id.getText().isEmpty() ? null : id.getText();
+        ids = deviceId.getText().isEmpty() ? null : deviceId.getText();
         userName = username.getText().isEmpty() ? null : username.getText();
         Note = note.getText().isEmpty() ? null : note.getText();
         Title=title.getText().isEmpty() ? null : title.getText();
+    }
+
+    public TextField getDeviceId() {
+        return deviceId;
+    }
+
+    public void setUsername(TextField username) {
+        this.username = username;
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
     }
 
     public String getIds() {
@@ -111,7 +144,7 @@ public  class dialogPaneController extends Component implements Initializable  {
                     notesse.setString(5,Title);
                     notesse.executeUpdate();
                     notesse.close();
-                    id.setText(null);
+                    deviceId.setText(null);
                     username.setText(null);
                     title.setText(null);
                     note.setText(null);
