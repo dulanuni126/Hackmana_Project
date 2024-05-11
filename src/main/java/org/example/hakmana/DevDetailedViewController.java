@@ -32,7 +32,8 @@ public class DevDetailedViewController implements Initializable {
     private PathFinderController pathFinderController;
     @FXML
     private ScrollPane formPane;
-
+    @FXML
+    private Button dia;
     //Device details
     //common
     @FXML
@@ -264,7 +265,15 @@ public class DevDetailedViewController implements Initializable {
 
     }
 
-    private void Animation(double animStartPos,double animEndPos){
+    public Button getDia() {
+        return dia;
+    }
+
+    public void setDia(Button dia) {
+        this.dia = dia;
+    }
+
+    private void Animation(double animStartPos, double animEndPos){
         bodyExpand = new TranslateTransition(Duration.millis(300), bodyComponet);
         bodyExpand.setFromX(animStartPos);
         bodyExpand.setToX(animEndPos); // expand VBox
