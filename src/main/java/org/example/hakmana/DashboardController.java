@@ -70,6 +70,7 @@ public class DashboardController extends Component implements Initializable {
     private TableColumn<getNoteController,String> col2;
     @FXML
     private TableColumn<getNoteController, Date> col3;
+    private String titles;
     private String ids;
     private TextField titl1;
     private TextField user1;
@@ -230,13 +231,13 @@ public class DashboardController extends Component implements Initializable {
         alert.getDialogPane().setHeaderText("confirmation!");
         Optional<ButtonType> reasult = alert.showAndWait();
                 if(reasult.get()==ButtonType.OK) {
-                       String  ids = table1.getItems().get(selectedValue).getId();
+                       String  titles = table1.getItems().get(selectedValue).getTitle();
                         table1.getItems().remove(selectedValue);
                     table1.getSelectionModel().clearSelection();
                         System.out.println(ids);
                         try {
                             Statement st=conn.createStatement();
-                            st.executeUpdate("delete from notes where id='"+ids+"'");
+                            st.executeUpdate("delete from notes where title='"+titles+"'");
                             st.close();
                         } catch (SQLException e) {
                             throw new RuntimeException(e);
@@ -263,10 +264,10 @@ public class DashboardController extends Component implements Initializable {
             System.out.println(selectedValue);
             if(selectedValue>=0) {
 
-                ids = table1.getItems().get(selectedValue).getId();
+                titles = table1.getItems().get(selectedValue).getTitle();
                 try {
                     Statement str2 = conn.createStatement();
-                    ResultSet rs = str2.executeQuery("Select id,username,notes,createdate,title from notes where id='" + ids + "'");
+                    ResultSet rs = str2.executeQuery("Select id,username,notes,createdate,title from notes where title='" + titles + "'");
                     FXMLLoader fxmlLoader = new FXMLLoader();
                     fxmlLoader.setLocation(getClass().getResource("Scene/View.fxml"));
                     try {
@@ -310,8 +311,8 @@ public class DashboardController extends Component implements Initializable {
                         DateTimeFormatter formatter=DateTimeFormatter.ofPattern("yyyy-MM-dd");
                         String currentDate=localDate.format(formatter);
                         try {
-                            System.out.println("update notes set id='"+id1.getText()+"'"+",username='"+user1.getText()+"',notes='"+note1.getText()+"',title='"+titl1.getText()+" ,createdate='"+currentDate+"' "+" where id='"+ids+"'");
-                            st3.executeUpdate("update notes set id='"+id1.getText()+"'"+",username='"+user1.getText()+"',notes='"+note1.getText()+"',title='"+titl1.getText()+"' ,createdate='"+currentDate+"' "+" where id='"+ids+"'");
+                            System.out.println("update notes set id='"+id1.getText()+"'"+",username='"+user1.getText()+"',notes='"+note1.getText()+"',title='"+titl1.getText()+" ,createdate='"+currentDate+"' "+" where title='"+titles+"'");
+                            st3.executeUpdate("update notes set id='"+id1.getText()+"'"+",username='"+user1.getText()+"',notes='"+note1.getText()+"',title='"+titl1.getText()+"' ,createdate='"+currentDate+"' "+" where title='"+titles+"'");
                             tableAdd();
                             st3.close();
                         } catch (SQLException e) {
