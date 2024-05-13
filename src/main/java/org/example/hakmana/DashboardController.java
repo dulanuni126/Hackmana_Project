@@ -80,9 +80,6 @@ public class DashboardController extends Component implements Initializable {
     private  Label date1;
 
 
-
-
-
     public void initialize(URL location, ResourceBundle resources) {
         //automaticaly upadate the cards
 
