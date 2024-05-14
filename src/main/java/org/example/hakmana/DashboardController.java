@@ -70,6 +70,7 @@ public class DashboardController extends Component implements Initializable {
     private TableColumn<getNoteController,String> col2;
     @FXML
     private TableColumn<getNoteController, Date> col3;
+    private String titles;
     private String ids;
     private TextField titl1;
     private TextField user1;
@@ -82,97 +83,73 @@ public class DashboardController extends Component implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
         //automaticaly upadate the cards
 
-        try{
+        try {
             //create the connections
-            DatabaseConnection instance=DatabaseConnection.getInstance();
-            Connection conn=instance.getConnection();
+            DatabaseConnection instance = DatabaseConnection.getInstance();
+            Connection conn = instance.getConnection();
 
             int count1;
             int count2;
             int count3;
             int count4;
             //get numbers of columns from database
-            Statement st=conn.createStatement();
-            ResultSet rs=st.executeQuery("SELECT t.TABLE_NAME\n" +
+            Statement st = conn.createStatement();
+            ResultSet rs = st.executeQuery("SELECT t.TABLE_NAME\n" +
                     "FROM information_schema.TABLES t\n" +
                     "INNER JOIN information_schema.COLUMNS c ON t.TABLE_NAME = c.TABLE_NAME\n" +
-                    "WHERE c.COLUMN_NAME = 'regNum' \n" +
+                    "WHERE c.COLUMN_NAME = 'status' \n" +
                     "  AND t.TABLE_SCHEMA = 'hakmanaedm'");
-            int size=0;
-            while(rs.next()){
+            int size = 0;
+            while (rs.next()) {
                 size++;
             }
 
-            String[] table=new String[size];
-            int item=0;
+            String[] table = new String[size];
+            int item = 0;
             rs.close();
-            ResultSet rs0=st.executeQuery("SELECT t.TABLE_NAME\n" +
+            ResultSet rs0 = st.executeQuery("SELECT t.TABLE_NAME\n" +
                     "FROM information_schema.TABLES t\n" +
                     "INNER JOIN information_schema.COLUMNS c ON t.TABLE_NAME = c.TABLE_NAME\n" +
-                    "WHERE c.COLUMN_NAME = 'regNum' \n" +
+                    "WHERE c.COLUMN_NAME = 'status' \n" +
                     "  AND t.TABLE_SCHEMA = 'hakmanaedm';");
-            while(rs0.next()) {
+            while (rs0.next()) {
 
                 table[item] = rs0.getString(1);
                 item++;
+                System.out.println(rs0.getString(1));
 
             }
             rs0.close();
             //update the cards
-            for(int j=0;j<size;j++) {
-                count1=0;
-                count2=0;
-                count3=0;
-                count4=0;
+            for (int j = 0; j < size; j++) {
+                count1 = 0;
+                count2 = 0;
+                count3 = 0;
+                count4 = 0;
 
-                if((table[j].equals("desktop")) || (table[j].equals("photocopymachine")) || (table[j].equals("monitors")) || (table[j].equals("multimediaprojector")) || (table[j].equals("laptop")) || (table[j].equals("ups"))  ) {
-                    PreparedStatement pr = conn.prepareStatement("SELECT regNum FROM " +table[j]+ " WHERE status=?");
-                    pr.setString(1, "Active");
-                    ResultSet rs1 = pr.executeQuery();
-                    while (rs1.next()) {
-                        count1++;
+                if ((table[j].equals("desktop")) || (table[j].equals("photocopymachine")) || (table[j].equals("monitor")) || (table[j].equals("multimediaProjector")) || (table[j].equals("laptop")) || (table[j].equals("ups"))) {
+
+                    if (table[j].equals("desktop")) {
+                        dashboardCardUpdate(count1,count2,count3,count4,table[j],"DesRegNum");
                     }
-                    Label label1 = new Label(table[j] +"\t\t\t"+ Integer.toString(count1));
-                    vbox5.setMargin(label1, new Insets(0, 0, 0, 10));
-                    vbox5.getChildren().add(label1);
-                    rs1.close();
-
-                    pr.setString(1, "Repairing");
-                    ResultSet rs4 = pr.executeQuery();
-                    while (rs4.next()) {
-                        count3++;
+                    else if(table[j].equals("photocopymachine")){
+                        dashboardCardUpdate(count1,count2,count3,count4,table[j],"PhotoCopyMachineRegNum");
                     }
-                    Label label4 = new Label(table[j] +"\t\t\t"+ Integer.toString(count3));
-                    vbox1.setMargin(label4, new Insets(0, 0, 0, 10));
-                    vbox1.getChildren().add(label4);
-                    rs4.close();
-
-                    pr.setString(1, "Not Assign");
-                    ResultSet rs5 = pr.executeQuery();
-                    while (rs5.next()) {
-                        count4++;
+                    else if(table[j].equals("monitor")){
+                        dashboardCardUpdate(count1,count2,count3,count4,table[j],"MonitorRegNum");
                     }
-                    Label label5 = new Label(table[j] +"\t\t\t"+ Integer.toString(count4));
-                    vbox3.setMargin(label5, new Insets(0, 0, 0, 10));
-                    vbox3.getChildren().add(label5);
-                    rs5.close();
-
-                    pr.setString(1, "Inactive");
-                    ResultSet rs2 = pr.executeQuery();
-                    while (rs2.next()) {
-                        count2++;
+                    else if(table[j].equals("multimediaProjector")){
+                        dashboardCardUpdate(count1,count2,count3,count4,table[j],"MultimediaProjectorRegNum");
                     }
-                    Label label2 = new Label(table[j] + "\t\t\t "+Integer.toString(count2));
-                    vbox2.setMargin(label2, new Insets(0, 0, 0, 10));
-                    vbox2.getChildren().add(label2);
-                    rs2.close();
-                    Label label3=new Label(table[j] + "\t\t\t"+Integer.toString(count1+count2+count3+count4));
-                    vbox4.setMargin(label3, new Insets(0, 0, 0, 10));
-                    vbox4.getChildren().add(label3);
-
+                    else if(table[j].equals("laptop")){
+                        dashboardCardUpdate(count1,count2,count3,count4,table[j],"LaptopRegNum");
+                    }
+                    else if(table[j].equals("ups")){
+                        dashboardCardUpdate(count1,count2,count3,count4,table[j],"upsRegNum");
+                    }
                 }
-            }
 
+            }
         }
         catch (SQLException e) {
             e.printStackTrace();
@@ -201,6 +178,61 @@ public class DashboardController extends Component implements Initializable {
 
 
     }
+    public void dashboardCardUpdate(int count1,int count2,int count3,int count4,String tableValue,String regNum ){
+        DatabaseConnection instance=DatabaseConnection.getInstance();
+        Connection conn=instance.getConnection();
+        PreparedStatement pr = null;
+        try {
+            pr = conn.prepareStatement("SELECT "+regNum+" FROM " +tableValue+ " WHERE status=?");
+            System.out.println("SELECT "+regNum+" FROM " +tableValue+ " WHERE status=?");
+            pr.setString(1, "Active");
+            ResultSet rs1 = pr.executeQuery();
+            while (rs1.next()) {
+                count1++;
+            }
+            Label label1 = new Label(tableValue +"\t\t\t"+ Integer.toString(count1));
+            vbox5.setMargin(label1, new Insets(0, 0, 0, 10));
+            vbox5.getChildren().add(label1);
+            rs1.close();
+
+            pr.setString(1, "Repairing");
+            ResultSet rs4 = pr.executeQuery();
+            while (rs4.next()) {
+                count3++;
+            }
+            Label label4 = new Label(tableValue+"\t\t\t"+ Integer.toString(count3));
+            vbox1.setMargin(label4, new Insets(0, 0, 0, 10));
+            vbox1.getChildren().add(label4);
+            rs4.close();
+
+            pr.setString(1, "Not Assign");
+            ResultSet rs5 = pr.executeQuery();
+            while (rs5.next()) {
+                count4++;
+            }
+            Label label5 = new Label(tableValue +"\t\t\t"+ Integer.toString(count4));
+            vbox3.setMargin(label5, new Insets(0, 0, 0, 10));
+            vbox3.getChildren().add(label5);
+            rs5.close();
+
+            pr.setString(1, "Inactive");
+            ResultSet rs2 = pr.executeQuery();
+            while (rs2.next()) {
+                count2++;
+            }
+            Label label2 = new Label(tableValue + "\t\t\t "+Integer.toString(count2));
+            vbox2.setMargin(label2, new Insets(0, 0, 0, 10));
+            vbox2.getChildren().add(label2);
+            rs2.close();
+            Label label3=new Label(tableValue + "\t\t\t"+Integer.toString(count1+count2+count3+count4));
+            vbox4.setMargin(label3, new Insets(0, 0, 0, 10));
+            vbox4.getChildren().add(label3);
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
+    }
 
     public void tableAdd(){
                 getDataController controller=new getDataController();
@@ -227,13 +259,14 @@ public class DashboardController extends Component implements Initializable {
         alert.getDialogPane().setHeaderText("confirmation!");
         Optional<ButtonType> reasult = alert.showAndWait();
                 if(reasult.get()==ButtonType.OK) {
-                       String  ids = table1.getItems().get(selectedValue).getId();
+                       String  titles = table1.getItems().get(selectedValue).getTitle();
+                       String ids= table1.getItems().get(selectedValue).getId();
                         table1.getItems().remove(selectedValue);
                     table1.getSelectionModel().clearSelection();
                         System.out.println(ids);
                         try {
                             Statement st=conn.createStatement();
-                            st.executeUpdate("delete from notes where id='"+ids+"'");
+                            st.executeUpdate("delete from notes where title='"+titles + "' and id='"+ids+"'");
                             st.close();
                         } catch (SQLException e) {
                             throw new RuntimeException(e);
@@ -260,10 +293,11 @@ public class DashboardController extends Component implements Initializable {
             System.out.println(selectedValue);
             if(selectedValue>=0) {
 
-                ids = table1.getItems().get(selectedValue).getId();
+                titles = table1.getItems().get(selectedValue).getTitle();
+                ids=table1.getItems().get(selectedValue).getId();
                 try {
                     Statement str2 = conn.createStatement();
-                    ResultSet rs = str2.executeQuery("Select id,username,notes,createdate,title from notes where id='" + ids + "'");
+                    ResultSet rs = str2.executeQuery("Select id,username,notes,createdate,title from notes where title='" + titles + "' and id='"+ids+"'");
                     FXMLLoader fxmlLoader = new FXMLLoader();
                     fxmlLoader.setLocation(getClass().getResource("Scene/View.fxml"));
                     try {
@@ -307,12 +341,13 @@ public class DashboardController extends Component implements Initializable {
                         DateTimeFormatter formatter=DateTimeFormatter.ofPattern("yyyy-MM-dd");
                         String currentDate=localDate.format(formatter);
                         try {
-                            System.out.println("update notes set id='"+id1.getText()+"'"+",username='"+user1.getText()+"',notes='"+note1.getText()+"',title='"+titl1.getText()+" ,createdate='"+currentDate+"' "+" where id='"+ids+"'");
-                            st3.executeUpdate("update notes set id='"+id1.getText()+"'"+",username='"+user1.getText()+"',notes='"+note1.getText()+"',title='"+titl1.getText()+"' ,createdate='"+currentDate+"' "+" where id='"+ids+"'");
+                          //  System.out.println("update notes set id='"+id1.getText()+"'"+",username='"+user1.getText()+"',notes='"+note1.getText()+"',title='"+titl1.getText()+" ,createdate='"+currentDate+"' "+" where title='"+titles+"' and ");
+                            st3.executeUpdate("update notes set id='"+id1.getText()+"'"+",username='"+user1.getText()+"',notes='"+note1.getText()+"',title='"+titl1.getText()+"' ,createdate='"+currentDate+"' "+" where title='"+titles + "' and id='"+ids+"'");
                             tableAdd();
                             st3.close();
                         } catch (SQLException e) {
-                            System.out.println("already have this note");
+                            JOptionPane.showMessageDialog(this, "seems like you trying to enter same note again\n please use different title ", "Rejected!", JOptionPane.ERROR_MESSAGE);
+
                         }
                        finally{
                             table1.getSelectionModel().clearSelection();
