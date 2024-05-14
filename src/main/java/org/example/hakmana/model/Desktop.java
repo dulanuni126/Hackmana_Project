@@ -425,8 +425,8 @@ public class Desktop extends Devices {
         //pass query to the connection class
         String sql="INSERT INTO desktop (regNum,model,status,serialNum,purchasedFrom,ram," +
                 "processor,warranty,hardDisk,os,floppyDisk,soundCard,tvCard,networkCard,monitorRegNum," +
-                "projectorRegNum,speakerRegNum,mouseRegNum,keyboardRegNum,micRegNum,scannerRegNum,userNIC" +
-                "VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?))";
+                "projectorRegNum,speakerRegNum,mouseRegNum,keyboardRegNum,micRegNum,scannerRegNum,userNIC)" +
+                "VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
         try {
             connection.setAutoCommit(false);
 
@@ -442,7 +442,7 @@ public class Desktop extends Devices {
             //Check confirmation to change
             Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
             alert.setTitle("Confirmation");
-            alert.setContentText("Update "+ i+" rows desktop registration number " +list.get(20));
+            alert.setContentText("Update "+ i+" rows desktop registration number " +list.getFirst());
 
             Optional<ButtonType> alertResult = alert.showAndWait();//wait until button press in alert box
 

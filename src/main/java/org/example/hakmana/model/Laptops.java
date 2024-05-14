@@ -286,8 +286,8 @@ public class Laptops extends Devices{
         conn = DatabaseConnection.getInstance();
         Connection connection= conn.getConnection();
         //pass query to the connection class
-        String sql="INSERT INTO lapop (regNum,model,status,ram,processor,os,floppyDisk,userNIC" +
-                "VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?))";
+        String sql="INSERT INTO laptop (regNum,model,status,ram,CPU,Storage,Display,GraphicsCard,OperatingSystem,userNIC)" +
+                "VALUES (?,?,?,?,?,?,?,?,?,?)";
         try {
             connection.setAutoCommit(false);
 
@@ -303,7 +303,7 @@ public class Laptops extends Devices{
             //Check confirmation to change
             Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
             alert.setTitle("Confirmation");
-            alert.setContentText("Update "+ i+" rows desktop registration number " +list.get(20));
+            alert.setContentText("Update "+ i+" rows desktop registration number " +list.getFirst());
 
             Optional<ButtonType> alertResult = alert.showAndWait();//wait until button press in alert box
 

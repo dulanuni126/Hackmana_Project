@@ -36,7 +36,7 @@
                               </HBox.margin>
                           </Label>
                           <Button fx:id="submitButton" layoutX="405.0" layoutY="19.0" mnemonicParsing="false" onAction="#submitButtonOnAction" prefWidth="80.0" styleClass="btn" text="Submit" />
-                          <Button fx:id="resetBtn" layoutX="460.0" layoutY="19.0" mnemonicParsing="false" onAction="#resetAll" prefWidth="80.0" styleClass="btn" text="Reset" />
+                          <Button fx:id="resetBtn" layoutX="460.0" layoutY="19.0" mnemonicParsing="false" onAction="#resetBtnAction" prefWidth="80.0" styleClass="btn" text="Reset" />
                       </children>
                   </HBox>
                   <HBox spacing="20.0">

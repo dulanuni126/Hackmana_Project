@@ -182,8 +182,7 @@ public class PhotocpyMchine extends Devices {
         conn = DatabaseConnection.getInstance();
         Connection connection = conn.getConnection();
         //pass query to the connection class
-        String sql = "INSERT INTO PhotoCopyMachine (regNum,model,status,CopyingCapability)" +
-                "VALUES (?,?,?,?))";
+        String sql = "INSERT INTO PhotoCopyMachine (regNum,model,status,CopyingCapability) VALUES (?,?,?,?)";
         try {
             connection.setAutoCommit(false);
 
@@ -199,7 +198,7 @@ public class PhotocpyMchine extends Devices {
             //Check confirmation to change
             Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
             alert.setTitle("Confirmation");
-            alert.setContentText("Update " + i + " rows desktop registration number " + list.get(20));
+            alert.setContentText("Update " + i + " rows desktop registration number " + list.getFirst());
 
             Optional<ButtonType> alertResult = alert.showAndWait();//wait until button press in alert box
 
