@@ -111,8 +111,9 @@ public class DeviceCategoryCardController extends AnchorPane implements Initiali
             //After loading, set device name using setter
             controller.setDbSelector(selectedDeviceName);
             //System.out.println(controller.getDbSelector());
-            controller.addComponent();
             controller.addLastComponent();
+            controller.addComponent();
+
         }
         //For change the scene when press the button
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();

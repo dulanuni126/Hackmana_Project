@@ -109,7 +109,6 @@ public class DesktopFormController implements Initializable {
     }
 
 
-
     public void desktop(ActionEvent event) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("Scene/desktop.fxml"));
         stage=(Stage)((Node)event.getSource()).getScene().getWindow();
