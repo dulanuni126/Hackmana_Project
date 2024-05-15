@@ -7,22 +7,27 @@
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.Pane?>
+<?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Text?>
 
 <DialogPane fx:id="dialogpane1" expanded="true" prefHeight="446.0" prefWidth="535.0" stylesheets="@CSS/dialogPane.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.hakmana.dialogPaneController">
    <graphic>
-      <Pane prefHeight="380.0" prefWidth="534.0" style="-fx-background-color: linear-gradient( #CFCDCD -9.83%, #F2F1F1 114.02%);;">
+      <Pane prefHeight="370.0" prefWidth="534.0" style="-fx-background-color: linear-gradient( #CFCDCD -9.83%, #F2F1F1 114.02%);;">
          <children>
-            <TextField fx:id="title" layoutX="174.0" layoutY="64.0" prefHeight="25.0" prefWidth="292.0" />
-            <Text layoutX="35.0" layoutY="82.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="txt" text="Title of the note:" />
-            <Label fx:id="date" alignment="CENTER" layoutX="391.0" layoutY="23.0" prefHeight="23.0" prefWidth="151.0" styleClass="txt" text="Label" />
-            <Text layoutX="353.0" layoutY="182.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="txt" text="Device ID" />
-            <Text layoutX="348.0" layoutY="247.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="txt" text="User Name" />
-            <Text layoutX="25.0" layoutY="123.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="txt" text="Description" />
-            <TextField fx:id="deviceId" layoutX="320.0" layoutY="200.0" prefHeight="25.0" prefWidth="191.0" />
-            <TextField fx:id="username" layoutX="321.0" layoutY="265.0" prefHeight="25.0" prefWidth="189.0" />
-            <TextArea fx:id="note" layoutX="14.0" layoutY="137.0" prefHeight="176.0" prefWidth="293.0" />
-            <Button layoutX="20.0" layoutY="331.0" mnemonicParsing="false" onAction="#createnote" styleClass="bttn" text="ADD Note" />
+            <TextField fx:id="title" layoutX="15.0" layoutY="34.0" prefHeight="25.0" prefWidth="292.0" />
+            <Text layoutX="25.0" layoutY="28.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="txt" text="Title of the note:" />
+            <Label fx:id="date" alignment="CENTER" layoutX="333.0" layoutY="32.0" prefHeight="26.0" prefWidth="174.0" style="-fx-background-color: white;" styleClass="txt" text="Label" />
+            <Text layoutX="325.0" layoutY="149.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="txt" text="Device ID" />
+            <Text layoutX="326.0" layoutY="225.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="txt" text="User Name" />
+            <Text layoutX="15.0" layoutY="94.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="txt" text="Description" />
+            <TextField fx:id="deviceId" layoutX="325.0" layoutY="173.0" prefHeight="25.0" prefWidth="191.0" />
+            <TextField fx:id="username" layoutX="326.0" layoutY="240.0" prefHeight="25.0" prefWidth="189.0" />
+            <TextArea fx:id="note" layoutX="7.0" layoutY="106.0" prefHeight="203.0" prefWidth="301.0" />
+            <Button layoutX="19.0" layoutY="313.0" mnemonicParsing="false" onAction="#createnote" styleClass="bttn" text="ADD Note" />
+            <Line endX="100.0" layoutX="422.0" layoutY="107.0" startX="-103.39999389648438" startY="7.62939453125E-6" />
+            <Line endX="100.0" layoutX="423.0" layoutY="309.0" startX="-102.93661499023438" startY="-3.0517578125E-5" />
+            <Line endX="98.11256408691406" layoutX="322.0" layoutY="209.0" rotate="90.0" startX="-103.39999389648438" startY="7.62939453125E-6" />
+            <Line endX="100.0" layoutX="525.0" layoutY="207.0" rotate="90.0" startX="-103.39999389648438" startY="7.62939453125E-6" />
          </children>
       </Pane>
    </graphic>
