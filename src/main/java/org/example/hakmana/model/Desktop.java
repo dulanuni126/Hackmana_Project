@@ -335,7 +335,7 @@ public class Desktop extends Devices {
         String sql="UPDATE desktop SET model=?,status=?,serialNum=?,purchasedFrom=?,ram=?," +
                 "processor=?,warranty=?,hardDisk=?,os=?,floppyDisk=?,soundCard=?,tvCard=?,networkCard=?,monitorRegNum=?," +
                 "projectorRegNum=?,speakerRegNum=?,mouseRegNum=?,keyboardRegNum=?,micRegNum=?,scannerRegNum=?" +
-                "WHERE regNUM=?";
+                "WHERE regNum=?";
         try {
             connection.setAutoCommit(false);
 
@@ -381,7 +381,7 @@ public class Desktop extends Devices {
         conn = DatabaseConnection.getInstance();
         Connection connection= conn.getConnection();
         //pass query to the connection class
-        String sql="UPDATE desktop SET userNIC=? WHERE regNUM=?";
+        String sql="UPDATE desktop SET userNIC=? WHERE regNum=?";
         try {
             connection.setAutoCommit(false);
             PreparedStatement ps = connection.prepareStatement(sql);
@@ -414,6 +414,55 @@ public class Desktop extends Devices {
             Alert alert=new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Error Updating User");
             alert.setHeaderText("An error occurred while updating the device user.");
+            alert.setContentText(e.getMessage());
+            alert.showAndWait();
+        }
+        return false;
+    }
+    public boolean insertDevice(ArrayList<String> list){
+        conn = DatabaseConnection.getInstance();
+        Connection connection= conn.getConnection();
+        //pass query to the connection class
+        String sql="INSERT INTO desktop (regNum,model,status,serialNum,purchasedFrom,ram," +
+                "processor,warranty,hardDisk,os,floppyDisk,soundCard,tvCard,networkCard,monitorRegNum," +
+                "projectorRegNum,speakerRegNum,mouseRegNum,keyboardRegNum,micRegNum,scannerRegNum,userNIC)" +
+                "VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+        try {
+            connection.setAutoCommit(false);
+
+            int i=1;
+            PreparedStatement ps = connection.prepareStatement(sql);
+            for(String l:list){
+                ps.setString(i,l);
+                i++;
+            }
+
+            i=ps.executeUpdate();
+
+            //Check confirmation to change
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+            alert.setTitle("Confirmation");
+            alert.setContentText("Update "+ i+" rows desktop registration number " +list.getFirst());
+
+            Optional<ButtonType> alertResult = alert.showAndWait();//wait until button press in alert box
+
+            //if alert box ok pressed execute sql quires
+            if (alertResult.isPresent() && alertResult.get() == ButtonType.OK) {
+                // commit the sql quires
+                connection.commit();
+                connection.setAutoCommit(true);
+                return true;
+            } else {
+                connection.rollback();
+                connection.setAutoCommit(true);
+                return false;
+            }
+
+        } catch (SQLException e) {
+            // Rollback the transaction on error
+            Alert alert=new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error Updating Device");
+            alert.setHeaderText("An error occurred while updating the device.");
             alert.setContentText(e.getMessage());
             alert.showAndWait();
         }

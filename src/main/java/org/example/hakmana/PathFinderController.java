@@ -108,8 +108,8 @@ public class PathFinderController extends VBox implements Initializable {
                 root=deviceSmmryfxmlLoder.load();// Load the scene
 
                 //Using Setter Method
-                deviceMngmntSmmryScene.addComponent();
                 deviceMngmntSmmryScene.addLastComponent();
+                deviceMngmntSmmryScene.addComponent();
                 break;
             case ("Scene/DevDetailedView.fxml"):
                 // Load the FXML loader for the target scene

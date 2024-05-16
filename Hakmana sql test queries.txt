@@ -1,5 +1,5 @@
 -- INSERT queries for the user table
-INSERT INTO user (userNIC, name, title, gmail) VALUES
+INSERT INTO deviceuser VALUES
 ('1234567890123', 'John Doe', 'Mr.', 'john.doe@gmail.com'),
 ('9876543210987', 'Jane Smith', 'Ms.', 'jane.smith@gmail.com'),
 ('4567890123456', 'Michael Johnson', 'Mr.', 'michael.johnson@gmail.com'),
@@ -13,7 +13,7 @@ INSERT INTO user (userNIC, name, title, gmail) VALUES
 
 
 -- INSERT queries for the Desktop table
-INSERT INTO desktop (regNum, serialNum, model, purchasedFrom, ram, processor, warranty, hardDisk, os, status, floppyDisk, soundCard, tvCard, networkCard) 
+INSERT INTO desktop  
 VALUES 
 ('REG001', 'SN001', 'Desktop Model 1', 'Store A', '8GB', 'Intel i5', '1 Year', '1TB', 'Windows 10', 'Active', 'Yes', 'Sound Blaster', 'N/A', 'Realtek'),
 ('REG002', 'SN002', 'Desktop Model 2', 'Store B', '16GB', 'AMD Ryzen 7', '2 Years', '2TB', 'Ubuntu 20.04', 'Active', 'No', 'Integrated', 'N/A', 'Intel'),
