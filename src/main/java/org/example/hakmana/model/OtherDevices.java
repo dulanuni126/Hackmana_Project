@@ -1,12 +1,16 @@
 package org.example.hakmana.model;
 
+import javafx.fxml.Initializable;
+
+import java.net.URL;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.ResourceBundle;
 
-public class OtherDevices{
-    private final DatabaseConnection databaseConnection;
+public class OtherDevices {
+    private DatabaseConnection databaseConnection ;
     private static Connection connection;
     private static List<String> excludedTables;
     private static List<String> devices;
@@ -21,18 +25,19 @@ public class OtherDevices{
     private int numInactiveDev;
     private int numRepairingDev;
 
+
     //empty constructor for this class
     public OtherDevices() {
-        //this list contains the main devices list
-        excludedTables = Arrays.asList("desktop","monitors","laptop","printer","ups","multimediaprojector","photocopymachine");
 
-        //store the other devices list
-        devices = new ArrayList<>();
+    }
 
-        //create the database connection
-        databaseConnection = DatabaseConnection.getInstance();
-        connection = databaseConnection.getConnection();
-
+    public OtherDevices(int num, String dev, int totalDev, int numActiveDev, int numInactiveDev, int numRepairingDev) {
+        this.num = num;
+        this.dev = dev;
+        this.totalDev = totalDev;
+        this.numActiveDev = numActiveDev;
+        this.numInactiveDev = numInactiveDev;
+        this.numRepairingDev = numRepairingDev;
     }
 
     public void setTotalDev(int totalDev) {
@@ -51,10 +56,31 @@ public class OtherDevices{
         return numRepairingDev;
     }
 
+    public int getNum() {
+        return num;
+    }
+
+    public String getDev() {
+        return dev;
+    }
+
+    public int getTotalDev() {
+        return totalDev;
+    }
+
     public static List<String> getExcludedTables() {
         return excludedTables;
     }
     public List<String> getDevices() {
+        //create the database connection
+        databaseConnection = DatabaseConnection.getInstance();
+        connection = databaseConnection.getConnection();
+        //this list contains the main devices list
+        excludedTables = Arrays.asList("desktop","monitors","laptop","printer","ups","multimediaprojector","photocopymachine");
+
+        //store the other devices list
+        devices = new ArrayList<>();
+
         if (!devicesLoaded) {
             // Fetch table names and populate devices list
             fetchTableNames();
@@ -137,5 +163,7 @@ public class OtherDevices{
         System.out.println("Number of inactive devices: " + numInactiveDev);
         System.out.println("Number of repairing devices: " + numRepairingDev);
     }
+
+
 }
 

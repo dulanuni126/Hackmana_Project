@@ -1,6 +1,7 @@
 package org.example.hakmana;
 
 import javafx.animation.TranslateTransition;
+import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -51,7 +52,6 @@ public class OtherDevicesController implements Initializable {
     @FXML
     private TableColumn<OtherDevices, Integer> repairClmn;
 
-
     ObservableList<OtherDevices> observableOtherDevices;
 
     public void initialize(URL location, ResourceBundle resources) {
@@ -74,13 +74,12 @@ public class OtherDevicesController implements Initializable {
             }
         });
 
-        num.setCellValueFactory(new PropertyValueFactory<OtherDevices ,Integer>(""));
-//        deviceNameClmn.setCellValueFactory(new PropertyValueFactory<OtherDevices ,String>(""));
-//        activeClmn.setCellValueFactory(new PropertyValueFactory<OtherDevices ,String>(""));
-//        inactiveClmn.setCellValueFactory(new PropertyValueFactory<OtherDevices ,String>(""));
-//        deviceNameClmn.setCellValueFactory(new PropertyValueFactory<OtherDevices ,String>(""));
-//        repairClmn.setCellValueFactory(new PropertyValueFactory<OtherDevices ,String>(""));
-//        totalClmn.setCellValueFactory(new PropertyValueFactory<OtherDevices ,String>(""));
+        num.setCellValueFactory(new PropertyValueFactory<OtherDevices ,Integer>("num"));
+        deviceNameClmn.setCellValueFactory(new PropertyValueFactory<OtherDevices ,String>("dev"));
+        activeClmn.setCellValueFactory(new PropertyValueFactory<OtherDevices ,Integer>("numActiveDev"));
+        inactiveClmn.setCellValueFactory(new PropertyValueFactory<OtherDevices ,Integer>("numInactiveDev"));
+        repairClmn.setCellValueFactory(new PropertyValueFactory<OtherDevices ,Integer>("numRepairingDev"));
+        totalClmn.setCellValueFactory(new PropertyValueFactory<OtherDevices ,Integer>("totalDev"));
 
         populateGridPane();
     }
@@ -108,34 +107,21 @@ public class OtherDevicesController implements Initializable {
 
     public void populateGridPane() {
         new Thread(() -> {
+            observableOtherDevices= FXCollections.observableArrayList();
             List<String> devices =otherDevicesDb.getDevices();
-
         try {
             int row = 1;  // Start adding devices from row 1 (after header row)
             for (String d : devices) {
-                Label rowLabel = new Label(String.valueOf(row));
-                Label nameLabel = new Label(d);
-//                Label totalValueLabel = new Label(String.valueOf(device.getTotal()));
-//                Label activeValueLabel = new Label(String.valueOf(device.getActive()));
-//                Label inactiveValueLabel = new Label(String.valueOf(device.getInactive()));
-//                Label repairingValueLabel = new Label(String.valueOf(device.getRepairing()));
-
+                observableOtherDevices.addAll(new OtherDevices(row,d,0,0,0,0));
+                row++;
             }
         } catch (RuntimeException e) {
             e.printStackTrace();
         }
+        otherDeviceTblView.setItems(observableOtherDevices);
     }).start();
     }
 
-//    private void  setDevInfo(String devName,int noOfDev,int noOfAcDev,int noOfInAcDev) {
-//       devNameLabel.setText(devName);
-//       noOfAcDevLabel.setText(noOfAcDev+"");
-//       noOfInAcDevLabel.setText(noOfInAcDev+"");
-//       noOfDevLabel.setText(noOfDev+"");
-//    }
-//    private void getDevInfo(String devName) {
-//
-//      }
 
 
 }
