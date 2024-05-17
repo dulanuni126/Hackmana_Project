@@ -116,7 +116,7 @@ public class DashboardController extends Component implements Initializable {
 
                 table[item] = rs0.getString(1);
                 item++;
-                System.out.println(rs0.getString(1));
+                //System.out.println(rs0.getString(1));
 
             }
             rs0.close();

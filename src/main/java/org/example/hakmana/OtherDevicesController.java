@@ -7,7 +7,6 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 
 import javafx.scene.control.Button;
-import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -16,7 +15,6 @@ import javafx.util.Duration;
 import org.example.hakmana.model.OtherDevices;
 
 import java.net.URL;
-import java.util.List;
 import java.util.ResourceBundle;
 
 public class OtherDevicesController implements Initializable {
@@ -52,8 +50,6 @@ public class OtherDevicesController implements Initializable {
     @FXML
     private TableColumn<OtherDevices, Integer> repairClmn;
 
-    ObservableList<OtherDevices> observableOtherDevices;
-
     public void initialize(URL location, ResourceBundle resources) {
         otherDevicesDb=new OtherDevices();
 
@@ -81,7 +77,7 @@ public class OtherDevicesController implements Initializable {
         repairClmn.setCellValueFactory(new PropertyValueFactory<OtherDevices ,Integer>("numRepairingDev"));
         totalClmn.setCellValueFactory(new PropertyValueFactory<OtherDevices ,Integer>("totalDev"));
 
-        populateGridPane();
+        addTblRow();
     }
 
     private void Animation(double animStartPos,double animEndPos){
@@ -105,23 +101,9 @@ public class OtherDevicesController implements Initializable {
         bodyComponet.setMinWidth(748);
     }
 
-    public void populateGridPane() {
+    public void addTblRow() {
         new Thread(() -> {
-            observableOtherDevices= FXCollections.observableArrayList();
-            List<String> devices =otherDevicesDb.getDevices();
-        try {
-            int row = 1;  // Start adding devices from row 1 (after header row)
-            for (String d : devices) {
-                observableOtherDevices.addAll(new OtherDevices(row,d,0,0,0,0));
-                row++;
-            }
-        } catch (RuntimeException e) {
-            e.printStackTrace();
-        }
-        otherDeviceTblView.setItems(observableOtherDevices);
-    }).start();
+            otherDeviceTblView.setItems(otherDevicesDb.getObservableOtherDevices());
+        }).start();
     }
-
-
-
 }

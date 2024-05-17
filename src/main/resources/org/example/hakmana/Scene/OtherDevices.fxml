@@ -35,14 +35,14 @@
                                  <children>
                                     <ScrollPane fitToHeight="true" fitToWidth="true" VBox.vgrow="ALWAYS">
                                        <content>
-                                           <TableView fx:id="otherDeviceTblView" layoutX="10.0" layoutY="62.0">
+                                           <TableView fx:id="otherDeviceTblView" layoutX="10.0" layoutY="62.0" style="-fx-font-size: 16;">
                                                <columns>
-                                                   <TableColumn fx:id="num" maxWidth="24.0" minWidth="10.0" prefWidth="-1.0" text="#" />
-                                                   <TableColumn fx:id="deviceNameClmn" maxWidth="1.7976931348623157E308" minWidth="10.0" prefWidth="-1.0" text="Device Name" />
-                                                   <TableColumn fx:id="totalClmn" maxWidth="1.7976931348623157E308" minWidth="10.0" prefWidth="-1.0" text="Total" />
-                                                   <TableColumn fx:id="activeClmn" maxWidth="1.7976931348623157E308" minWidth="10.0" prefWidth="-1.0" text="Active" />
-                                                   <TableColumn fx:id="inactiveClmn" maxWidth="1.7976931348623157E308" minWidth="10.0" prefWidth="-1.0" text="Inactive" />
-                                                   <TableColumn fx:id="repairClmn" maxWidth="1.7976931348623157E308" minWidth="10.0" prefWidth="-1.0" text="Repairing" />
+                                                   <TableColumn fx:id="num" maxWidth="32.0" minWidth="10.0" prefWidth="-1.0" text="#" />
+                                                   <TableColumn fx:id="deviceNameClmn" maxWidth="1.7976931348623157E308" minWidth="10.0" prefWidth="-1.0" sortable="false" text="Device Name" />
+                                                   <TableColumn fx:id="totalClmn" maxWidth="1.7976931348623157E308" minWidth="10.0" prefWidth="-1.0" sortable="false" style="-fx-alignment: CENTER_RIGHT;" text="Total" />
+                                                   <TableColumn fx:id="activeClmn" maxWidth="1.7976931348623157E308" minWidth="10.0" prefWidth="-1.0" sortable="false" style="-fx-alignment: CENTER_RIGHT;" text="Active" />
+                                                   <TableColumn fx:id="inactiveClmn" maxWidth="1.7976931348623157E308" minWidth="10.0" prefWidth="-1.0" sortable="false" style="-fx-alignment: CENTER_RIGHT;" text="Inactive" />
+                                                   <TableColumn fx:id="repairClmn" maxWidth="1.7976931348623157E308" minWidth="10.0" prefWidth="-1.0" sortable="false" style="-fx-alignment: CENTER_RIGHT;" text="Repairing" />
 
                                                </columns>
                                              <columnResizePolicy>
