@@ -13,7 +13,6 @@ import java.util.ResourceBundle;
 import org.example.hakmana.model.*;
 
 public class DeviceMngmntSmmryScene implements Initializable {
-
     @FXML
     private PathFinderController pathFinderController;
     @FXML

@@ -116,7 +116,7 @@ public class DashboardController extends Component implements Initializable {
 
                 table[item] = rs0.getString(1);
                 item++;
-                System.out.println(rs0.getString(1));
+                //System.out.println(rs0.getString(1));
 
             }
             rs0.close();
@@ -130,22 +130,22 @@ public class DashboardController extends Component implements Initializable {
                 if ((table[j].equals("desktop")) || (table[j].equals("photocopymachine")) || (table[j].equals("monitor")) || (table[j].equals("multimediaProjector")) || (table[j].equals("laptop")) || (table[j].equals("ups"))) {
 
                     if (table[j].equals("desktop")) {
-                        dashboardCardUpdate(count1,count2,count3,count4,table[j],"DesRegNum");
+                        dashboardCardUpdate(count1,count2,count3,count4,table[j],"regNum");
                     }
                     else if(table[j].equals("photocopymachine")){
-                        dashboardCardUpdate(count1,count2,count3,count4,table[j],"PhotoCopyMachineRegNum");
+                        dashboardCardUpdate(count1,count2,count3,count4,table[j],"regNum");
                     }
                     else if(table[j].equals("monitor")){
-                        dashboardCardUpdate(count1,count2,count3,count4,table[j],"MonitorRegNum");
+                        dashboardCardUpdate(count1,count2,count3,count4,table[j],"regNum");
                     }
                     else if(table[j].equals("multimediaProjector")){
-                        dashboardCardUpdate(count1,count2,count3,count4,table[j],"MultimediaProjectorRegNum");
+                        dashboardCardUpdate(count1,count2,count3,count4,table[j],"regNum");
                     }
                     else if(table[j].equals("laptop")){
-                        dashboardCardUpdate(count1,count2,count3,count4,table[j],"LaptopRegNum");
+                        dashboardCardUpdate(count1,count2,count3,count4,table[j],"regNum");
                     }
                     else if(table[j].equals("ups")){
-                        dashboardCardUpdate(count1,count2,count3,count4,table[j],"upsRegNum");
+                        dashboardCardUpdate(count1,count2,count3,count4,table[j],"regNum");
                     }
                 }
 
