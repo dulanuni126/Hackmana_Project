@@ -11,7 +11,6 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-
 <DialogPane prefHeight="175.0" prefWidth="545.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
    <content>
       <AnchorPane prefHeight="127.0" prefWidth="552.0">
@@ -64,12 +63,12 @@
                                     <Insets bottom="10.0" left="10.0" />
                                  </VBox.margin>
                               </Label>
-                              <Button mnemonicParsing="false" style="-fx-padding: 0; -fx-background-color: none;" text="BCS@gmail.com" VBox.vgrow="NEVER">
+                              <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="175.0" style="-fx-padding: 0; -fx-background-color: none;" text="codedinkers@gmail.com" VBox.vgrow="NEVER">
                                  <font>
                                     <Font size="16.0" />
                                  </font>
                               </Button>
-                              <Button mnemonicParsing="false" style="-fx-padding: 0; -fx-background-color: none;" text="070 6 900 6900" VBox.vgrow="NEVER">
+                              <Button mnemonicParsing="false" style="-fx-padding: 0; -fx-background-color: none;" text="075 580 1447" VBox.vgrow="NEVER">
                                  <font>
                                     <Font size="16.0" />
                                  </font>
@@ -79,7 +78,7 @@
                               <Insets />
                            </HBox.margin>
                            <padding>
-                              <Insets right="27.0" top="22.0" />
+                              <Insets right="15.0" top="22.0" />
                            </padding>
                         </VBox>
                      </children>

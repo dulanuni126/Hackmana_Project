@@ -22,7 +22,7 @@ public class AddDeviceControler implements Initializable {
     @FXML
     private GridPane gridPane;
     private String[] deviceTypes={"Desktop","Printer"};
-    private String selectedItem;
+   private String selectedItem;
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         devTypeChoiseBox.getItems().addAll(deviceTypes);

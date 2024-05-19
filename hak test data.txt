@@ -1,0 +1,104 @@
+-- Insert data into DeviceUser table
+INSERT INTO DeviceUser (userNIC, name, title, gmail) VALUES 
+('123456789V', 'John Doe', 'Engineer', 'johndoe@gmail.com'),
+('987654321V', 'Jane Smith', 'Manager', 'janesmith@gmail.com');
+
+-- Insert data into Monitor table
+INSERT INTO Monitor (MonitorRegNum, model, screenSize, status, purchasedFrom) VALUES 
+('MON123456789', 'Dell UltraSharp U2719D', '27 inches', 'Active', 'Best Buy'),
+('MON987654321', 'ASUS VG248QE', '24 inches', 'Active', 'Amazon');
+
+-- Insert data into Speaker table
+INSERT INTO Speaker (SpeakerRegNum, model, purchasedFrom, status) VALUES 
+('SPEAKER123456', 'Logitech Z623', 'Best Buy', 'Active'),
+('SPEAKER987654', 'Bose Companion 2 Series III', 'Amazon', 'Active');
+
+-- Insert data into Mouse table
+INSERT INTO Mouse (mouseRegNum, model, status, purchasedFrom, Connectivity) VALUES 
+('MOUSE123456789', 'Logitech MX Master 3', 'Active', 'Best Buy', 'Wireless'),
+('MOUSE987654321', 'Razer DeathAdder Elite', 'Active', 'Amazon', 'Wired');
+
+-- Insert data into Keyboard table
+INSERT INTO Keyboard (KeyboardRegNum, model, status, purchasedFrom, connectivity) VALUES 
+('KEYBOARD123456', 'Corsair K95 RGB Platinum', 'Active', 'Best Buy', 'Wired'),
+('KEYBOARD987654', 'Logitech G Pro X', 'Active', 'Amazon', 'Wireless');
+
+-- Insert data into Mic table
+INSERT INTO Mic (MICRegNum, model, purchasedFrom, status) VALUES 
+('MIC123456789', 'Blue Yeti', 'Best Buy', 'Active'),
+('MIC987654321', 'Rode NT-USB', 'Amazon', 'Active');
+
+-- Insert data into Scanners table
+INSERT INTO Scanners (ScannersRegNum, model, purchasedFrom, status) VALUES 
+('SCANNER123456', 'Epson Perfection V600', 'Best Buy', 'Active'),
+('SCANNER987654', 'Canon CanoScan LiDE 400', 'Amazon', 'Active');
+
+-- Insert data into Printer table
+INSERT INTO Printer (PrinterRegNum, model, status, serialNum, purchasedFrom, paperInput, paperOutput) VALUES 
+('PRINTER123456', 'HP LaserJet Pro M404dn', 'Active', 'CNB5M3214V', 'Best Buy', '250 sheets', '150 sheets'),
+('PRINTER987654', 'Epson EcoTank ET-4760', 'Active', 'SRF9T819VZ', 'Amazon', '250 sheets', '30 sheets');
+
+-- Insert data into Ups table
+INSERT INTO Ups (UpsRegNum, model, status, purchasedFrom) VALUES 
+('UPS123456789', 'APC Back-UPS Pro 1500VA', 'Active', 'Best Buy'),
+('UPS987654321', 'CyberPower CP1500AVRLCD', 'Active', 'Amazon');
+
+-- Insert data into PowerSupply table
+INSERT INTO PowerSupply (PowerSupplyRegNum, model, purchasedFrom, status) VALUES 
+('PSU123456789', 'Corsair RM750x', 'Best Buy', 'Active'),
+('PSU987654321', 'EVGA SuperNOVA 750 G3', 'Amazon', 'Active');
+
+-- Insert data into Desktop table
+INSERT INTO Desktop (DesRegNum, model, status, serialNum, purchasedFrom, ram, processor, hardDisk, os, floppyDisk, soundCard, tvCard, networkCard, ssd, cdRom, monitorRegNum, SpeakerRegNum, mouseRegNum, keyboardRegNum, micRegNum, scannerRegNum, printerRegNum, upsRegNum, powerSupplyRegNum, userNIC) VALUES 
+('DESKTOP123456', 'Dell XPS 8930', 'Active', 'DPC5L3214V', 'Best Buy', '16GB DDR4', 'Intel Core i7-9700', '1TB HDD', 'Windows 10', 'No', 'Realtek ALC3861', 'No', 'No', 'No', 'No', 'MON123456789', 'SPEAKER123456', 'MOUSE123456789', 'KEYBOARD123456', 'MIC123456789', 'SCANNER123456', 'PRINTER123456', 'UPS123456789', 'PSU123456789', '123456789V'),
+('DESKTOP987654', 'HP Pavilion Desktop TP01-1026', 'Active', 'HPAB5M3214V', 'Amazon', '8GB DDR4', 'Intel Core i3-10100', '256GB SSD + 1TB HDD', 'Windows 10', 'No', 'Realtek ALC3601', 'No', 'No', 'No', 'No', 'MON987654321', 'SPEAKER987654', 'MOUSE987654321', 'KEYBOARD987654', 'MIC987654321', 'SCANNER987654', 'PRINTER987654', 'UPS987654321', 'PSU987654321', '987654321V');
+
+-- Insert data into Laptop table
+INSERT INTO Laptop (LaptopRegNum, model, status, ram, processor, hardDisk, os, purchasedFrom, mouseRegNum, keyboardRegNum, userNIC) VALUES 
+('LAPTOP123456', 'Apple MacBook Pro 13-inch', 'Active', '16GB DDR4', 'Apple M1', '512GB SSD', 'macOS', 'Best Buy', 'MOUSE123456789', 'KEYBOARD123456', '123456789V'),
+('LAPTOP987654', 'Dell XPS 15 9500', 'Active', '32GB DDR4', 'Intel Core i7-10750H', '1TB SSD', 'Windows 10', 'Amazon', 'MOUSE987654321', 'KEYBOARD987654', '987654321V');
+
+-- Insert data into PhotoCopyMachine table
+INSERT INTO PhotoCopyMachine (PhotoCopyMachineRegNum, model, status, purchasedFrom) VALUES 
+('PHOTOCOPY123', 'Canon imageCLASS MF743Cdw', 'Active', 'Best Buy'),
+('PHOTOCOPY987', 'HP LaserJet Pro MFP M428fdw', 'Active', 'Amazon');
+
+-- Insert data into MultimediaProjector table
+INSERT INTO MultimediaProjector (MultimediaProjectorRegNum, purchasedFrom, model, status) VALUES 
+('PROJECTOR123', 'Best Buy', 'Epson Home Cinema 2150', 'Active'),
+('PROJECTOR987', 'Amazon', 'BenQ HT2050A', 'Active');
+
+-- Insert data into FaxMachine table
+INSERT INTO FaxMachine (FaxMachineRegNum, purchasedFrom, model, status) VALUES 
+('FAX123456789', 'Best Buy', 'Brother FAX-2840', 'Active'),
+('FAX987654321', 'Amazon', 'Canon FAXPHONE L100', 'Active');
+
+-- Insert data into WebCam table
+INSERT INTO WebCam (WebCamRegNum, model, purchasedFrom, status) VALUES 
+('WEBCAM123456', 'Logitech C920S', 'Best Buy', 'Active'),
+('WEBCAM987654', 'Razer Kiyo', 'Amazon', 'Active');
+
+-- Insert data into Tripod table
+INSERT INTO Tripod (TripodRegNum, model, status, purchasedFrom, AdjustableHeight) VALUES 
+('TRIPOD123456', 'AmazonBasics 60-Inch Lightweight Tripod', 'Active', 'Best Buy', 'Yes'),
+('TRIPOD987654', 'Manfrotto MT190X3 Aluminum Tripod', 'Active', 'Amazon', 'Yes');
+
+-- Insert data into Headphone table
+INSERT INTO Headphone (HeadphoneRegNum, model, status, purchasedFrom, Connectivity) VALUES 
+('HEADPHONE12345', 'Sony WH-1000XM4', 'Active', 'Best Buy', 'Wireless'),
+('HEADPHONE98765', 'Bose QuietComfort 35 II', 'Active', 'Amazon', 'Wireless');
+
+-- Insert data into USBHub table
+INSERT INTO USBHub (USBHubRegNum, model, purchasedFrom, status) VALUES 
+('USBHUB123456', 'Anker 10-Port USB Data Hub', 'Best Buy', 'Active'),
+('USBHUB987654', 'Sabrent 4-Port USB 3.0 Hub', 'Amazon', 'Active');
+
+-- Insert data into notes table
+INSERT INTO notes (id, username, notes, createdate, title) VALUES 
+('1', 'john_doe', 'Meeting agenda', '2024-05-18', 'Team Meeting'),
+('2', 'jane_smith', 'Project update', '2024-05-18', 'Project XYZ');
+
+-- Insert data into systemUser table
+INSERT INTO systemUser (userName, fullName, post, empId, pwd, email, phoneNum, isRemember, verification_code, code_expiry) VALUES 
+('john_doe', 'John Doe', 'Engineer', 'EMP123', SHA1('password123'), 'johndoe@example.com', '1234567890', 0, NULL, NULL),
+INSERT INTO `systemuser`(`userName`, `fullName`, `post`, `empId`, `pwd`, `email`, `phoneNum`) VALUES ('test','test test test test','validator','123456',SHA1('test'),'test@gmail.com','078965432');

@@ -2,6 +2,9 @@ package org.example.hakmana.model;
 
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -11,6 +14,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class Monitors extends Devices{
     private DatabaseConnection conn;
     private String regNum;
@@ -32,41 +38,7 @@ public class Monitors extends Devices{
         super(regNum, model, userName,status);
     }
 
-    public Monitors() {
-    }
-
-    @Override
-    public String getRegNum() {
-        return regNum;
-    }
-    @Override
-    public void setRegNum(String regNum) {
-        this.regNum = regNum;
-    }
-    @Override
-    public String getModel() {
-        return model;
-    }
-    @Override
-    public void setModel(String model) {
-        this.model = model;
-    }
-    @Override
-    public String getStatus() {
-        return status;
-    }
-    @Override
-    public void setStatus(String status) {
-        this.status = status;
-    }
-    @Override
-    public String getUserName() {
-        return userName;
-    }
-    @Override
-    public void setUserName(String userName) {
-        this.userName = userName;
-    }
+    private String purchasedFrom;
 
     public String getScreenSize() {
         return screenSize;
@@ -91,7 +63,7 @@ public class Monitors extends Devices{
         conn=DatabaseConnection.getInstance();
         List<Monitors> monitors = new ArrayList<>();
         //pass query to the connection class
-        String sql = "SELECT monitors.regNum,monitors.model,monitors.status, user.name FROM monitors LEFT JOIN user ON monitors.userNIC = user.userNIC";
+        String sql = "SELECT Monitor.MonitorRegNum,Monitor.model,Monitor.status, DeviceUser.name FROM Monitor LEFT JOIN user ON Monitor.userNIC = DeviceUser.userNIC";
 
         try {
             // get result set from connection class
@@ -99,13 +71,12 @@ public class Monitors extends Devices{
 
             // Iterate through the result set and create Desktop and User objects
             while (resultSet.next()) {
-                Monitors monitor = new Monitors(null,null,null,null);
+                Monitors monitor = new Monitors();
 
-                monitor.setRegNum(resultSet.getString("regNum"));
+                monitor.setRegNum(resultSet.getString("MonitorRegNum"));
                 monitor.setModel(resultSet.getString("model"));
                 monitor.setStatus(resultSet.getString("status"));
-                monitor.setUserName(resultSet.getString("name"));
-
+                monitor.setStatus(resultSet.getString("name"));
 
                 monitors.add(monitor);//add monitor to the monitors list
             }
@@ -165,6 +136,53 @@ public class Monitors extends Devices{
             Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
             alert.setTitle("Confirmation");
             alert.setContentText("Update "+ i+" rows desktop registration number " +list.get(3));
+
+            Optional<ButtonType> alertResult = alert.showAndWait();//wait until button press in alert box
+
+            //if alert box ok pressed execute sql quires
+            if (alertResult.isPresent() && alertResult.get() == ButtonType.OK) {
+                // commit the sql quires
+                connection.commit();
+                connection.setAutoCommit(true);
+                return true;
+            } else {
+                connection.rollback();
+                connection.setAutoCommit(true);
+                return false;
+            }
+
+        } catch (SQLException e) {
+            // Rollback the transaction on error
+            Alert alert=new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error Updating Device");
+            alert.setHeaderText("An error occurred while updating the device.");
+            alert.setContentText(e.getMessage());
+            alert.showAndWait();
+        }
+        return false;
+    }
+    public boolean insertDevice(ArrayList<String> list){
+        conn = DatabaseConnection.getInstance();
+        Connection connection= conn.getConnection();
+        //pass query to the connection class
+        String sql="INSERT INTO monitors (regNum,model,status,regNumDesktop)" +
+                "VALUES (?,?,?,?)";
+        try {
+            connection.setAutoCommit(false);
+
+            int i=1;
+            PreparedStatement ps = connection.prepareStatement(sql);
+            for(String l:list){
+                ps.setString(i,l);
+                i++;
+            }
+
+            i=ps.executeUpdate();
+
+            //Check confirmation to change
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+            alert.setTitle("Confirmation");
+            alert.setContentText("Update "+ i+" rows desktop registration number " +list.getFirst());
 
             Optional<ButtonType> alertResult = alert.showAndWait();//wait until button press in alert box
 

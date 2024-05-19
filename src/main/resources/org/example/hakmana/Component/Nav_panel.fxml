@@ -79,7 +79,7 @@
                         <Insets bottom="4.0" left="4.0" right="4.0" top="4.0" />
                      </padding>
                   </Button>
-                  <Button fx:id="reportHndlingBtn" alignment="BASELINE_LEFT" disable="true" graphicTextGap="10.0" mnemonicParsing="false" onAction="#reportHndlingScene" styleClass="buttonWorkStyle" text="Report Handling">
+                  <Button fx:id="reportHndlingBtn" alignment="BASELINE_LEFT" graphicTextGap="10.0" mnemonicParsing="false" onAction="#reportHndlingScene" styleClass="buttonWorkStyle" text="Report Handling">
                      <graphic>
                         <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -94,7 +94,7 @@
                         <Insets bottom="4.0" left="4.0" right="4.0" top="4.0" />
                      </padding>
                   </Button>
-                  <Button fx:id="overviewHistryBtn" alignment="BASELINE_LEFT" disable="true" graphicTextGap="10.0" mnemonicParsing="false" onAction="#overviewScene" styleClass="buttonWorkStyle" text="Overview History">
+                  <Button fx:id="overviewHistryBtn" alignment="BASELINE_LEFT" graphicTextGap="10.0" mnemonicParsing="false" onAction="#overviewScene" styleClass="buttonWorkStyle" text="Overview History">
                      <graphic>
                         <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
                            <image>

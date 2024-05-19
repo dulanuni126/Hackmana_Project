@@ -221,7 +221,6 @@ public class DeviceInfoCardController extends AnchorPane implements Initializabl
           dialog.setTitle("ADD NOTE");
           Optional<ButtonType> check = dialog.showAndWait();
           if(check.get()==ButtonType.CANCEL){
-
           }
 
      }

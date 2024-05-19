@@ -13,7 +13,6 @@ import java.util.ResourceBundle;
 import org.example.hakmana.model.*;
 
 public class DeviceMngmntSmmryScene implements Initializable {
-
     @FXML
     private PathFinderController pathFinderController;
     @FXML
@@ -117,6 +116,7 @@ public class DeviceMngmntSmmryScene implements Initializable {
     //add AddDevice card to the scene
     public void addLastComponent() {
         AddDevButtonController addDevButtonController=new AddDevButtonController();
+        addDevButtonController.setDevCat(getDbSelector());
         // Add the label to the grid
         grid.add(addDevButtonController, colCount, rowCount);
 

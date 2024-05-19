@@ -2,6 +2,9 @@ package org.example.hakmana.model;
 
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -11,6 +14,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+@Data
+@AllArgsConstructor
 public class Desktop extends Devices {
     private DatabaseConnection conn;
     private String regNum;
@@ -169,89 +174,6 @@ public class Desktop extends Devices {
         return warranty;
     }
 
-    public void setWarranty(String warranty) {
-        this.warranty = warranty;
-    }
-
-    public String getHardDisk() {
-        return hardDisk;
-    }
-
-    public void setHardDisk(String hardDisk) {
-        this.hardDisk = hardDisk;
-    }
-
-    public String getOs() {
-        return os;
-    }
-
-    public void setOs(String os) {
-        this.os = os;
-    }
-
-    public String getMonitorRegNum() {
-        return monitorRegNum;
-    }
-
-    public void setMonitorRegNum(String monitorRegNum) {
-        this.monitorRegNum = monitorRegNum;
-    }
-
-    public String getProjectorRegNum() {
-        return projectorRegNum;
-    }
-
-    public void setProjectorRegNum(String projectorRegNum) {
-        this.projectorRegNum = projectorRegNum;
-    }
-
-    public String getSpeakerRegNum() {
-        return speakerRegNum;
-    }
-
-    public void setSpeakerRegNum(String speakerRegNum) {
-        this.speakerRegNum = speakerRegNum;
-    }
-
-    public String getMouseRegNum() {
-        return mouseRegNum;
-    }
-
-    public void setMouseRegNum(String mouseRegNum) {
-        this.mouseRegNum = mouseRegNum;
-    }
-
-    public String getKeyboardRegNum() {
-        return keyboardRegNum;
-    }
-
-    public void setKeyboardRegNum(String keyboardRegNum) {
-        this.keyboardRegNum = keyboardRegNum;
-    }
-
-    public String getMicRegNum() {
-        return micRegNum;
-    }
-
-    public void setMicRegNum(String micRegNum) {
-        this.micRegNum = micRegNum;
-    }
-
-    public String getScannerRegNum() {
-        return scannerRegNum;
-    }
-
-    public void setScannerRegNum(String scannerRegNum) {
-        this.scannerRegNum = scannerRegNum;
-    }
-
-    public String getUserNIC() {
-        return userNIC;
-    }
-
-    public void setUserNIC(String userNIC) {
-        this.userNIC = userNIC;
-    }
 
     //get the Desktop array from the database
     @Override
@@ -259,7 +181,7 @@ public class Desktop extends Devices {
         conn = DatabaseConnection.getInstance();
         List<Desktop> desktops = new ArrayList<>();
         //pass query to the connection class
-        String sql = "SELECT desktop.regNum,desktop.model,desktop.status,user.name FROM desktop LEFT JOIN user ON desktop.userNIC = user.userNIC";
+        String sql = "SELECT Desktop.DesRegNum,Desktop.model,Desktop.status,DeviceUser.name FROM desktop LEFT JOIN user ON Desktop.userNIC = DeviceUser.userNIC";
 
         try (ResultSet resultSet = conn.executeSt(sql)) {// get result set from connection class and auto closable
 
@@ -302,7 +224,6 @@ public class Desktop extends Devices {
                 desktop.setPurchasedFrom(rs.getString("purchasedFrom"));
                 desktop.setRam(rs.getString("ram"));
                 desktop.setProcessor(rs.getString("processor"));
-                desktop.setWarranty(rs.getString("warranty"));
                 desktop.setHardDisk(rs.getString("hardDisk"));
                 desktop.setOs(rs.getString("os"));
                 desktop.setFloppyDisk(rs.getString("floppyDisk"));
@@ -335,7 +256,7 @@ public class Desktop extends Devices {
         String sql="UPDATE desktop SET model=?,status=?,serialNum=?,purchasedFrom=?,ram=?," +
                 "processor=?,warranty=?,hardDisk=?,os=?,floppyDisk=?,soundCard=?,tvCard=?,networkCard=?,monitorRegNum=?," +
                 "projectorRegNum=?,speakerRegNum=?,mouseRegNum=?,keyboardRegNum=?,micRegNum=?,scannerRegNum=?" +
-                "WHERE regNUM=?";
+                "WHERE regNum=?";
         try {
             connection.setAutoCommit(false);
 
@@ -381,7 +302,7 @@ public class Desktop extends Devices {
         conn = DatabaseConnection.getInstance();
         Connection connection= conn.getConnection();
         //pass query to the connection class
-        String sql="UPDATE desktop SET userNIC=? WHERE regNUM=?";
+        String sql="UPDATE desktop SET userNIC=? WHERE regNum=?";
         try {
             connection.setAutoCommit(false);
             PreparedStatement ps = connection.prepareStatement(sql);
@@ -414,6 +335,55 @@ public class Desktop extends Devices {
             Alert alert=new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Error Updating User");
             alert.setHeaderText("An error occurred while updating the device user.");
+            alert.setContentText(e.getMessage());
+            alert.showAndWait();
+        }
+        return false;
+    }
+    public boolean insertDevice(ArrayList<String> list){
+        conn = DatabaseConnection.getInstance();
+        Connection connection= conn.getConnection();
+        //pass query to the connection class
+        String sql="INSERT INTO desktop (regNum,model,status,serialNum,purchasedFrom,ram," +
+                "processor,warranty,hardDisk,os,floppyDisk,soundCard,tvCard,networkCard,monitorRegNum," +
+                "projectorRegNum,speakerRegNum,mouseRegNum,keyboardRegNum,micRegNum,scannerRegNum,userNIC)" +
+                "VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+        try {
+            connection.setAutoCommit(false);
+
+            int i=1;
+            PreparedStatement ps = connection.prepareStatement(sql);
+            for(String l:list){
+                ps.setString(i,l);
+                i++;
+            }
+
+            i=ps.executeUpdate();
+
+            //Check confirmation to change
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+            alert.setTitle("Confirmation");
+            alert.setContentText("Update "+ i+" rows desktop registration number " +list.getFirst());
+
+            Optional<ButtonType> alertResult = alert.showAndWait();//wait until button press in alert box
+
+            //if alert box ok pressed execute sql quires
+            if (alertResult.isPresent() && alertResult.get() == ButtonType.OK) {
+                // commit the sql quires
+                connection.commit();
+                connection.setAutoCommit(true);
+                return true;
+            } else {
+                connection.rollback();
+                connection.setAutoCommit(true);
+                return false;
+            }
+
+        } catch (SQLException e) {
+            // Rollback the transaction on error
+            Alert alert=new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error Updating Device");
+            alert.setHeaderText("An error occurred while updating the device.");
             alert.setContentText(e.getMessage());
             alert.showAndWait();
         }
