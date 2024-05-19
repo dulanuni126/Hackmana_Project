@@ -3,6 +3,11 @@ package org.example.hakmana.model;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
 
+
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -11,6 +16,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+@Data
+//@AllArgsConstructor
+//@NoArgsConstructor
 public class Laptops extends Devices{
     private DatabaseConnection conn;
     private String regNum;
@@ -137,7 +145,7 @@ public class Laptops extends Devices{
         conn=DatabaseConnection.getInstance();
         List<Laptops> laptops = new ArrayList<>();
         //pass query to the connection class
-        String sql = "SELECT laptop.regNum,laptop.model,laptop.status, user.name FROM laptop LEFT JOIN user ON laptop.userNIC = user.userNIC";
+        String sql = "SELECT Laptop.LaptopRegNum,Laptop.model,Laptop.status, DeviceUser.name FROM laptop LEFT JOIN user ON Laptop.userNIC = DeviceUser.userNIC";
 
         try {
             // get result set from connection class
@@ -145,9 +153,9 @@ public class Laptops extends Devices{
 
             // Iterate through the result set and create Desktop and User objects
             while (resultSet.next()) {
-                Laptops laptop = new Laptops(null,null,null,null);
+                Laptops laptop = new Laptops();
 
-                laptop.setRegNum(resultSet.getString("regNum"));
+                laptop.setRegNum(resultSet.getString("LaptopRegNum"));
                 laptop.setModel(resultSet.getString("model"));
                 laptop.setStatus(resultSet.getString("status"));
                 laptop.setUserName(resultSet.getString("name"));

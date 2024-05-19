@@ -1,0 +1,206 @@
+CREATE DATABASE hakmanaEdm;
+USE hakmanaEdm;
+CREATE TABLE DeviceUser (               
+    userNIC VARCHAR(11) PRIMARY KEY,
+    name VARCHAR(50),
+    title VARCHAR(25),
+    gmail VARCHAR(35)
+);
+
+CREATE TABLE Monitor (                          
+    MonitorRegNum VARCHAR(13) PRIMARY KEY NOT NULL, 
+    model VARCHAR(25), 
+    screenSize VARCHAR(10), 
+    status VARCHAR(10),
+    purchasedFrom VARCHAR(50)
+);
+
+CREATE TABLE Speaker(    
+    SpeakerRegNum VARCHAR(13) PRIMARY KEY NOT NULL,
+    model VARCHAR(25),
+    purchasedFrom VARCHAR(50),
+    status VARCHAR(10)
+);
+
+CREATE TABLE Mouse (
+    mouseRegNum VARCHAR(13) PRIMARY KEY,
+    model VARCHAR(25),
+    status VARCHAR(10),
+    purchasedFrom VARCHAR(50),
+    Connectivity VARCHAR(50)
+);
+
+CREATE TABLE Keyboard (
+     KeyboardRegNum VARCHAR(13) PRIMARY KEY NOT NULL,
+     model VARCHAR(25),
+     status VARCHAR(10),
+     purchasedFrom VARCHAR(50),
+     connectivity VARCHAR(10)
+);
+
+CREATE TABLE Mic(
+   MICRegNum VARCHAR(13) PRIMARY KEY NOT NULL,
+   model VARCHAR(25),
+    purchasedFrom VARCHAR(50),
+    status VARCHAR(10)
+);
+
+CREATE TABLE Scanners(
+    ScannersRegNum VARCHAR(13) PRIMARY KEY NOT NULL,
+    model VARCHAR(25),
+    purchasedFrom VARCHAR(50),
+    status VARCHAR(10)
+);
+
+CREATE TABLE Printer (
+    PrinterRegNum VARCHAR(13) PRIMARY KEY NOT NULL, 
+    model VARCHAR(50), 
+    status VARCHAR(10), 
+    serialNum VARCHAR(30), 
+    purchasedFrom VARCHAR(50), 
+    paperInput VARCHAR(15),  
+    paperOutput VARCHAR(15)
+);
+
+CREATE TABLE Ups (
+    UpsRegNum VARCHAR(13) PRIMARY KEY NOT NULL,
+    model VARCHAR(25),
+    status VARCHAR(10),
+    purchasedFrom VARCHAR(50)
+);
+
+CREATE TABLE PowerSupply (
+    PowerSupplyRegNum VARCHAR(13) PRIMARY KEY NOT NULL,
+    model VARCHAR(25), 
+    purchasedFrom VARCHAR(50),
+    status VARCHAR(10) 
+);
+
+CREATE TABLE Desktop (
+    DesRegNum VARCHAR(13) PRIMARY KEY,
+    model VARCHAR(50), 
+    status VARCHAR(10),
+    serialNum VARCHAR(20), 
+    purchasedFrom VARCHAR(50),
+    ram VARCHAR(8), 
+    processor VARCHAR(50),  
+    hardDisk VARCHAR(8),
+    os VARCHAR(10),
+    floppyDisk VARCHAR(3), 
+    soundCard VARCHAR(15), 
+    tvCard VARCHAR(15), 
+    networkCard VARCHAR(15), 
+    ssd VARCHAR(13),      
+    cdRom VARCHAR(3),
+    monitorRegNum VARCHAR(13),  
+    SpeakerRegNum VARCHAR(13),  
+    mouseRegNum VARCHAR(13),   
+    keyboardRegNum VARCHAR(13), 
+    micRegNum VARCHAR(13),  
+    scannerRegNum VARCHAR(13),  
+    printerRegNum VARCHAR(13),  
+    upsRegNum VARCHAR(13),      
+    powerSupplyRegNum VARCHAR(13), 
+    userNIC VARCHAR(15),
+    FOREIGN KEY (userNIC) REFERENCES DeviceUser (userNIC),
+    FOREIGN KEY (monitorRegNum) REFERENCES  Monitor (monitorRegNum),
+    FOREIGN KEY (SpeakerRegNum) REFERENCES  Speaker (SpeakerRegNum),
+    FOREIGN KEY (mouseRegNum) REFERENCES  Mouse   (mouseRegNum),
+    FOREIGN KEY (keyboardRegNum) REFERENCES  Keyboard (keyboardRegNum),
+    FOREIGN KEY (micRegNum) REFERENCES  Mic  (micRegNum),
+    FOREIGN KEY (ScannerRegNum) REFERENCES  Scanners  (ScannersRegNum),
+    FOREIGN KEY (printerRegNum) REFERENCES  Printer  (printerRegNum),
+    FOREIGN KEY (upsRegNum) REFERENCES  UPS  (upsRegNum),    
+    FOREIGN KEY (powerSupplyRegNum) REFERENCES  PowerSupply  (powerSupplyRegNum)
+);
+
+CREATE TABLE Laptop (
+    LaptopRegNum VARCHAR(13) PRIMARY KEY NOT NULL,
+    model VARCHAR(25), 
+    status VARCHAR(10), 
+    ram VARCHAR(8),  
+    processor VARCHAR(50),  
+    hardDisk VARCHAR(8),  
+    os VARCHAR(10), 
+    purchasedFrom VARCHAR(50),
+    mouseRegNum VARCHAR(13),    
+    keyboardRegNum VARCHAR(13), 
+    userNIC VARCHAR(15),
+    FOREIGN KEY (userNIC) REFERENCES DeviceUser (userNIC),
+    FOREIGN KEY (MouseRegNum) REFERENCES  Mouse (MouseRegNum),
+    FOREIGN KEY (KeyboardRegNum) REFERENCES  Keyboard             (KeyboardRegNum)
+);
+
+CREATE TABLE PhotoCopyMachine (
+    PhotoCopyMachineRegNum VARCHAR(13) PRIMARY KEY NOT NULL, 
+    model VARCHAR(45), 
+    status VARCHAR(10),
+    purchasedFrom VARCHAR(50)
+);
+
+CREATE TABLE MultimediaProjector (
+    MultimediaProjectorRegNum VARCHAR(13) PRIMARY KEY NOT NULL, 
+    purchasedFrom VARCHAR(50), 
+    model VARCHAR(25), 
+    status VARCHAR(10) 
+);
+
+CREATE TABLE FaxMachine (
+    FaxMachineRegNum VARCHAR(13) PRIMARY KEY NOT NULL,  
+    purchasedFrom VARCHAR(50),
+    model VARCHAR(25), 
+    status VARCHAR(10) 
+);
+
+CREATE TABLE WebCam (
+    WebCamRegNum VARCHAR(13) PRIMARY KEY NOT NULL,
+    model VARCHAR(25),
+    purchasedFrom VARCHAR(50),
+    status VARCHAR(10)
+);
+
+CREATE TABLE Tripod (
+    TripodRegNum VARCHAR(13) PRIMARY KEY NOT NULL,
+    model VARCHAR(25),
+    status VARCHAR(10),
+    purchasedFrom VARCHAR(50),
+    AdjustableHeight VARCHAR(50)
+);
+
+CREATE TABLE Headphone (
+    HeadphoneRegNum VARCHAR(13) PRIMARY KEY NOT NULL,
+    model VARCHAR(25),
+    status VARCHAR(10),
+    purchasedFrom VARCHAR(50),
+    Connectivity VARCHAR(10)
+);
+
+CREATE TABLE USBHub (
+    USBHubRegNum VARCHAR(13) PRIMARY KEY NOT NULL,
+    model VARCHAR(25),
+    purchasedFrom VARCHAR(50),
+    status VARCHAR(10)
+);
+
+CREATE TABLE notes(
+    id varchar(20),
+    username varchar(20),
+    notes varchar(60),
+    createdate Date,
+    title varchar(30),
+    PRIMARY KEY(id,username,notes,title)
+);
+
+CREATE TABLE systemUser (
+    userName VARCHAR(50),
+    fullName VARCHAR(100),
+    post VARCHAR(50),
+    empId VARCHAR(50),
+    pwd VARCHAR(64),
+    email VARCHAR(50),
+    phoneNum VARCHAR(10),
+    isRemember BOOLEAN DEFAULT FALSE,
+    verification_code CHAR(6) NULL,
+    code_expiry DATETIME NULL,
+    PRIMARY KEY (userName)
+);

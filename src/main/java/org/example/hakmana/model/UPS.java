@@ -11,10 +11,13 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+//Data
+//@NoArgsConstructor
+//@AllArgsConstructor
 public class UPS extends Devices{
     private DatabaseConnection conn;
     private String regNum;
-    private String model;
+    private String model="No";
     private String status;
     private String userName;
 
@@ -94,7 +97,7 @@ public class UPS extends Devices{
        conn=DatabaseConnection.getInstance();
         List<UPS> ups = new ArrayList<>();
         //pass query to the connection class
-        String sql = "SELECT * FROM ups";
+        String sql = "SELECT * FROM Ups";
 
         try {
             // get result set from connection class
@@ -102,9 +105,9 @@ public class UPS extends Devices{
 
             // Iterate through the result set and create Desktop and User objects
             while (resultSet.next()) {
-                UPS ups1 = new UPS(null,null,null,null);
+                UPS ups1 = new UPS();
 
-                ups1.setRegNum(resultSet.getString("regNum"));
+                ups1.setRegNum(resultSet.getString("UpsRegNum"));
                 ups1.setModel(resultSet.getString("model"));
                 ups1.setStatus(resultSet.getString("status"));
 

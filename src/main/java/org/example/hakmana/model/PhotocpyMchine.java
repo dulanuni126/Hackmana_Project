@@ -3,6 +3,10 @@ package org.example.hakmana.model;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -11,7 +15,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-
+@Data
+//@NoArgsConstructor
+@AllArgsConstructor
 public class PhotocpyMchine extends Devices {
     private DatabaseConnection conn;
     private String regNum;
@@ -61,10 +67,7 @@ public class PhotocpyMchine extends Devices {
         this.status = status;
     }
 
-    @Override
-    public String getUserName() {
-        return userName;
-    }
+    private String purchasedFrom;
 
     @Override
     public void setUserName(String userName) {
@@ -91,10 +94,11 @@ public class PhotocpyMchine extends Devices {
 
             // Iterate through the result set and create Desktop and User objects
             while (resultSet.next()) {
-                PhotocpyMchine photocopyMachine = new PhotocpyMchine(null,null,null,null);
-                photocopyMachine.setRegNum(resultSet.getString("regNum"));
+                PhotocpyMchine photocopyMachine = new PhotocpyMchine();
+
+                photocopyMachine.setRegNum(resultSet.getString("PhotoCopyMachineRegNum"));
                 photocopyMachine.setModel(resultSet.getString("model"));
-                photocopyMachine.setUserName("no user");
+                photocopyMachine.setStatus(resultSet.getString("status"));
 
                 photocopyMachines.add(photocopyMachine);//add photocopyMachines to the photocopyMachins list
             }
