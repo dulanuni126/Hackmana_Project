@@ -349,7 +349,7 @@ public class DevDetailedViewController implements Initializable {
                 Printer printer = new Printer().getDevice(getDevRegNum());
                 setCommonToView("Device Management>Printers>" + getDevRegNum(), printer);
                 setOtherDetails(new String[]{"Serial Number","Paper Input","Paper Output","Warranty"},
-                        printer.getSerialNum(),printer.getPaperInput(),printer.getPaperOutput(),printer.getWarranty());
+                        printer.getSerialNum(),printer.getPaperInput(),printer.getPaperOutput(),"waranty");
             }
             case "UPS" -> {
                     UPS ups = new UPS().getDevice(getDevRegNum());
