@@ -130,22 +130,22 @@ public class DashboardController extends Component implements Initializable {
                 if ((table[j].equals("desktop")) || (table[j].equals("photocopymachine")) || (table[j].equals("monitor")) || (table[j].equals("multimediaProjector")) || (table[j].equals("laptop")) || (table[j].equals("ups"))) {
 
                     if (table[j].equals("desktop")) {
-                        dashboardCardUpdate(count1,count2,count3,count4,table[j],"regNum");
+                        dashboardCardUpdate(count1,count2,count3,count4,table[j],"DesRegNum");
                     }
                     else if(table[j].equals("photocopymachine")){
-                        dashboardCardUpdate(count1,count2,count3,count4,table[j],"regNum");
+                        dashboardCardUpdate(count1,count2,count3,count4,table[j],"PhotoCopyMachineRegNum");
                     }
                     else if(table[j].equals("monitor")){
-                        dashboardCardUpdate(count1,count2,count3,count4,table[j],"regNum");
+                        dashboardCardUpdate(count1,count2,count3,count4,table[j],"MonitorRegNum");
                     }
                     else if(table[j].equals("multimediaProjector")){
-                        dashboardCardUpdate(count1,count2,count3,count4,table[j],"regNum");
+                        dashboardCardUpdate(count1,count2,count3,count4,table[j],"MultimediaProjectorRegNum");
                     }
                     else if(table[j].equals("laptop")){
-                        dashboardCardUpdate(count1,count2,count3,count4,table[j],"regNum");
+                        dashboardCardUpdate(count1,count2,count3,count4,table[j],"LaptopRegNum");
                     }
                     else if(table[j].equals("ups")){
-                        dashboardCardUpdate(count1,count2,count3,count4,table[j],"regNum");
+                        dashboardCardUpdate(count1,count2,count3,count4,table[j],"UpsRegNum");
                     }
                 }
 
@@ -346,7 +346,7 @@ public class DashboardController extends Component implements Initializable {
                             tableAdd();
                             st3.close();
                         } catch (SQLException e) {
-                            JOptionPane.showMessageDialog(this, "seems like you trying to enter same note again\n please use different title ", "Rejected!", JOptionPane.ERROR_MESSAGE);
+                            JOptionPane.showMessageDialog(this, "same title with same id not valid", "Rejected!", JOptionPane.ERROR_MESSAGE);
 
                         }
                        finally{
